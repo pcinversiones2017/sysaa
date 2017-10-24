@@ -14,7 +14,9 @@ class PlanController extends Controller
      */
     public function listar()
     {
-
+        $planes = Plan::all();
+        $listarPlan = 'active';
+        return view('plan.listar')->with(compact('planes', 'listarPlan'));
     }
 
     /**
@@ -24,7 +26,8 @@ class PlanController extends Controller
      */
     public function crear()
     {
-        return view('plan.crear');
+        $crearPlan = 'active';
+        return view('plan.crear')->with(compact('crearPlan'));
     }
 
     /**
@@ -33,9 +36,13 @@ class PlanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function guardar(Request $request)
     {
-        //
+        $planAnual = new Plan();
+        $planAnual->nombrePlan = $request->nombrePlan;
+        $planAnual->save();
+
+        return redirect('plan/listar');
     }
 
     /**
@@ -55,9 +62,10 @@ class PlanController extends Controller
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Plan $plan)
+    public function editar(Request $request)
     {
-        //
+        $plan = Plan::find($request->codPlanA);
+        return view('plan.editar')->with(compact('plan'));
     }
 
     /**
@@ -67,9 +75,13 @@ class PlanController extends Controller
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Plan $plan)
+    public function actualizar(Request $request)
     {
-        //
+        $plan = Plan::find($request->codPlanA);
+        $plan->nombrePlan = $request->nombrePlan;
+        $plan->save();
+
+        return redirect('plan/listar');
     }
 
     /**
