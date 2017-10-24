@@ -29,3 +29,7 @@ Route::prefix('plan')->group(function () {
     Route::post('actualizar', 'PlanController@actualizar');
 });
 
+//Auditoria
+Route::prefix('auditoria')->group(function (){
+   Route::get('crear', 'AuditoriaController@crear');
+});
