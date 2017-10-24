@@ -13,7 +13,7 @@ class CreateCronogramaGeneralTable extends Migration
      */
     public function up()
     {
-        Schema::create('CronogramaGeneral', function (Blueprint $table) {
+        Schema::create('Cronograma_General', function (Blueprint $table) {
             $table->increments('codCroGen');
             $table->string('etapa');
             $table->date('fechaIni');

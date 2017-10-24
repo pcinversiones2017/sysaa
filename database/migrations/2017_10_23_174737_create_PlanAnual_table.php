@@ -13,7 +13,7 @@ class CreatePlanAnualTable extends Migration
      */
     public function up()
     {
-        Schema::create('PlanAnual', function (Blueprint $table) {
+        Schema::create('Plan_Anual', function (Blueprint $table) {
             $table->increments('codPlanA');
             $table->string('nombrePlan');
             $table->timestamp('fecha_creado')->nullable();

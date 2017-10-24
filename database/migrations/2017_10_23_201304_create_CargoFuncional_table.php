@@ -13,7 +13,7 @@ class CreateCargoFuncionalTable extends Migration
      */
     public function up()
     {
-        Schema::create('cargoFuncional', function (Blueprint $table) {
+        Schema::create('cargo_Funcional', function (Blueprint $table) {
             $table->increments('codCarFun');
             $table->string('nombre');
             $table->timestamp('fecha_creado')->nullable();

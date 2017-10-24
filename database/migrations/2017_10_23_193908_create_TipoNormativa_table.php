@@ -13,7 +13,7 @@ class CreateTipoNormativaTable extends Migration
      */
     public function up()
     {
-        Schema::create('TipoNormativa', function (Blueprint $table) {
+        Schema::create('Tipo_Normativa', function (Blueprint $table) {
             $table->increments('codTipNorm');
             $table->string('nombre');
             $table->timestamp('fecha_creado')->nullable();

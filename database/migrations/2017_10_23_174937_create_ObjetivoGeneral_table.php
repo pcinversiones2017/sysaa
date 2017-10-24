@@ -13,7 +13,7 @@ class CreateObjetivoGeneralTable extends Migration
      */
     public function up()
     {
-        Schema::create('ObjetivoGeneral', function (Blueprint $table) {
+        Schema::create('Objetivo_General', function (Blueprint $table) {
             $table->increments('codObjGen');
             $table->string('nombre');
             $table->timestamp('fecha_creado')->nullable();
