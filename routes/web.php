@@ -18,8 +18,6 @@ Route::get('test', 'TestController@test');
 Route::get('planificacion', 'PlanificacionController@index');
 
 //Plan
-
-
 Route::prefix('plan')->group(function () {
 
     Route::get('crear', 'PlanController@crear');
@@ -27,5 +25,12 @@ Route::prefix('plan')->group(function () {
     Route::get('listar', 'PlanController@listar');
     Route::get('editar/{codPlanA}', 'PlanController@editar');
     Route::post('actualizar', 'PlanController@actualizar');
-});
 
+});
+//cronograma
+Route::prefix('cronograma')->group(function () {
+
+    Route::get('crear', 'CronogramaController@crear');
+
+
+});
