@@ -7,11 +7,12 @@
 
     <title>INSPINIA | Dashboard v.2</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="{{URL::to('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{URL::to('font-awesome/css/font-awesome.css')}}" rel="stylesheet">
 
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{URL::to('css/animate.css')}}" rel="stylesheet">
+    <link href="{{URL::to('css/style.css')}}" rel="stylesheet">
+
 
 </head>
 
@@ -392,43 +393,31 @@
 </div>
 
 <!-- Mainly scripts -->
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="{{URL::to('js/jquery-3.1.1.min.js')}}"></script>
+<script src="{{URL::to('js/bootstrap.min.js')}}"></script>
+<script src="{{URL::to('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
+<script src="{{URL::to('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
 
 <!-- Flot -->
-<script src="js/plugins/flot/jquery.flot.js"></script>
-<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script src="js/plugins/flot/jquery.flot.spline.js"></script>
-<script src="js/plugins/flot/jquery.flot.resize.js"></script>
-<script src="js/plugins/flot/jquery.flot.pie.js"></script>
-<script src="js/plugins/flot/jquery.flot.symbol.js"></script>
-<script src="js/plugins/flot/jquery.flot.time.js"></script>
+<script src="{{URL::to('js/plugins/flot/jquery.flot.js')}}"></script>
+<script src="{{URL::to('js/plugins/flot/jquery.flot.tooltip.min.js')}}"></script>
+<script src="{{URL::to('js/plugins/flot/jquery.flot.spline.js')}}"></script>
+<script src="{{URL::to('js/plugins/flot/jquery.flot.resize.js')}}"></script>
+<script src="{{URL::to('js/plugins/flot/jquery.flot.pie.js')}}"></script>
+<script src="{{URL::to('js/plugins/flot/jquery.flot.symbol.js')}}"></script>
+<script src="{{URL::to('js/plugins/flot/jquery.flot.time.js')}}"></script>
+<script src="{{URL::to('js/plugins/peity/jquery.peity.min.js')}}"></script>
+<script src="{{URL::to('js/demo/peity-demo.js')}}"></script>
+<script src="{{URL::to('js/inspinia.js')}}"></script>
+<script src="{{URL::to('js/plugins/pace/pace.min.js')}}"></script>
+<script src="{{URL::to('js/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+<script src="{{URL::to('js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
+<script src="{{URL::to('js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
+<script src="{{URL::to('js/plugins/easypiechart/jquery.easypiechart.js')}}"></script>
+<script src="{{URL::to('js/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
+<script src="{{URL::to('js/demo/sparkline-demo.js')}}"></script>
+<script src="{{URL::to('js/plugins/flot/jquery.flot.time.js')}}"></script>
 
-<!-- Peity -->
-<script src="js/plugins/peity/jquery.peity.min.js"></script>
-<script src="js/demo/peity-demo.js"></script>
-
-<!-- Custom and plugin javascript -->
-<script src="js/inspinia.js"></script>
-<script src="js/plugins/pace/pace.min.js"></script>
-
-<!-- jQuery UI -->
-<script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
-
-<!-- Jvectormap -->
-<script src="js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
-<script src="js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-
-<!-- EayPIE -->
-<script src="js/plugins/easypiechart/jquery.easypiechart.js"></script>
-
-<!-- Sparkline -->
-<script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
-
-<!-- Sparkline demo data  -->
-<script src="js/demo/sparkline-demo.js"></script>
 
 </body>
 
