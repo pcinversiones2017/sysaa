@@ -47,9 +47,15 @@
                         <li class="{{$listarPlan?? ''}}"><a href="{{URL::to('plan/listar')}}">Listar Planes</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
+
+                <li class="active">
+                    <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Auditoria</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="{{$crearAuditoria?? ''}}"><a href="{{URL::to('auditoria/crear')}}">Crear Auditoria</a></li>
+                        <li class="{{$listarAuditorias?? ''}}"><a href="{{URL::to('auditoria/listar')}}">Listar Auditorias</a></li>
+                    </ul>
                 </li>
+
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
