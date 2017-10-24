@@ -15,13 +15,14 @@ class CreateCronogramaGeneralTable extends Migration
     {
         Schema::create('Cronograma_General', function (Blueprint $table) {
             $table->increments('codCroGen');
-            $table->string('etapa');
+            $table->integer('codEtp')->unsigned();
             $table->date('fechaIni');
             $table->date('fechaFin');
             $table->integer('codPlanf')->unsigned();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
             $table->foreign('codPlanf')->references('codPlanf')->on('Auditoria');
+            $table->foreign('codEtp')->references('codEtp')->on('Etapa');
         });
     }
 
