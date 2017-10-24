@@ -24,10 +24,11 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <form method="get" class="form-horizontal">
+                    <form method="post" class="form-horizontal" action="{{URL::to('plan/guardar')}}">
+                        {{csrf_field()}}
                         <div class="form-group"><label class="col-sm-2 control-label">Nombre del plan</label>
 
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="nombrePlan"></div>
                         </div>
 
                         <div class="form-group">

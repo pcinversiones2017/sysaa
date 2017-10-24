@@ -18,4 +18,12 @@ Route::get('test', 'TestController@test');
 Route::get('planificacion', 'PlanificacionController@index');
 
 //Plan
-Route::get('crear-plan', 'PlanController@crear');
+
+
+Route::prefix('plan')->group(function () {
+
+    Route::get('crear', 'PlanController@crear');
+    Route::post('guardar', 'PlanController@guardar');
+    Route::get('listar', 'PlanController@listar');
+});
+
