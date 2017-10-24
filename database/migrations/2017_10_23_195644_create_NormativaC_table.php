@@ -13,7 +13,7 @@ class CreateNormativaCTable extends Migration
      */
     public function up()
     {
-        Schema::create('NormativaC', function (Blueprint $table) {
+        Schema::create('Normativa_C', function (Blueprint $table) {
             $table->increments('codNorm');
             $table->string('nombre');
             $table->string('numero');
@@ -21,7 +21,7 @@ class CreateNormativaCTable extends Migration
             $table->integer('codTipNorm')->unsigned();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
-            $table->foreign('codTipNorm')->references('codTipNorm')->on('TipoNormativa');
+            $table->foreign('codTipNorm')->references('codTipNorm')->on('Tipo_Normativa');
         });
     }
 

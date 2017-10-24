@@ -20,7 +20,7 @@ class CreateSubProcesoTable extends Migration
             $table->integer('codProMA')->unsigned();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
-            $table->foreign('codProMA')->references('codProMA')->on('ProcesoMA');
+            $table->foreign('codProMA')->references('codProMA')->on('Proceso_MA');
         });
     }
 

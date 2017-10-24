@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('test', 'TestController@test');
+Route::get('planificacion', 'PlanificacionController@index');
+
+//Plan
+Route::get('crear-plan', 'PlanController@crear');

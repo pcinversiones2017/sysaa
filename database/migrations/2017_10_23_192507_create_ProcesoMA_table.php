@@ -13,7 +13,7 @@ class CreateProcesoMATable extends Migration
      */
     public function up()
     {
-        Schema::create('ProcesoMA', function (Blueprint $table) {
+        Schema::create('Proceso_MA', function (Blueprint $table) {
             $table->increments('codProMA');
             $table->string('nombre');
             $table->string('estado');

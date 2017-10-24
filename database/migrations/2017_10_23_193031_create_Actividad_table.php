@@ -20,7 +20,7 @@ class CreateActividadTable extends Migration
             $table->integer('codProSP')->unsigned();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
-            $table->foreign('codProSP')->references('codProSP')->on('ProcedimientoSP');
+            $table->foreign('codProSP')->references('codProSP')->on('Procedimiento_SP');
         });
     }
 

@@ -19,7 +19,7 @@ class CreateNormativaMacroprocesoTable extends Migration
             $table->integer('codMacroP')->unsigned();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
-            $table->foreign('codNorm')->references('codNorm')->on('NormativaC');
+            $table->foreign('codNorm')->references('codNorm')->on('Normativa_C');
             $table->foreign('codMacroP')->references('codMacroP')->on('Macroproceso');
         });
     }

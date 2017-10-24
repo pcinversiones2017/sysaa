@@ -21,7 +21,7 @@ class CreateObjetivoEspecificoTable extends Migration
             $table->integer('codMacroP')->unsigned();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
-            $table->foreign('codObjGen')->references('codObjGen')->on('ObjetivoGeneral');
+            $table->foreign('codObjGen')->references('codObjGen')->on('Objetivo_General');
             $table->foreign('codMacroP')->references('codMacroP')->on('Macroproceso');
         });
     }

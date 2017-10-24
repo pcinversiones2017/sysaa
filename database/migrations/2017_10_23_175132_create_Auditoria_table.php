@@ -25,8 +25,8 @@ class CreateAuditoriaTable extends Migration
             $table->integer('codObjGen')->unsigned();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
-            $table->foreign('codPlanA')->references('codPlanA')->on('PlanAnual');
-            $table->foreign('codObjGen')->references('codObjGen')->on('ObjetivoGeneral');
+            $table->foreign('codPlanA')->references('codPlanA')->on('Plan_Anual');
+            $table->foreign('codObjGen')->references('codObjGen')->on('Objetivo_General');
         });
     }
 
