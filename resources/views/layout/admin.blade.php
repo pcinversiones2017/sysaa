@@ -43,8 +43,8 @@
                 <li class="active">
                     <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Plan</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li class="{{$active?? ''}}"><a href="{{URL::to('plan/crear')}}">Crear Plan</a></li>
-                        <li class="{{$active?? ''}}"><a href="{{URL::to('plan/listar')}}">Listar Planes</a></li>
+                        <li class="{{$crearPlan?? ''}}"><a href="{{URL::to('plan/crear')}}">Crear Plan</a></li>
+                        <li class="{{$listarPlan?? ''}}"><a href="{{URL::to('plan/listar')}}">Listar Planes</a></li>
                     </ul>
                 </li>
                 <li>
