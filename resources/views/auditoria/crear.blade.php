@@ -64,6 +64,11 @@
                             <div class="form-group"><label class="">Origen</label>
                                 <textarea class="form-control" name="origen"></textarea>
                             </div>
+
+                            <div class="form-group"><label class="">Objetivo General</label>
+                                <textarea class="form-control" name="nombreObjetivoGeneral"></textarea>
+                            </div>
+
                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
                                     <button class="btn btn-primary" type="submit">Guardar</button>

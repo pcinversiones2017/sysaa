@@ -41,3 +41,9 @@ Route::prefix('auditoria')->group(function (){
    Route::post('actualizar', 'PlanController@actualizar');
 
 });
+//Objetivo General
+
+Route::prefix('objetivo-general')->group(function (){
+
+    Route::post('guardar', 'ObjetivoGeneralController@guardar');
+});

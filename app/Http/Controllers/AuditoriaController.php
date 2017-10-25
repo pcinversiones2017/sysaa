@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auditoria;
+use App\Models\ObjetivoGeneral;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 
@@ -52,8 +53,14 @@ class AuditoriaController extends Controller
         $auditoria->periodoFinPlanF = $request->periodoFinPlanF;
         $auditoria->codPlanA = $request->codPlanA;
         $auditoria->estadoAuditoria = 'pendiente';
-
         $auditoria->save();
+
+        if(!empty($request->nombreObjetivoGeneral)){
+            $objetivoGeneral = new ObjetivoGeneral();
+            $objetivoGeneral->nombre = $request->nombreObjetivoGeneral;
+            $objetivoGeneral->codPlanF = $auditoria->codPlanF;
+            $objetivoGeneral->save();
+        }
 
         return redirect('auditoria/listar');
     }
