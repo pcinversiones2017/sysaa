@@ -378,6 +378,7 @@
         <div class="wrapper wrapper-content">
             @yield('content')
         </div>
+
         <div class="footer">
             <div>
                 <strong>Copyright</strong> Pacific Inversiones &copy; 2014-2017
@@ -394,24 +395,24 @@
 <script src="{{URL::to('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
 
 <!-- Flot -->
-<script src="{{URL::to('js/plugins/flot/jquery.flot.js')}}"></script>
-<script src="{{URL::to('js/plugins/flot/jquery.flot.tooltip.min.js')}}"></script>
-<script src="{{URL::to('js/plugins/flot/jquery.flot.spline.js')}}"></script>
-<script src="{{URL::to('js/plugins/flot/jquery.flot.resize.js')}}"></script>
-<script src="{{URL::to('js/plugins/flot/jquery.flot.pie.js')}}"></script>
-<script src="{{URL::to('js/plugins/flot/jquery.flot.symbol.js')}}"></script>
-<script src="{{URL::to('js/plugins/flot/jquery.flot.time.js')}}"></script>
-<script src="{{URL::to('js/plugins/peity/jquery.peity.min.js')}}"></script>
-<script src="{{URL::to('js/demo/peity-demo.js')}}"></script>
+{{--<script src="{{URL::to('js/plugins/flot/jquery.flot.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/plugins/flot/jquery.flot.tooltip.min.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/plugins/flot/jquery.flot.spline.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/plugins/flot/jquery.flot.resize.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/plugins/flot/jquery.flot.pie.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/plugins/flot/jquery.flot.symbol.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/plugins/flot/jquery.flot.time.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/plugins/peity/jquery.peity.min.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/demo/peity-demo.js')}}"></script>--}}
 <script src="{{URL::to('js/inspinia.js')}}"></script>
-<script src="{{URL::to('js/plugins/pace/pace.min.js')}}"></script>
-<script src="{{URL::to('js/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
-<script src="{{URL::to('js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
-<script src="{{URL::to('js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
-<script src="{{URL::to('js/plugins/easypiechart/jquery.easypiechart.js')}}"></script>
-<script src="{{URL::to('js/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
-<script src="{{URL::to('js/demo/sparkline-demo.js')}}"></script>
-<script src="{{URL::to('js/plugins/flot/jquery.flot.time.js')}}"></script>
+{{--<script src="{{URL::to('js/plugins/pace/pace.min.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/plugins/jquery-ui/jquery-ui.min.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/plugins/easypiechart/jquery.easypiechart.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/plugins/sparkline/jquery.sparkline.min.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/demo/sparkline-demo.js')}}"></script>--}}
+{{--<script src="{{URL::to('js/plugins/flot/jquery.flot.time.js')}}"></script>--}}
 
 
 </body>

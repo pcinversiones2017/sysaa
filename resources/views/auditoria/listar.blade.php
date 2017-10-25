@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de planes </h5>
+                    <h5>Lista de auditorias </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -24,32 +24,45 @@
                     </div>
                 </div>
                 <div class="ibox-content">
+
                     <div class="row">
                         <div class="col-sm-3">
-                            <a type="button" href="{{URL::to('plan/crear')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Plan Anual</a>
+                            <a type="button" href="{{URL::to('auditoria/crear')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Auditoria</a>
                         </div>
                     </div>
+
                     <table class="table table-bordered">
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>Nombre</th>
-                            <th>Fecha creacion</th>
+                            <th>Codigo del servicio de control</th>
+                            <th>Tipo de codigo de servicio de control superior</th>
+                            <th>Organo de control institucional</th>
+                            <th>Entidad auditada</th>
+                            <th>Tipo de demanda de control</th>
+                            <th>Plan Anual</th>
                             <th>Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php $i=1 ?>
-                        @foreach($planes as $plan)
-                        <tr>
-                            <td>{{$i}}</td>
-                            <td>{{$plan->nombrePlan}}</td>
-                            <td>{{$plan->fecha_creado}}</td>
-                            <td>
-                                <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> Ver </a>
-                                <a href="{{URL::to('plan/editar')}}/{{$plan->codPlanA}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
-                            </td>
-                        </tr>
+                        @foreach($auditorias as $auditoria)
+                            <tr>
+                                <td>{{$i}}</td>
+                                <td>{{$auditoria->nombrePlanF}}</td>
+                                <td>{{$auditoria->codigoServicioCP}}</td>
+                                <td>{{$auditoria->tipoServicioCP}}</td>
+                                <td>{{$auditoria->organoCI}}</td>
+                                <td>{{$auditoria->entidadAuditada}}</td>
+                                <td>{{$auditoria->tipoDemanda}}</td>
+                                <td>{{$auditoria->planAnual->nombrePlan}}</td>
+                                <td>
+                                    <a href="{{URL::to('auditoria/mostrar')}}/{{$auditoria->codPlanA}}" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
+                                    <a href="{{URL::to('auditoria/editar')}}/{{$auditoria->codPlanA}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
+                                </td>
+                            </tr>
+                        <?php $i++ ?>
                         @endforeach
                         </tbody>
                     </table>

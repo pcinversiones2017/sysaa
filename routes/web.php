@@ -41,9 +41,17 @@ Route::prefix('actividad')->group(function () {
 });
 //cronograma
 Route::prefix('cronograma')->group(function () {
-    Route::get('crear', 'CronogramaController@crear');
+     Route::get('crear', 'CronogramaController@crear');
+     Route::get('editar/{cod}','CronogramaController@test');
 });
 //Auditoria
 Route::prefix('auditoria')->group(function (){
+
    Route::get('crear', 'AuditoriaController@crear');
+   Route::get('mostrar/{codPlanF}', 'AuditoriaController@mostrar');
+   Route::post('guardar', 'AuditoriaController@guardar');
+   Route::get('listar', 'AuditoriaController@listar');
+   Route::get('editar/{codPlanF}', 'AuditoriaController@editar');
+   Route::post('actualizar', 'PlanController@actualizar');
+
 });

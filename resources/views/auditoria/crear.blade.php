@@ -5,70 +5,76 @@
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>Crear Auditoria</h5>
-                <div class="ibox-tools">
-                    <a class="collapse-link">
-                        <i class="fa fa-chevron-up"></i>
-                    </a>
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-wrench"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#">Config option 1</a>
-                        </li>
-                        <li><a href="#">Config option 2</a>
-                        </li>
-                    </ul>
-                    <a class="close-link">
-                        <i class="fa fa-times"></i>
-                    </a>
-                </div>
             </div>
             <div class="ibox-content">
-                <form method="get" class="form-horizontal">
+                <div class="row">
+                    <form method="post" action="{{URL::to('auditoria/guardar')}}">
+                        {{csrf_field()}}
+                        <div class="col-md-6 b-r">
+                            <div class="form-group"><label class="">Nombre de auditoria</label>
+                                <input type="text" class="form-control" name="nombrePlanF">
+                            </div>
+                            <div class="hr-line-dashed"></div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Nombre de auditoria</label>
-                        <div class="col-sm-10"><input type="text" class="form-control"></div>
-                    </div>
-                    <div class="hr-line-dashed"></div>
+                            <div class="form-group"><label class="">Código del servicio de control posterior</label>
+                                <input type="text" class="form-control" name="codigoServicioCP">
+                            </div>
+                            <div class="hr-line-dashed"></div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Código del servicio de control
-                            posterior</label>
-                        <div class="col-sm-10"><input type="text" class="form-control"></div>
-                    </div>
-                    <div class="hr-line-dashed"></div>
-                    <div class="form-group"><label class="col-sm-2 control-label">Tipo de demanda de
-                            control (demanda autogenerada / demanda imprevisible)  </label>
-                        <div class="col-sm-10"><input type="text" class="form-control"> <span class="help-block m-b-none"></span>
+                            <div class="form-group"><label class="">Tipo de servicio de control posterior</label>
+                                <input type="text" class="form-control" name="tipoServicioCP">
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group"><label class="">Órgano de control institucional</label>
+                                <input type="text" class="form-control" name="organoCI">
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+
                         </div>
-                    </div>
-                    <div class="hr-line-dashed"></div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Órgano de control institucional</label>
-                        <div class="col-sm-10"><input type="text" class="form-control"> <span class="help-block m-b-none">.</span>
-                        </div>
-                    </div>
-                    <div class="hr-line-dashed"></div>
+                        <div class="col-md-6">
+                            <div class="form-group"><label class="">Entidad Auditada</label>
+                                <input type="text" class="form-control" name="entidadAuditada">
+                            </div>
+                            <div class="hr-line-dashed"></div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Entidad Auditada</label>
-                        <div class="col-sm-10"><input type="text" class="form-control"> <span class="help-block m-b-none"></span>
-                        </div>
-                    </div>
-                    <div class="hr-line-dashed"></div>
+                            <div class="form-group"><label class="">Tipo de demanda de control (demanda autogenerada / demanda imprevisible)</label>
+                                <input type="text" class="form-control" name="tipoDemanda"> <span class="help-block m-b-none"></span>
+                            </div>
+                            <div class="hr-line-dashed"></div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Origen</label>
-                        <div class="col-sm-10"><textarea class="form-control"> </textarea>
-                        </div>
-                    </div>
-                    <div class="hr-line-dashed"></div>
+                            <div class="form-group"><label class="">Plan</label>
+                                <select class="form-control m-b" name="codPlanA">
+                                    <option>-- Seleccione --</option>
+                                    @foreach($planes as $plan)
+                                        <option value="{{$plan->codPlanA}}">{{$plan->nombrePlan}}</option>
+                                    @endforeach
 
-                    <div class="form-group">
-                        <div class="col-sm-4 col-sm-offset-2">
-                            <button class="btn btn-primary" type="submit">Guardar</button>
+                                </select>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
                         </div>
-                    </div>
-                </form>
+
+                        <div class="col-md-12">
+                            <div class="form-group"><label class="">Origen</label>
+                                <textarea class="form-control" name="origen"></textarea>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">Guardar</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         </div>
+
     </div>
 </div>
 @stop

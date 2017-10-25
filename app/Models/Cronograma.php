@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Plan extends Model
+class Cronograma extends Model
 {
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
 
-    protected $primaryKey = 'codPlanA';
-    protected $table = 'plan_anual';
-
+    protected $primaryKey = 'codCroGen';
+    protected $table = 'cronograma_general';
 }
