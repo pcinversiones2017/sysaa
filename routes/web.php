@@ -27,7 +27,8 @@ Route::prefix('plan')->group(function () {
 });
 //cronograma
 Route::prefix('cronograma')->group(function () {
-    Route::get('crear', 'CronogramaController@crear');
+     Route::get('crear', 'CronogramaController@crear');
+     Route::get('editar/{cod}','CronogramaController@test');
 });
 //Auditoria
 Route::prefix('auditoria')->group(function (){

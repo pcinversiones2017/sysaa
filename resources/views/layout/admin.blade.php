@@ -378,6 +378,7 @@
         <div class="wrapper wrapper-content">
             @yield('content')
         </div>
+
         <div class="footer">
             <div>
                 <strong>Copyright</strong> Pacific Inversiones &copy; 2014-2017
