@@ -2,24 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Etapa;
+use App\Models\Plan;
 use Illuminate\Http\Request;
 
 class CronogramaController extends Controller
 {
     public function crear()
     {
+        $etapasPlanificacion = Etapa::where('tipo','PLANIFICACIÓN');
+        $planes = Plan::all();
         $crearCronograma = 'active';
-        return view('cronograma.crear')->with(compact('crearCronograma'));
+        return view('cronograma.crear')
+            ->with(compact('crearCronograma','planes'))
+            ->with(compact('etapasPlanificacion'));
     }
 
-    public function guardar(Request $request)
-    {
-        $cronogramaGeneral = new Plan();
-        $cronogramaGeneral->fechaInicial = $request->fechaInicial;
-        $cronogramaGeneral->fechaFinal = $request->fechaFinal;
-        $cronogramaGeneral->save();
-
-        return redirect('cronograma/listar');
+    public function test(Request $request){
+        return view('cronograma.editar');
     }
+
+
 
 }
