@@ -12,9 +12,11 @@ class ActividadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function listar()
     {
-        //
+        $actividades = Actividad::all();
+        $listarActividad = 'active';
+        return view('actividad.listar')->with(compact('actividades','listarActividad'));
     }
 
     /**
@@ -22,9 +24,10 @@ class ActividadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function crear()
     {
-        //
+        $crearActividad = 'active';
+        return view('actividad.crear')->with(compact('crearActividad'));
     }
 
     /**
@@ -33,9 +36,16 @@ class ActividadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function guardar(Request $request)
     {
-        //
+        $actividad = new Actividad();
+        $actividad->nombre = $request->nombre;
+        $actividad->responsable = $request->responsable;
+        $actividad->codProSP = $request->codProSP;
+        $actividad->save();
+
+        return redirect('actividad/listar');
+
     }
 
     /**
@@ -55,9 +65,10 @@ class ActividadController extends Controller
      * @param  \App\Models\Actividad  $actividad
      * @return \Illuminate\Http\Response
      */
-    public function edit(Actividad $actividad)
+    public function editar(Request $request)
     {
-        //
+        $actividad = Actividad::find($request->codAct);
+        return view('actividad.editar')->with(compact('actividad'));
     }
 
     /**
@@ -67,9 +78,13 @@ class ActividadController extends Controller
      * @param  \App\Models\Actividad  $actividad
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Actividad $actividad)
+    public function actualizar(Request $request)
     {
-        //
+        $actividad = Actividad::find($request->codAct);
+        $actividad->nombre = $request->nombre;
+        $actividad->responsable = $request->responsable;
+        $actividad->codProSP = $request->codProSP;
+        $actividad->save();
     }
 
     /**
