@@ -25,6 +25,20 @@ Route::prefix('plan')->group(function () {
     Route::get('editar/{codPlanA}', 'PlanController@editar');
     Route::post('actualizar', 'PlanController@actualizar');
 });
+Route::prefix('tipo_normativa')->group(function () {
+    Route::get('crear', 'TipoNormativaController@crear');
+    Route::post('guardar', 'TipoNormativaController@guardar');
+    Route::get('listar', 'TipoNormativaController@listar');
+    Route::get('editar/{codTipNorm}', 'TipoNormativaController@editar');
+    Route::post('actualizar', 'TipoNormativaController@actualizar');
+});
+Route::prefix('actividad')->group(function () {
+    Route::get('crear', 'ActividadController@crear');
+    Route::post('guardar', 'ActividadController@guardar');
+    Route::get('listar', 'ActividadController@listar');
+    Route::get('editar/{codAct}', 'ActividadController@editar');
+    Route::post('actualizar', 'ActividadController@actualizar');
+});
 //cronograma
 Route::prefix('cronograma')->group(function () {
      Route::get('crear', 'CronogramaController@crear');

@@ -12,9 +12,11 @@ class TipoNormativaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function listar()
     {
-        //
+        $tipo_normativas = TipoNormativa::all();
+        $listarTipoNormativa = 'active';
+        return view('tipo_normativa.listar')->with(compact('tipo_normativas', 'listarTipoNormativa' ));
     }
 
     /**
@@ -22,9 +24,10 @@ class TipoNormativaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function crear()
     {
-        //
+        $crearTipoNormativa = 'active';
+        return view('tipo_normativa.crear')->with(compact('crearTipoNormativa'));
     }
 
     /**
@@ -33,9 +36,13 @@ class TipoNormativaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function guardar(Request $request)
     {
-        //
+        $tipoNormativa = new TipoNormativa();
+        $tipoNormativa->nombreTipNorm = $request->nombreTipNorm;
+        $tipoNormativa->save();
+
+        return redirect('tipo_normativa/listar');
     }
 
     /**
@@ -55,9 +62,10 @@ class TipoNormativaController extends Controller
      * @param  \App\TipoNormativa  $tipoNormativa
      * @return \Illuminate\Http\Response
      */
-    public function edit(TipoNormativa $tipoNormativa)
+    public function editar(Request $request)
     {
-        //
+        $tipoNormativa = TipoNormativa::find($request->codTipNorm);
+        return view('tipo_normativa.editar')->with(compact('tipoNormativa'));
     }
 
     /**
@@ -67,9 +75,13 @@ class TipoNormativaController extends Controller
      * @param  \App\TipoNormativa  $tipoNormativa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipoNormativa $tipoNormativa)
+    public function actualizar(Request $request)
     {
-        //
+        $tipoNormativa = TipoNormativa::find($request->codTipNorm);
+        $tipoNormativa->nombreTipNorm = $request->nombreTipNorm;
+        $tipoNormativa->save();
+
+        return redirect('tipo_normativa/listar');
     }
 
     /**
