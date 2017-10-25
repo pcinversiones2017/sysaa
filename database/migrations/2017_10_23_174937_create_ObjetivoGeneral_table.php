@@ -16,8 +16,10 @@ class CreateObjetivoGeneralTable extends Migration
         Schema::create('Objetivo_General', function (Blueprint $table) {
             $table->increments('codObjGen');
             $table->string('nombre');
+            $table->integer('codPlanF')->unsigned();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
+            $table->foreign('codPlanF')->references('codPlanF')->on('Auditoria');
         });
     }
 

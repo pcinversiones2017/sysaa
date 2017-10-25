@@ -18,7 +18,8 @@ class CreateUsuarioRolesTable extends Migration
             $table->integer('codUsu')->unsigned();
             $table->integer('codRol')->unsigned();
             $table->integer('codPlanF')->unsigned();
-            $table->timestamps();
+            $table->timestamp('fecha_creado')->nullable();
+            $table->timestamp('fecha_modificado')->nullable();
 
             $table->foreign('codRol')->references('codRol')->on('Roles');
             $table->foreign('codUsu')->references('codUsu')->on('Usuarios');
