@@ -14,6 +14,11 @@ class Auditoria extends Model
 
     public function planAnual()
     {
-        return $this->hasOne(Plan::class, 'codPlanA');
+        return $this->belongsTo(Plan::class, 'codPlanA');
+    }
+
+    public function objetivoGeneral()
+    {
+        return $this->hasOne(ObjetivoGeneral::class, 'codPlanF');
     }
 }
