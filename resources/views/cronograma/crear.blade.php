@@ -27,7 +27,7 @@
                     <form method="get" class="form-horizontal">
                         <div class="form-group"><label class="col-sm-2 control-label">SELECCIONAR PLAN</label>
                             <div class="col-sm-4">
-                            <select class="form-control" id="sel1">
+                            <select class="form-control" id="sel1" name="codPlanf[]">
                                 <option value="0">::SELECCIONE::</option>
                                 @foreach($planes as $plan)
                                     <option value="{{$plan->codPlanA}}">{{$plan->nombrePlan}}</option>
@@ -39,77 +39,74 @@
                         <div class="hr-line-dashed"></div>
                         <div class="form-group has-success"><label class="col-sm-1 control-label">PLANIFICACION</label>
                         </div>
-                        <div class="form-group">@foreach($etapasPlanificacion
-                        as $etapaPlanificacion)
-                                   {{$etapaPlanificacion->nombre}}">{{$etapaPlanificacion->tipo}}
-                                @endforeach
+                        @foreach($etapasPlanificacion as $etapaPlanificacion)
+                        <div class="form-group">
+                                <label class="col-sm-4 ">{{$etapaPlanificacion['nombre']}}</label>
+                                <input type="hidden" value="{{$etapaPlanificacion['codEtp']}}"
+                                       name="etapa{{$etapaPlanificacion['codEtp']}}[]">
+                            <div class="col-sm-7">
+                                <div class="col-md-4 ">
+                                    <input placeholder="Fecha de inicio" class="form-control" type="text"
+                                           onfocus="(this.type='date')"  id="date"
+                                           name="fechaIni{{$etapaPlanificacion['codEtp']}}[]" >
+                                </div>
+                                <div class="col-md-4">
+                                    <input placeholder="Fecha de fin" class="form-control" type="text"
+                                           onfocus="(this.type='date')"  id="date"
+                                           name="fechaFin{{$etapaPlanificacion['codEtp']}}[]">
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="number" placeholder="Dias habiles" class="form-control"
+                                           name="dias_habiles{{$etapaPlanificacion['codEtp']}}[]">
+                                </div>
+                            </div>
+                        </div>
+                            @endforeach
+                        <div class="form-group">
+                            <label class="col-sm-4 ">ELABORACIÓN Y APROBACIÓN DEL PLAN DE AUDITORÍA DEFINITIVO.<br>
+                                REGISTRO DEL PLAN DE AUDITORÍA DEFINITIVO.</label>
+                            <input type="hidden" value="3"
+                                   name="etapa3">
+                            <input type="hidden" value="4"
+                                   name="etapa4">
 
                             <div class="col-sm-7">
                                 <div class="col-md-4 ">
                                     <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date">
+                                           onfocus="(this.type='date')"  id="date" name="fechaIni3[]">
                                 </div>
                                 <div class="col-md-4">
                                     <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date">
+                                           onfocus="(this.type='date')"  id="date" name="fechaFin3[]">
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="number" placeholder="Dias habiles" class="form-control">
+                                    <input type="number" placeholder="Dias habiles" class="form-control3[]"
+                                           name="dias_habiles">
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 ">- COMPRENSIÓN DE LA ENTIDAD Y LA(S) MATERIA(S) A EXAMINAR,
-                                STABLECIENDO OBJETIVO(S) ESPECÍFICO(S) Y PROCEDIMIENTOS DE AUDITORÍA
-                            </label>
-
-                            <div class="col-sm-7">
-                                <div class="col-md-4 ">
-                                    <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date">
-                                </div>
-                                <div class="col-md-4">
-                                    <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date">
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" placeholder="Dias habiles" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 ">- ELABORACIÓN Y APROBACIÓN
-                                DEL PLAN DE AUDITORÍA DEFINITIVO  <BR>-  REGISTRO DEL PLAN DE AUDITORÍA DEFINITIVO.</label>
 
 
-                            <div class="col-sm-7" style="margin-top: 10px;">
-                                <div class="col-md-4 ">
-                                    <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date">
-                                </div>
-                                <div class="col-md-4">
-                                    <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date">
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" placeholder="Dias habiles" class="form-control">
-                                </div>
-                            </div>
-                        </div>
                         <div class="hr-line-dashed"></div>
                         <!-- EJECUCION ------------------------------------------------------------------------>
                         <div class="form-group has-success"><label class="col-sm-1 control-label">EJECUCION</label>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-4 ">- DEFINICIÓN DE LA MUESTRA DE AUDITORÍA. <BR>
-                                - DESARROLLO DE LOS PROCEDIMIENTOS DE AUDITORÍA. <BR>
-                                - IDENTIFICACIÓN DE LAS DESVIACIONES DE CUMPLIMIENTO
-                                (ELABORACIÓN, DISCUSIÓN Y APROBACIÓN DE LA MATRIZ DE LAS DESVIACIONES DE CUMPLIMIENTO).
-                                ELABORACIÓN DE LAS DESVIACIONES DE CUMPLIMIENTO.<BR>
-                                - COMUNICACIÓN DE LAS DESVIACIONES DE CUMPLIMIENTO Y
-                                EVALUACIÓN DE COMENTARIOS.<BR>
-                                - REGISTRO DEL CIERRE DE LA EJECUCIÓN.
-                            </label>
+
+                                <label class="col-sm-4">@foreach($etapaseEjecucion as $etapaseEjecucion)
+                                        {{$etapaseEjecucion['nombre']}}<BR><BR> @endforeach</label>
+                            <input type="hidden" value="5"
+                                   name="etapa5[]">
+                            <input type="hidden" value="6"
+                                   name="etapa6[]">
+                            <input type="hidden" value="7"
+                                   name="etapa7[]">
+                            <input type="hidden" value="8"
+                                   name="etapa8[]">
+                            <input type="hidden" value="9"
+                                   name="etapa9[]">
+                            <input type="hidden" value="10"
+                                   name="etapa10[]">
 
                             <div class="col-sm-7" style="margin-top: 30px;">
 
@@ -118,14 +115,15 @@
 
                                 <div class="col-md-4 ">
                                     <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date">
+                                           onfocus="(this.type='date')"  id="date" name="fechaIniEje[]">
                                 </div>
                                 <div class="col-md-4">
                                     <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date">
+                                           onfocus="(this.type='date')"  id="date" name="fechaFinEje[]">
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="number" placeholder="Dias habiles" class="form-control">
+                                    <input type="number" placeholder="Dias habiles" class="form-control"
+                                           name="dias_habilesEje[]">
                                 </div>
                             </div>
                         </div>
@@ -133,11 +131,16 @@
                         <div class="form-group has-success"><label class="col-sm-1 control-label">EJECUCION</label>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-4 ">-ELABORACIÓN DEL INFORME. <BR>
-                                - REVISIÓN, APROBACIÓN Y COMUNICACIÓN. <BR>
-                               - REGISTRO DEL INFORME.<BR>
-
+                            <label class="col-sm-4 ">@foreach($etapasReporte as $etapasReporte)
+                                    {{$etapasReporte['nombre']}}<BR><BR>
+                                @endforeach
                             </label>
+                            <input type="hidden" value="11"
+                                   name="etapa11[]">
+                            <input type="hidden" value="12"
+                                   name="etapa12[]">
+                            <input type="hidden" value="13"
+                                   name="etapa13[]">
 
                             <div class="col-sm-7" STYLE="margin-top: -8px;">
 
@@ -146,14 +149,15 @@
 
                                 <div class="col-md-4 ">
                                     <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date">
+                                           onfocus="(this.type='date')"  id="date" name="fechaIniRep[]">
                                 </div>
                                 <div class="col-md-4">
                                     <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date">
+                                           onfocus="(this.type='date')"  id="date" name="fechaFinRep[]">
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="number" placeholder="Dias habiles" class="form-control">
+                                    <input type="number" placeholder="Dias habiles" class="form-control"
+                                           name="dias_habilesRep[]">
                                 </div>
                             </div>
                         </div>
