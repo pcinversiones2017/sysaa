@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auditoria;
+use App\Models\Plan;
 use Illuminate\Http\Request;
 
 class AuditoriaController extends Controller
@@ -14,7 +15,8 @@ class AuditoriaController extends Controller
      */
     public function listar()
     {
-        //
+        $auditorias = Auditoria::all();
+        return view('auditoria.listar')->with(compact('auditorias'));
     }
 
     /**
@@ -24,7 +26,8 @@ class AuditoriaController extends Controller
      */
     public function crear()
     {
-        return view('auditoria.crear');
+        $planes = Plan::all();
+        return view('auditoria.crear')->with(compact('planes'));
     }
 
     /**
@@ -35,7 +38,24 @@ class AuditoriaController extends Controller
      */
     public function guardar(Request $request)
     {
-        //
+        $auditoria = new Auditoria();
+        $auditoria->nombrePlanF = $request->nombrePlanF;
+        $auditoria->codigoServicioCP = $request->codigoServicioCP;
+        $auditoria->tipoServicioCP = $request->tipoServicioCP;
+        $auditoria->organoCI = $request->organoCI;
+        $auditoria->origen = $request->origen;
+        $auditoria->entidadAuditada = $request->entidadAuditada;
+        $auditoria->tipoDemanda = $request->tipoDemanda;
+        $auditoria->fechaIniPlanF = $request->fechaIniPlanF;
+        $auditoria->fechaFinPlanF = $request->fechaFinPlanF;
+        $auditoria->periodoIniPlanF = $request->periodoIniPlanF;
+        $auditoria->periodoFinPlanF = $request->periodoFinPlanF;
+        $auditoria->codPlanA = $request->codPlanA;
+        $auditoria->estadoAuditoria = 'pendiente';
+
+        $auditoria->save();
+
+        return redirect('auditoria/listar');
     }
 
     /**
@@ -44,9 +64,10 @@ class AuditoriaController extends Controller
      * @param  \App\Models\Auditoria  $auditoria
      * @return \Illuminate\Http\Response
      */
-    public function mostrar(Auditoria $auditoria)
+    public function mostrar(Request $request)
     {
-        //
+        $auditoria = Auditoria::find($request->codPlanF);
+        return view('auditoria.mostrar')->with(compact('auditoria'));
     }
 
     /**
@@ -57,7 +78,8 @@ class AuditoriaController extends Controller
      */
     public function editar(Auditoria $auditoria)
     {
-        //
+        $planes = Plan::all();
+        return view('auditoria.editar')->with(compact('planes'));
     }
 
     /**
