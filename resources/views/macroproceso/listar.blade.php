@@ -36,7 +36,6 @@
                         <tr>
                             <th>#</th>
                             <th>Nombre</th>
-                            <th>Estado</th>
                             <th>Fecha creacion</th>
                             <th>Acciones</th>
                         </tr>
@@ -47,7 +46,6 @@
                         <tr>
                             <td>{{$i}}</td>
                             <td>{{$plan->nombre}}</td>
-                            <td>{{$plan->estado}}</td>
                             <td>{{$plan->fecha_creado}}</td>
                             <td>
                                 <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> Ver </a>
