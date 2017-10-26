@@ -72,7 +72,7 @@
                     <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Cronograma y Plazos</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li class="{{$crearCronograma??''}}"><a href="{{URL::to('cronograma/crear')}}">Crear cronograma</a></li>
-                        <li><a href="lockscreen.html">Listar Cronogamas</a></li>
+                        <li class="{{$listarCronograma??''}}" ><a href="{{URL::to('cronograma/listar')}}">Listar Cronogamas</a></li>
                     </ul>
                 </li>
 
