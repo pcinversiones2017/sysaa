@@ -27,8 +27,7 @@
                     <form method="post" class="form-horizontal" action="{{URL::to('macroproceso/guardar')}}">
                         {{csrf_field()}}
                         <div class="form-group"><label class="col-sm-2 control-label">Nombre del Macroproceso</label>
-
-                            <div class="col-sm-10"><input type="text" class="form-control" name="nombreMacroproceso"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="nombre"></div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">

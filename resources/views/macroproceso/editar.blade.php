@@ -26,11 +26,11 @@
                 <div class="ibox-content">
                     <form method="post" class="form-horizontal" action="{{URL::to('macroproceso/actualizar')}}">
                         {{csrf_field()}}
-                        <input type="hidden" value="{{$macroproceso->codMacroP}}" name="codPlanA">
+                        <input type="hidden" value="{{$macroproceso->codMacroP}}" name="codMacroP">
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Nombre del MacroProceso</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="nombreMacroproceso" value="{{$macroproceso->nombre}}">
+                                <input type="text" class="form-control" name="nombre" value="{{$macroproceso->nombre}}">
                             </div>
                         </div>
 

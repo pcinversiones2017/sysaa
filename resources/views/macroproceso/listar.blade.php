@@ -45,8 +45,8 @@
                         @foreach($macroprocesos as $macroproceso)
                         <tr>
                             <td>{{$i}}</td>
-                            <td>{{$plan->nombre}}</td>
-                            <td>{{$plan->fecha_creado}}</td>
+                            <td>{{$macroproceso->nombre}}</td>
+                            <td>{{$macroproceso->fecha_creado}}</td>
                             <td>
                                 <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> Ver </a>
                                 <a href="{{URL::to('macroproceso/editar')}}/{{$macroproceso->codMacroP}}" class="btn btn-white btn-sm">
