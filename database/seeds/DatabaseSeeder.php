@@ -15,9 +15,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             EtapaTableSeeder::class,
-
+            RolTableSeeder::class,
         ]);
-
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

@@ -31,6 +31,6 @@ class CreateProcesoMATable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Procesoma');
+        Schema::dropIfExists('Proceso_MA');
     }
 }

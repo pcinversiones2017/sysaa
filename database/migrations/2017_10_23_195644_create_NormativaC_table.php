@@ -32,6 +32,6 @@ class CreateNormativaCTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('NormativaC');
+        Schema::dropIfExists('Normativa_C');
     }
 }

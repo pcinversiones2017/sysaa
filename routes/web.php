@@ -17,6 +17,15 @@ Route::get('/', function () {
 Route::get('test', 'TestController@test');
 Route::get('planificacion', 'PlanificacionController@index');
 
+Route::group(['prefix' => 'usuario'], function(){
+    Route::get('usuario','UsuarioController@listar')->name('usuario.listar');
+    Route::get('usuario-crear','UsuarioController@crear')->name('usuario.crear');
+    Route::post('usuario-registrar','UsuarioController@registrar')->name('usuario.registrar');
+    Route::get('usuario-editar/{id}','UsuarioController@editar')->name('usuario.editar');
+    Route::post('usuario-actualizar','UsuarioController@actualizar')->name('usuario.actualizar');
+    Route::get('usuario-eliminar/{id}','UsuarioController@eliminar')->name('usuario.eliminar');
+});
+
 //Plan
 Route::prefix('plan')->group(function () {
     Route::get('crear', 'PlanController@crear');

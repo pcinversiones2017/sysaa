@@ -19,7 +19,7 @@ class CreateUsuarioRolesTable extends Migration
             $table->integer('codRol')->unsigned();
             $table->integer('codPlanF')->unsigned();
             $table->timestamp('fecha_creado')->nullable();
-            $table->timestamp('fecha_modificado')->nullable();
+            $table->timestamp('fecha_modificado')->nullable(); 
 
             $table->foreign('codRol')->references('codRol')->on('Roles');
             $table->foreign('codUsu')->references('codUsu')->on('Usuarios');
@@ -34,6 +34,6 @@ class CreateUsuarioRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Equipo');
+        Schema::dropIfExists('Usuario_Roles');
     }
 }

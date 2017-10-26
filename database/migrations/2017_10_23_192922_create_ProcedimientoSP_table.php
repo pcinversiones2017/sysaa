@@ -30,6 +30,6 @@ class CreateProcedimientoSPTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ProcedimientoSP');
+        Schema::dropIfExists('Procedimiento_SP');
     }
 }

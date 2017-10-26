@@ -28,6 +28,6 @@ class CreateCargoFuncionalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cargoFuncional');
+        Schema::dropIfExists('cargo_Funcional');
     }
 }
