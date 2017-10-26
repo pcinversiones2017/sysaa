@@ -25,6 +25,16 @@ Route::prefix('plan')->group(function () {
     Route::get('editar/{codPlanA}', 'PlanController@editar');
     Route::post('actualizar', 'PlanController@actualizar');
 });
+
+//Plan
+Route::prefix('macroproceso')->group(function () {
+    Route::get('crear', 'MacroprocesoController@crear');
+    Route::post('guardar', 'MacroprocesoController@guardar');
+    Route::get('listar', 'MacroprocesoController@listar');
+    Route::get('editar/{codMacroP}', 'MacroprocesoController@editar');
+    Route::post('actualizar', 'MacroprocesoController@actualizar');
+});
+
 Route::prefix('tipo_normativa')->group(function () {
     Route::get('crear', 'TipoNormativaController@crear');
     Route::post('guardar', 'TipoNormativaController@guardar');
@@ -53,7 +63,6 @@ Route::prefix('auditoria')->group(function (){
    Route::get('listar', 'AuditoriaController@listar');
    Route::get('editar/{codPlanF}', 'AuditoriaController@editar');
    Route::post('actualizar', 'PlanController@actualizar');
-
 });
 //Objetivo General
 

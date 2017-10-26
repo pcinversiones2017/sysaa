@@ -47,7 +47,13 @@
                         <li class="{{$listarPlan?? ''}}"><a href="{{URL::to('plan/listar')}}">Listar Planes</a></li>
                     </ul>
                 </li>
-
+                <li class="active">
+                    <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Macroproceso</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="{{$crearMacroproceso?? ''}}"><a href="{{URL::to('macroproceso/crear')}}">Crear Macroproceso</a></li>
+                        <li class="{{$listarMacroproceso?? ''}}"><a href="{{URL::to('macroproceso/listar')}}">Listar Macroproceso</a></li>
+                    </ul>
+                </li>
                 <li class="active">
                     <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Auditoria</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">

@@ -11,4 +11,10 @@ class Actividad extends Model
 
     protected $primaryKey = 'codAct';
     protected $table = 'actividad';
+
+    public function procedimientoSP()
+    {
+        return $this->belongsTo(Procedimientosp::class, 'codProSP');
+    }
+
 }
