@@ -68,9 +68,9 @@ class MacroprocesoController extends Controller
      * @param  \App\Models\Macroproceso  $macroproceso
      * @return \Illuminate\Http\Response
      */
-    public function editar(Macroproceso $macroproceso)
+    public function editar(Request $request)
     {
-        $macroproceso = Plan::all();
+        $macroproceso = Plan::find($request->codMacroP);
         return view('macroproceso.editar')->with(compact('macroproceso'));
     }
 
@@ -81,7 +81,7 @@ class MacroprocesoController extends Controller
      * @param  \App\Models\Macroproceso  $macroproceso
      * @return \Illuminate\Http\Response
      */
-    public function actualizar(Request $request, Macroproceso $macroproceso)
+    public function actualizar(Request $request)
     {
         $macroproceso = Macroproceso::find($request->codMacroP);
         $macroproceso->nombre = $request->nombre;
