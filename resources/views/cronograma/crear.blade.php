@@ -24,13 +24,14 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <form method="get" class="form-horizontal">
-                        <div class="form-group"><label class="col-sm-2 control-label">SELECCIONAR PLAN</label>
+                    <form method="post" class="form-horizontal" action="{{URL::to('cronograma/guardar')}}">
+                        {{ csrf_field() }}
+                        <div class="form-group"><label class="col-sm-2 control-label">SELECCIONAR AUDITORIA</label>
                             <div class="col-sm-4">
                             <select class="form-control" id="sel1" name="codPlanf[]">
                                 <option value="0">::SELECCIONE::</option>
-                                @foreach($planes as $plan)
-                                    <option value="{{$plan->codPlanA}}">{{$plan->nombrePlan}}</option>
+                                @foreach($auditorias as $auditoria)
+                                    <option value="{{$auditoria->codPlanF}}">{{$auditoria->nombrePlanF}}</option>
                                 @endforeach
 
                             </select>
@@ -43,21 +44,21 @@
                         <div class="form-group">
                                 <label class="col-sm-4 ">{{$etapaPlanificacion['nombre']}}</label>
                                 <input type="hidden" value="{{$etapaPlanificacion['codEtp']}}"
-                                       name="etapa{{$etapaPlanificacion['codEtp']}}[]">
+                                       name="etapa[]">
                             <div class="col-sm-7">
                                 <div class="col-md-4 ">
                                     <input placeholder="Fecha de inicio" class="form-control" type="text"
                                            onfocus="(this.type='date')"  id="date"
-                                           name="fechaIni{{$etapaPlanificacion['codEtp']}}[]" >
+                                           name="fechaIni[]" >
                                 </div>
                                 <div class="col-md-4">
                                     <input placeholder="Fecha de fin" class="form-control" type="text"
                                            onfocus="(this.type='date')"  id="date"
-                                           name="fechaFin{{$etapaPlanificacion['codEtp']}}[]">
+                                           name="fechaFin[]">
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
-                                           name="dias_habiles{{$etapaPlanificacion['codEtp']}}[]">
+                                           name="dias_habiles[]">
                                 </div>
                             </div>
                         </div>
@@ -66,22 +67,22 @@
                             <label class="col-sm-4 ">ELABORACIÓN Y APROBACIÓN DEL PLAN DE AUDITORÍA DEFINITIVO.<br>
                                 REGISTRO DEL PLAN DE AUDITORÍA DEFINITIVO.</label>
                             <input type="hidden" value="3"
-                                   name="etapa3">
+                                   name="etapa[]">
                             <input type="hidden" value="4"
-                                   name="etapa4">
+                                   name="etapa[]">
 
                             <div class="col-sm-7">
                                 <div class="col-md-4 ">
                                     <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaIni3[]">
+                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]">
                                 </div>
                                 <div class="col-md-4">
                                     <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaFin3[]">
+                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]">
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="number" placeholder="Dias habiles" class="form-control3[]"
-                                           name="dias_habiles">
+                                    <input type="number" placeholder="Dias habiles" class="form-control"
+                                           name="dias_habiles[]">
                                 </div>
                             </div>
                         </div>
@@ -96,17 +97,17 @@
                                 <label class="col-sm-4">@foreach($etapaseEjecucion as $etapaseEjecucion)
                                         {{$etapaseEjecucion['nombre']}}<BR><BR> @endforeach</label>
                             <input type="hidden" value="5"
-                                   name="etapa5[]">
+                                   name="etapa[]">
                             <input type="hidden" value="6"
-                                   name="etapa6[]">
+                                   name="etapa[]">
                             <input type="hidden" value="7"
-                                   name="etapa7[]">
+                                   name="etapa[]">
                             <input type="hidden" value="8"
-                                   name="etapa8[]">
+                                   name="etapa[]">
                             <input type="hidden" value="9"
-                                   name="etapa9[]">
+                                   name="etapa[]">
                             <input type="hidden" value="10"
-                                   name="etapa10[]">
+                                   name="etapa[]">
 
                             <div class="col-sm-7" style="margin-top: 30px;">
 
@@ -115,15 +116,15 @@
 
                                 <div class="col-md-4 ">
                                     <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaIniEje[]">
+                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]">
                                 </div>
                                 <div class="col-md-4">
                                     <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaFinEje[]">
+                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]">
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
-                                           name="dias_habilesEje[]">
+                                           name="dias_habiles[]">
                                 </div>
                             </div>
                         </div>
@@ -136,11 +137,11 @@
                                 @endforeach
                             </label>
                             <input type="hidden" value="11"
-                                   name="etapa11[]">
+                                   name="etapa[]">
                             <input type="hidden" value="12"
-                                   name="etapa12[]">
+                                   name="etapa[]">
                             <input type="hidden" value="13"
-                                   name="etapa13[]">
+                                   name="etapa[]">
 
                             <div class="col-sm-7" STYLE="margin-top: -8px;">
 
@@ -149,15 +150,15 @@
 
                                 <div class="col-md-4 ">
                                     <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaIniRep[]">
+                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]">
                                 </div>
                                 <div class="col-md-4">
                                     <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaFinRep[]">
+                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]">
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
-                                           name="dias_habilesRep[]">
+                                           name="dias_habiles[]">
                                 </div>
                             </div>
                         </div>

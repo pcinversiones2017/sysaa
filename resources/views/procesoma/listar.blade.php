@@ -46,7 +46,7 @@
                         <tr>
                             <td align="middle">{{$n+1}}</td>
                             <td>{{$procesoma->nombre}}</td>
-                            <td>{{$procesoma->nombre}}</td>
+                            <td>{{$procesoma->$macroproceso->nombre}}</td>
                             <td>{{$procesoma->fecha_creado}}</td>
                             <td>
                                 <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> Ver </a>
