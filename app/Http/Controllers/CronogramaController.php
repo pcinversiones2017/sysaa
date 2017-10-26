@@ -80,6 +80,16 @@ class CronogramaController extends Controller
     }
 
 
+    public function listar()
+    {
+        $auditorias = Auditoria::all();
+        $listarCronograma = 'active';
+        return view('cronograma.listar')->with(compact('auditorias', 'listarCronograma'));
+    }
+
+
+
+
 
     public function test(Request $request){
         return view('cronograma.editar');

@@ -21,4 +21,10 @@ class Auditoria extends Model
     {
         return $this->hasOne(ObjetivoGeneral::class, 'codPlanF');
     }
+
+    public function cronogramaGeneral()
+    {
+        return $this->hasOne(Cronograma::class, 'codPlanF');
+    }
+
 }
