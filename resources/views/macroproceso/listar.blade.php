@@ -41,10 +41,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php $i=1 ?>
-                        @foreach($macroprocesos as $macroproceso)
+                        @foreach($macroprocesos as $n =>$macroproceso)
                         <tr>
-                            <td>{{$i}}</td>
+                            <td align="middle">{{$n+1}}</td>
                             <td>{{$macroproceso->nombre}}</td>
                             <td>{{$macroproceso->fecha_creado}}</td>
                             <td>

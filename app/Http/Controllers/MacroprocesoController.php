@@ -16,7 +16,7 @@ class MacroprocesoController extends Controller
     public function listar()
     {
         $macroprocesos = Macroproceso::all();
-        $listarmacroprocesos = 'activo';
+        $listarmacroprocesos = 'active';
         return view('macroproceso.listar')->with(compact('macroprocesos','listarmacroprocesos'));
     }
 
@@ -29,7 +29,7 @@ class MacroprocesoController extends Controller
      */
     public function crear()
     {
-        $macroprocesos = Macroproceso::all();
+        $macroprocesos = 'active';
         return view('macroproceso.crear')->with(compact('macroprocesos'));
     }
 
@@ -41,10 +41,10 @@ class MacroprocesoController extends Controller
      */
     public function guardar(Request $request)
     {
-        $macroproceso = new Macroproceso();
-        $macroproceso->nombre = $request->nombre;
-        $macroproceso->estado = 'activo';
-        $macroproceso->save();
+        $macroprocesoss = new Macroproceso();
+        $macroprocesoss->nombre = $request->nombre;
+        $macroprocesoss->estado = 'activo';
+        $macroprocesoss->save();
 
         return redirect('macroproceso/listar');
 
@@ -58,8 +58,7 @@ class MacroprocesoController extends Controller
      */
     public function mostrar(Request $request)
     {
-        $macroproceso = Macroproceso::find($request->codMacroP);
-        return view('macroproceso.mostrar')->with(compact('macroproceso'));
+
     }
 
     /**
@@ -70,7 +69,7 @@ class MacroprocesoController extends Controller
      */
     public function editar(Request $request)
     {
-        $macroproceso = Plan::find($request->codMacroP);
+        $macroproceso = Macroproceso::find($request->codMacroP);
         return view('macroproceso.editar')->with(compact('macroproceso'));
     }
 

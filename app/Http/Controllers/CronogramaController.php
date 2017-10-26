@@ -28,8 +28,26 @@ class CronogramaController extends Controller
 
     }
 
+    /*
+    public function guardar(Request $request)
+    {
 
+       foreach ($request as $req)
 
+           $cronograma = new Cronograma();
+        $cronograma->codPlanA = $req->codPlanA;
+        $cronograma->codEtp = $req->etapa;
+        $cronograma->fechaIni = $req->fechaIni;
+        $cronograma->fechaFin = $req->fechaFin;
+        $cronograma->dias_habiles = $req->dias_habiles;
+        $cronograma->save();
+
+        endforeach
+
+        return redirect('auditoria/listar');
+    }
+
+*/
 
     public function test(Request $request){
         return view('cronograma.editar');
