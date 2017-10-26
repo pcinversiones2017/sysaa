@@ -20,6 +20,7 @@ class CronogramaController extends Controller
         $etapasReporte = Etapa::where('tipo','=','ELABORACIÓN DEL INFORME')
             ->get()->toArray();
         // $planes = Plan::all();
+
         $auditorias = Auditoria::all();
         $crearCronograma = 'active';
         return view('cronograma.crear')
@@ -32,6 +33,11 @@ class CronogramaController extends Controller
 
     public function guardar(Request $request)
     {
+        $auditoria = Auditoria::find($request->codPlanf[0]);
+        $auditoria->fechaIniPlanF = $request->fechaIni[0];
+        $auditoria->fechaFinPlanF = $request->fechaFin[4];
+        $auditoria->save();
+
        $i=0;
        for($i=0;$i<=1;$i++){
         $cronograma = new Cronograma();
@@ -76,7 +82,7 @@ class CronogramaController extends Controller
 
 
 
-        return redirect('cronograma/crear');
+        return redirect('cronograma/listar');
     }
 
 
@@ -87,6 +93,39 @@ class CronogramaController extends Controller
         return view('cronograma.listar')->with(compact('auditorias', 'listarCronograma'));
     }
 
+    public function mostrar(Request $request)
+    {
+        $etapasPlanificacion = Etapa::where('tipo','=','PLANIFICACIÓN')
+            ->limit(2)
+            ->get()->toArray();
+        $etapaseEjecucion = Etapa::where('tipo','=','EJECUCIÓN')
+            ->get()->toArray();
+        $etapasReporte = Etapa::where('tipo','=','ELABORACIÓN DEL INFORME')
+            ->get()->toArray();
+
+
+        $codPlanF=$request->codPlanF;
+        $cronogramas = Cronograma::where('codPlanf','=',$codPlanF)->get()->toArray();;
+
+        foreach ($cronogramas as $cronograma){
+            $fechasIni[] = $cronograma['fechaIni'];
+            $fechaFin[]= $cronograma['fechaFin'];
+            $dias_habiles[] = $cronograma['dias_habiles'];
+        }
+
+        $auditoria = Auditoria::find($request->codPlanF);
+
+        return view('cronograma.mostrar')
+            ->with(compact('cronogramas'))
+            ->with(compact('auditoria'))
+            ->with(compact('fechasIni'))
+            ->with(compact('fechaFin'))
+            ->with(compact('dias_habiles'))
+            ->with(compact('etapasPlanificacion'))
+            ->with(compact('etapaseEjecucion'))
+            ->with(compact('etapasReporte'));
+
+    }
 
 
 

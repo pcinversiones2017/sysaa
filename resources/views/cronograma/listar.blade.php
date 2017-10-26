@@ -36,11 +36,10 @@
                         <tr>
                             <th>#</th>
                             <th>Nombre</th>
-                            <th>Fecha de inicio (segun cronograma)</th>
-                            <th>Fecha fin (segun cronograma)</th>
+                            <th>Fecha de inicio</th>
+                            <th>Fecha fin</th>
                             <th>Dias Habiles</th>
                             <th>Plan Anual</th>
-                            <th>Fecha de creacion</th>
                             <th>Acciones</th>
                         </tr>
                         </thead>
@@ -50,13 +49,12 @@
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{{$auditoria->nombrePlanF}}</td>
-                                <td>01-01-2017</td>
-                                <td>12-12-2017</td>
+                                <td>{{$auditoria->fechaIniPlanF}}</td>
+                                <td>{{$auditoria->fechaFinPlanF}}</td>
                                 <td>90</td>
                                 <td>{{$auditoria->planAnual->nombrePlan}}</td>
-                                <td>{{$auditoria->cronogramaGeneral->fecha_creado}}</td>
                                 <td>
-                                    <a href="{{URL::to('auditoria/mostrar')}}/{{$auditoria->codPlanF}}" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
+                                    <a href="{{URL::to('cronograma/mostrar')}}/{{$auditoria->codPlanF}}" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
                                     <a href="{{URL::to('auditoria/editar')}}/{{$auditoria->codPlanF}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
                                 </td>
                             </tr>
