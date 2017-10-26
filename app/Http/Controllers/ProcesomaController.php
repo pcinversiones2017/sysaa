@@ -15,8 +15,8 @@ class ProcesomaController extends Controller
     public function listar()
     {
         $procesosma = Procesoma::all();
-        $listarprocesosma = 'activo';
-        return view('procesoma.listar')->with(compact('$procesosma', 'listarprocesosma'));
+        $listarprocesosma = 'active';
+        return view('procesoma.listar')->with(compact('procesosma', 'listarprocesosma'));
     }
 
     /**
@@ -26,8 +26,8 @@ class ProcesomaController extends Controller
      */
     public function crear()
     {
-        $procesoma = Procesoma::all();
-        return view('procesoma.crear')->with(compact('procesoma'));
+        $procesosma = Procesoma::all();
+        return view('procesoma.crear')->with(compact('procesosma'));
     }
 
     /**
@@ -44,6 +44,7 @@ class ProcesomaController extends Controller
         $procesoma = new Procesoma();
         $procesoma->nombre = $request->nombre;
         $procesoma->estado = 'activo';
+        $procesoma->codMacroP = $request->codMacroP;
         $procesoma->save();
 
         return redirect('procesoma/listar');
@@ -68,8 +69,8 @@ class ProcesomaController extends Controller
      */
     public function editar(Request $request)
     {
-        $procesosma = Procesoma::all();
-        return view('procesoma.editar')->with(compact('procesosma'));
+        $procesoma = Macroproceso::find($request->codProMA);
+        return view('procesoma.editar')->with(compact('procesoma'));
     }
 
     /**
@@ -79,11 +80,12 @@ class ProcesomaController extends Controller
      * @param  \App\Models\Procesoma  $procesoMA
      * @return \Illuminate\Http\Response
      */
-    public function actualizar(Request $request, Procesoma $procesoMA)
+    public function actualizar(Request $request)
     {
         $procesosma = Procesoma::find($request-> codProMA);
         $procesosma->nombre = $request->nombre;
         $procesosma->estado = $request->estado;
+        $procesosma->codMacroP = $request->codMacroP;
         $procesosma->save();
     }
 

@@ -11,4 +11,9 @@ class Macroproceso extends Model
 
     protected $primaryKey = 'codMacroP';
     protected $table = 'macroproceso';
+
+    public function procesoMA()
+    {
+        return $this->hasMany('proceso_ma');
+    }
 }

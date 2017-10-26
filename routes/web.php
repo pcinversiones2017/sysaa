@@ -34,6 +34,14 @@ Route::prefix('macroproceso')->group(function () {
     Route::get('editar/{codMacroP}', 'MacroprocesoController@editar');
     Route::post('actualizar', 'MacroprocesoController@actualizar');
 });
+//Plan
+Route::prefix('procesoma')->group(function () {
+    Route::get('crear', 'ProcesomaController@crear');
+    Route::post('guardar', 'ProcesomaController@guardar');
+    Route::get('listar', 'ProcesomaController@listar');
+    Route::get('editar/{codProMA}', 'ProcesomaController@editar');
+    Route::post('actualizar', 'ProcesomaController@actualizar');
+});
 
 Route::prefix('tipo_normativa')->group(function () {
     Route::get('crear', 'TipoNormativaController@crear');
