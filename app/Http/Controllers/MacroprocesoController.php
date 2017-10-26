@@ -86,6 +86,9 @@ class MacroprocesoController extends Controller
         $macroproceso = Macroproceso::find($request->codMacroP);
         $macroproceso->nombre = $request->nombre;
         $macroproceso->save();
+
+        return redirect('macroproceso/listar');
+
     }
 
     /**
