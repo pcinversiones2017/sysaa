@@ -150,6 +150,7 @@ class CronogramaController extends Controller
         $cronogramas = Cronograma::where('codPlanf','=',$codPlanF)->get()->toArray();;
 
         foreach ($cronogramas as $cronograma){
+            $codCroGen[] = $cronograma['codCroGen'];
             $fechasIni[] = $cronograma['fechaIni'];
             $fechaFin[]= $cronograma['fechaFin'];
             $dias_habiles[] = $cronograma['dias_habiles'];
@@ -169,7 +170,8 @@ class CronogramaController extends Controller
             ->with(compact('dias_habiles'))
             ->with(compact('etapasPlanificacion'))
             ->with(compact('etapaseEjecucion'))
-            ->with(compact('etapasReporte'));
+            ->with(compact('etapasReporte'))
+         ->with(compact('codCroGen'));
     }
 
 
@@ -183,7 +185,7 @@ class CronogramaController extends Controller
 
         $i=0;
         for($i=0;$i<=1;$i++){
-            $cronograma = new Cronograma();
+            $cronograma = Cronograma::find($request->codCroGen[$i]);
             $cronograma->codPlanf = $request->codPlanf[0];
             $cronograma->codEtp = $request->etapa[$i];
             $cronograma->fechaIni = $request->fechaIni[$i];
@@ -193,7 +195,8 @@ class CronogramaController extends Controller
         }
         $j=2;
         for($j=2;$j<=3;$j++){
-            $cronograma = new Cronograma();
+            $cronograma = Cronograma::find($request->codCroGen[$i]);
+
             $cronograma->codPlanf = $request->codPlanf[0];
             $cronograma->codEtp = $request->etapa[$j];
             $cronograma->fechaIni = $request->fechaIni[2];
@@ -203,7 +206,7 @@ class CronogramaController extends Controller
         }
         $k=4;
         for($k=4;$k<=9;$k++){
-            $cronograma = new Cronograma();
+            $cronograma = Cronograma::find($request->codCroGen[$i]);
             $cronograma->codPlanf = $request->codPlanf[0];
             $cronograma->codEtp = $request->etapa[$k];
             $cronograma->fechaIni = $request->fechaIni[3];
@@ -213,7 +216,8 @@ class CronogramaController extends Controller
         }
         $l=10;
         for($l=10;$l<=12;$l++){
-            $cronograma = new Cronograma();
+            $cronograma = Cronograma::find($request->codCroGen[$i]);
+
             $cronograma->codPlanf = $request->codPlanf[0];
             $cronograma->codEtp = $request->etapa[$l];
             $cronograma->fechaIni = $request->fechaIni[4];

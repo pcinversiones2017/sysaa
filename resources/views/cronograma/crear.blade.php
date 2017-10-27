@@ -28,8 +28,8 @@
                         {{ csrf_field() }}
                         <div class="form-group"><label class="col-sm-2 control-label">SELECCIONAR AUDITORIA</label>
                             <div class="col-sm-4">
-                            <select class="form-control" id="sel1" name="codPlanf[]">
-                                <option value="0">::SELECCIONE::</option>
+                            <select class="form-control" id="sel1" name="codPlanf[]" required>
+                                <option value="">::SELECCIONE::</option>
                                 @foreach($auditorias as $auditoria)
                                     <option value="{{$auditoria->codPlanF}}">{{$auditoria->nombrePlanF}}</option>
                                 @endforeach
@@ -53,16 +53,16 @@
                                 <div class="col-md-4 ">
                                     <input placeholder="Fecha de inicio" class="form-control" type="text"
                                            onfocus="(this.type='date')"  id="date"
-                                           name="fechaIni[]"    >
+                                           name="fechaIni[]"  required>
                                 </div>
                                 <div class="col-md-4">
                                     <input placeholder="Fecha de fin" class="form-control" type="text"
                                            onfocus="(this.type='date')"  id="date"
-                                           name="fechaFin[]">
+                                           name="fechaFin[]" required>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
-                                           name="dias_habiles[]">
+                                           name="dias_habiles[]" required>
                                 </div>
                             </div>
                         </div>
@@ -78,15 +78,15 @@
                             <div class="col-sm-7">
                                 <div class="col-md-4 ">
                                     <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]">
+                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]" required>
                                 </div>
                                 <div class="col-md-4">
                                     <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]" >
+                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]" required>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
-                                           name="dias_habiles[]">
+                                           name="dias_habiles[]" required>
                                 </div>
                             </div>
                         </div>
@@ -120,15 +120,15 @@
 
                                 <div class="col-md-4 ">
                                     <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]">
+                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]" required>
                                 </div>
                                 <div class="col-md-4">
                                     <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]">
+                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]" required>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
-                                           name="dias_habiles[]">
+                                           name="dias_habiles[]" required>
                                 </div>
                             </div>
                         </div>
@@ -154,15 +154,15 @@
 
                                 <div class="col-md-4 ">
                                     <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]">
+                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]" required>
                                 </div>
                                 <div class="col-md-4">
                                     <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]">
+                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]" required>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
-                                           name="dias_habiles[]">
+                                           name="dias_habiles[]" required>
                                 </div>
                             </div>
                         </div>

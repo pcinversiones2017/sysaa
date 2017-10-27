@@ -27,6 +27,22 @@
                 <div class="ibox-content">
                     <form method="post" class="form-horizontal" action="{{URL::to('cronograma/actualizar')}}">
                         {{ csrf_field() }}
+
+                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[0]}}">
+                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[1]}}">
+                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[2]}}">
+                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[3]}}">
+                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[4]}}">
+                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[5]}}">
+                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[6]}}">
+                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[7]}}">
+                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[8]}}">
+                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[9]}}">
+                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[10]}}">
+                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[11]}}">
+                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[12]}}">
+                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[10]}}">
+
                         <div class="form-group"><label class="col-sm-2 control-label">NOMBRE DE AUDITORIA: </label>
                             <label class="col-sm-2 control-label">{{$auditoria->nombrePlanF}}</label>
                             <input type="hidden" value="{{$auditoria->codPlanF}}"
