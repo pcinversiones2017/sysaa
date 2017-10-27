@@ -10,7 +10,6 @@
             <div class="ibox-content">
                 <div class="row">
                     {!! Form::open(['method' => 'POST', 'route' => 'usuario.registrar']) !!}
-                        {{csrf_field()}}
                         <div class="col-md-6 b-r">
                             {!! Field::email('email') !!}
                             <div class="hr-line-dashed"></div>

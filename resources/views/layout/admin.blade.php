@@ -7,6 +7,8 @@
 
     <title>INSPINIA | Dashboard v.2</title>
 
+    {!! Html::style('css/bootstrap.min.css') !!}
+    {!! Html::style('font-awesome/css/font-awesome.css') !!}
     <link href="{{URL::to('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{URL::to('font-awesome/css/font-awesome.css')}}" rel="stylesheet">
 

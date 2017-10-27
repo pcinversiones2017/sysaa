@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Usuario;
+namespace App\Http\Requests\CargoFuncional;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ActualizarRequest extends FormRequest
+class ValidarRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class ActualizarRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'     => 'required|email',
-            'nombres'   => 'required|min:3',
-            'paterno'   => 'required|min:3',
-            'materno'   => 'required|min:3'
+            'nombre' => 'required|min:3|unique:cargo_funcional'
         ];
     }
 }

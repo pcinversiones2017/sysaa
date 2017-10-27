@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Usuario\RegistroRequest;
 use App\Http\Requests\Usuario\ActualizarRequest;
 use App\User;
+use Alert;
 
 class UsuarioController extends Controller
 {

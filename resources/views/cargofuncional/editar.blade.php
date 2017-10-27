@@ -4,31 +4,17 @@
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Crear Usuario</h5>
+                <h5>Crear Cargo Funcional</h5>
 
             </div>
             <div class="ibox-content">
                 <div class="row">
-                    {!! Form::open(['method' => 'POST', 'route' => 'usuario.actualizar']) !!}
-                    @foreach($usuario as $row)
-                        <input type="hidden" name="codUsu" value="{!! $row->codUsu !!}">
-                        <div class="col-md-6 b-r">
-                            {!! Field::email('email',$row->email) !!}
-                            <div class="hr-line-dashed"></div>
-
-                            {!! Field::text('nombres',$row->nombres) !!}
-                            <div class="hr-line-dashed"></div>
-
-                            {!! Field::text('materno',$row->materno) !!}
-                            <div class="hr-line-dashed"></div>
-
-                        </div>
+                    {!! Form::open(['method' => 'POST', 'route' => 'cargof.actualizar']) !!}
+                    @foreach($cargof as $row)
+                        <input type="hidden" name="id" value="{!! $row->codCarFun !!}">
                         <div class="col-md-6 b-r">
                             
-                            {!! Field::password('password') !!}
-                            <div class="hr-line-dashed"></div>
-
-                            {!! Field::text('paterno',$row->paterno) !!}
+                            {!! Field::text('nombre', $row->nombre) !!}
                             <div class="hr-line-dashed"></div>
 
                             <div class="form-group">

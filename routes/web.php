@@ -29,6 +29,15 @@ Route::group(['prefix' => 'usuario'], function(){
     Route::get('usuario-eliminar/{id}','UsuarioController@eliminar')->name('usuario.eliminar');
 });
 
+Route::group(['prefix' => 'cargofuncional'], function(){
+    Route::get('cargo-funcional','CargofuncionalController@listar')->name('cargof.listar');
+    Route::get('cargo-funcional-crear','CargofuncionalController@crear')->name('cargof.crear');
+    Route::post('cargo-funcional-registrar','CargofuncionalController@registrar')->name('cargof.registrar');
+    Route::get('cargo-funcional-editar/{id}','CargofuncionalController@editar')->name('cargof.editar');
+    Route::post('cargo-funcional-actualizar','CargofuncionalController@actualizar')->name('cargof.actualizar');
+    Route::get('cargo-funcional-eliminar/{id}','CargofuncionalController@eliminar')->name('cargof.eliminar');
+});
+
 //Plan
 Route::prefix('plan')->group(function () {
     Route::get('crear', 'PlanController@crear');
