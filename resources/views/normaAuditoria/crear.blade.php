@@ -4,37 +4,34 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Crear Norma</h5>
+                    <h5>CREAR NORMATIVA APLICABLE A LA ENTIDAD Y MATERIA(S) A EXAMINAR</h5>
 
                 </div>
                 <div class="ibox-content">
                     <div class="row">
                         {!! Form::open(['method' => 'POST', 'route' => 'usuario.registrar']) !!}
-                        <div class="col-md-6 b-r">
+                        <div class="col-md-12">
 
-                            {{ Form::select('codTipNorm', ['LEY', 'RESOLUCION']) }}
-                            <div class="hr-line-dashed"></div>
+                            <div class="col-md-3">
+                            {!! Field::text('tipoNormativa') !!}
 
-                            {!! Field::text('nombres') !!}
-                            <div class="hr-line-dashed"></div>
-
-                            {!! Field::text('materno') !!}
-                            <div class="hr-line-dashed"></div>
-
-                        </div>
-                        <div class="col-md-6 b-r">
-
-                            {!! Field::password('password') !!}
-                            <div class="hr-line-dashed"></div>
-
-                            {!! Field::text('paterno') !!}
-                            <div class="hr-line-dashed"></div>
-
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-outline" value="REGISTRAR">
-                                <a href="{!! route('usuario.listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
-                            <div class="hr-line-dashed"></div>
+                            <div class="col-md-3">
+                            {!! Field::number('numero') !!}
+                            </div>
+
+                            <div class="col-md-3">
+                            {!! Field::text('nombre') !!}
+                            </div>
+
+                            <div class="col-md-2">
+                            {!! Field::date('fecha', \Carbon\Carbon::now()) !!}
+                            </div>
+                            <div class="col-md-">
+                                {!! Field::date('fecha', \Carbon\Carbon::now()) !!}
+                            </div>
+
+
 
                         </div>
 

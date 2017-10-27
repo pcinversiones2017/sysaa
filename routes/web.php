@@ -113,6 +113,8 @@ Route::group(['prefix' => 'cronograma'], function(){
 //normaAuditoria
 Route::group(['prefix' => 'normaAuditoria'], function(){
     Route::get('listar', 'NormaAuditoriaController@listar')->name('normaAuditoria.listar');
+    Route::get('listarAplica', 'NormaAuditoriaController@listarAplica')->name('normaAuditoria.listarAplica');
+    Route::get('crear', 'NormaAuditoriaController@crear')->name('normaAuditoria.crear');
 
 });
 //Auditoria

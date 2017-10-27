@@ -92,9 +92,9 @@
                                     <span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li>
-                                        <a href="{{URL::to('normaAplicable/crear')}}">
+                                        <a href="{{URL::to('normaAuditoria/crear')}}">
                                             Crear norma applicable </a>
-                                        <a href="{{URL::to('normaAplicable/listar')}}">Listar normas</a>
+                                        <a href="{{URL::to('normaAuditoria/listarAplica')}}">Listar normas</a>
                                 </ul>
                             </li>
                             <li>
