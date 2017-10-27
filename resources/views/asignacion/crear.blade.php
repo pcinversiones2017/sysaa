@@ -12,15 +12,15 @@
                     {!! Form::open(['method' => 'POST', 'route' => 'asignarr.registrar']) !!}
                         <div class="col-md-6 b-r">
                             <label>USUARIO</label>
-                            {!! Form::select('usuario',$usuario,null,['class' => 'form-control']) !!}
+                            {!! Form::select('usuario',$usuario, null, ['class' => 'form-control', 'placeholder' => 'SELECCIONE']) !!}
                             <div class="hr-line-dashed"></div>
 
                             <label>ROL</label>
-                            {!! Form::select('rol',$rol,null,['class' => 'form-control']) !!}
+                            {!! Form::select('rol', $rol, null, ['class' => 'form-control', 'placeholder' => 'SELECCIONE']) !!}
                             <div class="hr-line-dashed"></div>
 
                             <label>CARGO FUNCIONAL</label>
-                            {!! Form::select('cargo',$cargo,null,['class' => 'form-control']) !!}
+                            {!! Form::select('cargo', $cargo, null, ['class' => 'form-control', 'placeholder' => 'SELECCIONE']) !!}
                             <div class="hr-line-dashed"></div>
 
                             <div class="form-group">

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Str;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -41,6 +42,12 @@ class User extends Authenticatable
     public function scopeExiste($cadenaSQL, $id)
     {
         return $cadenaSQL->where('codUsu',$id);
+    }
+
+    public function scopeExisteEmail($cadenaSQL, $email)
+    {
+        return $cadenaSQL->where('email',$email)
+                        ->where('estado',true);
     }
 
     public function setNombresAttribute($value)

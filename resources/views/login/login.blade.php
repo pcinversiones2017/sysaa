@@ -21,25 +21,25 @@
         <div>
             <div>
 
-                <h1 class="logo-name">SYSAA</h1>
+                <h1 class="logo-name"></h1>
 
             </div>
-            <h3>Welcome to IN+</h3>
-            <p>Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
-                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+            <h3>SYSAA</h3>
+            <p>Sistema de auditoria academica
             </p>
-            <p>Login in. To see it in action.</p>
-            <form class="m-t" role="form" action="http://webapplayers.com/inspinia_admin-v2.7.1/index.html">
-                <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Username" required="">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="">
-                </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+            <p>Iniciar Sesion</p>
+            {!! Form::open(['method' => 'POST', 'url' => 'iniciar-sesion']) !!}
+                {!! Field::text('email') !!}
+                {!! Field::password('password') !!}
+                <button type="submit" class="btn btn-primary block full-width m-b">INGRESAR</button>
+            {!! Form::close() !!}
 
-            </form>
-            <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
+            @if (session('danger'))
+            <div class="alert alert-danger" role="alert">
+                {!! session('danger') !!}           
+            </div>
+            @endif
+            <p class="m-t"> <small>SYSAA <?php echo date("Y"); ?></small> </p>
         </div>
     </div>
 

@@ -13,12 +13,16 @@
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('test', 'TestController@test');
 Route::get('planificacion', 'PlanificacionController@index');
+
+Route::get('login','SesionController@iniciarsesion')->name('login');
+Route::post('iniciar-sesion','SesionController@autentificar')->name('iniciar-sesion');
+
+
+Route::get('/','InicioController@index')->name('inicio.inicio');
+
 
 Route::group(['prefix' => 'usuario'], function(){
     Route::get('usuario','UsuarioController@listar')->name('usuario.listar');
@@ -120,3 +124,4 @@ Route::prefix('objetivo-especifico')->group(function (){
    Route::post('guardar', 'ObjetivoEspecificoController@guardar');
 
 });
+
