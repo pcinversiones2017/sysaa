@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Usuario\RegistroRequest;
+use App\Http\Requests\Usuario\ActualizarRequest;
 use App\User;
+use Alert;
 
 class UsuarioController extends Controller
 {
@@ -18,10 +21,8 @@ class UsuarioController extends Controller
     	return view('usuario.crear');
     }
 
-    public function registrar(Request $request)
+    public function registrar(RegistroRequest $request)
     {
-    	$data = new User();
-    	$data->nombre = $request->nombres;
     	User::create([	
     					'nombres' => $request->nombres, 
     					'paterno' => $request->paterno, 
@@ -29,7 +30,7 @@ class UsuarioController extends Controller
     					'email' => $request->email, 
     					'password' => bcrypt($request->password)
     				]);
-    	return redirect('usuario.listar')->with('success','Usuario registrado');
+    	return redirect()->route('usuario.listar')->with('success','Usuario registrado');
     }
 
     public function editar($id)
@@ -38,7 +39,7 @@ class UsuarioController extends Controller
     	return view('usuario.editar', compact('usuario'));
     }
 
-    public function actualizar(Request $request)
+    public function actualizar(ActualizarRequest $request)
     {
     	if($request->has('password'))
     	{
@@ -54,7 +55,7 @@ class UsuarioController extends Controller
 
     public function eliminar($id)
     {
-    	User::Existe($id)->update(['activo',0]);
+    	User::Existe($id)->update(['estado' => false]);
     	return redirect()->route('usuario.listar')->with('danger','Usuario eliminado');
     }
 }

@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -168,6 +168,10 @@ return [
          * Package Service Providers...
          */
 
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Styde\Html\HtmlServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -225,6 +229,12 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Alert' => Styde\Html\Facades\Alert::class,
+        'Field' => Styde\Html\Facades\Field::class,
+        'Menu'  => Styde\Html\Facades\Menu::class,
+        'Form'  => Collective\Html\FormFacade::class,
+        'Html'  => Collective\Html\HtmlFacade::class,
 
     ],
 

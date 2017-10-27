@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,6 +27,15 @@ Route::group(['prefix' => 'usuario'], function(){
     Route::get('usuario-editar/{id}','UsuarioController@editar')->name('usuario.editar');
     Route::post('usuario-actualizar','UsuarioController@actualizar')->name('usuario.actualizar');
     Route::get('usuario-eliminar/{id}','UsuarioController@eliminar')->name('usuario.eliminar');
+});
+
+Route::group(['prefix' => 'cargofuncional'], function(){
+    Route::get('cargo-funcional','CargofuncionalController@listar')->name('cargof.listar');
+    Route::get('cargo-funcional-crear','CargofuncionalController@crear')->name('cargof.crear');
+    Route::post('cargo-funcional-registrar','CargofuncionalController@registrar')->name('cargof.registrar');
+    Route::get('cargo-funcional-editar/{id}','CargofuncionalController@editar')->name('cargof.editar');
+    Route::post('cargo-funcional-actualizar','CargofuncionalController@actualizar')->name('cargof.actualizar');
+    Route::get('cargo-funcional-eliminar/{id}','CargofuncionalController@eliminar')->name('cargof.eliminar');
 });
 
 //Plan
