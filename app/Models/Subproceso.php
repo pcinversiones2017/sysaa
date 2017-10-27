@@ -14,6 +14,10 @@ class Subproceso extends Model
 
     public function procesoMA()
     {
-        return $this->belongsTo(Procesoma::class, 'codProMA');
+        return $this->belongsTo(Procesoma::class);
+    }
+    public function procedimientoSP()
+    {
+        return $this->hasMany(Procedimientosp::class);
     }
 }

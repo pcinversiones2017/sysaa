@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de MacroProcesos </h5>
+                    <h5>Lista de Tipo de Normativas</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -26,9 +26,9 @@
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-sm-3">
-                            <a type="button" href="{{URL::to('macroproceso/crear')}}" class="btn btn-sm btn-primary">
+                            <a type="button" href="{{URL::to('tipo_normativa/crear')}}" class="btn btn-sm btn-primary">
                                 <i class="fa fa-plus">
-                                </i> Crear Macroproceso</a>
+                                </i> Crear Tipo Normativa</a>
                         </div>
                     </div>
                     <table class="table table-bordered">
@@ -41,15 +41,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($macroprocesos as $n =>$macroproceso)
+                        @foreach($tipoNormativas as $n =>$tipoNormativa)
                         <tr>
                             <td align="middle">{{$n+1}}</td>
-                            <td>{{$macroproceso->nombre}}</td>
-                            <td>{{$macroproceso->fecha_creado}}</td>
+                            <td>{{$tipoNormativa->nombre}}</td>
+                            <td>{{$tipoNormativa->fecha_creado}}</td>
                             <td>
-                                <a href="{{URL::to('macroproceso/mostrar')}}/{{$macroproceso->codMacroP}}" class="btn btn-white btn-sm">
-                                    <i class="fa fa-folder"></i> Ver </a>
-                                <a href="{{URL::to('macroproceso/editar')}}/{{$macroproceso->codMacroP}}" class="btn btn-white btn-sm">
+                                <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> Ver </a>
+                                <a href="{{URL::to('tipo_normativa/editar')}}/{{$tipoNormativa->codTipNorm}}" class="btn btn-white btn-sm">
                                     <i class="fa fa-pencil"></i> Editar </a>
                             </td>
                         </tr>
