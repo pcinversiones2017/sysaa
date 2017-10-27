@@ -111,13 +111,15 @@ class CronogramaController extends Controller
             $fechasIni[] = $cronograma['fechaIni'];
             $fechaFin[]= $cronograma['fechaFin'];
             $dias_habiles[] = $cronograma['dias_habiles'];
-        }
 
+        }
+        $dias_total = $dias_habiles[0]+$dias_habiles[1]+ $dias_habiles[2]+ $dias_habiles[3]+ $dias_habiles[4];
         $auditoria = Auditoria::find($request->codPlanF);
 
         return view('cronograma.mostrar')
             ->with(compact('cronogramas'))
             ->with(compact('auditoria'))
+            ->with(compact('dias_total'))
             ->with(compact('fechasIni'))
             ->with(compact('fechaFin'))
             ->with(compact('dias_habiles'))

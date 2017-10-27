@@ -32,6 +32,8 @@
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group has-success"><label class="col-sm-1 control-label">PLANIFICACION</label>
+                            <label class="col-sm-2 col-sm-offset-3 control-label">FECHA DE INICIO: {{$fechasIni[0]}}</label>
+                            <label class="col-sm-2   control-label">FECHA FIN: {{$fechaFin[2]}}</label>
                         </div>
                         <?php $i=0;?>
                         @foreach($etapasPlanificacion as $etapaPlanificacion)
@@ -81,6 +83,8 @@
                         <div class="hr-line-dashed"></div>
                         <!-- EJECUCION ------------------------------------------------------------------------>
                         <div class="form-group has-success"><label class="col-sm-1 control-label">EJECUCION</label>
+                            <label class="col-sm-2 col-sm-offset-3 control-label">FECHA DE INICIO: {{$fechasIni[3]}}</label>
+                            <label class="col-sm-2   control-label">FECHA FIN: {{$fechaFin[3]}}</label>
                         </div>
                         <div class="form-group">
 
@@ -108,6 +112,8 @@
                         </div>
                         <!-- ELABORACION DE INFORME ------------------------------------------------------------------->
                         <div class="form-group has-success"><label class="col-sm-1 control-label">EJECUCION</label>
+                            <label class="col-sm-2 col-sm-offset-3 control-label">FECHA DE INICIO: {{$fechasIni[4]}}</label>
+                            <label class="col-sm-2   control-label">FECHA FIN: {{$fechaFin[4]}}</label>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-4 ">@foreach($etapasReporte as $etapasReporte)
@@ -142,7 +148,8 @@
                                 <label class="col-md-12 control-label">TOTAL DE DIAS HABILES</label>
                             </div>
                             <div class="col-md-2 col-md-offset-3">
-                                <input type="number" placeholder="Dias habiles" class="form-control">
+                                <input type="number" placeholder="Dias habiles" class="form-control"
+                                       value="{{$dias_total}}" readonly>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>

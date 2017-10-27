@@ -39,7 +39,11 @@
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group has-success"><label class="col-sm-1 control-label">PLANIFICACION</label>
+                            <div id="fechasPlanificacion">
+
+                            </div>
                         </div>
+
                         @foreach($etapasPlanificacion as $etapaPlanificacion)
                         <div class="form-group">
                                 <label class="col-sm-4 ">{{$etapaPlanificacion['nombre']}}</label>
@@ -49,7 +53,7 @@
                                 <div class="col-md-4 ">
                                     <input placeholder="Fecha de inicio" class="form-control" type="text"
                                            onfocus="(this.type='date')"  id="date"
-                                           name="fechaIni[]" >
+                                           name="fechaIni[]"    >
                                 </div>
                                 <div class="col-md-4">
                                     <input placeholder="Fecha de fin" class="form-control" type="text"
@@ -78,7 +82,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]">
+                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]" >
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
@@ -164,14 +168,7 @@
                         </div>
                         <div class="hr-line-dashed"></div>
                         <!-- total de dias habiles------------------------------------------------------------------->
-                        <div class="col-md-12">
-                        <div class="form-group has-success col-sm-6">
-                            <label class="col-md-12 control-label">TOTAL DE DIAS HABILES</label>
-                        </div>
-                        <div class="col-md-2 col-md-offset-3">
-                            <input type="number" placeholder="Dias habiles" class="form-control">
-                        </div>
-                        </div>
+
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
@@ -184,4 +181,5 @@
             </div>
         </div>
     </div>
+
 @stop
