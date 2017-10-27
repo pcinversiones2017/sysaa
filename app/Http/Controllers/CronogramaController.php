@@ -80,17 +80,19 @@ class CronogramaController extends Controller
         }
 
 
+        return redirect()->route('cronograma.listar')->with('success','Cronograma Creado');
 
-
-        return redirect('cronograma/listar');
     }
 
 
     public function listar()
     {
+        $cronogramas = Cronograma::all();
         $auditorias = Auditoria::all();
         $listarCronograma = 'active';
-        return view('cronograma.listar')->with(compact('auditorias', 'listarCronograma'));
+        return view('cronograma.listar')
+            ->with(compact('auditorias', 'listarCronograma'))
+        ->with(compact('cronogramas'));
     }
 
     public function mostrar(Request $request)
@@ -222,8 +224,8 @@ class CronogramaController extends Controller
 
 
 
+        return redirect()->route('cronograma.listar')->with('success','Cronograma actualizado');
 
-        return redirect('cronograma/listar');
     }
 
 }

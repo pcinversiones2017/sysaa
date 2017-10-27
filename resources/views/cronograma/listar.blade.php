@@ -1,5 +1,10 @@
 @extends('layout.admin')
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {!! session('success') !!}
+        </div>
+    @endif
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -43,6 +48,7 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @if(empty($cronogramas->codCroGen))
                         <?php $i=1 ?>
                         @foreach($auditorias as $auditoria)
                             <tr>
@@ -58,6 +64,7 @@
                             </tr>
                             <?php $i++ ?>
                         @endforeach
+                            @endif
                         </tbody>
                     </table>
 
