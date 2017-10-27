@@ -184,8 +184,6 @@
 {{--<script src="{{URL::to('js/plugins/sparkline/jquery.sparkline.min.js')}}"></script>--}}
 {{--<script src="{{URL::to('js/demo/sparkline-demo.js')}}"></script>--}}
 {{--<script src="{{URL::to('js/plugins/flot/jquery.flot.time.js')}}"></script>--}}
-
-
 </body>
 
 
