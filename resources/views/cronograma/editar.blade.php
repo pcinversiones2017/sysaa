@@ -29,6 +29,8 @@
                         {{ csrf_field() }}
                         <div class="form-group"><label class="col-sm-2 control-label">NOMBRE DE AUDITORIA: </label>
                             <label class="col-sm-2 control-label">{{$auditoria->nombrePlanF}}</label>
+                            <input type="hidden" value="{{$auditoria->codPlanF}}"
+                                   name="codPlanf[]">
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group has-success"><label class="col-sm-1 control-label">PLANIFICACION</label>

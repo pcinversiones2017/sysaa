@@ -174,7 +174,7 @@ class CronogramaController extends Controller
     public function actualizar(Request $request)
     {
 
-        $auditoria = Auditoria::find($request->codPlanF);
+        $auditoria = Auditoria::find($request->codPlanf[0]);
         $auditoria->fechaIniPlanF = $request->fechaIni[0];
         $auditoria->fechaFinPlanF = $request->fechaFin[4];
         $auditoria->save();

@@ -38,7 +38,6 @@
                             <th>Nombre</th>
                             <th>Fecha de inicio</th>
                             <th>Fecha fin</th>
-                            <th>Dias Habiles</th>
                             <th>Plan Anual</th>
                             <th>Acciones</th>
                         </tr>
@@ -51,7 +50,6 @@
                                 <td>{{$auditoria->nombrePlanF}}</td>
                                 <td>{{$auditoria->fechaIniPlanF}}</td>
                                 <td>{{$auditoria->fechaFinPlanF}}</td>
-                                <td>90</td>
                                 <td>{{$auditoria->planAnual->nombrePlan}}</td>
                                 <td>
                                     <a href="{{URL::to('cronograma/mostrar')}}/{{$auditoria->codPlanF}}" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
