@@ -24,6 +24,11 @@ class Usuariorol extends Model
         return $cadenaSQL->where('codUsuRol',$id);
     }
 
+    public function scopeValidar($cadenaSQL, $codUsu)
+    {
+        return $cadenaSQL->where('codUsu',$codUsu);
+    }
+
     public function rol()
     {
     	return $this->hasOne(Rol::class,'codRol','codRol');

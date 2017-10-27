@@ -11,14 +11,26 @@
 |
 */
 
-Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('test', 'TestController@test');
 Route::get('planificacion', 'PlanificacionController@index');
+
+Route::get('login','SesionController@iniciarsesion')->name('login');
+Route::post('iniciar-sesion','SesionController@authenticate');
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/','InicioController@index')->name('inicio.inicio');
+});
+
+Route::group(['prefix' => 'informe'], function(){
+    Route::get('informe','InformeController@listar')->name('informe.listar');
+    Route::get('informe-crear','InformeController@crear')->name('informe.crear');
+    Route::post('informe-registrar','InformeController@registrar')->name('informe.registrar');
+    Route::get('informe-editar/{id}','InformeController@editar')->name('informe.editar');
+    Route::post('informe-actualizar','InformeController@actualizar')->name('informe.actualizar');
+    Route::get('informe-eliminar/{id}','InformeController@eliminar')->name('informe.eliminar');
+});
 
 Route::group(['prefix' => 'usuario'], function(){
     Route::get('usuario','UsuarioController@listar')->name('usuario.listar');
@@ -125,3 +137,9 @@ Route::prefix('objetivo-especifico')->group(function (){
    Route::post('guardar', 'ObjetivoEspecificoController@guardar');
 
 });
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
