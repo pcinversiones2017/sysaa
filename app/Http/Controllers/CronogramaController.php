@@ -7,6 +7,7 @@ use App\Models\Etapa;
 use App\Models\Plan;
 use App\Models\Auditoria;
 use Illuminate\Http\Request;
+use App\Http\Requests\Usuario\CronogramaRequest;
 
 class CronogramaController extends Controller
 {
@@ -31,7 +32,7 @@ class CronogramaController extends Controller
 
     }
 
-    public function guardar(Request $request)
+    public function guardar(CronogramaRequest $request)
     {
         $auditoria = Auditoria::find($request->codPlanf[0]);
         $auditoria->fechaIniPlanF = $request->fechaIni[0];

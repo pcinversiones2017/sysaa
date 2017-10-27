@@ -98,6 +98,11 @@ Route::group(['prefix' => 'cronograma'], function(){
     Route::get('mostrar/{codPlanF}', 'CronogramaController@mostrar')->name('cronograma.mostrar');
      Route::get('editar/{codPlanF}','CronogramaController@editar')->name('cronograma.editar');
 });
+//normaAuditoria
+Route::group(['prefix' => 'normaAuditoria'], function(){
+    Route::get('listar', 'NormaAuditoriaController@listar')->name('normaAuditoria.listar');
+
+});
 //Auditoria
 Route::prefix('auditoria')->group(function (){
 
