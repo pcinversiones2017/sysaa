@@ -103,45 +103,7 @@
                                                 @endif
                                             </div>
                                             <div class="tab-pane" id="tab-2">
-
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <button class="btn btn-primary " data-toggle="modal" data-target="#myModalHorizontal">
-                                                            <i class="fa fa-plus"></i> Crear Objetivo Especifico
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <table class="table table-bordered" style="margin-top: 10px">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Detalle</th>
-                                                            <th>MacroProceso</th>
-                                                            <th>Materia a examinar</th>
-                                                            <th>Procesos</th>
-                                                            <th>Acciones</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <?php $i=1 ; ?>
-                                                        @foreach($auditoria->objetivoGeneral->objetivosEspecificos as $objetivoEsp)
-                                                            <tr>
-                                                                <td>{{$i}}</td>
-                                                                <td>{{$objetivoEsp->nombre}}</td>
-                                                                <td>{{$objetivoEsp->macroproceso->nombre}}</td>
-                                                                <td>{{$objetivoEsp->materia}}</td>
-                                                                <td></td>
-                                                                <td>
-                                                                <a href="" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
-                                                                <a href="" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
-                                                                </td>
-                                                            </tr>
-                                                            <?php $i++ ?>
-                                                        @endforeach
-                                                        </tbody>
-                                                    </table>
-
-
+                                                @include('objetivo_especifico.partials.listar')
                                             </div>
                                         </div>
 
@@ -158,73 +120,6 @@
 
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <button type="button" class="close"
-                            data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        Crear Objetivo Especifico
-                    </h4>
-                </div>
-                <form class="form-horizontal" role="form" method="post" action="{{URL::to('objetivo-especifico/guardar')}}">
-                <!-- Modal Body -->
-
-                <div class="modal-body">
-
-                    <div class="form-horizontal">
-                        {{csrf_field()}}
-                        <input type="hidden" name="codObjGen" value="{{$auditoria->objetivoGeneral->codObjGen}}">
-                        <input type="hidden" name="codPlanF" value="{{$auditoria->codPlanF}}">
-                        <div class="form-group">
-                            <label  class="col-sm-2 control-label"
-                                    for="inputEmail3">Detalle</label>
-                            <div class="col-sm-10">
-                                <textarea class="form-control" name="nombre"> </textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"
-                                   for="materia" >Materia a examinar </label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="materia" name="materia" />
-                            </div>
-                        </div>
-                        <div class="form-group"><label class="col-sm-2">Macroproceso</label>
-                            <div class="col-sm-10">
-                            <select class="form-control m-b" name="codMacroP">
-                                <option>-- Seleccione --</option>
-                                @foreach($auditoria->macroprocesos as $macroproceso)
-                                <option value="{{$macroproceso->codMacroP}}">{{$macroproceso->nombre}}</option>
-                                @endforeach
-
-                            </select>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Modal Footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default"
-                            data-dismiss="modal">
-                        Cancelar
-                    </button>
-                    <button type="submit" class="btn btn-primary">
-                        Guardar
-                    </button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    <!-- Modal Crear Objetivo Especifico -->
+    @include('objetivo_especifico.modals.crear')
 @stop

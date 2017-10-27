@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Plan\ActualizarRequest;
 use App\Models\Plan;
 use Illuminate\Http\Request;
+use App\Http\Requests\Plan\RegistroRequest;
 
 class PlanController extends Controller
 {
@@ -36,13 +38,12 @@ class PlanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function guardar(Request $request)
+    public function guardar(RegistroRequest $request)
     {
         $planAnual = new Plan();
         $planAnual->nombrePlan = $request->nombrePlan;
         $planAnual->save();
-
-        return redirect('plan/listar');
+        return redirect()->route('plan.listar')->with('success', 'Plan registrado');
     }
 
     /**
@@ -75,13 +76,13 @@ class PlanController extends Controller
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function actualizar(Request $request)
+    public function actualizar(ActualizarRequest $request)
     {
         $plan = Plan::find($request->codPlanA);
         $plan->nombrePlan = $request->nombrePlan;
         $plan->save();
 
-        return redirect('plan/listar');
+        return redirect()->route('plan.listar')->with('success', 'Plan actualizado');
     }
 
     /**

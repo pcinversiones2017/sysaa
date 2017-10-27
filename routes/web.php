@@ -16,11 +16,15 @@
 Route::get('test', 'TestController@test');
 Route::get('planificacion', 'PlanificacionController@index');
 
-Route::get('login','SesionController@iniciarsesion')->name('login');
-Route::post('iniciar-sesion','SesionController@authenticate');
+Route::get('login', ['as' => 'login', 'uses' => 'LoginController@login']);
+Route::post('iniciar-sesion', 'LoginController@authenticate');
+
+
+//Route::get('login','SesionController@iniciarsesion')->name('login');
+//Route::post('iniciar-sesion','SesionController@authenticate');
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('/','InicioController@index')->name('inicio.inicio');
+    Route::get('inicio','InicioController@index')->name('inicio.inicio');
 });
 
 Route::group(['prefix' => 'informe'], function(){
@@ -60,12 +64,12 @@ Route::group(['prefix' => 'asignarrol'], function(){
 });
 
 //Plan
-Route::prefix('plan')->group(function () {
-    Route::get('crear', 'PlanController@crear');
-    Route::post('guardar', 'PlanController@guardar');
-    Route::get('listar', 'PlanController@listar');
-    Route::get('editar/{codPlanA}', 'PlanController@editar');
-    Route::post('actualizar', 'PlanController@actualizar');
+Route::group(['prefix' => 'plan'], function () {
+    Route::get('crear', 'PlanController@crear')->name('plan.crear');
+    Route::post('guardar', 'PlanController@guardar')->name('plan.guardar');
+    Route::get('listar', 'PlanController@listar')->name('plan.listar');
+    Route::get('editar/{codPlanA}', 'PlanController@editar')->name('plan.editar');
+    Route::post('actualizar', 'PlanController@actualizar')->name('plan.actualizar');
 });
 
 
@@ -120,24 +124,25 @@ Route::group(['prefix' => 'normaAuditoria'], function(){
 //Auditoria
 Route::prefix('auditoria')->group(function (){
 
-   Route::get('crear', 'AuditoriaController@crear');
-   Route::get('mostrar/{codPlanF}', 'AuditoriaController@mostrar');
-   Route::post('guardar', 'AuditoriaController@guardar');
-   Route::get('listar', 'AuditoriaController@listar');
-   Route::get('editar/{codPlanF}', 'AuditoriaController@editar');
-   Route::post('actualizar', 'PlanController@actualizar');
+   Route::get('crear', 'AuditoriaController@crear')->name('auditoria.crear');
+   Route::get('mostrar/{codPlanF}', 'AuditoriaController@mostrar')->name('auditoria.mostrar');
+   Route::post('guardar', 'AuditoriaController@guardar')->name('auditoria.guardar');
+   Route::get('listar', 'AuditoriaController@listar')->name('auditoria.listar');
+   Route::get('editar/{codPlanF}', 'AuditoriaController@editar')->name('auditoria.editar');
+   Route::post('actualizar', 'PlanController@actualizar')->name('auditoria.actualizar');
 });
 //Objetivo General
 
 Route::prefix('objetivo-general')->group(function (){
 
-    Route::post('guardar', 'ObjetivoGeneralController@guardar');
+    Route::post('guardar', 'ObjetivoGeneralController@guardar')->name('objetivogen.guardar');
 });
 
 //Objetivo Especifico
 Route::prefix('objetivo-especifico')->group(function (){
-   Route::post('guardar', 'ObjetivoEspecificoController@guardar');
 
+   Route::post('guardar', 'ObjetivoEspecificoController@guardar')->name('obejtivoesp.guardar');
+   Route::get('mostrar/{codObjEsp}', 'ObjetivoEspecificoController@mostrar')->name('obajetivoesp.mostrar');
 });
 
 
