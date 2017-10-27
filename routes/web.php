@@ -90,12 +90,13 @@ Route::prefix('actividad')->group(function () {
     Route::post('actualizar', 'ActividadController@actualizar');
 });
 //cronograma
-Route::prefix('cronograma')->group(function () {
-     Route::get('crear', 'CronogramaController@crear');
-     Route::post('guardar', 'CronogramaController@guardar');
-     Route::get('listar', 'CronogramaController@listar');
-    Route::get('mostrar/{codPlanF}', 'CronogramaController@mostrar');
-     Route::get('editar/{cod}','CronogramaController@test');
+Route::group(['prefix' => 'cronograma'], function(){
+     Route::get('crear', 'CronogramaController@crear')->name('cronograma.crear');
+     Route::post('guardar', 'CronogramaController@guardar')->name('cronograma.guardar');
+    Route::post('actualizar', 'CronogramaController@actualizar')->name('cronograma.actualizar');
+     Route::get('listar', 'CronogramaController@listar')->name('cronograma.listar');
+    Route::get('mostrar/{codPlanF}', 'CronogramaController@mostrar')->name('cronograma.mostrar');
+     Route::get('editar/{codPlanF}','CronogramaController@editar')->name('cronograma.editar');
 });
 //Auditoria
 Route::prefix('auditoria')->group(function (){

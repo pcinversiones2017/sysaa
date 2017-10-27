@@ -1,5 +1,10 @@
 @extends('layout.admin')
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {!! session('success') !!}
+        </div>
+    @endif
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -38,12 +43,12 @@
                             <th>Nombre</th>
                             <th>Fecha de inicio</th>
                             <th>Fecha fin</th>
-                            <th>Dias Habiles</th>
                             <th>Plan Anual</th>
                             <th>Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
+                        @if(empty($cronogramas->codCroGen))
                         <?php $i=1 ?>
                         @foreach($auditorias as $auditoria)
                             <tr>
@@ -51,15 +56,15 @@
                                 <td>{{$auditoria->nombrePlanF}}</td>
                                 <td>{{$auditoria->fechaIniPlanF}}</td>
                                 <td>{{$auditoria->fechaFinPlanF}}</td>
-                                <td>90</td>
                                 <td>{{$auditoria->planAnual->nombrePlan}}</td>
                                 <td>
                                     <a href="{{URL::to('cronograma/mostrar')}}/{{$auditoria->codPlanF}}" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
-                                    <a href="{{URL::to('auditoria/editar')}}/{{$auditoria->codPlanF}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
+                                    <a href="{{URL::to('cronograma/editar')}}/{{$auditoria->codPlanF}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
                                 </td>
                             </tr>
                             <?php $i++ ?>
                         @endforeach
+                            @endif
                         </tbody>
                     </table>
 

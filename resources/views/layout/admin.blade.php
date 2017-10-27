@@ -39,7 +39,6 @@
 @yield('js-script')
 
 {!! Html::script('js/inspinia.js') !!}
-
 </body>
 
 </html>
