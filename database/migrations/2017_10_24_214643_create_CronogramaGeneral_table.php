@@ -34,6 +34,6 @@ class CreateCronogramaGeneralTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('CronogramaGeneral');
+        Schema::dropIfExists('Cronograma_General');
     }
 }

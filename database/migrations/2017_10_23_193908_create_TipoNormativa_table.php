@@ -16,6 +16,7 @@ class CreateTipoNormativaTable extends Migration
         Schema::create('Tipo_Normativa', function (Blueprint $table) {
             $table->increments('codTipNorm');
             $table->string('nombre');
+            $table->string('estado');
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
         });
@@ -28,6 +29,6 @@ class CreateTipoNormativaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('TipoNormativa');
+        Schema::dropIfExists('Tipo_Normativa');
     }
 }

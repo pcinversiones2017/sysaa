@@ -14,9 +14,9 @@ class TipoNormativaController extends Controller
      */
     public function listar()
     {
-        $tipo_normativas = TipoNormativa::all();
+        $tipoNormativas = TipoNormativa::all();
         $listarTipoNormativa = 'active';
-        return view('tipo_normativa.listar')->with(compact('tipo_normativas', 'listarTipoNormativa' ));
+        return view('tipo_normativa.listar')->with(compact('tipoNormativas', 'listarTipoNormativa' ));
     }
 
     /**
@@ -26,8 +26,8 @@ class TipoNormativaController extends Controller
      */
     public function crear()
     {
-        $crearTipoNormativa = 'active';
-        return view('tipo_normativa.crear')->with(compact('crearTipoNormativa'));
+        $tipoNormativas = 'active';
+        return view('tipo_normativa.crear')->with(compact('tipoNormativas'));
     }
 
     /**
@@ -39,7 +39,8 @@ class TipoNormativaController extends Controller
     public function guardar(Request $request)
     {
         $tipoNormativa = new TipoNormativa();
-        $tipoNormativa->nombreTipNorm = $request->nombreTipNorm;
+        $tipoNormativa->nombre = $request->nombre;
+        $tipoNormativa->estado = 'activo';
         $tipoNormativa->save();
 
         return redirect('tipo_normativa/listar');
@@ -78,7 +79,7 @@ class TipoNormativaController extends Controller
     public function actualizar(Request $request)
     {
         $tipoNormativa = TipoNormativa::find($request->codTipNorm);
-        $tipoNormativa->nombreTipNorm = $request->nombreTipNorm;
+        $tipoNormativa->nombre = $request->nombre;
         $tipoNormativa->save();
 
         return redirect('tipo_normativa/listar');

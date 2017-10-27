@@ -14,6 +14,11 @@ class Procesoma extends Model
 
     public function macroProceso()
     {
-        return $this->belongsTo(Macroproceso::class, 'codMacroP');
+        return $this->belongsTo(Macroproceso::class);
     }
+    public function subProceso()
+    {
+        return $this->hasMany(Subproceso::class);
+    }
+
 }

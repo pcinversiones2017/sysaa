@@ -26,9 +26,9 @@
                 <div class="ibox-content">
                     <form method="post" class="form-horizontal" action="{{URL::to('tipo_normativa/actualizar')}}">
                         {{csrf_field()}}
-                        <input type="hidden" value="{{$tipo_normativa->codTipNorm}}" name="codTipNorm">
+                        <input type="hidden" value="{{$tipoNormativa->codTipNorm}}" name="codTipNorm">
                         <div class="form-group"><label class="col-sm-2 control-label">Tipo de Normativa</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="nombreTipoNormativa" value="{{$plan->nombrePlan}}"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="nombre" value="{{$tipoNormativa->nombre}}"></div>
                         </div>
 
                         <div class="form-group">

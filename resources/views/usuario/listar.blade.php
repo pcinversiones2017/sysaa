@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de MacroProcesos </h5>
+                    <h5>Lista de usuarios </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -24,35 +24,35 @@
                     </div>
                 </div>
                 <div class="ibox-content">
+
                     <div class="row">
                         <div class="col-sm-3">
-                            <a type="button" href="{{URL::to('macroproceso/crear')}}" class="btn btn-sm btn-primary">
-                                <i class="fa fa-plus">
-                                </i> Crear Macroproceso</a>
+                            <a type="button" href="{!! route('usuario.crear') !!}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Auditoria</a>
                         </div>
                     </div>
+
                     <table class="table table-bordered">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nombre</th>
-                            <th>Fecha creacion</th>
-                            <th>Acciones</th>
+                            <th>Datos</th>
+                            <th>Email</th>
+                            <th>Accion</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($macroprocesos as $n =>$macroproceso)
-                        <tr>
-                            <td align="middle">{{$n+1}}</td>
-                            <td>{{$macroproceso->nombre}}</td>
-                            <td>{{$macroproceso->fecha_creado}}</td>
-                            <td>
-                                <a href="{{URL::to('macroproceso/mostrar')}}/{{$macroproceso->codMacroP}}" class="btn btn-white btn-sm">
-                                    <i class="fa fa-folder"></i> Ver </a>
-                                <a href="{{URL::to('macroproceso/editar')}}/{{$macroproceso->codMacroP}}" class="btn btn-white btn-sm">
-                                    <i class="fa fa-pencil"></i> Editar </a>
-                            </td>
-                        </tr>
+                        <?php $i=1 ?>
+                        @foreach($usuarios as $row)
+                            <tr>
+                                <td>{{$i}}</td>
+                                <td>{!! $row->datos !!}</td>
+                                <td>{!! $row->email !!}</td>
+                                <td>
+                                    <a href="{!! url('usuario-editar/'.$row->codUsu) !!}" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
+                                    <a href="{!! url('usuario-eliminar/'.$row->codUsu) !!}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
+                                </td>
+                            </tr>
+                        <?php $i++ ?>
                         @endforeach
                         </tbody>
                     </table>

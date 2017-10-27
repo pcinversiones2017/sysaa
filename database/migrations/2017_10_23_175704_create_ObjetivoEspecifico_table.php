@@ -33,6 +33,6 @@ class CreateObjetivoEspecificoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ObjetivoEspecifico');
+        Schema::dropIfExists('Objetivo_Especifico');
     }
 }

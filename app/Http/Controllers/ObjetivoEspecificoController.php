@@ -8,19 +8,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ObjtivoEspecifico;
+use App\Models\ObjetivoEspecifico;
 use Illuminate\Http\Request;
 
 class ObjetivoEspecificoController extends Controller
 {
     public function guardar(Request $request)
     {
-        $objetivoEspecifico = new ObjtivoEspecifico();
+        $objetivoEspecifico = new ObjetivoEspecifico();
         $objetivoEspecifico->nombre = $request->nombre;
         $objetivoEspecifico->materia = $request->materia;
         $objetivoEspecifico->codMacroP = $request->codMacroP;
         $objetivoEspecifico->codObjGen = $request->codObjGen;
         $objetivoEspecifico->save();
-        return redirect('auditoria/mostrar/' . $request->codPlanF);
+        return redirect('auditoria/mostrar/' . $request->codPlanF . '#tab-2');
     }
 }

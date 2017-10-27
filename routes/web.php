@@ -14,8 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('test', 'TestController@test');
 Route::get('planificacion', 'PlanificacionController@index');
+
+Route::group(['prefix' => 'usuario'], function(){
+    Route::get('usuario','UsuarioController@listar')->name('usuario.listar');
+    Route::get('usuario-crear','UsuarioController@crear')->name('usuario.crear');
+    Route::post('usuario-registrar','UsuarioController@registrar')->name('usuario.registrar');
+    Route::get('usuario-editar/{id}','UsuarioController@editar')->name('usuario.editar');
+    Route::post('usuario-actualizar','UsuarioController@actualizar')->name('usuario.actualizar');
+    Route::get('usuario-eliminar/{id}','UsuarioController@eliminar')->name('usuario.eliminar');
+});
 
 //Plan
 Route::prefix('plan')->group(function () {
@@ -26,15 +36,17 @@ Route::prefix('plan')->group(function () {
     Route::post('actualizar', 'PlanController@actualizar');
 });
 
-//Plan
+
 Route::prefix('macroproceso')->group(function () {
     Route::get('crear', 'MacroprocesoController@crear');
+    Route::get('mostrar/{codMacroP}', 'MacroprocesoController@mostrar');
     Route::post('guardar', 'MacroprocesoController@guardar');
+    Route::post('guardar_procesoMA', 'MacroprocesoController@guardar_procesoMA');
     Route::get('listar', 'MacroprocesoController@listar');
     Route::get('editar/{codMacroP}', 'MacroprocesoController@editar');
     Route::post('actualizar', 'MacroprocesoController@actualizar');
 });
-//Plan
+
 Route::prefix('procesoma')->group(function () {
     Route::get('crear', 'ProcesomaController@crear');
     Route::post('guardar', 'ProcesomaController@guardar');
@@ -80,4 +92,10 @@ Route::prefix('auditoria')->group(function (){
 Route::prefix('objetivo-general')->group(function (){
 
     Route::post('guardar', 'ObjetivoGeneralController@guardar');
+});
+
+//Objetivo Especifico
+Route::prefix('objetivo-especifico')->group(function (){
+   Route::post('guardar', 'ObjetivoEspecificoController@guardar');
+
 });

@@ -28,6 +28,6 @@ class CreatePlanAnualTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('PlanAnual');
+        Schema::dropIfExists('Plan_Anual');
     }
 }

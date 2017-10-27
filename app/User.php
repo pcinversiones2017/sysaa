@@ -4,10 +4,13 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    protected $table = "usuarios";
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nombres', 'paterno','materno','email', 'password',
     ];
 
     /**
@@ -26,4 +29,34 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function scopeActivo($cadenaSQL)
+    {
+        return $cadenaSQL->where('estado',true);
+    }
+
+    public function scopeExiste($cadenaSQL, $id)
+    {
+        return $cadenaSQL->where('id',$id);
+    }
+
+    public function setNombresAttribute($value)
+    {
+        $this->attributes['nombres'] = Str::upper($value);
+    }
+
+    public function setPaternoAttribute($value)
+    {
+        $this->attributes['paterno'] = Str::upper($value);
+    }
+
+    public function setMaternoAttribute($value)
+    {
+        $this->attributes['materno'] = Str::upper($value);
+    }
+
+    public function getDatosAttribute()
+    {
+        return $this->attributes['nombres'].' '.$this->attributes['paterno'].' '.$this->attributes['materno'];
+    }
 }

@@ -30,6 +30,6 @@ class CreateObjetivoGeneralTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ObjetivoGeneral');
+        Schema::dropIfExists('Objetivo_General');
     }
 }

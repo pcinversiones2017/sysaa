@@ -56,7 +56,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <dl class="dl-horizontal">
-                                    <dt>Completado:</dt>
+                                    <dt>Completed:</dt>
                                     <dd>
                                         <div class="progress progress-striped active m-b-sm">
                                             <div style="width: 60%;" class="progress-bar"></div>
@@ -103,48 +103,11 @@
                                                 @endif
                                             </div>
                                             <div class="tab-pane" id="tab-2">
-
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <button class="btn btn-primary " data-toggle="modal" data-target="#myModalHorizontal">
-                                                            <i class="fa fa-plus"></i> Crear Objetivo Especifico
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <table class="table table-bordered" style="margin-top: 10px">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Detalle</th>
-                                                            <th>MacroProceso</th>
-                                                            <th>Materia a examinar</th>
-                                                            <th>Procesos</th>
-                                                            <th>Acciones</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <?php $i=1 ; ?>
-                                                        @foreach($auditoria->objetivoGeneral->objetivosEspecificos as $objetivoEsp)
-                                                            <tr>
-                                                                <td>{{$i}}</td>
-                                                                <td>{{$objetivoEsp->nombre}}</td>
-                                                                <td>{{$objetivoEsp->macroproceso->nombre}}</td>
-                                                                <td>{{$objetivoEsp->materia}}</td>
-                                                                <td></td>
-                                                                <td>
-                                                                <a href="" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
-                                                                <a href="" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
-                                                                </td>
-                                                            </tr>
-                                                            <?php $i++ ?>
-                                                        @endforeach
-                                                        </tbody>
-                                                    </table>
-
-
+                                                <button class="btn btn-primary " data-toggle="modal" data-target="#myModalHorizontal">
+                                                    <i class="fa fa-plus"></i> Crear Objetivo Especifico
+                                                </button>
                                             </div>
                                         </div>
-
 
                                     </div>
 
@@ -174,15 +137,11 @@
                         Crear Objetivo Especifico
                     </h4>
                 </div>
-                <form class="form-horizontal" role="form" method="post" action="{{URL::to('objetivo-especifico/guardar')}}">
-                <!-- Modal Body -->
 
+                <!-- Modal Body -->
                 <div class="modal-body">
 
-                    <div class="form-horizontal">
-                        {{csrf_field()}}
-                        <input type="hidden" name="codObjGen" value="{{$auditoria->objetivoGeneral->codObjGen}}">
-                        <input type="hidden" name="codPlanF" value="{{$auditoria->codPlanF}}">
+                    <form class="form-horizontal" role="form">
                         <div class="form-group">
                             <label  class="col-sm-2 control-label"
                                     for="inputEmail3">Detalle</label>
@@ -192,24 +151,23 @@
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"
-                                   for="materia" >Materia a examinar </label>
+                                   for="inputPassword3" >Materia a examinar </label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="materia" name="materia" />
+                                <input type="text" class="form-control"
+                                       id="inputPassword3" name="materia"/>
                             </div>
                         </div>
-                        <div class="form-group"><label class="col-sm-2">Macroproceso</label>
+                        <div class="form-group"><label class="col-sm-2">Macraproceso</label>
                             <div class="col-sm-10">
-                            <select class="form-control m-b" name="codMacroP">
+                            <select class="form-control m-b" name="codPlanA">
                                 <option>-- Seleccione --</option>
-                                @foreach($auditoria->macroprocesos as $macroproceso)
-                                <option value="{{$macroproceso->codMacroP}}">{{$macroproceso->nombre}}</option>
-                                @endforeach
-
+                                <option>-- Seleccione --</option>
+                                <option>-- Seleccione --</option>
                             </select>
                             </div>
                         </div>
 
-                    </div>
+                    </form>
 
                 </div>
 
@@ -219,11 +177,10 @@
                             data-dismiss="modal">
                         Cancelar
                     </button>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary">
                         Guardar
                     </button>
                 </div>
-                </form>
             </div>
         </div>
     </div>
