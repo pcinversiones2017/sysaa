@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('test', 'TestController@test');
 Route::get('planificacion', 'PlanificacionController@index');
 
@@ -89,4 +90,10 @@ Route::prefix('auditoria')->group(function (){
 Route::prefix('objetivo-general')->group(function (){
 
     Route::post('guardar', 'ObjetivoGeneralController@guardar');
+});
+
+//Objetivo Especifico
+Route::prefix('objetivo-especifico')->group(function (){
+   Route::post('guardar', 'ObjetivoEspecificoController@guardar');
+
 });

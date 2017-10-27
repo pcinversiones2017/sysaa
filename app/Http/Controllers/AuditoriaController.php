@@ -28,7 +28,8 @@ class AuditoriaController extends Controller
     public function crear()
     {
         $planes = Plan::all();
-        return view('auditoria.crear')->with(compact('planes'));
+        $crearAuditoria = 'active';
+        return view('auditoria.crear')->with(compact('planes', 'crearAuditoria'));
     }
 
     /**

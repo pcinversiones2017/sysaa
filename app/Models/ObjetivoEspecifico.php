@@ -11,11 +11,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ObjtivoEspecifico extends Model
+class ObjetivoEspecifico extends Model
 {
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
 
     protected $primaryKey = 'codObjEsp';
     protected $table = 'objetivo_especifico';
+
+    public function macroproceso()
+    {
+        return $this->belongsTo(Macroproceso::class, 'codMacroP');
+    }
+
+
 }

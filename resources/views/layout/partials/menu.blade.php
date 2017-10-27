@@ -20,34 +20,38 @@
                         IN+
                     </div>
                 </li>
-                <li class="active">
+                <li class="">
                     <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Configuracion</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearPlan?? ''}}"><a href="{!! route('usuario.listar') !!}">Listar Usuario</a></li>
                     </ul>
                 </li>
+                @if(isset($crearPlan) || isset($listarPlan))
                 <li class="active">
+                @else
+                <li class="">
+                @endif
                     <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Plan</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearPlan?? ''}}"><a href="{{URL::to('plan/crear')}}">Crear Plan</a></li>
                         <li class="{{$listarPlan?? ''}}"><a href="{{URL::to('plan/listar')}}">Listar Planes</a></li>
                     </ul>
                 </li>
-                <li class="active">
+                <li class="">
                     <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Macroproceso</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearMacroproceso?? ''}}"><a href="{{URL::to('macroproceso/crear')}}">Crear Macroproceso</a></li>
                         <li class="{{$listarMacroproceso?? ''}}"><a href="{{URL::to('macroproceso/listar')}}">Listar Macroproceso</a></li>
                     </ul>
                 </li>
-                <li class="active">
+                <li class="">
                     <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">ProcesoMA</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearProcesoma?? ''}}"><a href="{{URL::to('procesoma/crear')}}">Crear ProcesoMA</a></li>
                         <li class="{{$listarProcesoma?? ''}}"><a href="{{URL::to('procesoma/listar')}}">Listar ProcesoMA</a></li>
                     </ul>
                 </li>
-                <li class="active">
+                <li class="">
                     <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Auditoria</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearAuditoria?? ''}}"><a href="{{URL::to('auditoria/crear')}}">Crear Auditoria</a></li>
@@ -66,3 +70,7 @@
 
         </div>
     </nav>
+
+<script>
+
+</script>

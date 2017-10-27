@@ -19,8 +19,8 @@ class ObjetivoGeneral extends Model
     protected $primaryKey = 'codObjGen';
     protected $table = 'objetivo_general';
 
-    public function procedimientos()
+    public function objetivosEspecificos()
     {
-
+        return $this->hasMany(ObjetivoEspecifico::class, 'codObjGen');
     }
 }
