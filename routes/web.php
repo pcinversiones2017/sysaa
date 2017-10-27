@@ -11,17 +11,18 @@
 |
 */
 
-Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 
 Route::get('test', 'TestController@test');
 Route::get('planificacion', 'PlanificacionController@index');
 
 Route::get('login','SesionController@iniciarsesion')->name('login');
-Route::post('iniciar-sesion','SesionController@autentificar')->name('iniciar-sesion');
+Route::post('iniciar-sesion','SesionController@authenticate');
 
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/','InicioController@index')->name('inicio.inicio');
+});
 
-Route::get('/','InicioController@index')->name('inicio.inicio');
 
 
 Route::group(['prefix' => 'usuario'], function(){
@@ -125,3 +126,8 @@ Route::prefix('objetivo-especifico')->group(function (){
 
 });
 
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

@@ -16,7 +16,7 @@ class SesionController extends Controller
     	return view('login.login');
     }
 
-    public function autentificar(ValidarRequest $request)
+    public function authenticate(ValidarRequest $request)
     {
     	$UsuarioExiste = User::ExisteEmail($request->email)->count();
     	if($UsuarioExiste == 1)
@@ -33,7 +33,7 @@ class SesionController extends Controller
 		    		return redirect()->intended('/');
 		    	}else 
 		    	{
-		    		return back()->with('danger','No se ha podido iniciar sesion.');
+		    		return back()->with('danger','Contraseña Incorrecta.');
 		    	}
     		}else 
     		{
