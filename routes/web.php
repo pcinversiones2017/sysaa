@@ -47,15 +47,17 @@ Route::prefix('plan')->group(function () {
     Route::post('actualizar', 'PlanController@actualizar');
 });
 
-//Plan
+
 Route::prefix('macroproceso')->group(function () {
     Route::get('crear', 'MacroprocesoController@crear');
+    Route::get('mostrar/{codMacroP}', 'MacroprocesoController@mostrar');
     Route::post('guardar', 'MacroprocesoController@guardar');
+    Route::post('guardar_procesoMA', 'MacroprocesoController@guardar_procesoMA');
     Route::get('listar', 'MacroprocesoController@listar');
     Route::get('editar/{codMacroP}', 'MacroprocesoController@editar');
     Route::post('actualizar', 'MacroprocesoController@actualizar');
 });
-//Plan
+
 Route::prefix('procesoma')->group(function () {
     Route::get('crear', 'ProcesomaController@crear');
     Route::post('guardar', 'ProcesomaController@guardar');

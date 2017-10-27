@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Macroproceso;
-use App\Models\Plan;
+use App\Models\Procesoma;
+use App\Models\Subproceso;
 use Illuminate\Http\Request;
 
 class MacroprocesoController extends Controller
@@ -47,7 +48,6 @@ class MacroprocesoController extends Controller
         $macroprocesoss->save();
 
         return redirect('macroproceso/listar');
-
     }
 
     /**
@@ -58,9 +58,34 @@ class MacroprocesoController extends Controller
      */
     public function mostrar(Request $request)
     {
-
+        $macroproceso = Macroproceso::find($request->codMacroP);
+        return view('macroproceso.mostrar')->with(compact('macroproceso'));
     }
 
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function guardar_procesoMA(Request $request)
+    {
+
+        $macroprocesoss = new  Macroproceso();
+        $macroprocesoss->nombre = $request->nombre;
+        $macroprocesoss->estado = 'activo';
+        $macroprocesoss->save();
+
+        if(!empty($request->nombre)){
+            $procesoma = new Procesoma();
+            $procesoma->nombre = $request->nombrema;
+            $procesoma->estado = 'active';
+            $procesoma->codMacroP = $macroprocesoss->codMacroP;
+            $procesoma->save();
+        }
+        return redirect('macroproceso/listar');
+    }
     /**
      * Show the form for editing the specified resource.
      *

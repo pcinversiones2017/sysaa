@@ -17,10 +17,8 @@ class CreateMacroprocesoTable extends Migration
             $table->increments('codMacroP');
             $table->string('nombre');
             $table->string('estado');
-            $table->integer('codPlanF')->unsigned();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
-            $table->foreign('codPlanF')->references('codPlanF')->on('Auditoria');
         });
     }
 

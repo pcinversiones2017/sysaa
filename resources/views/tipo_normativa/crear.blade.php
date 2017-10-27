@@ -27,7 +27,7 @@
                     <form method="post" class="form-horizontal" action="{{URL::to('tipo_normativa/guardar')}}">
                         {{csrf_field()}}
                         <div class="form-group"><label class="col-sm-2 control-label">Tipo de Normativa</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="nombreTipoNormativa"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="nombre"></div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
