@@ -38,6 +38,15 @@ Route::group(['prefix' => 'cargofuncional'], function(){
     Route::get('cargo-funcional-eliminar/{id}','CargofuncionalController@eliminar')->name('cargof.eliminar');
 });
 
+Route::group(['prefix' => 'asignarrol'], function(){
+    Route::get('asignar-rol','AsignacionController@listar')->name('asignarr.listar');
+    Route::get('asignar-rol-crear','AsignacionController@crear')->name('asignarr.crear');
+    Route::post('asignar-rol-registrar','AsignacionController@registrar')->name('asignarr.registrar');
+    Route::get('asignar-rol-editar/{id}','AsignacionController@editar')->name('asignarr.editar');
+    Route::post('asignar-rol-actualizar','AsignacionController@actualizar')->name('asignarr.actualizar');
+    Route::get('asignar-rol-eliminar/{id}','AsignacionController@eliminar')->name('asignarr.eliminar');
+});
+
 //Plan
 Route::prefix('plan')->group(function () {
     Route::get('crear', 'PlanController@crear');
