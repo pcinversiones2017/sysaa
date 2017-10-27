@@ -10,6 +10,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const CREATED_AT = 'fecha_creado';
+    const UPDATED_AT = 'fecha_modificado';
+
     protected $table = "usuarios";
 
     /**
@@ -18,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombres', 'paterno','materno','email', 'password',
+        'nombres', 'paterno','materno','email', 'password','estado'
     ];
 
     /**
@@ -37,22 +40,22 @@ class User extends Authenticatable
 
     public function scopeExiste($cadenaSQL, $id)
     {
-        return $cadenaSQL->where('id',$id);
+        return $cadenaSQL->where('codUsu',$id);
     }
 
     public function setNombresAttribute($value)
     {
-        $this->attributes['nombres'] = Str::upper($value);
+        $this->attributes['nombres'] = Str::upper(trim($value));
     }
 
     public function setPaternoAttribute($value)
     {
-        $this->attributes['paterno'] = Str::upper($value);
+        $this->attributes['paterno'] = Str::upper(trim($value));
     }
 
     public function setMaternoAttribute($value)
     {
-        $this->attributes['materno'] = Str::upper($value);
+        $this->attributes['materno'] = Str::upper(trim($value));
     }
 
     public function getDatosAttribute()
