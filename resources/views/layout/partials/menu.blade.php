@@ -64,6 +64,7 @@
                     <ul class="nav nav-second-level">
                         <li class="{{$crearAuditoria?? ''}}"><a href="{{URL::to('auditoria/crear')}}">Crear Auditoria</a></li>
                         <li class="{{$listarAuditorias?? ''}}"><a href="{{URL::to('auditoria/listar')}}">Listar Auditorias</a></li>
+                        <li class="{{$crearPlan?? ''}}"><a href="{!! route('asignarr.listar') !!}">Asignar Rol</a></li>
                     </ul>
                 </li>
                 <li>

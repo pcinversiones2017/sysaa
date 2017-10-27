@@ -13,6 +13,7 @@ class RolTableSeeder extends Seeder
     public function run()
     {
         Rol::create(['nombre' => 'JEFE OCI']);
+        Rol::create(['nombre' => 'JEFE DE COMISION']);
         Rol::create(['nombre' => 'SUPERVISOR']);
         Rol::create(['nombre' => 'AUDITOR']);
     }
