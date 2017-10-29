@@ -32,7 +32,7 @@ class CronogramaController extends Controller
 
     }
 
-    public function guardar(CronogramaRequest $request)
+    public function guardar(Request $request)
     {
         $auditoria = Auditoria::find($request->codPlanf[0]);
         $auditoria->fechaIniPlanF = $request->fechaIni[0];

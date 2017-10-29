@@ -1,5 +1,10 @@
 @extends('layout.admin')
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {!! session('success') !!}
+        </div>
+    @endif
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -34,6 +39,7 @@
                             <th>NÚMERO</th>
                             <th>NOMBRE DE NORMATIVA</th>
                             <th>FECHA DE VIGENCIA</th>
+                            <th>ACCIONES</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -46,6 +52,7 @@
                                 <td>{{$normaCAuditoria->nombre}}</td>
                                 <td>{{$normaCAuditoria->fecha}}</td>
                                 <td>
+                                    <a href="{{URL::to('normaAuditoria/editar')}}/{{$normaCAuditoria->codNorm}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
 
                                 </td>
                             </tr>
