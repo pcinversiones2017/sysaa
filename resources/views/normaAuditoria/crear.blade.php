@@ -1,5 +1,10 @@
 @extends('layout.admin')
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {!! session('success') !!}
+        </div>
+    @endif
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -9,32 +14,34 @@
                 </div>
                 <div class="ibox-content">
                     <div class="row">
-                        {!! Form::open(['method' => 'POST', 'route' => 'usuario.registrar']) !!}
+                        {!! Form::open(['method' => 'POST', 'route' => 'normaAuditoria.guardar']) !!}
                         <div class="col-md-12">
 
                             <div class="col-md-3">
-                            {!! Field::text('tipoNormativa') !!}
+                                {!! Field::text('tipoNormativa') !!}
 
                             </div>
-                            <div class="col-md-3">
-                            {!! Field::number('numero') !!}
+
+                            <div class="col-md-2">
+                            {!! Field::text('numero') !!}
                             </div>
 
                             <div class="col-md-3">
                             {!! Field::text('nombre') !!}
+                             </div>
+                            <div class="col-md-3">
+                            <label class="">Marcoproceso</label>
+                            {!! Form::select('codMacroP', $macroProcesos, null, ['class' => 'form-control'] ) !!}
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                             {!! Field::date('fecha', \Carbon\Carbon::now()) !!}
                             </div>
-                            <div class="col-md-">
-                                {!! Field::date('fecha', \Carbon\Carbon::now()) !!}
+
+                            <div class="col-md-2" style="margin-top: 20px;">
+                                <input type="submit" class="btn btn-primary btn-outline" value="GUARDAR">
                             </div>
-
-
-
                         </div>
-
                         {!! Form::close() !!}
                     </div>
                 </div>
