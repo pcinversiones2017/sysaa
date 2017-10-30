@@ -13,7 +13,7 @@ class tipoNormativaSeeder extends Seeder
      */
     public function run()
     {
-        TipoNormativa::create(['nombre'=>'NORMATIVA APLICABLE A LA ENTIDAD Y MATERIA(S) A EXAMINAR','estado'=>'ACTIVO']);
-        TipoNormativa::create(['nombre'=>'NORMATIVA QUE REGULA LA AUDITORÍA DE CUMPLIMIENTO','estado'=>'ACTIVO']);
+        TipoNormativa::create(['nombre'=>'NORMATIVA APLICABLE A LA ENTIDAD Y MATERIA(S) A EXAMINAR']);
+        TipoNormativa::create(['nombre'=>'NORMATIVA QUE REGULA LA AUDITORÍA DE CUMPLIMIENTO']);
     }
 }
