@@ -38,22 +38,23 @@
                             <th>TIPO</th>
                             <th>NÚMERO</th>
                             <th>NOMBRE DE NORMATIVA</th>
+                            <th>MARCO PROCESO</th>
                             <th>FECHA DE VIGENCIA</th>
                             <th>ACCIONES</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php $i=1 ?>
-                        @foreach($normasCAuditoria as $normaCAuditoria)
+                        @foreach($normativaMacroproceso as $normativaMacroproceso)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$normaCAuditoria->tipoNormativa}}</td>
-                                <td>{{$normaCAuditoria->numero}}</td>
-                                <td>{{$normaCAuditoria->nombre}}</td>
-                                <td>{{$normaCAuditoria->fecha}}</td>
+                                <td>{{$normativaMacroproceso->Normativac->tipoNormativa}}</td>
+                                <td>{{$normativaMacroproceso->Normativac->numero}}</td>
+                                <td>{{$normativaMacroproceso->Normativac->nombre}}</td>
+                                <td>{{$normativaMacroproceso->Macroproceso->nombre}}</td>
+                                <td>{{$normativaMacroproceso->Normativac->fecha}}</td>
                                 <td>
-                                    <a href="{{URL::to('normaAuditoria/editar')}}/{{$normaCAuditoria->codNorm}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
-
+                                    <a href="{{URL::to('normaAuditoria/editar')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
                                 </td>
                             </tr>
                             <?php $i++ ?>
