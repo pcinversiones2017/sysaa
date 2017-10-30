@@ -16,4 +16,6 @@ class Macroproceso extends Model
     {
         return $this->hasMany(Procesoma::class, 'codMacroP');
     }
+
+
 }

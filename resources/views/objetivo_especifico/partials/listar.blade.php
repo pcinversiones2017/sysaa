@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-3">
-        <button class="btn btn-primary " data-toggle="modal" data-target="#myModalHorizontal">
+        <button class="btn btn-primary " data-toggle="modal" data-target="#modal_crear_objetivo_especifico">
             <i class="fa fa-plus"></i> Crear Objetivo Especifico
         </button>
     </div>

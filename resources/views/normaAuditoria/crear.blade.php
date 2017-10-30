@@ -28,11 +28,16 @@
 
                             <div class="col-md-3">
                             {!! Field::text('nombre') !!}
+                             </div>
+                            <div class="col-md-3">
+                            <label class="">Marcoproceso</label>
+                            {!! Form::select('codMacroP', $macroProcesos, null, ['class' => 'form-control'] ) !!}
                             </div>
 
                             <div class="col-md-3">
                             {!! Field::date('fecha', \Carbon\Carbon::now()) !!}
                             </div>
+
                             <div class="col-md-2" style="margin-top: 20px;">
                                 <input type="submit" class="btn btn-primary btn-outline" value="GUARDAR">
                             </div>

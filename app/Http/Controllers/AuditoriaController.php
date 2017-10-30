@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auditoria;
+use App\Models\Macroproceso;
 use App\Models\ObjetivoGeneral;
 use App\Models\Plan;
 use Illuminate\Http\Request;
@@ -28,8 +29,11 @@ class AuditoriaController extends Controller
     public function crear()
     {
         $planes = Plan::pluck('nombrePlan', 'codPlanA');
+        $peridoIni = date('d-m-Y');
+        $peridoFin = date('d-m-Y', strtotime('+14 day', strtotime($peridoIni)));
+        $periodo = $peridoIni . ' hasta ' . $peridoFin;
         $crearAuditoria = 'active';
-        return view('auditoria.crear')->with(compact('planes', 'crearAuditoria'));
+        return view('auditoria.crear')->with(compact('planes', 'crearAuditoria', 'periodo'));
     }
 
     /**
@@ -54,6 +58,11 @@ class AuditoriaController extends Controller
         $auditoria->periodoFinPlanF = $request->periodoFinPlanF;
         $auditoria->codPlanA = $request->codPlanA;
         $auditoria->estadoAuditoria = 'pendiente';
+
+        $periodo = explode('hasta', $request->periodo);
+        $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($periodo[0]));
+        $auditoria->periodoFinPlanF = date('Y-m-d', strtotime($periodo[1]));
+
         $auditoria->save();
 
         if(!empty($request->nombreObjetivoGeneral)){
@@ -75,7 +84,8 @@ class AuditoriaController extends Controller
     public function mostrar(Request $request)
     {
         $auditoria = Auditoria::find($request->codPlanF);
-        return view('auditoria.mostrar')->with(compact('auditoria'));
+        $macroprocesos = Macroproceso::all();
+        return view('auditoria.mostrar')->with(compact('auditoria', 'macroprocesos'));
     }
 
     /**
@@ -84,10 +94,14 @@ class AuditoriaController extends Controller
      * @param  \App\Models\Auditoria  $auditoria
      * @return \Illuminate\Http\Response
      */
-    public function editar(Auditoria $auditoria)
+    public function editar(Request $request)
     {
-        $planes = Plan::all();
-        return view('auditoria.editar')->with(compact('planes'));
+        $planes = Plan::pluck('nombrePlan', 'codPlanA');
+        $auditoria = Auditoria::find($request->codPlanF);
+        $periodoIni = date('d-m-Y', strtotime($auditoria->periodoIniPlanF));
+        $periodoFin = date('d-m-Y', strtotime($auditoria->periodoFinPlanF));
+        $periodo = $periodoIni . ' hasta ' . $periodoFin;
+        return view('auditoria.editar')->with(compact('planes', 'auditoria', 'periodo'));
     }
 
     /**
@@ -97,9 +111,36 @@ class AuditoriaController extends Controller
      * @param  \App\Models\Auditoria  $auditoria
      * @return \Illuminate\Http\Response
      */
-    public function actualizar(Request $request, Auditoria $auditoria)
+    public function actualizar(Request $request)
     {
-        //
+        $auditoria = Auditoria::find($request->codPlanF);
+        $auditoria->nombrePlanF = $request->nombrePlanF;
+        $auditoria->codigoServicioCP = $request->codigoServicioCP;
+        $auditoria->tipoServicioCP = $request->tipoServicioCP;
+        $auditoria->organoCI = $request->organoCI;
+        $auditoria->origen = $request->origen;
+        $auditoria->entidadAuditada = $request->entidadAuditada;
+        $auditoria->tipoDemanda = $request->tipoDemanda;
+        $auditoria->fechaIniPlanF = $request->fechaIniPlanF;
+        $auditoria->fechaFinPlanF = $request->fechaFinPlanF;
+        $auditoria->periodoIniPlanF = $request->periodoIniPlanF;
+        $auditoria->periodoFinPlanF = $request->periodoFinPlanF;
+        $auditoria->codPlanA = $request->codPlanA;
+        $auditoria->estadoAuditoria = 'pendiente';
+
+        $periodo = explode('hasta', $request->periodo);
+        $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($periodo[0]));
+        $auditoria->periodoFinPlanF = date('Y-m-d', strtotime($periodo[1]));
+
+        $auditoria->save();
+
+        if(!empty($request->nombreObjetivoGeneral)){
+            $objetivoGeneral = ObjetivoGeneral::find($auditoria->objetivoGeneral->codObjGen);
+            $objetivoGeneral->nombre = $request->nombreObjetivoGeneral;
+            $objetivoGeneral->save();
+        }
+
+        return redirect()->route('auditoria.listar')->with('success', 'Registro actualizado correctamente');
     }
 
     /**

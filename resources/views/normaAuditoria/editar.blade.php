@@ -11,31 +11,35 @@
                     <div class="row">
 
                         {!! Form::open(['method' => 'POST', 'route' => 'normaAuditoria.actualizar']) !!}
-
-                        <input type="hidden" value="{{$normasCAuditoria->codNorm}}" name="codNorm">
+                       <input type="hidden" value="{{$normativaMacroproceso->codNormMacro}}" name="codNormMacro">
+                        <input type="hidden" value="{{$normativaMacroproceso->codNorm}}" name="codNorm">
+                        <input type="hidden" value="{{$normativaMacroproceso->codMacroP}}" name="codMacroP">
                         <div class="col-md-12">
 
                             <div class="col-md-3">
-                                {!! Field::text('tipoNormativa',$normasCAuditoria->tipoNormativa) !!}
+                                {!! Field::text('tipoNormativa',$normativaMacroproceso->Normativac->tipoNormativa) !!}
 
                             </div>
 
                             <div class="col-md-2">
-                                {!! Field::text('numero',$normasCAuditoria->numero) !!}
+                                {!! Field::text('numero',$normativaMacroproceso->Normativac->numero) !!}
                             </div>
 
                             <div class="col-md-3">
-                                {!! Field::text('nombre',$normasCAuditoria->nombre) !!}
+                                {!! Field::text('nombre',$normativaMacroproceso->Normativac->nombre) !!}
+                            </div>
+                            <div class="col-md-3">
+                                <label class="">Marcoproceso</label>
+                                {!! Form::select('codMacroP', $macroProcesos, null, ['class' => 'form-control'] ) !!}
                             </div>
 
                             <div class="col-md-2">
-                                {!! Field::date('fecha',$normasCAuditoria->fecha) !!}
+                                {!! Field::date('fecha',$normativaMacroproceso->Normativac->fecha) !!}
                             </div>
                             <div class="col-md-2" style="margin-top: 20px;">
                                 <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
                             </div>
                         </div>
-
                         {!! Form::close() !!}
                     </div>
                 </div>

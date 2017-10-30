@@ -20,4 +20,6 @@ class Normativac extends Model
         'tipoNormativa', 'nombre','numero','fecha', 'codTipNorm'];
 */
 
+
+
 }
