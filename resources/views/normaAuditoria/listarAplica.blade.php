@@ -53,9 +53,10 @@
                                 <td>{{$normativaMacroproceso->Normativac->nombre}}</td>
                                 <td>{{$normativaMacroproceso->Macroproceso->nombre}}</td>
                                 <td>{{$normativaMacroproceso->Normativac->fecha}}</td>
-                                <td>
-                                    <a href="{{URL::to('normaAuditoria/editar')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
+                                <td><a href="{{URL::to('normaAuditoria/editar')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
+                                <a href="{{URL::to('normaAuditoria/editar')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Adjuntar </a></td>
                                 </td>
+
                             </tr>
                             <?php $i++ ?>
                         @endforeach
