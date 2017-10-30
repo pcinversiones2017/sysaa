@@ -42,17 +42,16 @@
                         </thead>
                         <tbody>
                         @foreach($macroprocesos as $n =>$macroproceso)
-                        <tr>
-                            <td align="middle">{{$n+1}}</td>
-                            <td>{{$macroproceso->nombre}}</td>
-                            <td>{{$macroproceso->fecha_creado}}</td>
-                            <td>
-                                <a href="{{URL::to('macroproceso/mostrar')}}/{{$macroproceso->codMacroP}}" class="btn btn-white btn-sm">
-                                    <i class="fa fa-folder"></i> Ver </a>
-                                <a href="{{URL::to('macroproceso/editar')}}/{{$macroproceso->codMacroP}}" class="btn btn-white btn-sm">
-                                    <i class="fa fa-pencil"></i> Editar </a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td align="middle">{{$n+1}}</td>
+                                <td>{{$macroproceso->nombre}}</td>
+                                <td>{{$macroproceso->fecha_creado}}</td>
+                                <td>
+                                    <a href="{{URL::to('macroproceso/mostrar')}}/{{$macroproceso->codMacroP}}" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> Ver </a>
+                                    <a href="{{URL::to('macroproceso/editar')}}/{{$macroproceso->codMacroP}}" class="btn btn-white btn-sm">
+                                        <i class="fa fa-pencil"></i> Editar </a>
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>

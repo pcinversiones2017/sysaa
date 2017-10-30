@@ -44,7 +44,7 @@ class ActividadController extends Controller
         $actividad->codProSP = $request->codProSP;
         $actividad->save();
 
-        return redirect('actividad/listar');
+        return redirect('procedimientosp/mostrar/' . $request->codProSP);
 
     }
 

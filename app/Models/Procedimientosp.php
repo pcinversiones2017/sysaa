@@ -14,6 +14,11 @@ class Procedimientosp extends Model
 
     public function subProceso()
     {
-        return $this->hasMany(Subproceso::class);
+        return $this->belongsTo(Subproceso::class,'codSubPro');
     }
+    public function actividadeS()
+    {
+        return $this->hasMany(Actividad::class,'codProSP');
+    }
+
 }
