@@ -150,14 +150,15 @@ Route::group(['prefix' => 'normaAuditoria'], function(){
 
 });
 //Auditoria
-Route::prefix('auditoria')->group(function (){
+Route::group(['prefix' => 'auditoria'], function (){
 
    Route::get('crear', 'AuditoriaController@crear')->name('auditoria.crear');
    Route::get('mostrar/{codPlanF}', 'AuditoriaController@mostrar')->name('auditoria.mostrar');
    Route::post('guardar', 'AuditoriaController@guardar')->name('auditoria.guardar');
    Route::get('listar', 'AuditoriaController@listar')->name('auditoria.listar');
    Route::get('editar/{codPlanF}', 'AuditoriaController@editar')->name('auditoria.editar');
-   Route::post('actualizar', 'PlanController@actualizar')->name('auditoria.actualizar');
+   Route::post('actualizar', 'AuditoriaController@actualizar')->name('auditoria.actualizar');
+
 });
 //Objetivo General
 
@@ -169,8 +170,9 @@ Route::prefix('objetivo-general')->group(function (){
 //Objetivo Especifico
 Route::prefix('objetivo-especifico')->group(function (){
 
-   Route::post('guardar', 'ObjetivoEspecificoController@guardar')->name('obejtivoesp.guardar');
-   Route::get('mostrar/{codObjEsp}', 'ObjetivoEspecificoController@mostrar')->name('obajetivoesp.mostrar');
+   Route::post('guardar', 'ObjetivoEspecificoController@guardar')->name('objetivo-especifico.guardar');
+   Route::get('mostrar/{codObjEsp}', 'ObjetivoEspecificoController@mostrar')->name('objetivo-especifico.mostrar');
+   Route::post('actualizar', 'ObjetivoEspecificoConotroller@actualizar')->name('objetivo-especifico.actualizar');
 });
 
 

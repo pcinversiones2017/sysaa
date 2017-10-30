@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal_crear_objetivo_especifico" tabindex="-1" role="dialog"
+<div class="modal fade" id="modal_editar_objetivo_especifico" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -10,12 +10,11 @@
                     <span class="sr-only">Close</span>
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                    Crear Objetivo Especifico
+                    Editar Objetivo Especifico
                 </h4>
-
             </div>
-
-            {!! Form::open(['method' => 'POST', 'route' => 'objetivo-especifico.guardar', 'class' => 'form-horizontal']) !!}
+            {!! Form::open(['method' => 'POST', 'route' => 'objetivo-especifico.actualizar']) !!}
+                <!-- Modal Body -->
                 <div class="modal-body">
 
                     <div class="form-horizontal">
@@ -27,12 +26,9 @@
                             <label  class="col-sm-2 control-label"
                                     for="inputEmail3">Detalle</label>
                             {!! Form::textarea('nombre', null, ['class' => 'form-control', 'size' => '50x5']) !!}
+
                         </div>
-
-
-
                         {!! Field::text('materia', ['label' => 'Materia a examinar']) !!}
-
                         <div class="form-group"><label class="col-sm-2">Macroproceso</label>
                             <div class="col-sm-10">
                                 <select class="form-control m-b" name="codMacroP">
