@@ -156,6 +156,9 @@ Route::group(['prefix' => 'normaAuditoria'], function(){
     Route::get('listar', 'NormaAuditoriaController@listar')->name('normaAuditoria.listar');
     Route::get('listarAplica', 'NormaAuditoriaController@listarAplica')->name('normaAuditoria.listarAplica');
     Route::get('crear', 'NormaAuditoriaController@crear')->name('normaAuditoria.crear');
+    Route::post('guardar', 'NormaAuditoriaController@guardar')->name('normaAuditoria.guardar');
+    Route::get('editar/{codNorm}', 'NormaAuditoriaController@editar')->name('normaAuditoria.editar');
+    Route::post('actualizar', 'NormaAuditoriaController@actualizar')->name('normaAuditoria.actualizar');
 
 });
 //Auditoria
