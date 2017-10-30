@@ -15,8 +15,8 @@ class CreateActividadTable extends Migration
     {
         Schema::create('Actividad', function (Blueprint $table) {
             $table->increments('codAct');
-            $table->string('nombre');
             $table->string('responsable');
+            $table->text('nombre');
             $table->integer('codProSP')->unsigned();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();

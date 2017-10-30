@@ -51,7 +51,7 @@ class SubprocesoController extends Controller
         $subProceso-> codProMA = $request->codProMA;
         $subProceso->save();
 
-        return redirect('subproceso/listar');
+        return redirect('procesoma/mostrar/' . $request->codProMA);
     }
 
     /**
@@ -60,9 +60,10 @@ class SubprocesoController extends Controller
      * @param  \App\Models\Subproceso  $subproceso
      * @return \Illuminate\Http\Response
      */
-    public function mostrar(Subproceso $subproceso)
+    public function mostrar($codSubPro)
     {
-        //
+        $subproceso = Subproceso::find($codSubPro);
+        return view('subproceso.mostrar')->with(compact('subproceso'));
     }
 
     /**

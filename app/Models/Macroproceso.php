@@ -14,6 +14,6 @@ class Macroproceso extends Model
 
     public function procesoMA()
     {
-        return $this->hasMany(Procesoma::class);
+        return $this->hasMany(Procesoma::class, 'codMacroP');
     }
 }

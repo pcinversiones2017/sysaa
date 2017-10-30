@@ -73,30 +73,58 @@ Route::group(['prefix' => 'plan'], function () {
 });
 
 
-Route::prefix('macroproceso')->group(function () {
-    Route::get('crear', 'MacroprocesoController@crear');
-    Route::get('mostrar/{codMacroP}', 'MacroprocesoController@mostrar');
-    Route::post('guardar', 'MacroprocesoController@guardar');
-    Route::post('guardar_procesoMA', 'MacroprocesoController@guardar_procesoMA');
-    Route::get('listar', 'MacroprocesoController@listar');
-    Route::get('editar/{codMacroP}', 'MacroprocesoController@editar');
-    Route::post('actualizar', 'MacroprocesoController@actualizar');
+Route::group(['prefix' => 'macroproceso'], function () {
+    Route::get('crear', 'MacroprocesoController@crear')->name('macroproceso.listar');
+    Route::get('mostrar/{codMacroP}', 'MacroprocesoController@mostrar')->name('macroproceso.mostrar');
+    Route::post('guardar', 'MacroprocesoController@guardar')->name('macroproceso.guardar');
+    Route::post('guardar_procesoMA', 'MacroprocesoController@guardar_procesoMA')->name('macroproceso.guardar_procesoMA');
+    Route::get('listar', 'MacroprocesoController@listar')->name('macroproceso.listar');
+    Route::get('editar/{codMacroP}', 'MacroprocesoController@editar')->name('macroproceso.editar');
+    Route::post('actualizar', 'MacroprocesoController@actualizar')->name('macroproceso.actualizar');
 });
 
-Route::prefix('procesoma')->group(function () {
-    Route::get('crear', 'ProcesomaController@crear');
-    Route::post('guardar', 'ProcesomaController@guardar');
-    Route::get('listar', 'ProcesomaController@listar');
-    Route::get('editar/{codProMA}', 'ProcesomaController@editar');
-    Route::post('actualizar', 'ProcesomaController@actualizar');
+Route::group(['prefix' => 'procesoma'],function () {
+    Route::get('crear', 'ProcesomaController@crear')->name('procesoma.crear');
+    Route::get('mostrar/{codProMA}', 'ProcesomaController@mostrar')->name('procesoma.mostrar');
+    Route::post('guardar', 'ProcesomaController@guardar')->name('procesoma.guardar');
+    Route::get('listar', 'ProcesomaController@listar')->name('procesoma.listar');
+    Route::get('editar/{codProMA}', 'ProcesomaController@editar')->name('procesoma.editar');
+    Route::post('actualizar', 'ProcesomaController@actualizar')->name('procesoma.actualizar');
 });
 
-Route::prefix('tipo_normativa')->group(function () {
-    Route::get('crear', 'TipoNormativaController@crear');
-    Route::post('guardar', 'TipoNormativaController@guardar');
-    Route::get('listar', 'TipoNormativaController@listar');
-    Route::get('editar/{codTipNorm}', 'TipoNormativaController@editar');
-    Route::post('actualizar', 'TipoNormativaController@actualizar');
+Route::group(['prefix' => 'subproceso'],function () {
+    Route::get('crear', 'SubprocesoController@crear')->name('subproceso.crear');
+    Route::get('mostrar/{codSubPro}', 'SubprocesoController@mostrar')->name('subproceso.mostrar');
+    Route::post('guardar', 'SubprocesoController@guardar')->name('subproceso.guardar');
+    Route::get('listar', 'SubprocesoController@listar')->name('subproceso.listar');
+    Route::get('editar/{codSubPro}', 'SubprocesoController@editar')->name('subproceso.editar');
+    Route::post('actualizar', 'SubprocesoController@actualizar')->name('subproceso.actualizar');
+});
+
+Route::group(['prefix' => 'procedimientosp'],function () {
+    Route::get('crear', 'ProcedimientospController@crear')->name('procedimientosp.crear');
+    Route::get('mostrar/{codProSP}', 'ProcedimientospController@mostrar')->name('procedimientosp.mostrar');
+    Route::post('guardar', 'ProcedimientospController@guardar')->name('procedimientosp.guardar');
+    Route::get('listar', 'ProcedimientospController@listar')->name('procedimientosp.listar');
+    Route::get('editar/{codProSP}', 'ProcedimientospController@editar')->name('procedimientosp.editar');
+    Route::post('actualizar', 'ProcedimientospController@actualizar')->name('procedimientosp.actualizar');
+});
+
+Route::group(['prefix' => 'actividad'],function () {
+    Route::get('crear', 'ActividadController@crear')->name('actividad.crear');
+    Route::get('mostrar/{codAct}', 'ActividadController@mostrar')->name('actividad.mostrar');
+    Route::post('guardar', 'ActividadController@guardar')->name('actividad.guardar');
+    Route::get('listar', 'ActividadController@listar')->name('actividad.listar');
+    Route::get('editar/{codAct}', 'ActividadController@editar')->name('actividad.editar');
+    Route::post('actualizar', 'ActividadController@actualizar')->name('actividad.actualizar');
+});
+
+Route::group(['prefix' => 'tipo_normativa'],function () {
+    Route::get('crear', 'TipoNormativaController@crear')->name('tipo_normativa.crear');
+    Route::post('guardar', 'TipoNormativaController@guardar')->name('tipo_normativa.guardar');
+    Route::get('listar', 'TipoNormativaController@listar')->name('tipo_normativa.listar');
+    Route::get('editar/{codTipNorm}', 'TipoNormativaController@editar')->name('tipo_normativa.editar');
+    Route::post('actualizar', 'TipoNormativaController@actualizar')->name('tipo_normativa.actualizar');
 });
 Route::prefix('actividad')->group(function () {
     Route::get('crear', 'ActividadController@crear');

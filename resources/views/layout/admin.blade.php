@@ -41,4 +41,5 @@
 {!! Html::script('js/inspinia.js') !!}
 </body>
 
+
 </html>
