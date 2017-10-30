@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Str;
-use Auth;
+
 
 class User extends Authenticatable
 {
@@ -14,6 +14,7 @@ class User extends Authenticatable
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
 
+    protected $primaryKey = 'codUsu';
     protected $table = "usuarios";
 
     /**

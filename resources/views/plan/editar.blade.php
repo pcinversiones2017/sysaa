@@ -24,20 +24,16 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <form method="post" class="form-horizontal" action="{{URL::to('plan/actualizar')}}">
-                        {{csrf_field()}}
-                        <input type="hidden" value="{{$plan->codPlanA}}" name="codPlanA">
-                        <div class="form-group"><label class="col-sm-2 control-label">Nombre del plan</label>
 
-                            <div class="col-sm-10"><input type="text" class="form-control" name="nombrePlan" value="{{$plan->nombrePlan}}"></div>
-                        </div>
+                    {!! Form::open(['method' => 'POST', 'route' => 'plan.actualizar']) !!}
+                    <input type="hidden" value="{{$plan->codPlanA}}" name="codPlanA">
+                    {!! Field::text('nombrePlan', $plan->nombrePlan, ['label' => 'Nombre del plan']) !!}
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
+                        <a href="{!! route('plan.listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                    </div>
+                    {!! Form::close() !!}
 
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-2">
-                                <button class="btn btn-primary" type="submit">Guardar</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>

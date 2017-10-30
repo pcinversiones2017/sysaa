@@ -46,21 +46,24 @@
                     </ul>
                 </li>
                  <li class="">
-                    <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Tipo Normativa</span><span class="fa arrow"></span></a>
+                    <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Tipo Normativa</span>
+                        <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$creartipoNormativa?? ''}}"><a href="{{URL::to('tipo_normativa/crear')}}">Crear Tipo de Normativa</a></li>
                         <li class="{{$listartipoNormativa?? ''}}"><a href="{{URL::to('tipo_normativa/listar')}}">Listar Tipo de Normativa</a></li>
                     </ul>
                 </li>
                 <li class="">
-                    <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">ProcesoMA</span><span class="fa arrow"></span></a>
+                    <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">ProcesoMA</span>
+                        <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearProcesoma?? ''}}"><a href="{{URL::to('procesoma/crear')}}">Crear ProcesoMA</a></li>
                         <li class="{{$listarProcesoma?? ''}}"><a href="{{URL::to('procesoma/listar')}}">Listar ProcesoMA</a></li>
                     </ul>
                 </li>
                 <li class="">
-                    <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Auditoria</span> <span class="fa arrow"></span></a>
+                    <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Auditoria</span>
+                        <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearAuditoria?? ''}}"><a href="{{URL::to('auditoria/crear')}}">Crear Auditoria</a></li>
                         <li class="{{$listarAuditorias?? ''}}"><a href="{{URL::to('auditoria/listar')}}">Listar Auditorias</a></li>
@@ -68,13 +71,47 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Cronograma y Plazos</span><span class="fa arrow"></span></a>
+                    <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Cronograma y Plazos
+                        </span>
+                        <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li class="{{$crearCronograma??''}}"><a href="{{URL::to('cronograma/crear')}}">Crear cronograma</a></li>
-                        <li class="{{$listarCronograma??''}}" ><a href="{{URL::to('cronograma/listar')}}">Listar Cronogamas</a></li>
+                        <li class="{{$crearCronograma??''}}"><a href="{{URL::to('cronograma/crear')}}">Crear cronograma
+                            </a></li>
+                        <li class="{{$listarCronograma??''}}" ><a href="{{URL::to('cronograma/listar')}}">Listar Cronogamas
+                            </a></li>
                     </ul>
                 </li>
-
+                    <li>
+                        <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Normativas</span>
+                            <span class="fa arrow"></span></a>
+                        <ul class="nav  collapse">
+                            <li>
+                                <a href="{{URL::to('normaAuditoria/listar')}}">
+                                    <i class="fa fa fa-long-arrow-right fa-lg"></i>
+                                    <span class="nav-label">Normativas aplicable a la entidad</span>
+                                    <span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level collapse">
+                                    <li>
+                                        <a href="{{URL::to('normaAuditoria/crear')}}">
+                                            Crear norma applicable </a>
+                                        <a href="{{URL::to('normaAuditoria/listarAplica')}}">Listar normas</a>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{URL::to('normaAuditoria/listar')}}">
+                                    <i class="fa fa fa-long-arrow-right fa-lg"></i>
+                                    <span class="nav-label">
+                                        Normativas que regulan auditoria (*)</span>
+                                    <span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level collapse">
+                                    <li class="{{$crearCronograma??''}}">
+                                        <a href="{{URL::to('normaAuditoria/listar')}}">listar
+                                            (*)
+                                        </a>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
             </ul>
 
         </div>

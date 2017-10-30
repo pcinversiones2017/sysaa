@@ -27,7 +27,7 @@ class AuditoriaController extends Controller
      */
     public function crear()
     {
-        $planes = Plan::all();
+        $planes = Plan::pluck('nombrePlan', 'codPlanA');
         $crearAuditoria = 'active';
         return view('auditoria.crear')->with(compact('planes', 'crearAuditoria'));
     }
@@ -63,7 +63,7 @@ class AuditoriaController extends Controller
             $objetivoGeneral->save();
         }
 
-        return redirect('auditoria/listar');
+        return redirect()->route('auditoria.listar')->with('success', 'Auditoria registrada');
     }
 
     /**

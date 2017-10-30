@@ -6,13 +6,17 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Login\ValidarRequest;
 use App\Models\Usuariorol;
 use App\User;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function iniciarsesion()
-    {
-    	return view('login.login');
+    use AuthenticatesUsers;
+    protected $redirectTo = '/test';
+
+    public function login(){
+
+        return view('login.login');
     }
 
     public function authenticate(ValidarRequest $request)
@@ -27,9 +31,9 @@ class LoginController extends Controller
     		$ValidarUsuario = Usuariorol::Validar($ObtenerID)->count(); 
     		if($ValidarUsuario == 1)
     		{
-    			if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'estado' => true ]))
+    			if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
 		    	{
-		    		return redirect()->intended('admin');
+		    		return redirect('inicio');
 		    	}else 
 		    	{
 		    		return back()->with('danger','No se ha podido iniciar sesion.');

@@ -31,23 +31,15 @@
 
 </div>
 
-<<<<<<< HEAD
 {!! Html::script('js/jquery-3.1.1.min.js') !!}
 {!! Html::script('js/bootstrap.min.js') !!}
 {!! Html::script('js/plugins/metisMenu/jquery.metisMenu.js') !!}
 {!! Html::script('js/plugins/slimscroll/jquery.slimscroll.min.js') !!}
-=======
-<!-- Mainly scripts -->
-<script src="{{URL::to('js/jquery-3.1.1.min.js')}}"></script>
-<script src="{{URL::to('js/bootstrap.min.js')}}"></script>
-<script src="{{URL::to('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
-<script src="{{URL::to('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
-<script src="{{URL::to('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
->>>>>>> 13a6b4a402c1f8bc747af98417005f1b8c9a97b9
 
 @yield('js-script')
 
 {!! Html::script('js/inspinia.js') !!}
 </body>
+
 
 </html>

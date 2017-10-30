@@ -15,9 +15,9 @@ class CreateArchivosTable extends Migration
     {
         Schema::create('Archivos', function (Blueprint $table) {
             $table->increments('codArc');
-            $table->string('name');
-            $table->string('ruta');
+            $table->string('nombre');
             $table->integer('codInf')->unsigned();
+            $table->boolean('estado')->default(true);
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
             $table->foreign('codInf')->references('codInf')->on('Informe');

@@ -15,9 +15,10 @@ class CreateNormativaCTable extends Migration
     {
         Schema::create('Normativa_C', function (Blueprint $table) {
             $table->increments('codNorm');
+            $table->string('tipoNormativa');
             $table->string('nombre');
             $table->string('numero');
-            $table->string('fecha');
+            $table->date('fecha');
             $table->integer('codTipNorm')->unsigned();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();

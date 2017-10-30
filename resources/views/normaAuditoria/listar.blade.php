@@ -1,11 +1,10 @@
 @extends('layout.admin')
 @section('content')
-    @include('partials.alert')
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de planes </h5>
+                    <h5>LISTA DE NORMATIVAS QUE REGULA LA AUDITORÍA DE CUMPLIMIENTO</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -25,33 +24,33 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <a type="button" href="{{URL::to('plan/crear')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Plan Anual</a>
-                        </div>
-                    </div>
+
+
                     <table class="table table-bordered">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nombre</th>
-                            <th>Fecha creacion</th>
-                            <th>Acciones</th>
+                            <th>TIPO</th>
+                            <th>NÚMERO</th>
+                            <th>NOMBRE DE NORMATIVA</th>
+                            <th>FECHA DE VIGENCIA</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php $i=1 ?>
-                        @foreach($planes as $plan)
-                        <tr>
-                            <td>{{$i}}</td>
-                            <td>{{$plan->nombrePlan}}</td>
-                            <td>{{$plan->fecha_creado}}</td>
-                            <td>
-                                <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> Ver </a>
-                                <a href="{{URL::to('plan/editar')}}/{{$plan->codPlanA}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
-                            </td>
-                        </tr>
-                        @endforeach
+                            <?php $i=1 ?>
+                            @foreach($normasCAuditoria as $normaCAuditoria)
+                                <tr>
+                                    <td>{{$i}}</td>
+                                    <td>{{$normaCAuditoria->tipoNormativa}}</td>
+                                    <td>{{$normaCAuditoria->numero}}</td>
+                                    <td>{{$normaCAuditoria->nombre}}</td>
+                                    <td>{{$normaCAuditoria->fecha}}</td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <?php $i++ ?>
+                            @endforeach
                         </tbody>
                     </table>
 
