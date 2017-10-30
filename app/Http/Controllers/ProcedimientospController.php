@@ -32,38 +32,41 @@ class ProcedimientospController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function guardar(Request $request)
     {
         $procedimientoSP = new Procedimientosp();
-        $procedimientoSP-> nombre = $request->nombre;
-        $procedimientoSP-> codSubPro = $request-> codSubPro;
+        $procedimientoSP->nombre = $request->nombre;
+        $procedimientoSP->codSubPro = $request->codSubPro;
         $procedimientoSP->save();
+        return redirect('subproceso/mostrar/' . $request->codSubPro);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Procedimientosp  $procedimientosp
+     * @param  \App\Models\Procedimientosp $procedimientosp
      * @return \Illuminate\Http\Response
      */
-    public function mostrar(Procedimientosp $procedimientosp)
+    public function mostrar($codProSP)
     {
-
+        $procedimientosp = Procedimientosp::find($codProSP);
+        return view('procedimientosp.mostrar')->with(compact('procedimientosp'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Procedimientosp  $procedimientosp
+     * @param  \App\Models\Procedimientosp $procedimientosp
      * @return \Illuminate\Http\Response
      */
+
     public function editar(Request $request)
     {
         $procedimientoSP = Procedimientosp::find($request->codProSP);
-        return view('procedimientosp.editar')->with(compact('procedimientoSP'));
+        return view('procedimientosp.editar')->with(compact('pro'));
     }
 
     /**

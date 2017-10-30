@@ -14,12 +14,15 @@ class MacroprocesoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function listar()
     {
         $macroprocesos = Macroproceso::all();
         $listarmacroprocesos = 'active';
         return view('macroproceso.listar')->with(compact('macroprocesos','listarmacroprocesos'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -42,11 +45,12 @@ class MacroprocesoController extends Controller
      */
     public function guardar(Request $request)
     {
+
+
         $macroprocesoss = new Macroproceso();
         $macroprocesoss->nombre = $request->nombre;
         $macroprocesoss->estado = 'activo';
         $macroprocesoss->save();
-
         return redirect('macroproceso/listar');
     }
 
@@ -56,9 +60,9 @@ class MacroprocesoController extends Controller
      * @param  \App\Models\Macroproceso  $macroproceso
      * @return \Illuminate\Http\Response
      */
-    public function mostrar(Request $request)
+    public function mostrar($codMacroP)
     {
-        $macroproceso = Macroproceso::find($request->codMacroP);
+        $macroproceso = Macroproceso::find($codMacroP);
         return view('macroproceso.mostrar')->with(compact('macroproceso'));
     }
 
@@ -69,23 +73,7 @@ class MacroprocesoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function guardar_procesoMA(Request $request)
-    {
 
-        $macroprocesoss = new  Macroproceso();
-        $macroprocesoss->nombre = $request->nombre;
-        $macroprocesoss->estado = 'activo';
-        $macroprocesoss->save();
-
-        if(!empty($request->nombre)){
-            $procesoma = new Procesoma();
-            $procesoma->nombre = $request->nombrema;
-            $procesoma->estado = 'active';
-            $procesoma->codMacroP = $macroprocesoss->codMacroP;
-            $procesoma->save();
-        }
-        return redirect('macroproceso/listar');
-    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -96,6 +84,7 @@ class MacroprocesoController extends Controller
     {
         $macroproceso = Macroproceso::find($request->codMacroP);
         return view('macroproceso.editar')->with(compact('macroproceso'));
+
     }
 
     /**
@@ -107,11 +96,13 @@ class MacroprocesoController extends Controller
      */
     public function actualizar(Request $request)
     {
+
         $macroproceso = Macroproceso::find($request->codMacroP);
         $macroproceso->nombre = $request->nombre;
         $macroproceso->save();
 
         return redirect('macroproceso/listar');
+
 
     }
 
@@ -121,8 +112,10 @@ class MacroprocesoController extends Controller
      * @param  \App\Models\Macroproceso  $macroproceso
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Macroproceso $macroproceso)
+    public function eliminar($codMacroP)
     {
-        //
+      /*
+        Macroproceso::find($id)->delete();
+        return response()->json(['done']);*/
     }
 }

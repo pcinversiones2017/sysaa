@@ -12,6 +12,8 @@ class ProcesomaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function listar()
     {
         $procesosma = Procesoma::all();
@@ -46,20 +48,21 @@ class ProcesomaController extends Controller
         $procesoma->estado = 'activo';
         $procesoma->codMacroP = $request->codMacroP;
         $procesoma->save();
-
-        return redirect('procesoma/listar');
+            return redirect()->route('macroproceso.mostrar', [$request->codMacroP])->with('success','Se grabo correctamente');
     }
 
-    /**
+    /**s
      * Display the specified resource.
      *
      * @param  \App\Models\Procesoma  $procesoMA
      * @return \Illuminate\Http\Response
      */
-    public function show(Procesoma $procesoMA)
+    public function mostrar($codProMA)
     {
-        //
+        $procesoma = Procesoma::find($codProMA);
+        return view('procesoma.mostrar')->with(compact('procesoma'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

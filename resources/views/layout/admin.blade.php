@@ -166,6 +166,7 @@
 <script src="{{URL::to('js/bootstrap.min.js')}}"></script>
 <script src="{{URL::to('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
 <script src="{{URL::to('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+<script src="{{URL::to('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
 
 <!-- Flot -->
 {{--<script src="{{URL::to('js/plugins/flot/jquery.flot.js')}}"></script>--}}
