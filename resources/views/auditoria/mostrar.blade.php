@@ -86,6 +86,7 @@
                                                 <form method="post" action="{{URL::to('objetivo-general/guardar')}}">
                                                     {{csrf_field()}}
                                                     <input type="hidden" name="codPlanF" value="{{$auditoria->codPlanF}}">
+                                                    <input type="hidden" name="codPlanF" value="{{$auditoria->codPlanF}}">
                                                     <div class="col-md-12">
                                                         <div class="form-group"><label class="">Objetivo General</label>
                                                             <textarea class="form-control" name="nombre"></textarea>

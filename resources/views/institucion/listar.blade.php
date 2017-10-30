@@ -1,15 +1,11 @@
 @extends('layout.admin')
 @section('content')
-    @if (session('success'))
-        <div class="alert alert-success" role="alert">
-            {!! session('success') !!}
-        </div>
-    @endif
+    @include('partials.alert')
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>LISTA DE NORMATIVAS QUE REGULA LA AUDITORÍA DE CUMPLIMIENTO</h5>
+                    <h5>Lista de planes </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -29,38 +25,35 @@
                     </div>
                 </div>
                 <div class="ibox-content">
+                    <div class="row">
 
-
+                        <div class="col-sm-3">
+                        <!--
+                      <a type="button" href="{{URL::to('plan/crear')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Plan Anual</a>
+                      -->
+                        </div>
+                    </div>
                     <table class="table table-bordered">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>TIPO</th>
-                            <th>NÚMERO</th>
-                            <th>NOMBRE DE NORMATIVA</th>
-                            <th>MARCO PROCESO</th>
-                            <th>FECHA DE VIGENCIA</th>
-                            <th>ARCHIVO</th>
-                            <th>ACCIONES</th>
+                            <th>Nombre</th>
+                            <th>Fecha creacion</th>
+                            <th>Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php $i=1 ?>
-                        @foreach($normativaMacroproceso as $normativaMacroproceso)
+                        @foreach($instituciones as $institucione)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$normativaMacroproceso->Normativac->tipoNormativa}}</td>
-                                <td>{{$normativaMacroproceso->Normativac->numero}}</td>
-                                <td>{{$normativaMacroproceso->Normativac->nombre}}</td>
-                                <td>{{$normativaMacroproceso->Macroproceso->nombre}}</td>
-                                <td>{{$normativaMacroproceso->Normativac->fecha}}</td>
-                                <th><a href="#"><i class="fa fa-file-text fa-2x" aria-hidden="true"></i></a></th>
-                                <td><a href="{{URL::to('normaAuditoria/editar')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
-                                <a href="{{URL::to('normaAuditoria/archivocrear')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Adjuntar </a></td>
+                                <td>{{$institucione->nombreInstitucion}}</td>
+                                <td>{{$institucione->fecha_creado}}</td>
+                                <td>
+                                    <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> Ver </a>
+                                    <a href="{{URL::to('institucion/editar')}}/{{$institucione->codInstitucion}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
                                 </td>
-
                             </tr>
-                            <?php $i++ ?>
                         @endforeach
                         </tbody>
                     </table>

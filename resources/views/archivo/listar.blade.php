@@ -31,7 +31,7 @@
 
                     <div class="row">
                         <div class="col-sm-3">
-                            <a type="button" href="{!! route('archivo.crear') !!}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Cargar Archivo</a>
+                            <a type="button" href="{{URL::to('archivo/archivo-crear')}}/{{$codInf}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Cargar Archivo</a>
                             <p>
                             
                         </div>

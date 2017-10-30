@@ -14,6 +14,8 @@ class NormativaMarcoproceso extends Model
     protected $primaryKey = 'codNormMacro';
     protected $table = 'normativa_macroproceso';
 
+    protected $fillable = ['nombre_archivo'];
+
     public function Macroproceso()
     {
         return $this->hasOne(Macroproceso::class,'codMacroP','codMacroP');

@@ -21,11 +21,12 @@
                         <div class="col-md-6 b-r">
                             
                             {!! Field::file('archivo') !!}
+                            <input type="hidden" value="{{$codInf}}" name="codInf">
+
                             <div class="hr-line-dashed"></div>
 
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-outline" value="REGISTRAR">
-                                <a href="{!! route('archivo.listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
                             <div class="hr-line-dashed"></div>
 

@@ -28,9 +28,10 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 Route::group(['prefix' => 'archivo'], function(){
-    Route::get('archivo','ArchivoController@listar')->name('archivo.listar');
-    Route::get('archivo-crear','ArchivoController@crear')->name('archivo.crear');
+    Route::get('archivo-crear/{codInf}','ArchivoController@crear')->name('archivo.crear');
     Route::post('archivo-registrar','ArchivoController@registrar')->name('archivo.registrar');
+    Route::get('listar','ArchivoController@listar')->name('archivo.listar');
+    //Route::get('archivo-crear','ArchivoController@crear')->name('archivo.crear');
     Route::get('archivo-eliminar/{id}','ArchivoController@eliminar')->name('archivo.eliminar');
 });
 
@@ -157,6 +158,8 @@ Route::group(['prefix' => 'normaAuditoria'], function(){
     Route::post('guardar', 'NormaAuditoriaController@guardar')->name('normaAuditoria.guardar');
     Route::get('editar/{codNormMacro}', 'NormaAuditoriaController@editar')->name('normaAuditoria.editar');
     Route::post('actualizar', 'NormaAuditoriaController@actualizar')->name('normaAuditoria.actualizar');
+    Route::get('archivocrear/{codNormMacro}', 'NormaAuditoriaController@archivocrear')->name('normaAuditoria.archivocrear');
+    Route::post('archivoregistrar', 'NormaAuditoriaController@archivoregistrar')->name('normaAuditoria.archivoregistrar');
 
 });
 //Auditoria
@@ -170,6 +173,19 @@ Route::group(['prefix' => 'auditoria'], function (){
    Route::post('actualizar', 'AuditoriaController@actualizar')->name('auditoria.actualizar');
 
 });
+//Institucion
+Route::group(['prefix' => 'institucion'], function (){
+
+
+    Route::get('listar', 'InstitucionController@listar')->name('institucion.listar');
+    Route::get('editar/{codInstitucion}', 'InstitucionController@editar')->name('institucion.editar');
+    Route::post('actualizar', 'InstitucionController@actualizar')->name('institucion.actualizar');
+
+
+});
+
+
+
 //Objetivo General
 
 Route::prefix('objetivo-general')->group(function (){
