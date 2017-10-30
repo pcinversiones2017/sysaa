@@ -53,6 +53,7 @@
                                 <td>{!! $row->nombre !!}</td>
                                 <td>
                                     <a href="{!! url('archivo/archivo-eliminar/'.$row->codArc) !!}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar </a>
+                                    <a href="{!! url('archivo/archivo-descargar/'.$row->codArc) !!}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Descargar </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

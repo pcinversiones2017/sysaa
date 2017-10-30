@@ -32,6 +32,7 @@ Route::group(['prefix' => 'archivo'], function(){
     Route::get('archivo-crear','ArchivoController@crear')->name('archivo.crear');
     Route::post('archivo-registrar','ArchivoController@registrar')->name('archivo.registrar');
     Route::get('archivo-eliminar/{id}','ArchivoController@eliminar')->name('archivo.eliminar');
+    Route::get('archivo-descargar/{id}','ArchivoController@descargar')->name('archivo.descargar');
 });
 
 Route::group(['prefix' => 'informe'], function(){
@@ -50,6 +51,10 @@ Route::group(['prefix' => 'usuario'], function(){
     Route::get('usuario-editar/{id}','UsuarioController@editar')->name('usuario.editar');
     Route::post('usuario-actualizar','UsuarioController@actualizar')->name('usuario.actualizar');
     Route::get('usuario-eliminar/{id}','UsuarioController@eliminar')->name('usuario.eliminar');
+});
+
+Route::group(['prefix' => 'permiso'], function(){
+    Route::get('permiso/{id}','PermisoController@autorizar')->name('permiso.autorizar');
 });
 
 Route::group(['prefix' => 'cargofuncional'], function(){

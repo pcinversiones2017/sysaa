@@ -30,10 +30,16 @@
 @stop
 
 @section('js-script')
-{!! Html::script('js/plugins/summernote/summernote.min.js') !!}
-<script type="text/javascript">
-	$(document).ready(function(){
-        $('.summernote').summernote();
-    });
-</script>
+
+    <!-- Custom and plugin javascript -->
+    {!! Html::script('js/inspinia.js') !!}
+    {!! Html::script('js/plugins/pace/pace.min.js') !!}
+    {!! Html::script('js/plugins/summernote/summernote.min.js') !!}
+    <script>
+        $(document).ready(function(){
+
+            $('.summernote').summernote();
+
+       });
+    </script>
 @stop
