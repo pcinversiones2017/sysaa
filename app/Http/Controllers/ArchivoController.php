@@ -10,7 +10,7 @@ class ArchivoController extends Controller
     public function listar()
     {
     	$archivos = Archivo::Activo()->get();
-    	return view('archivo.listar', compact('archivo'));
+    	return view('archivo.listar', compact('archivos'));
     }
 
     public function crear()
@@ -20,23 +20,25 @@ class ArchivoController extends Controller
 
     public function registrar(Request $request)
     {
-    	
+    	if($request->hasFile('archivo'))
+        {
+            $archivo = $request->file('archivo')->store('archivo','public');
+            Archivo::create(['nombre' => $archivo, 'codInf' => 0 ]);
+            return redirect()->route('archivo.listar')->with('success','Archivo cargado');
+        }else
+        {
+            return redirect()->route('archivo.listar')->with('danger','Debe cargar un archivo');
+        }
     }
 
-    public function editar($id)
+    public function descargar($id)
     {
-    	$archivo = Archivo::Existe($id)->get();
-    	return view('archivo.editar', compact('archivo'));
-    }
-
-    public function actualizar(Request $request)
-    {
-    	
+        $archivo = 
     }
 
     public function eliminar($id)
     {
-    	$archivo = Archivo::Existe($id)->get();
+    	$archivo = Archivo::Existe($id)->update(['estado' => false]);
     	return redirect()->route('archivo.listar')->with('danger','Archivo Eliminado');
     }
 }
