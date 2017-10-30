@@ -40,6 +40,7 @@
                             <th>NOMBRE DE NORMATIVA</th>
                             <th>MARCO PROCESO</th>
                             <th>FECHA DE VIGENCIA</th>
+                            <th>ARCHIVO</th>
                             <th>ACCIONES</th>
                         </tr>
                         </thead>
@@ -53,8 +54,9 @@
                                 <td>{{$normativaMacroproceso->Normativac->nombre}}</td>
                                 <td>{{$normativaMacroproceso->Macroproceso->nombre}}</td>
                                 <td>{{$normativaMacroproceso->Normativac->fecha}}</td>
+                                <th><a href="#"><i class="fa fa-file-text fa-2x" aria-hidden="true"></i></a></th>
                                 <td><a href="{{URL::to('normaAuditoria/editar')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
-                                <a href="{{URL::to('normaAuditoria/editar')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Adjuntar </a></td>
+                                <a href="{{URL::to('normaAuditoria/archivocrear')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Adjuntar </a></td>
                                 </td>
 
                             </tr>

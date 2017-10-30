@@ -35,8 +35,8 @@ class NormaAuditoriaController extends Controller
         $normaCAuditoria -> tipoNormativa = $request->tipoNormativa;
         $normaCAuditoria -> fecha =$request->fecha;
         $normaCAuditoria -> nombre = $request->nombre;
-        $normaCAuditoria   -> numero= $request->numero;
-        $normaCAuditoria  -> codTipNorm = '1';
+        $normaCAuditoria -> numero= $request->numero;
+        $normaCAuditoria -> codTipNorm = '1';
         $normaCAuditoria -> save();
 
         $normativaMacroproceso = new NormativaMarcoproceso();
@@ -44,10 +44,7 @@ class NormaAuditoriaController extends Controller
         $normativaMacroproceso -> codMacroP = $request->codMacroP;
         $normativaMacroproceso -> save();
 
-
-
         return redirect()->route('normaAuditoria.listarAplica')->with('success','Normativa Creada');
-
     }
 
     public function editar(Request $request){
@@ -76,4 +73,31 @@ class NormaAuditoriaController extends Controller
         return redirect()->route('normaAuditoria.listarAplica');
 
     }
+
+    public function archivocrear(Request $request)
+    {
+        $codNormMacro=$request->codNormMacro;
+
+        return view('normaAuditoria.archivocrear')->with(compact('codNormMacro'));
+    }
+
+    public function archivoregistrar(Request $request)
+    {
+        $normativaMacroproceso = NormativaMarcoproceso::find($request->codNormMacro);
+        if($request->hasFile('archivo'))
+        {
+            $archivo = $request->file('archivo')->store('archivo','public');
+            $normativaMacroproceso->nombre_archivo = $archivo;
+            $normativaMacroproceso->save();
+            return redirect()->route('normaAuditoria.listarAplica')->with('success','Archivo cargado');
+        }else
+        {
+            return redirect()->route('normaAuditoria.listarAplica')->with('danger','Debe cargar un archivo');
+        }
+
+
+
+    }
+
+
 }
