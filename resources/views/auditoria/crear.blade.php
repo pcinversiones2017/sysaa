@@ -42,7 +42,7 @@
                             <div class="hr-line-dashed"></div>
 
                             <label class="">Periodo inicio - Periodo Final</label>
-                            <input id="perido" class="form-control" type="text" name="periodo" value="01/01/2015 - 01/31/2015" />
+                            <input id="perido" class="form-control" type="text" name="periodo" value="{{$periodo}}" />
 
 
                         </div>
@@ -78,6 +78,11 @@
     <script src="{{url('js/plugins/daterangepicker/daterangepicker.js')}}"></script>
 
     <script>
-        $('input[name="periodo"]').daterangepicker();
+
+        $('input[name="periodo"]').daterangepicker({
+            "applyLabel": "Aplicar",
+            "format": "DD/MM/YYYY",
+            "separator": " hasta "
+        });
     </script>
 @stop
