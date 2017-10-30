@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Archivo extends Model
 {
     protected $table = "archivo";
+    
+    const CREATED_AT = 'fecha_creado';
+    const UPDATED_AT = 'fecha_modificado';
 
     public function scopeActivo($cadenaSQL)
     {
