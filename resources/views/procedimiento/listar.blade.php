@@ -2,7 +2,7 @@
 @section('content')
 
     @if (session('success'))
-    <div class="alert alert-success alert-dismissable">
+    <div class="alert alert-success" role="alert">
         {!! session('success') !!}          
     </div>
     @endif
@@ -17,7 +17,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de Archivos Cargado </h5>
+                    <h5>Lista de usuarios </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -31,29 +31,31 @@
 
                     <div class="row">
                         <div class="col-sm-3">
-                            <a type="button" href="{!! url('archivo/archivo-crear') !!}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Cargar Archivo</a>
+                            <a type="button" href="{!! route('usuario.crear') !!}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Usuario</a>
                             <p>
-                            
                         </div>
                     </div>
 
                     <table class="table table-bordered">
                         <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Nombre</th>
-                                <th>Accion</th>
-                            </tr>
+                        <tr>
+                            <th>#</th>
+                            <th>Datos</th>
+                            <th>Email</th>
+                            <th>Accion</th>
+                        </tr>
                         </thead>
                         <tbody>
                         <?php $i=1 ?>
-                        @foreach($archivos as $row)
+                        @foreach($usuarios as $row)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{!! $row->nombre !!}</td>
+                                <td>{!! $row->datos !!}</td>
+                                <td>{!! $row->email !!}</td>
                                 <td>
-                                    <a href="{!! url('archivo/archivo-eliminar/'.$row->codArc) !!}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar </a>
-                                    <a href="{!! url('archivo/archivo-descargar/'.$row->codArc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-trash"></i> Descargar </a>
+                                    <a href="{!! url('usuario/usuario-editar/'.$row->codUsu) !!}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
+                                    <a href="{!! url('usuario/usuario-eliminar/'.$row->codUsu) !!}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar </a>
+                                    <a href="{!! url('permiso/permiso/'.$row->codUsu) !!}" class="btn btn-primary btn-sm"><i class="fa fa-id-card"></i> Permisos </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

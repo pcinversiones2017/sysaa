@@ -21,7 +21,7 @@
                         <input type="hidden" name="codObjGen" value="{{$auditoria->objetivoGeneral->codObjGen}}">
                         <input type="hidden" name="codPlanF" value="{{$auditoria->codPlanF}}">
                         <div class="form-group">
-                            <label class=control-label">Detalle</label>
+                            <label class="control-label">Detalle</label>
                             {!! Form::textarea('nombre', null, ['class' => 'form-control', 'size' => '50x5']) !!}
                         </div>
                         {!! Field::text('materia', ['label' => 'Materia a examinar']) !!}
