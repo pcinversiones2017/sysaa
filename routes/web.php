@@ -24,7 +24,7 @@ Route::post('iniciar-sesion', 'LoginController@authenticate');
 //Route::post('iniciar-sesion','SesionController@authenticate');
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('inicio','InicioController@index')->name('inicio.inicio');
+    Route::get('/','InicioController@index')->name('inicio.inicio');
 });
 
 Route::group(['prefix' => 'procedimiento'], function(){

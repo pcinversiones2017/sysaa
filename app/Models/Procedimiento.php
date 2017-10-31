@@ -23,4 +23,9 @@ class Procedimiento extends Model
         return $cadenaSQL->where('codProc',$id);
     }
 
+    public function codusurol()
+    {
+        return $this->hasOne(Usuariorol::class,'codUsuRol','codUsuRol');
+    }
+
 }
