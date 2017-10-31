@@ -1,7 +1,8 @@
 @extends('layout.admin')
 
 @section('css-style')
-{!! Html::style('') !!}
+{!! Html::style('css/plugins/summernote/summernote.css') !!}
+{!! Html::style('css/plugins/summernote/summernote-bs3.css') !!}
 @stop
 
 @section('content')
@@ -39,7 +40,4 @@
 
     </div>
 </div>
-@stop
-
-@section('js-script')
 @stop

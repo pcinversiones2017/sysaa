@@ -10,9 +10,9 @@
     {!! Html::style('css/bootstrap.min.css') !!}
     {!! Html::style('font-awesome/css/font-awesome.css') !!}
     {!! Html::style('css/animate.css') !!}
+    @yield('css-style')
     {!! Html::style('css/style.css') !!}
 
-    @yield('css-style')
 
 </head>
 
@@ -36,9 +36,9 @@
 {!! Html::script('js/plugins/metisMenu/jquery.metisMenu.js') !!}
 {!! Html::script('js/plugins/slimscroll/jquery.slimscroll.min.js') !!}
 
+{!! Html::script('js/inspinia.js') !!}
 @yield('js-script')
 
-{!! Html::script('js/inspinia.js') !!}
 </body>
 
 

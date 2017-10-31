@@ -33,7 +33,11 @@ class ArchivoController extends Controller
 
     public function descargar($id)
     {
-        $archivo = 
+        $archivo = Archivo::Existe($id)->get();
+        foreach($archivo as $row):
+            $descargar  = storage_path().$row->nombre;
+        endforeach;
+        return response()->download($descargar);
     }
 
     public function eliminar($id)

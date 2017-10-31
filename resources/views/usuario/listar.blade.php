@@ -33,7 +33,6 @@
                         <div class="col-sm-3">
                             <a type="button" href="{!! route('usuario.crear') !!}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Usuario</a>
                             <p>
-                            
                         </div>
                     </div>
 
@@ -56,6 +55,7 @@
                                 <td>
                                     <a href="{!! url('usuario/usuario-editar/'.$row->codUsu) !!}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
                                     <a href="{!! url('usuario/usuario-eliminar/'.$row->codUsu) !!}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar </a>
+                                    <a href="{!! url('permiso/permiso/'.$row->codUsu) !!}" class="btn btn-primary btn-sm"><i class="fa fa-id-card"></i> Permisos </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>
