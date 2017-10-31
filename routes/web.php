@@ -31,7 +31,7 @@ Route::group(['prefix' => 'archivo'], function(){
     Route::get('archivo-crear/{codInf}','ArchivoController@crear')->name('archivo.crear');
     Route::post('archivo-registrar','ArchivoController@registrar')->name('archivo.registrar');
     Route::get('listar','ArchivoController@listar')->name('archivo.listar');
-    //Route::get('archivo-crear','ArchivoController@crear')->name('archivo.crear');
+    Route::get('archivo-crear','ArchivoController@crear')->name('archivo.crear');
     Route::get('archivo-eliminar/{id}','ArchivoController@eliminar')->name('archivo.eliminar');
     Route::get('archivo-descargar/{id}','ArchivoController@descargar')->name('archivo.descargar');
 });
@@ -198,6 +198,7 @@ Route::group(['prefix' => 'institucion'], function (){
 Route::prefix('objetivo-general')->group(function (){
 
     Route::post('guardar', 'ObjetivoGeneralController@guardar')->name('objetivogen.guardar');
+
 });
 
 //Objetivo Especifico
@@ -205,7 +206,8 @@ Route::prefix('objetivo-especifico')->group(function (){
 
    Route::post('guardar', 'ObjetivoEspecificoController@guardar')->name('objetivo-especifico.guardar');
    Route::get('mostrar/{codObjEsp}', 'ObjetivoEspecificoController@mostrar')->name('objetivo-especifico.mostrar');
-   Route::post('actualizar', 'ObjetivoEspecificoConotroller@actualizar')->name('objetivo-especifico.actualizar');
+   Route::post('actualizar', 'ObjetivoEspecificoController@actualizar')->name('objetivo-especifico.actualizar');
+   Route::get('ajax-get-objetivo-especifico/{codObjEsp}', 'ObjetivoEspecificoController@ajaxGetObjetivoEspecifico');
 });
 
 
