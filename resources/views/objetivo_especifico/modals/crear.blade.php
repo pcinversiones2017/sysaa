@@ -24,8 +24,7 @@
                         <input type="hidden" name="codPlanF" value="{{$auditoria->codPlanF}}">
 
                         <div class="form-group">
-                            <label  class="col-sm-2 control-label"
-                                    for="inputEmail3">Detalle</label>
+                            <label>Detalle</label>
                             {!! Form::textarea('nombre', null, ['class' => 'form-control', 'size' => '50x5']) !!}
                         </div>
 
