@@ -1,4 +1,9 @@
 @extends('layout.admin')
+
+@section('css-style')
+{!! Html::style('css/plugins/datapicker/datepicker3.css') !!}
+@stop
+
 @section('content')
 <div class="row">
     <div class="col-lg-12">
@@ -34,4 +39,8 @@
 
     </div>
 </div>
+@stop
+
+@section('js-script')
+{!! Html::script('js/plugins/daterangepicker/daterangepicker.js') !!}
 @stop
