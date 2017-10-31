@@ -1,6 +1,9 @@
 <div class="row">
     <div class="col-md-3">
-        <button class="btn btn-primary " data-toggle="modal" data-target="#modal_crear_objetivo_especifico">
+        <!--<button class="btn btn-primary " data-toggle="modal" data-target="#modal_crear_objetivo_especifico" onclick="alert('hola');">
+            <i class="fa fa-plus"></i> Crear Objetivo Especifico
+        </button>-->
+        <button class="btn btn-primary " data-toggle="modal" data-target="#modal_crear_objetivo_especifico" onclick="mostrar();">
             <i class="fa fa-plus"></i> Crear Objetivo Especifico
         </button>
     </div>
@@ -34,3 +37,9 @@
     @endforeach
     </tbody>
 </table>
+<script type="text/javascript">
+    function mostrar()
+    {
+        $("#modal_crear_objetivo_especifico").modal();
+    }
+</script>

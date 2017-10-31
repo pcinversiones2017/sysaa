@@ -29,8 +29,6 @@
                             {!! Form::textarea('nombre', null, ['class' => 'form-control', 'size' => '50x5']) !!}
                         </div>
 
-
-
                         {!! Field::text('materia', ['label' => 'Materia a examinar']) !!}
 
                         <div class="form-group"><label class="col-sm-2">Macroproceso</label>
