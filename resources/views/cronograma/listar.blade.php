@@ -48,10 +48,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @if(empty($cronogramas->codCroGen))
+
                         <?php $i=1 ?>
                         @foreach($auditorias as $auditoria)
-                            <tr>
+                            @if(!empty($auditoria->fechaIniPlanF))
+                              <tr>
                                 <td>{{$i}}</td>
                                 <td>{{$auditoria->nombrePlanF}}</td>
                                 <td>{{$auditoria->fechaIniPlanF}}</td>
@@ -62,9 +63,11 @@
                                     <a href="{{URL::to('cronograma/editar')}}/{{$auditoria->codPlanF}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
                                 </td>
                             </tr>
+
                             <?php $i++ ?>
-                        @endforeach
                             @endif
+                              @endforeach
+
                         </tbody>
                     </table>
 
