@@ -55,15 +55,14 @@
                                 <input type="hidden" value="{{$etapaPlanificacion['codEtp']}}"
                                        name="etapa[]">
                             <div class="col-sm-7">
-                                <div class="col-md-4 ">
-                                    <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date"
-                                           name="fechaIni[]"  required>
-                                </div>
-                                <div class="col-md-4">
-                                    <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date"
-                                           name="fechaFin[]" required>
+                                <div class="col-sm-8 form-group" id="data_5">
+                                    <div class="input-group input-daterange" id="datepicker">
+                                        <input placeholder="Fecha de inicio" type="text" class="input-sm form-control"
+                                               name="fechaIni[]" />
+                                        <span class="input-group-addon">AL</span>
+                                        <input placeholder="Fecha de fin" type="text" class="input-sm form-control"
+                                               name="fechaFin[]"  />
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
@@ -81,13 +80,14 @@
                                    name="etapa[]">
 
                             <div class="col-sm-7">
-                                <div class="col-md-4 ">
-                                    <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]" required>
+                                <div class="col-sm-8 form-group" id="data_5">
+                                    <div class="input-group input-daterange" id="datepicker">
+                                        <input placeholder="Fecha de inicio" type="text" class="input-sm form-control"
+                                               name="fechaIni[]" />
+                                        <span class="input-group-addon">AL</span>
+                                        <input placeholder="Fecha de fin" type="text" class="input-sm form-control"
+                                               name="fechaFin[]"  />
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
@@ -123,13 +123,14 @@
                                 <label class="col-sm-12" style="color: red; ">*ESTAS ACTIVIDADES COMPARTEN FECHA INICIO
                                     , FECHA FIN Y DIAS HABILES</label>
 
-                                <div class="col-md-4 ">
-                                    <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]" required>
+                                <div class="col-sm-8 form-group" id="data_5">
+                                    <div class="input-group input-daterange" id="datepicker">
+                                        <input placeholder="Fecha de inicio" type="text" class="input-sm form-control"
+                                               name="fechaIni[]" />
+                                        <span class="input-group-addon">AL</span>
+                                        <input placeholder="Fecha de fin" type="text" class="input-sm form-control"
+                                               name="fechaFin[]"  />
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
@@ -157,17 +158,18 @@
                                 <label class="col-sm-12" style="color: red; ">*ESTAS ACTIVIDADES COMPARTEN FECHA INICIO
                                     , FECHA FIN Y DIAS HABILES</label>
 
-                                <div class="form-group" id="data_5">
-                                    <label class="font-normal">Range select</label>
-                                    <div class="input-group" id="datepicker">
-                                        <input type="text" class="input-sm form-control" name="start" value="05/14/2014"/>
-                                        <span class="input-group-addon">to</span>
-                                        <input type="text" class="input-sm form-control" name="end" value="05/22/2014" />
+                                <div class="col-sm-8 form-group" id="data_5">
+                                    <div class="input-group input-daterange" id="datepicker">
+                                        <input placeholder="Fecha de inicio" type="text" class="input-sm form-control"
+                                               name="fechaIni[]" />
+                                        <span class="input-group-addon">AL</span>
+                                        <input placeholder="Fecha de fin" type="text" class="input-sm form-control"
+                                               name="fechaFin[]"  />
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
-                                           name="dias_habiles[]" required>
+                                           name="dias_habiles[]" >
                                 </div>
                             </div>
                         </div>
