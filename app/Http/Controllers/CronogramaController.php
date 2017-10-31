@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\CronogramaGeneral\RegistrarRequest;
 use App\Models\Cronograma;
 use App\Models\Etapa;
-use App\Models\Plan;
 use App\Models\Auditoria;
 use Illuminate\Http\Request;
-use App\Http\Requests\Usuario\CronogramaRequest;
+
 
 class CronogramaController extends Controller
 {
@@ -32,8 +33,10 @@ class CronogramaController extends Controller
 
     }
 
-    public function guardar(Request $request)
+
+    public function guardar(RegistrarRequest $request)
     {
+
         $auditoria = Auditoria::find($request->codPlanf[0]);
         $auditoria->fechaIniPlanF = date('Y-m-d',strtotime($request->fechaIni[0]));
         $auditoria->fechaFinPlanF = date('Y-m-d',strtotime($request->fechaFin[4]));

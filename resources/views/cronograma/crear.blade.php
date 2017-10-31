@@ -33,7 +33,7 @@
                         {{ csrf_field() }}
                         <div class="form-group"><label class="col-sm-2 control-label">SELECCIONAR AUDITORIA</label>
                             <div class="col-sm-4">
-                            <select class="form-control" id="sel1" name="codPlanf[]" required>
+                            <select class="form-control" id="sel1" name="codPlanf[]" >
                                 <option value="">::SELECCIONE::</option>
                                 @foreach($auditorias as $auditoria)
                                     <option value="{{$auditoria->codPlanF}}">{{$auditoria->nombrePlanF}}</option>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
-                                           name="dias_habiles[]" required>
+                                           name="dias_habiles[]" >
                                 </div>
                             </div>
                         </div>
@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
-                                           name="dias_habiles[]" required>
+                                           name="dias_habiles[]" >
                                 </div>
                             </div>
                         </div>
