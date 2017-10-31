@@ -31,7 +31,7 @@ Route::group(['prefix' => 'archivo'], function(){
     Route::get('archivo-crear/{codInf}','ArchivoController@crear')->name('archivo.crear');
     Route::post('archivo-registrar','ArchivoController@registrar')->name('archivo.registrar');
     Route::get('listar','ArchivoController@listar')->name('archivo.listar');
-    //Route::get('archivo-crear','ArchivoController@crear')->name('archivo.crear');
+    Route::get('archivo-crear','ArchivoController@crear')->name('archivo.crear');
     Route::get('archivo-eliminar/{id}','ArchivoController@eliminar')->name('archivo.eliminar');
     Route::get('archivo-descargar/{id}','ArchivoController@descargar')->name('archivo.descargar');
 });

@@ -22,7 +22,6 @@
                         <div class="col-md-6 b-r">
                             
                             {!! Field::file('archivo') !!}
-                            <input type="hidden" value="{{$codInf}}" name="codInf">
 
                             <div class="hr-line-dashed"></div>
 
