@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de planes </h5>
+                    <h5>INFORMACION DEL SOFTWARE</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -38,20 +38,18 @@
                         <tr>
                             <th>#</th>
                             <th>Nombre</th>
+                            <th>Version</th>
                             <th>Fecha creacion</th>
-                            <th>Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php $i=1 ?>
-                        @foreach($instituciones as $institucione)
+                        @foreach($software as $software)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$institucione->nombreInstitucion}}</td>
-                                <td>{{$institucione->fecha_creado}}</td>
-                                <td>
-                                    <a href="{{URL::to('institucion/editar')}}/{{$institucione->codInstitucion}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
-                                </td>
+                                <td>{{$software->nombre_software}}</td>
+                                <td>{{$software->version_software}}</td>
+                                <td>{{$software->fecha_creado}}</td>
                             </tr>
                         @endforeach
                         </tbody>
