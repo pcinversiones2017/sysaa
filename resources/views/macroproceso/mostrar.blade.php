@@ -4,38 +4,36 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Generar Procesos para:</h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-wrench"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#">Config option 1</a>
-                            </li>
-                            <li><a href="#">Config option 2</a>
-                            </li>
-                        </ul>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
-                    </div>
+                    <h5>Generar Procedimiento para: <strong>{{$macroproceso->nombre}}</strong></h5>
                 </div>
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-lg-12">
+                                @if (session('success'))
+                                <div class="alert alert-success" role="alert">
+                                    {!! session('success') !!}          
+                                </div>
+                                @endif
                             <div class="m-b-md">
-                                <h2>{{$macroproceso->nombre}}</h2>
-                            </div>
-                            <div class="m-b-md">
-                                <a type="button" id="#agregarProceso" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModalHorizontal">
-                                    <i class="fa fa-plus">
-                                    </i> Crear Procesos</a>
+                                {!! Form::open(['method' => 'POST', 'url' => 'procedimiento.registrar']) !!}
+                                {!! Form::hidden('id', $macroproceso->codMacroP) !!}
+                                {!! Field::text('proceso') !!}
+                                {!! Form::submit('REGISTRAR',['class' => 'btn btn-primary btn-outline']) !!}
+                                {!! Form::close() !!}
                             </div>
                         </div>
+                    </div>
+                </div>
+                <br>
 
+                @if (session('danger'))
+                    <div class="alert alert-danger" role="alert">
+                    {!! session('danger') !!}           
+                    </div>
+                @endif
+                <br>
+                <div class="ibox-content">
+                    <div class="row">
                             <div class="col-lg-12">
                                 <div class="tabs-container">
                                     <ul class="nav nav-tabs">
@@ -86,52 +84,6 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <button type="button" class="close"
-                            data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        Crear Proceso
-                    </h4>
-                </div>
-                <form class="form-horizontal" role="form" method="post" action="{{URL::to('procesoma/guardar')}}">
-                    <!-- Modal Body -->
 
-                    <div class="modal-body">
-
-                        <div class="form-horizontal">
-                            {{csrf_field()}}
-                            <input type="hidden" name="codMacroP" value="{{$macroproceso->codMacroP}}">
-                            <div class="form-group">
-                                <label  class="col-sm-2 control-label"
-                                        for="inputEmail3">Proceso</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" name="nombre"> </textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- Modal Footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default"
-                                data-dismiss="modal">
-                            Cancelar
-                        </button>
-                        <button type="submit" class="btn btn-primary" id="guardar">
-                            Guardar
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    
 @endsection

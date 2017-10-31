@@ -1,10 +1,6 @@
 <div class="row">
     <div class="col-md-3">
-        <!--<button class="btn btn-primary " data-toggle="modal" data-target="#modal_crear_objetivo_especifico" onclick="alert('hola');">
-            <i class="fa fa-plus"></i> Crear Objetivo Especifico
-        </button>-->
-        <button class="btn btn-primary " data-toggle="modal" data-target="#modal_crear_objetivo_especifico" onclick="mostrar();">
-            <i class="fa fa-plus"></i> Crear Objetivo Especifico
+        <button class="btn btn-primary " onclick="mostrarModal();"> <i class="fa fa-plus"></i> Crear Objetivo Especifico
         </button>
     </div>
 </div>
@@ -30,16 +26,32 @@
             <td><a href="#" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a></td>
             <td>
                 <a href="{{url('objetivo-especifico/mostrar')}}/{{$objetivoEsp->codObjEsp}}" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
-                <a href="" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
+                <a href="#" id="editar_objetivo_especifico" data-codObjEsp="{{$objetivoEsp->codObjEsp}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
             </td>
         </tr>
         <?php $i++ ?>
     @endforeach
     </tbody>
 </table>
-<script type="text/javascript">
-    function mostrar()
-    {
-        $("#modal_crear_objetivo_especifico").modal();
-    }
-</script>
+
+@include('objetivo_especifico.modals.editar')
+@section('js-script')
+    <script>
+        function mostrarModal()
+        {
+            $("#modal_crear_objetivo_especifico").modal();
+        }
+
+        $('#editar_objetivo_especifico').on('click', function () {
+            var codObjEsp = $(this).attr('data-codObjEsp');
+            $.get(server + '/objetivo-especifico/ajax-get-objetivo-especifico/' + codObjEsp, function (data) {
+               console.log(data)
+                $('#nombre').val(data.nombre);
+                $('#materia').val(data.materia);
+                $('#macroproceso').val(data.codMacroP);
+
+            });
+            $('#modal_editar_objetivo_especifico').modal();
+        })
+    </script>
+@stop

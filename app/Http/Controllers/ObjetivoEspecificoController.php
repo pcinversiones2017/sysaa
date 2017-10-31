@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 use App\Models\ObjetivoEspecifico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Models\Procedimiento;
 
 class ObjetivoEspecificoController extends Controller
 {
@@ -33,8 +34,20 @@ class ObjetivoEspecificoController extends Controller
     {
         try{
             $objetivoEspecifico = ObjetivoEspecifico::find($request->codObjEsp);
-            return view('objetivo_especifico.mostrar', compact('objetivoEspecifico'));
+            $procedimiento = Procedimiento::Activo()->get();
+            return view('objetivo_especifico.mostrar', compact(['objetivoEspecifico','procedimiento']));
         
+        }catch (\Exception $e){
+            Log::error($e->getMessage());
+        }
+    }
+
+    public function ajaxGetObjetivoEspecifico(Request $request)
+    {
+        try{
+            $objetivoEspecifico = ObjetivoEspecifico::find($request->codObjEsp);
+            return response()->json($objetivoEspecifico);
+
         }catch (\Exception $e){
             Log::error($e->getMessage());
         }

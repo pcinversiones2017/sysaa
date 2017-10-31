@@ -19,7 +19,6 @@ class Procesoma extends Model
     public function subProceso()
     {
         return $this->hasMany(Subproceso::class,'codProMA');
-
     }
 
 }

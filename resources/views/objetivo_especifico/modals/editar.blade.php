@@ -23,25 +23,21 @@
                         <input type="hidden" name="codPlanF" value="{{$auditoria->codPlanF}}">
 
                         <div class="form-group">
-                            <label  class="col-sm-2 control-label"
-                                    for="inputEmail3">Detalle</label>
-                            {!! Form::textarea('nombre', null, ['class' => 'form-control', 'size' => '50x5']) !!}
+                            <label  class="control-label">Detalle</label>
+                            {!! Form::textarea('nombre', null, ['class' => 'form-control', 'size' => '50x5', 'id'=>'nombre']) !!}
 
                         </div>
-                        {!! Field::text('materia', ['label' => 'Materia a examinar']) !!}
-                        <div class="form-group"><label class="col-sm-2">Macroproceso</label>
-                            <div class="col-sm-10">
-                                <select class="form-control m-b" name="codMacroP">
-                                    <option>-- Seleccione --</option>
-                                    @foreach($macroprocesos as $macroproceso)
-                                        <option value="{{$macroproceso->codMacroP}}">{{$macroproceso->nombre}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                        {!! Field::text('materia', ['label' => 'Materia a examinar', 'id' => 'materia']) !!}
+                        <div class="form-group"><label class="control-label">Macroproceso</label>
+                            <select class="form-control m-b" name="codMacroP" id="macroproceso">
+                                <option>-- Seleccione --</option>
+                                @foreach($macroprocesos as $macroproceso)
+                                    <option value="{{$macroproceso->codMacroP}}">{{$macroproceso->nombre}}</option>
+                                @endforeach
+                            </select>
                         </div>
-
                     </div>
-
+                    </div>
                 </div>
 
                 <!-- Modal Footer -->

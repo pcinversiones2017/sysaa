@@ -17,28 +17,23 @@
 
             {!! Form::open(['method' => 'POST', 'route' => 'objetivo-especifico.guardar', 'class' => 'form-horizontal']) !!}
                 <div class="modal-body">
-
                     <div class="form-horizontal">
-                        {{csrf_field()}}
                         <input type="hidden" name="codObjGen" value="{{$auditoria->objetivoGeneral->codObjGen}}">
                         <input type="hidden" name="codPlanF" value="{{$auditoria->codPlanF}}">
-
                         <div class="form-group">
-                            <label>Detalle</label>
+                            <label class="control-label">Detalle</label>
                             {!! Form::textarea('nombre', null, ['class' => 'form-control', 'size' => '50x5']) !!}
                         </div>
-
                         {!! Field::text('materia', ['label' => 'Materia a examinar']) !!}
 
-                        <div class="form-group"><label class="col-sm-2">Macroproceso</label>
-                            <div class="col-sm-10">
+                        <div class="form-group">
+                            <label class="control-label">Macroproceso</label>
                                 <select class="form-control m-b" name="codMacroP">
                                     <option>-- Seleccione --</option>
                                     @foreach($macroprocesos as $macroproceso)
                                         <option value="{{$macroproceso->codMacroP}}">{{$macroproceso->nombre}}</option>
                                     @endforeach
                                 </select>
-                            </div>
                         </div>
 
                     </div>
