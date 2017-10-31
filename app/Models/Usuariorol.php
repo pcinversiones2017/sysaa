@@ -8,7 +8,7 @@ class Usuariorol extends Model
 {
     protected $table = "usuario_roles";
 
-    protected $fillable = ['codUsu','codRol','codCarFun'];
+    protected $fillable = ['codUsu','codRol','codCarFun', 'codPlanF'];
 
     const CREATED_AT = "fecha_creado";
 

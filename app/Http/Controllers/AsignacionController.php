@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Plan\RegistroRequest;
 use Illuminate\Http\Request;
 use App\Models\Usuariorol;
 use App\Models\Cargofuncional;
@@ -16,18 +17,19 @@ class AsignacionController extends Controller
     	return view('asignacion.listar', compact('usuariorol'));
     }
 
-    public function crear()
+    public function crear(Request $request)
     {
         $cargo = Cargofuncional::Activo()->pluck('nombre','codCarFun');
         $rol = rol::pluck('nombre','codRol');
         $usuario = User::Activo()->pluck('nombres','codUsu');
-    	return view('asignacion.crear', compact(['cargo','rol','usuario']));
+        $codPlanF = $request->codPlanF;
+    	return view('asignacion.crear', compact(['cargo', 'rol', 'usuario', 'codPlanF']));
     }
 
     public function registrar(Request $request)
     {
-    	Usuariorol::create(['codUsu' => $request->usuario, 'codRol' => $request->rol, 'codCarFun' => $request->cargo]);
-    	return redirect()->route('asignarr.listar')->with('success','Usuario asignado registrado');
+    	Usuariorol::create(['codUsu' => $request->usuario, 'codRol' => $request->rol, 'codCarFun' => $request->cargo, 'codPlanF' => $request->codPlanF]);
+    	return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success','Usuario asignado registrado');
     }
 
     public function editar($id)

@@ -67,6 +67,19 @@
                             </div>
                         </div>
                         <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-info-circle"></i> Origen
+                                    </div>
+                                    <div class="panel-body">
+                                        <p>{{$auditoria->origen}}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+
                             <div class="col-lg-12">
                                 <div class="panel panel-info">
                                     <div class="panel-heading">
@@ -85,10 +98,22 @@
                                         <i class="fa fa-info-circle"></i> Objetivo Especifico
                                     </div>
                                     <div class="panel-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                                        <h3>Crear Objetivo Especifico</h3>
                                         @include('objetivo_especifico.partials.editar')
                                         @include('objetivo_especifico.partials.crear')
                                         @include('objetivo_especifico.partials.listar')
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-info-circle"></i> Comisión Auditora
+                                    </div>
+                                    <div class="panel-body">
+                                        @include('asignacion.partials.listar')
                                     </div>
 
                                 </div>
