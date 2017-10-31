@@ -15,7 +15,6 @@ class User extends Authenticatable
     const UPDATED_AT = 'fecha_modificado';
 
     protected $primaryKey = 'codUsu';
-    protected $table = "usuarios";
 
     /**
      * The attributes that are mass assignable.

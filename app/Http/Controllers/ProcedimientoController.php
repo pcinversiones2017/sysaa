@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\Procedimiento\ValidarRequest;
 use App\Models\Procedimiento;
+use App\Models\Usuariorol;
 
 class ProcedimientoController extends Controller
 {
@@ -17,7 +18,8 @@ class ProcedimientoController extends Controller
     public function crear($id)
     {
     	$id = $id;
-    	return view('procedimiento.crear', compact('id'));
+    	$usuariorol = Usuariorol::with('usuario')->get();
+    	return view('procedimiento.crear', compact(['id', 'usuariorol']));
     }
 
     public function registrar(ValidarRequest $request)
@@ -26,6 +28,7 @@ class ProcedimientoController extends Controller
     					'justificacion' => $request->justificacion, 
     					'detalle' 		=> $request->detalle, 
     					'fechafin' 		=> $request->fechafin,
+    					'codUsuRol'		=> $request->codusurol,
     					'codObjEsp' 	=> $request->id
     				]);
     	return redirect('objetivo-especifico/mostrar/'.$request->id)->with('success','Se agrego Procedimiento');
@@ -34,13 +37,14 @@ class ProcedimientoController extends Controller
     public function editar($id, $oe)
     {
     	$procedimiento = Procedimiento::Existe($id)->get();
+    	$usuariorol = Usuariorol::with('usuario')->get();
     	$oe = $oe;
-    	return view('procedimiento.editar', compact('procedimiento','oe'));
+    	return view('procedimiento.editar', compact(['procedimiento','oe','usuariorol']));
     }
 
     public function actualizar(ValidarRequest $request)
     {
-    	Procedimiento::Existe($request->id)->update(['justificacion' => $request->justificacion,'detalle' => $request->detalle, 'fechafin'=> $request->fechafin,]);
+    	Procedimiento::Existe($request->id)->update(['justificacion' => $request->justificacion,'detalle' => $request->detalle, 'fechafin'=> $request->fechafin,'codUsuRol'		=> $request->codusurol,]);
     	return redirect('objetivo-especifico/mostrar/'.$request->oe)->with('success','Procedimiento actualizado');	
     }
 

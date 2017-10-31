@@ -36,6 +36,7 @@
                                     <thead>
                                         <tr>
                                             <th>N°</th>
+                                            <th>DATOS</th>
                                             <th>JUSTIFICACION</th>
                                             <th>DETALLE</th>
                                             <th>FECHA FIN</th>
@@ -47,7 +48,8 @@
                                         <?php $i=1 ?>
                                         @foreach($procedimiento as $row)
                                         <tr>
-                                            <td>{!! $i  !!}</td>
+                                            <td>{!! $i !!}</td>
+                                            <td>{!! $row->paterno !!} {!! $row->materno !!} {!! $row->nombres !!}</td>
                                             <td>{!! $row->justificacion !!}</td>
                                             <td>{!! $row->detalle !!}</td>
                                             <td>{!! $row->fechafin !!}</td>

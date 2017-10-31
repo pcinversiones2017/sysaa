@@ -23,7 +23,7 @@ class CreateUsuarioRolesTable extends Migration
             $table->timestamp('fecha_modificado')->nullable(); 
 
             $table->foreign('codRol')->references('codRol')->on('roles');
-            $table->foreign('codUsu')->references('codUsu')->on('usuarios');
+            $table->foreign('codUsu')->references('codUsu')->on('users');
             $table->foreign('codCarFun')->references('codCarFun')->on('cargo_funcional');
         });
     }

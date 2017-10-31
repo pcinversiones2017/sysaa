@@ -8,7 +8,7 @@ class Procedimiento extends Model
 {
     protected $table = "procedimiento";
 
-    protected $fillable = ['justificacion', 'detalle', 'fechafin', 'codObjEsp','codObjGen'];
+    protected $fillable = ['justificacion', 'detalle', 'fechafin', 'codObjEsp','codObjGen','codUsuRol'];
 
     const CREATED_AT = "fecha_creado";
     const UPDATED_AT = "fecha_modificado";
@@ -21,6 +21,11 @@ class Procedimiento extends Model
     public function scopeExiste($cadenaSQL, $id)
     {
         return $cadenaSQL->where('codProc',$id);
+    }
+
+    public function codusurol()
+    {
+        return $this->hasOne(Usuariorol::class,'codUsuRol','codUsuRol');
     }
 
 }
