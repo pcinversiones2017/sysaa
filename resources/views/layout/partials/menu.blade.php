@@ -24,6 +24,8 @@
                     <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Administracion</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                        <li ><a href="{!! route('institucion.listar') !!}">Ver Institucion</a></li>
+                        <li ><a href="{!! route('institucion.listarSoftware') !!}">Informacion del Software</a></li>
+
                     </ul>
                 </li>
                 <li class="">

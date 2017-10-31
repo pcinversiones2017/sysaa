@@ -185,6 +185,8 @@ Route::group(['prefix' => 'institucion'], function (){
     Route::get('listar', 'InstitucionController@listar')->name('institucion.listar');
     Route::get('editar/{codInstitucion}', 'InstitucionController@editar')->name('institucion.editar');
     Route::post('actualizar', 'InstitucionController@actualizar')->name('institucion.actualizar');
+    Route::get('listarSoftware', 'InstitucionController@listarSoftware')->name('institucion.listarSoftware');
+
 
 
 });

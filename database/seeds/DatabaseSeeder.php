@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             tipoNormativaSeeder::class,
             NormativaCSeeder::class,
             InstitucionTableSeeder::class,
+            InfoSoftwareSeeder::class,
             ]);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
