@@ -1,4 +1,9 @@
 @extends('layout.admin')
+@section('css-style')
+    <link href="{{url('css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
+    <link href="{{url('css/plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet">
+
+@stop
 @section('content')
     <div class="row">
         <div class="col-lg-12">
@@ -152,13 +157,13 @@
                                 <label class="col-sm-12" style="color: red; ">*ESTAS ACTIVIDADES COMPARTEN FECHA INICIO
                                     , FECHA FIN Y DIAS HABILES</label>
 
-                                <div class="col-md-4 ">
-                                    <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]" required>
+                                <div class="form-group" id="data_5">
+                                    <label class="font-normal">Range select</label>
+                                    <div class="input-group" id="datepicker">
+                                        <input type="text" class="input-sm form-control" name="start" value="05/14/2014"/>
+                                        <span class="input-group-addon">to</span>
+                                        <input type="text" class="input-sm form-control" name="end" value="05/22/2014" />
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
@@ -181,5 +186,21 @@
             </div>
         </div>
     </div>
+@stop
+
+@section('js-script')
+
+    <script src="{{url('js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
+    <script src="{{url('js/plugins/fullcalendar/moment.min.js')}}"></script>
+    <script src="{{url('js/plugins/daterangepicker/daterangepicker.js')}}"></script>
+
+
+    <script>
+        $('#data_5 .input-daterange').datepicker({
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true
+        });
+    </script>
 
 @stop
