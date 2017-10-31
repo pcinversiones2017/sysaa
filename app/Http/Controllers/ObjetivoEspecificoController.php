@@ -40,6 +40,17 @@ class ObjetivoEspecificoController extends Controller
         }
     }
 
+    public function ajaxGetObjetivoEspecifico(Request $request)
+    {
+        try{
+            $objetivoEspecifico = ObjetivoEspecifico::find($request->codObjEsp);
+            return response()->json($objetivoEspecifico);
+
+        }catch (\Exception $e){
+            Log::error($e->getMessage());
+        }
+    }
+
     public function listar()
     {
         

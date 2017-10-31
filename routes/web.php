@@ -198,6 +198,7 @@ Route::group(['prefix' => 'institucion'], function (){
 Route::prefix('objetivo-general')->group(function (){
 
     Route::post('guardar', 'ObjetivoGeneralController@guardar')->name('objetivogen.guardar');
+
 });
 
 //Objetivo Especifico
@@ -205,7 +206,8 @@ Route::prefix('objetivo-especifico')->group(function (){
 
    Route::post('guardar', 'ObjetivoEspecificoController@guardar')->name('objetivo-especifico.guardar');
    Route::get('mostrar/{codObjEsp}', 'ObjetivoEspecificoController@mostrar')->name('objetivo-especifico.mostrar');
-   Route::post('actualizar', 'ObjetivoEspecificoConotroller@actualizar')->name('objetivo-especifico.actualizar');
+   Route::post('actualizar', 'ObjetivoEspecificoController@actualizar')->name('objetivo-especifico.actualizar');
+   Route::get('ajax-get-objetivo-especifico/{codObjEsp}', 'ObjetivoEspecificoController@ajaxGetObjetivoEspecifico');
 });
 
 
