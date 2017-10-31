@@ -99,5 +99,17 @@ class NormaAuditoriaController extends Controller
 
     }
 
+    public function archivodescargar(Request $request)
+    {
+        $normativaMacroproceso = NormativaMarcoproceso::find($request->codNormMacro);
+
+            $descargar  = storage_path('/app/public/'.$normativaMacroproceso->nombre_archivo);
+
+        return response()->download($descargar);
+
+
+
+    }
+
 
 }

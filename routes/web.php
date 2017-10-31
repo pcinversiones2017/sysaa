@@ -165,6 +165,7 @@ Route::group(['prefix' => 'normaAuditoria'], function(){
     Route::post('actualizar', 'NormaAuditoriaController@actualizar')->name('normaAuditoria.actualizar');
     Route::get('archivocrear/{codNormMacro}', 'NormaAuditoriaController@archivocrear')->name('normaAuditoria.archivocrear');
     Route::post('archivoregistrar', 'NormaAuditoriaController@archivoregistrar')->name('normaAuditoria.archivoregistrar');
+    Route::get('archivodescargar/{codNormMacro}', 'NormaAuditoriaController@archivodescargar')->name('normaAuditoria.archivodescargar');
 
 });
 //Auditoria
