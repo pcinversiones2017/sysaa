@@ -4,17 +4,58 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
+                    <h5>GENERAR PROCESOS</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#">Config option 1</a>
+                            </li>
+                            <li><a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
                     <h5>Generar Procedimiento para: <strong>{{$macroproceso->nombre}}</strong></h5>
                 </div>
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-lg-12">
+                            <div class="m-b-md">
+                                <ol class="breadcrumb">
+                                    <li>
+                                        <a href="{!! route('macroproceso.listar') !!}">MACROPROCESO</a>
+                                    </li>
+                                    <li class="active">
+                                        <strong>Crear procesos</strong>
+                                    </li>
+                                </ol>
+                            </div>
+                                {!! Field::text('MACROPROCESO', $macroproceso->nombre,['readonly' => 'true']) !!}
+                        </div>
                                 @if (session('success'))
                                 <div class="alert alert-success" role="alert">
-                                    {!! session('success') !!}          
+                                    {!! session('success') !!}
                                 </div>
                                 @endif
                             <div class="m-b-md">
+                                {!! Form::open(['method' => 'POST', 'route' => 'procesoma.guardar']) !!}
+                                <input type="hidden" value="{{$macroproceso->codMacroP}}" name="codMacroP">
+                                <div class="col-md-12">
+                                    {!! Field::text('nombre', ['label' => 'PROCESO']) !!}
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-primary btn-outline" value="REGISTRAR">
+                                        <a href="{{URL::to('macroproceso/listar')}}" class="btn btn-danger btn-outline">CANCELAR</a>
+                                    </div>
+                                </div>
+                                {!! Form::close() !!}
+                            </div>
                                 {!! Form::open(['method' => 'POST', 'url' => 'procedimiento.registrar']) !!}
                                 {!! Form::hidden('id', $macroproceso->codMacroP) !!}
                                 {!! Field::text('proceso') !!}
@@ -28,7 +69,7 @@
 
                 @if (session('danger'))
                     <div class="alert alert-danger" role="alert">
-                    {!! session('danger') !!}           
+                    {!! session('danger') !!}
                     </div>
                 @endif
                 <br>
@@ -85,5 +126,4 @@
         </div>
     </div>
 
-    
 @endsection
