@@ -17,7 +17,7 @@ class CreateMacroprocesoTable extends Migration
             $table->increments('codMacroP');
             $table->string('nombre');
             $table->string('estado');
-            $table->boolean('eliminado')->default(true);
+            $table->boolean('eliminado')->default(false);
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
         });

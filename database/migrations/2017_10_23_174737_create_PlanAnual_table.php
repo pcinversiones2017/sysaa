@@ -16,7 +16,7 @@ class CreatePlanAnualTable extends Migration
         Schema::create('Plan_Anual', function (Blueprint $table) {
             $table->increments('codPlanA');
             $table->string('nombrePlan');
-            $table->boolean('eliminado')->default(true);
+            $table->boolean('eliminado')->default(false);
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
         });

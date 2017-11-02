@@ -20,7 +20,7 @@ class CreateUsuariosTable extends Migration
             $table->string('materno');
             $table->string('email')->unique();
             $table->string('password');
-            $table->boolean('eliminado')->default(true);
+            $table->boolean('eliminado')->default(false);
             $table->rememberToken();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
