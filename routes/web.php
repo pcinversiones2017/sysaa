@@ -127,6 +127,7 @@ Route::group(['prefix' => 'actividad'],function () {
     Route::get('crear', 'ActividadController@crear')->name('actividad.crear');
     Route::get('mostrar/{codAct}', 'ActividadController@mostrar')->name('actividad.mostrar');
     Route::post('guardar', 'ActividadController@guardar')->name('actividad.guardar');
+    Route::post('guardar', 'ActividadController@guardar')->name('actividad.guardar');
     Route::get('listar', 'ActividadController@listar')->name('actividad.listar');
     Route::get('editar/{codAct}', 'ActividadController@editar')->name('actividad.editar');
     Route::post('actualizar', 'ActividadController@actualizar')->name('actividad.actualizar');
@@ -139,13 +140,7 @@ Route::group(['prefix' => 'tipo_normativa'],function () {
     Route::get('editar/{codTipNorm}', 'TipoNormativaController@editar')->name('tipo_normativa.editar');
     Route::post('actualizar', 'TipoNormativaController@actualizar')->name('tipo_normativa.actualizar');
 });
-Route::prefix('actividad')->group(function () {
-    Route::get('crear', 'ActividadController@crear');
-    Route::post('guardar', 'ActividadController@guardar');
-    Route::get('listar', 'ActividadController@listar');
-    Route::get('editar/{codAct}', 'ActividadController@editar');
-    Route::post('actualizar', 'ActividadController@actualizar');
-});
+
 //cronograma
 Route::group(['prefix' => 'cronograma'], function(){
      Route::get('crear', 'CronogramaController@crear')->name('cronograma.crear');

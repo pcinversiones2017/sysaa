@@ -41,7 +41,7 @@ class ProcedimientospController extends Controller
         $procedimientoSP->nombre = $request->nombre;
         $procedimientoSP->codSubPro = $request->codSubPro;
         $procedimientoSP->save();
-        return redirect('subproceso/mostrar/' . $request->codSubPro);
+        return redirect()->route('subproceso.mostrar', [$request->codSubPro])->with('success','Se grabo correctamente');
     }
 
     /**
@@ -65,8 +65,8 @@ class ProcedimientospController extends Controller
 
     public function editar(Request $request)
     {
-        $procedimientoSP = Procedimientosp::find($request->codProSP);
-        return view('procedimientosp.editar')->with(compact('pro'));
+        $procedimientosp = Procedimientosp::find($request->codProSP);
+        return view('procedimientosp.editar')->with(compact('procedimientosp'));
     }
 
     /**
@@ -78,12 +78,11 @@ class ProcedimientospController extends Controller
      */
     public function actualizar(Request $request, Procedimientosp $procedimientosp)
     {
-        $procedimientoSP = Procedimientosp::find($request->codProSP);
-        $procedimientoSP-> nombre = $request->nombre;
-        $procedimientoSP-> codSubPro = $request-> codSubPro;
-        $procedimientoSP->save();
-
-        return redirect('procedimientosp/listar');
+        $procedimientosp = Procedimientosp::find($request->codProSP);
+        $procedimientosp-> nombre = $request->nombre;
+        $procedimientosp-> codSubPro = $request-> codSubPro;
+        $procedimientosp->save();
+        return redirect()->route('subproceso.mostrar', [$request->codSubPro])->with('update','Se actualizo correctamente');
     }
 
     /**

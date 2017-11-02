@@ -72,7 +72,7 @@ class ProcesomaController extends Controller
      */
     public function editar(Request $request)
     {
-        $procesoma = Macroproceso::find($request->codProMA);
+        $procesoma = Procesoma::find($request->codProMA);
         return view('procesoma.editar')->with(compact('procesoma'));
     }
 
@@ -85,11 +85,12 @@ class ProcesomaController extends Controller
      */
     public function actualizar(Request $request)
     {
-        $procesosma = Procesoma::find($request-> codProMA);
-        $procesosma->nombre = $request->nombre;
-        $procesosma->estado = $request->estado;
-        $procesosma->codMacroP = $request->codMacroP;
-        $procesosma->save();
+        $procesoma = Procesoma::find($request-> codProMA);
+        $procesoma->nombre = $request->nombre;
+        $procesoma->estado = 'activo';
+        $procesoma->codMacroP = $request->codMacroP;
+        $procesoma->save();
+        return redirect()->route('macroproceso.mostrar', [$request->codMacroP])->with('update','Se actualizo correctamente');
     }
 
     /**

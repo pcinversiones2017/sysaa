@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Editar Macroproceso</h5>
+                    <h5>EDITAR PROCESO</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -24,22 +24,15 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <form method="post" class="form-horizontal" action="{{URL::to('macroproceso/actualizar')}}">
-                        {{csrf_field()}}
-                        <input type="hidden" value="{{$macroproceso->codMacroP}}" name="codMacroP">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Nombre del MacroProceso</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="nombre" value="{{$macroproceso->nombre}}">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-2">
-                                <button class="btn btn-primary" type="submit">Guardar</button>
-                            </div>
-                        </div>
-                    </form>
+                    {!! Form::open(['method' => 'POST', 'route' => 'procesoma.actualizar']) !!}
+                    <input type="hidden" value="{{$procesoma->codMacroP}}" name="codMacroP">
+                    <input type="hidden" value="{{$procesoma->codProMA}}" name="codProMA">
+                    {!! Field::text('nombre', $procesoma->nombre, ['label' => 'Nombre']) !!}
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
+                        <a href="{{URL::to('macroproceso/mostrar')}}/{{$procesoma->codProMA}}"  class="btn btn-danger btn-outline">CANCELAR</a>
+                    </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
