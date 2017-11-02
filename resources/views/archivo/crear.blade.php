@@ -27,7 +27,9 @@
                             <div class="hr-line-dashed"></div>
 
                             <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-outline" value="REGISTRAR">
+                                {!! Form::submit('CARGAR', ['class' => 'btn btn-primary btn-outline']) !!}
+                                <a href="{!! url('informe/informe/'.$codPlanF.'/'.$codObjEsp.'/'.$codProc) !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                                <a href="{!! url('informe/informe/'.$codPlanF.'/'.$codObjEsp.'/'.$codProc) !!}" class="btn btn-success btn-outline">VER DOCUMENTOS</a>
                             </div>
                             <div class="hr-line-dashed"></div>
 

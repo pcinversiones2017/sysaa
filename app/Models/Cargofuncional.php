@@ -16,7 +16,7 @@ class Cargofuncional extends Model
 
     public function scopeActivo($cadenaSQL)
     {
-        return $cadenaSQL->where('estado',true);
+        return $cadenaSQL->where('eliminado',true);
     }
 
     public function scopeExiste($cadenaSQL, $id)
