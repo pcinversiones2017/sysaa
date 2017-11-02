@@ -11,8 +11,7 @@ class InformeController extends Controller
     public function listar($id)
     {
     	$informe = Informe::Existe($id)->with('procedimiento')->get();
-        $id = $id;
-    	return view('informe.listar', compact(['informe', 'id']));
+    	return view('informe.listar', compact('informe'));
     }
 
     public function crear($id)

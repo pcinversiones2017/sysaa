@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auditoria\ActualizarRequest;
+use App\Http\Requests\Auditoria\RegistroRequest;
 use App\Models\Auditoria;
 use App\Models\Macroproceso;
 use App\Models\ObjetivoGeneral;
@@ -43,7 +45,7 @@ class AuditoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function guardar(Request $request)
+    public function guardar(RegistroRequest $request)
     {
         $auditoria = new Auditoria();
         $auditoria->nombrePlanF = $request->nombrePlanF;
@@ -113,7 +115,7 @@ class AuditoriaController extends Controller
      * @param  \App\Models\Auditoria  $auditoria
      * @return \Illuminate\Http\Response
      */
-    public function actualizar(Request $request)
+    public function actualizar(ActualizarRequest $request)
     {
         $auditoria = Auditoria::find($request->codPlanF);
         $auditoria->nombrePlanF = $request->nombrePlanF;
