@@ -10,7 +10,9 @@
             <div class="ibox-content">
                 <div class="row">
                     {!! Form::open(['method' => 'POST', 'route' => 'asignarr.registrar']) !!}
+
                         <div class="col-md-6 b-r">
+                            <input type="hidden" value="{{$codPlanF}}" name="codPlanF">
                             <label>USUARIO</label>
                             {!! Form::select('usuario',$usuario, null, ['class' => 'form-control', 'placeholder' => 'SELECCIONE']) !!}
                             <div class="hr-line-dashed"></div>
@@ -25,7 +27,7 @@
 
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-outline" value="REGISTRAR">
-                                <a href="{!! route('asignarr.listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                                <a href="{{ url()->previous() }}" class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
                             <div class="hr-line-dashed"></div>
 

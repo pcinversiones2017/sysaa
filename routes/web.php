@@ -78,9 +78,9 @@ Route::group(['prefix' => 'cargofuncional'], function(){
     Route::get('cargo-funcional-eliminar/{id}','CargofuncionalController@eliminar')->name('cargof.eliminar');
 });
 
-Route::group(['prefix' => 'asignarrol'], function(){
-    Route::get('asignar-rol','AsignacionController@listar')->name('asignarr.listar');
-    Route::get('asignar-rol-crear','AsignacionController@crear')->name('asignarr.crear');
+Route::group(['prefix' => 'asignar-rol'], function(){
+    Route::get('listar','AsignacionController@listar')->name('asignarr.listar');
+    Route::get('crear/{codPlanF}','AsignacionController@crear')->name('asignarr.crear');
     Route::post('asignar-rol-registrar','AsignacionController@registrar')->name('asignarr.registrar');
     Route::get('asignar-rol-editar/{id}','AsignacionController@editar')->name('asignarr.editar');
     Route::post('asignar-rol-actualizar','AsignacionController@actualizar')->name('asignarr.actualizar');
@@ -195,8 +195,6 @@ Route::group(['prefix' => 'institucion'], function (){
     Route::post('actualizar', 'InstitucionController@actualizar')->name('institucion.actualizar');
     Route::get('listarSoftware', 'InstitucionController@listarSoftware')->name('institucion.listarSoftware');
 
-
-
 });
 
 
@@ -212,6 +210,8 @@ Route::prefix('objetivo-general')->group(function (){
 //Objetivo Especifico
 Route::prefix('objetivo-especifico')->group(function (){
 
+   Route::get('crear/{codPlanF}', 'ObjetivoEspecificoController@crear')->name('objetivo-especifico.crear');
+   Route::get('editar/{codObjEsp}', 'ObjetivoEspecificoController@editar')->name('objetivo-especifico.editar');
    Route::post('guardar', 'ObjetivoEspecificoController@guardar')->name('objetivo-especifico.guardar');
    Route::get('mostrar/{codObjEsp}', 'ObjetivoEspecificoController@mostrar')->name('objetivo-especifico.mostrar');
    Route::post('actualizar', 'ObjetivoEspecificoController@actualizar')->name('objetivo-especifico.actualizar');
