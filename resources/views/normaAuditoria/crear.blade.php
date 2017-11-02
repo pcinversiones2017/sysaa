@@ -38,8 +38,11 @@
                             <div class="col-md-12">
                                 {!! Field::textarea('nombre') !!}
                             </div>
+
                             <div class="col-md-12 " style="margin-top: 20px;">
-                                <input type="submit" class="btn btn-primary btn-outline" value="GUARDAR">
+                                <input type="submit" class="btn btn-primary btn-outline" value="REGISTRAR">
+                                <a href="{!! route('normaAuditoria.listarAplica') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+
                             </div>
                         </div>
 

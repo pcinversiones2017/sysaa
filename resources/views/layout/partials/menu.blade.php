@@ -79,26 +79,26 @@
                             <span class="fa arrow"></span></a>
                         <ul class="nav  collapse">
                             <li>
-                                <a href="{{URL::to('normaAuditoria/listar')}}">
+                                <a href="{{URL::to('norma-auditoria/listar')}}">
                                     <i class="fa fa fa-long-arrow-right fa-lg"></i>
                                     <span class="nav-label">Normativas aplicable a la entidad</span>
                                     <span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li>
-                                        <a href="{{URL::to('normaAuditoria/crear')}}">
+                                        <a href="{{URL::to('norma-auditoria/crear')}}">
                                             Crear norma applicable </a>
-                                        <a href="{{URL::to('normaAuditoria/listarAplica')}}">Listar normas</a>
+                                        <a href="{{URL::to('norma-auditoria/listarAplica')}}">Listar normas</a>
                                 </ul>
                             </li>
                             <li>
-                                <a href="{{URL::to('normaAuditoria/listar')}}">
+                                <a href="{{URL::to('norma-auditoria/listar')}}">
                                     <i class="fa fa fa-long-arrow-right fa-lg"></i>
                                     <span class="nav-label">
                                         Normativas que regulan auditoria (*)</span>
                                     <span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li class="{{$crearCronograma??''}}">
-                                        <a href="{{URL::to('normaAuditoria/listar')}}">listar
+                                        <a href="{{URL::to('norma-auditoria/listar')}}">listar
                                             (*)
                                         </a>
                                 </ul>
