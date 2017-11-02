@@ -17,7 +17,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de Asignaciones </h5>
+                    <h5>Lista de Informe </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -31,7 +31,7 @@
 
                     <div class="row">
                         <div class="col-sm-3">
-                            <a type="button" href="{!! route('informe.crear') !!}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Informe</a>
+                            <a type="button" href="{!! url('/objetivo-especifico/mostrar/'.$codPlanF.'/'.$codObjEsp) !!}" class="btn btn-outline btn-danger"> ATRAS</a>
                             <p>
                             
                         </div>
@@ -42,10 +42,10 @@
                         <tr>
                             <th>#</th>
                             <th>INFORME</th>
+                            <th>JUSTIFICACION</th>
                             <th>ELABORADO</th>
                             <th>REVISADO</th>
                             <th>SUPERVISADO</th>
-                            <th>JUSTIFICACION</th>
                             <th>Accion</th>
                         </tr>
                         </thead>
@@ -55,13 +55,14 @@
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{!! $row->informe !!}</td>
+                                <td>{!! $row->procedimiento->justificacion !!}</td>
                                 <td>{!! $row->elaborado !!}</td>
                                 <td>{!! $row->revisado !!}</td>
                                 <td>{!! $row->supervisado !!}</td>
-                                <td>{!! $row->procedimiento->justificacion !!}</td>
                                 <td>
-                                    <a href="{!! url('informe/informe-editar/'.$row->codInf) !!}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
-                                    <a href="{!! url('informe/informe-eliminar/'.$row->codInf) !!}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar </a>
+                                    <a href="{!! url('informe/informe-editar/'.$row->codInf) !!}" class="btn btn-white btn-outline"><i class="fa fa-pencil"></i>  </a>
+                                    <a href="{!! url('informe/informe-eliminar/'.$row->codInf) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
+                                    <a href="{!! url('archivo/archivo-crear/'.$codPlanF.'/'.$codObjEsp.'/'.$codProc.'/'.$row->codInf) !!}" class="btn btn-primary btn-outline"><i class="fa fa-upload"></i>  </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

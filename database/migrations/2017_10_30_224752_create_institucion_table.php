@@ -17,6 +17,7 @@ class CreateInstitucionTable extends Migration
             $table->increments('codInstitucion');
             $table->string('nombreInstitucion');
             $table->integer('estado');
+            $table->boolean('eliminado')->default(true);
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
 

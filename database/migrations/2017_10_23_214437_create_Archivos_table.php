@@ -18,7 +18,7 @@ class CreateArchivosTable extends Migration
             $table->string('nombre');
             $table->string('ruta');
             $table->integer('codInf')->unsigned()->nullable();
-            $table->boolean('estado')->default(true);
+            $table->boolean('eliminado')->default(true);
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
             $table->foreign('codInf')->references('codInf')->on('Informe');
