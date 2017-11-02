@@ -20,6 +20,8 @@ class CreateUsuarioRolesTable extends Migration
             $table->integer('codCarFun')->unsigned();
             $table->boolean('estado')->default(true);
             $table->integer('codPlanF')->unsigned()->nullable();
+            $table->integer('horasH')->unsigned()->nullable();
+            $table->float('sueldo')->nullable();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable(); 
 

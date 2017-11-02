@@ -28,7 +28,14 @@ class AsignacionController extends Controller
 
     public function registrar(Request $request)
     {
-    	Usuariorol::create(['codUsu' => $request->usuario, 'codRol' => $request->rol, 'codCarFun' => $request->cargo, 'codPlanF' => $request->codPlanF]);
+    	UsuarioRol::create([
+    	    'codUsu'    => $request->usuario,
+            'codRol'    => $request->rol,
+            'codCarFun' => $request->cargo,
+            'codPlanF'  => $request->codPlanF,
+            'horasH'    => $request->horasH,
+            'sueldo'    => $request->sueldo,
+        ]);
     	return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success','Usuario asignado registrado');
     }
 
