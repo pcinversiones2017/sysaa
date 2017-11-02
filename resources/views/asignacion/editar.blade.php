@@ -24,7 +24,9 @@
                             <label>CARGO FUNCIONAL</label>
                             {!! Form::select('cargo',$cargo,$row->codCarFun,['class' => 'form-control']) !!}
                             <div class="hr-line-dashed"></div>
-
+                            {!! Field::text('horasH', $row->horasH, ['label' => 'HORAS HOMBRES']) !!}
+                            <div class="hr-line-dashed"></div>
+                            {!! Field::text('sueldo', $row->sueldo, ['label' => 'SUELDO']) !!}
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
                                 <a href="{{url()->previous()}}" class="btn btn-danger btn-outline">ATRAS</a>

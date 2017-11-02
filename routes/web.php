@@ -82,7 +82,7 @@ Route::group(['prefix' => 'asignar-rol'], function(){
     Route::get('listar','AsignacionController@listar')->name('asignarr.listar');
     Route::get('crear/{codPlanF}','AsignacionController@crear')->name('asignarr.crear');
     Route::post('asignar-rol-registrar','AsignacionController@registrar')->name('asignarr.registrar');
-    Route::get('asignar-rol-editar/{id}','AsignacionController@editar')->name('asignarr.editar');
+    Route::get('editar/{id}','AsignacionController@editar')->name('asignarr.editar');
     Route::post('asignar-rol-actualizar','AsignacionController@actualizar')->name('asignarr.actualizar');
     Route::get('asignar-rol-eliminar/{id}','AsignacionController@eliminar')->name('asignarr.eliminar');
 });

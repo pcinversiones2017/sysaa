@@ -23,6 +23,11 @@ class DatabaseSeeder extends Seeder
             NormativaCSeeder::class,
             InstitucionTableSeeder::class,
             InfoSoftwareSeeder::class,
+            MacroprocesoSeeder::class,
+            ProcesomaSeeder::class,
+            SubprocesoSeeder::class,
+            ProcedimientospSeeder::class,
+            ActividadesSeeder::class
             ]);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }

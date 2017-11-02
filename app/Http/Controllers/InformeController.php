@@ -14,10 +14,10 @@ class InformeController extends Controller
     	return view('informe.listar', compact('informe'));
     }
 
-    public function crear()
+    public function crear($id)
     {
-    	$procedimiento = Procedimiento::take(1)->get();
-    	return view('informe.crear', compact('procedimiento'));
+    	$id = $id;
+    	return view('informe.crear', compact('id'));
     }
 
     public function registrar(Request $request)

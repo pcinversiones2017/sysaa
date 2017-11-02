@@ -39,8 +39,8 @@
                             <td>{!! $row->cargofuncional->nombre !!}</td>
                             <td>{!! $row->rol->nombre !!}</td>
                             <td>
-                                <a href="{!! url('asignarrol/asignar-rol-editar/'.$row->codUsuRol) !!}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> Editar </a>
-                                <a href="{!! url('asignarrol/asignar-rol-eliminar/'.$row->codUsuRol) !!}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar </a>
+                                <a href="{!! url('asignar-rol/editar/' . $row->codUsuRol) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
+                                <a href="{!! url('asignarrol/asignar-rol-eliminar/'.$row->codUsuRol) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php $i++ ?>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Plan\RegistroRequest;
 use Illuminate\Http\Request;
-use App\Models\Usuariorol;
+use App\Models\UsuarioRol;
 use App\Models\Cargofuncional;
 use App\User;
 use App\Models\Rol;
@@ -21,8 +21,11 @@ class AsignacionController extends Controller
     {
         $cargo = Cargofuncional::Activo()->pluck('nombre','codCarFun');
         $rol = rol::pluck('nombre','codRol');
-        $usuario = User::Activo()->pluck('nombres','codUsu');
+
         $codPlanF = $request->codPlanF;
+        $usuariosRol = UsuarioRol::where('codPlanF', $codPlanF)->pluck('codUsuRol')->toArray();
+        $usuario = User::Activo()->pluck('nombres','codUsu')->except($usuariosRol);
+
     	return view('asignacion.crear', compact(['cargo', 'rol', 'usuario', 'codPlanF']));
     }
 
@@ -44,19 +47,27 @@ class AsignacionController extends Controller
         $cargo = Cargofuncional::Activo()->pluck('nombre','codCarFun');
         $rol = rol::pluck('nombre','codRol');
         $usuario = User::Activo()->pluck('nombres','codUsu');
-    	$usuariorol = Usuariorol::Existe($id)->get();
+    	$usuariorol = UsuarioRol::Existe($id)->get();
     	return view('asignacion.editar', compact(['usuariorol','cargo','usuario','rol']));
     }
 
     public function actualizar(Request $request)
     {
-    	Usuariorol::Existe($request->id)->update(['codUsu' => $request->usuario, 'codRol' => $request->rol, 'codCarFun' => $request->cargo]);
-    	return redirect()->route('asignarr.listar')->with('success','Usuario asignado actualizado');	
+    	$usuarioRol = UsuarioRol::find($request->id);
+
+        $usuarioRol->codUsu     = $request->usuario;
+        $usuarioRol->codRol     = $request->rol;
+        $usuarioRol->codCarFun  = $request->cargo;
+        $usuarioRol->horasH     = $request->horasH;
+        $usuarioRol->sueldo     = $request->sueldo;
+        $usuarioRol->save();
+
+    	return redirect()->route('auditoria.mostrar', $usuarioRol->codPlanF)->with('success','Usuario asignado actualizado');
     }
 
     public function eliminar($id)
     {
-    	Usuariorol::Existe($id)->update(['estado' => false]);
+    	UsuarioRol::Existe($id)->update(['estado' => false]);
     	return redirect()->route('asignarr.listar')->with('danger','Usuario asignado eliminado');
     }
 }

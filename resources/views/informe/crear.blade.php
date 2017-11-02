@@ -1,8 +1,7 @@
 @extends('layout.admin')
 
 @section('css-style')
-{!! Html::style('css/plugins/summernote/summernote.css') !!}
-{!! Html::style('css/plugins/summernote/summernote-bs3.css') !!}
+{!! Html::style('https://summernote.org/bower_components/summernote/dist/summernote.css') !!}
 @stop
 
 @section('content')
@@ -21,8 +20,7 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                	<label>Informe</label>
-                	<textarea class="summernote" name="informe"></textarea>
+                	<textarea class="summernote" name="informe" rows="4" cols="15"></textarea>
                 </div>
             </div>
         </div>
@@ -31,15 +29,14 @@
 
 @section('js-script')
 
-    <!-- Custom and plugin javascript -->
-    {!! Html::script('js/inspinia.js') !!}
-    {!! Html::script('js/plugins/pace/pace.min.js') !!}
-    {!! Html::script('js/plugins/summernote/summernote.min.js') !!}
+    {!! Html::script('https://summernote.org/bower_components/summernote/dist/summernote.js') !!}
     <script>
         $(document).ready(function(){
 
-            $('.summernote').summernote();
+            $('.summernote').summernote({
+                height: 450,
+            });
 
        });
     </script>
-@stop
+@endsection

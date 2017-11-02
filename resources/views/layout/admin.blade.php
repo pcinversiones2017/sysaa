@@ -28,7 +28,6 @@
     </div>
 </div>
 
-{!! Html::script('js/server.js') !!}}
 {!! Html::script('js/jquery-3.1.1.min.js') !!}
 {!! Html::script('js/bootstrap.min.js') !!}
 {!! Html::script('js/plugins/metisMenu/jquery.metisMenu.js') !!}
