@@ -25,6 +25,8 @@
                             {!! Form::select('cargo', $cargo, null, ['class' => 'form-control', 'placeholder' => 'SELECCIONE']) !!}
                             <div class="hr-line-dashed"></div>
 
+                            {!! Field::text('horasH', ['label' => 'HORAS HOMBRES']) !!}
+                            {!! Field::text('sueldo', ['label' => 'SUELDO']) !!}
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-outline" value="REGISTRAR">
                                 <a href="{{ url()->previous() }}" class="btn btn-danger btn-outline">ATRAS</a>
