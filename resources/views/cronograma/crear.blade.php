@@ -176,11 +176,10 @@
                         <div class="hr-line-dashed"></div>
                         <!-- total de dias habiles------------------------------------------------------------------->
 
-                        <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
-                                <button class="btn btn-white" type="submit">Cancel</button>
-                                <button class="btn btn-primary" type="submit">Save changes</button>
+                                <button class="btn btn-white" type="submit">Cancelar</button>
+                                <button class="btn btn-primary" type="submit">Guardar</button>
                             </div>
                         </div>
                     </form>
