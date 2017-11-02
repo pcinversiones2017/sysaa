@@ -31,24 +31,21 @@ class InformeController extends Controller
     	return redirect('informe/informe/'.$request->codPlanF.'/'.$request->codObjEsp.'/'.$request->codProc)->with('success','Informe registrado');
     }
 
-    public function editar($id)
+    public function editar($codPlanF, $codObjEsp, $codProc, $codInf)
     {
-        $cargo = Cargofuncional::Activo()->pluck('nombre','codCarFun');
-        $rol = rol::pluck('nombre','codRol');
-        $usuario = User::Activo()->pluck('nombres','codUsu');
-    	$usuariorol = Usuariorol::Existe($id)->get();
-    	return view('asignacion.editar', compact(['usuariorol','cargo','usuario','rol']));
+        $informe = Informe::Existe($codInf)->get();
+    	return view('informe.editar', compact(['informe', 'codPlanF', 'codObjEsp', 'codProc', 'codInf']));
     }
 
     public function actualizar(Request $request)
     {
-    	Informe::Existe($request->id)->update(['codUsu' => $request->usuario, 'codRol' => $request->rol, 'codCarFun' => $request->cargo]);
-    	return redirect()->route('informe.listar')->with('success','Informe actualizado');	
+    	Informe::Existe($request->codInf)->update(['informe' => $request->informe, 'elaborado' => date("Y-m-d")]);
+    	return redirect('informe/informe/'.$request->codPlanF.'/'.$request->codObjEsp.'/'.$request->codProc)->with('success','Informe actualizado');	
     }
 
     public function eliminar($id)
     {
-    	Informe::Existe($id)->update(['estado' => false]);
+    	Informe::Existe($id)->update(['eliminado' => false]);
     	return redirect()->route('informe.listar')->with('danger','Informe eliminado');
     }
 }

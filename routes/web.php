@@ -28,13 +28,13 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 Route::group(['prefix' => 'procedimiento'], function(){
-    Route::get('procedimiento-crear/{codInf}','ProcedimientoController@crear')->name('procedimiento.crear');
+    Route::get('procedimiento-crear/{codPlanF}/{codObjEsp}','ProcedimientoController@crear')->name('procedimiento.crear');
     Route::post('procedimiento-registrar','ProcedimientoController@registrar')->name('procedimiento.registrar');
     Route::get('listar','ProcedimientoController@listar')->name('procedimiento.listar');
-    Route::get('procedimiento-editar/{id}/{oe}','ProcedimientoController@editar')->name('procedimiento.listar');
+    Route::get('procedimiento-editar/{codPlanF}/{codObjEsp}/{codProc}','ProcedimientoController@editar')->name('procedimiento.listar');
     Route::post('procedimiento-actualizar','ProcedimientoController@actualizar')->name('procedimiento.actualizar');
     Route::get('procedimiento-crear','ProcedimientoController@crear')->name('procedimiento.crear');
-    Route::get('procedimiento-eliminar/{id}','ProcedimientoController@eliminar')->name('procedimiento.eliminar');
+    Route::get('procedimiento-eliminar/{codProc}','ProcedimientoController@eliminar')->name('procedimiento.eliminar');
     Route::get('procedimiento-descargar/{id}','ProcedimientoController@descargar')->name('procedimiento.descargar');
 });
 
@@ -51,7 +51,7 @@ Route::group(['prefix' => 'informe'], function(){
     Route::get('informe/{codPlanF}/{codObjEsp}/{codProc}','InformeController@listar')->name('informe.listar');
     Route::get('informe-crear/{codPlanF}/{codObjEsp}/{codProc}','InformeController@crear')->name('informe.crear');
     Route::post('informe-registrar','InformeController@registrar')->name('informe.registrar');
-    Route::get('informe-editar/{id}','InformeController@editar')->name('informe.editar');
+    Route::get('informe-editar/{codPlanF}/{codObjEsp}/{codProc}/{codInf}','InformeController@editar')->name('informe.editar');
     Route::post('informe-actualizar','InformeController@actualizar')->name('informe.actualizar');
     Route::get('informe-eliminar/{id}','InformeController@eliminar')->name('informe.eliminar');
 });
@@ -164,16 +164,18 @@ Route::group(['prefix' => 'cronograma'], function(){
      Route::get('editar/{codPlanF}','CronogramaController@editar')->name('cronograma.editar');
 });
 //normaAuditoria
-Route::group(['prefix' => 'normaAuditoria'], function(){
+Route::group(['prefix' => 'norma-auditoria'], function(){
     Route::get('listar', 'NormaAuditoriaController@listar')->name('normaAuditoria.listar');
     Route::get('listarAplica', 'NormaAuditoriaController@listarAplica')->name('normaAuditoria.listarAplica');
     Route::get('crear', 'NormaAuditoriaController@crear')->name('normaAuditoria.crear');
     Route::post('guardar', 'NormaAuditoriaController@guardar')->name('normaAuditoria.guardar');
     Route::get('editar/{codNormMacro}', 'NormaAuditoriaController@editar')->name('normaAuditoria.editar');
     Route::post('actualizar', 'NormaAuditoriaController@actualizar')->name('normaAuditoria.actualizar');
-    Route::get('archivocrear/{codNormMacro}', 'NormaAuditoriaController@archivocrear')->name('normaAuditoria.archivocrear');
-    Route::post('archivoregistrar', 'NormaAuditoriaController@archivoregistrar')->name('normaAuditoria.archivoregistrar');
-    Route::get('archivodescargar/{codNormMacro}', 'NormaAuditoriaController@archivodescargar')->name('normaAuditoria.archivodescargar');
+    Route::get('archivo-crear/{codNormMacro}', 'NormaAuditoriaController@archivocrear')->name('normaAuditoria.archivocrear');
+    Route::post('archivo-registrar', 'NormaAuditoriaController@archivoregistrar')->name('normaAuditoria.archivoregistrar');
+    Route::get('archivo-descargar/{codNormMacro}', 'NormaAuditoriaController@archivodescargar')->name('normaAuditoria.archivodescargar');
+    Route::get('archivo-eliminar/{codNormMacro}', 'NormaAuditoriaController@archivoeliminar')->name('normaAuditoria.archivoeliminar');
+    Route::get('eliminar/{codNormMacro}', 'NormaAuditoriaController@eliminar')->name('normaAuditoria.eliminar');
 
 });
 //Auditoria

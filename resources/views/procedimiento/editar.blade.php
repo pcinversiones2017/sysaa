@@ -12,8 +12,9 @@
                     {!! Form::open(['method' => 'POST', 'route' => 'procedimiento.actualizar']) !!}
                     @foreach($procedimiento as $row)
                         <div class="col-md-12 b-r">
-                            {!! Form::hidden('id',$row->codProc) !!}
-                            {!! Form::hidden('oe', $oe) !!}
+                            {!! Form::hidden('codPlanF',$codPlanF) !!}
+                            {!! Form::hidden('codObjEsp',$codObjEsp) !!}
+                            {!! Form::hidden('codProc',$codProc) !!}
                             {!! Field::textarea('justificacion', $row->justificacion) !!}
                             <div class="hr-line-dashed"></div>
 
@@ -31,7 +32,7 @@
                             <br>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
-                                <a href="{!! url('objetivo-especifico/mostrar/'.$row->codProc) !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                                <a href="{!! url('objetivo-especifico/mostrar/'.$codPlanF.'/'.$codObjEsp) !!}" class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
                             <div class="hr-line-dashed"></div>
                         </div>

@@ -55,6 +55,12 @@ class NormaAuditoriaController extends Controller
         return view('normaAuditoria.editar')->with(compact('normativaMacroproceso'))
             ->with(compact('macroProcesos'));
     }
+    public function eliminar(Request $request){
+        $normativaMacroproceso = NormativaMarcoproceso::find($request->codNormMacro);
+        $normativaMacroproceso -> delete();
+        return redirect()->route('normaAuditoria.listarAplica')->with('success','Normativa ELIMNADA');
+
+    }
 
     public function actualizar(Request $request){
 
@@ -107,6 +113,19 @@ class NormaAuditoriaController extends Controller
             $descargar  = storage_path('/app/public/'.$normativaMacroproceso->nombre_archivo);
 
         return response()->download($descargar);
+
+
+
+    }
+
+    public function archivoeliminar(Request $request)
+    {
+        $normativaMacroproceso = NormativaMarcoproceso::find($request->codNormMacro);
+
+        $normativaMacroproceso->nombre_archivo = null;
+        $normativaMacroproceso->save();
+
+        return redirect()->route('normaAuditoria.listarAplica')->with('success','Archivo eliminado');
 
 
 

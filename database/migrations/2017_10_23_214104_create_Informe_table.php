@@ -17,8 +17,8 @@ class CreateInformeTable extends Migration
             $table->increments('codInf');
             $table->text('informe');
             $table->date('elaborado');
-            $table->date('revisado');
-            $table->date('supervisado');
+            $table->date('revisado')->nullable();
+            $table->date('supervisado')->nullable();
             $table->integer('codProc')->unsigned();
 
             $table->timestamp('fecha_creado')->nullable();

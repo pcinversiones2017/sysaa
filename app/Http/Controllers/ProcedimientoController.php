@@ -15,11 +15,10 @@ class ProcedimientoController extends Controller
     	return view('procedimiento.listar', compact('procedimiento'));
     }
 
-    public function crear($id)
+    public function crear($codPlanF, $codObjEsp)
     {
-    	$id = $id;
     	$usuariorol = Usuariorol::with('usuario')->get();
-    	return view('procedimiento.crear', compact(['id', 'usuariorol']));
+    	return view('procedimiento.crear', compact(['codPlanF', 'codObjEsp', 'usuariorol']));
     }
 
     public function registrar(ValidarRequest $request)
@@ -29,28 +28,27 @@ class ProcedimientoController extends Controller
     					'detalle' 		=> $request->detalle, 
     					'fechafin' 		=> $request->fechafin,
     					'codUsuRol'		=> $request->codusurol,
-    					'codObjEsp' 	=> $request->id
+    					'codObjEsp' 	=> $request->codObjEsp
     				]);
-    	return redirect('objetivo-especifico/mostrar/'.$request->id)->with('success','Se agrego Procedimiento');
+    	return redirect('objetivo-especifico/mostrar/'.$request->codPlanF.'/'.$request->codObjEsp)->with('success','Se agrego Procedimiento');
     }
 
-    public function editar($id, $oe)
+    public function editar($codPlanF, $codObjEsp, $codProc)
     {
-    	$procedimiento = Procedimiento::Existe($id)->get();
+    	$procedimiento = Procedimiento::Existe($codProc)->get();
     	$usuariorol = Usuariorol::with('usuario')->get();
-    	$oe = $oe;
-    	return view('procedimiento.editar', compact(['procedimiento','oe','usuariorol']));
+    	return view('procedimiento.editar', compact(['codPlanF', 'codObjEsp', 'codProc','procedimiento', 'usuariorol']));
     }
 
     public function actualizar(ValidarRequest $request)
     {
-    	Procedimiento::Existe($request->id)->update(['justificacion' => $request->justificacion,'detalle' => $request->detalle, 'fechafin'=> $request->fechafin,'codUsuRol'		=> $request->codusurol,]);
-    	return redirect('objetivo-especifico/mostrar/'.$request->oe)->with('success','Procedimiento actualizado');	
+    	Procedimiento::Existe($request->codProc)->update(['justificacion' => $request->justificacion,'detalle' => $request->detalle, 'fechafin'=> $request->fechafin,'codUsuRol'		=> $request->codusurol,]);
+    	return redirect('objetivo-especifico/mostrar/'.$request->codPlanF.'/'.$request->codObjEsp)->with('success','Procedimiento actualizado');	
     }
 
-    public function eliminar($id)
+    public function eliminar($codProc)
     {
-    	Procedimiento::Existe($id)->update(['estado' => false]);
+    	Procedimiento::Existe($codProc)->update(['eliminado' => true]);
     	return back()->with('danger','Procedimiento eliminado');
     }
 }

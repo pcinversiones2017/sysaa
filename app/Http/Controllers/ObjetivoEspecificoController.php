@@ -75,7 +75,8 @@ class ObjetivoEspecificoController extends Controller
 
             $procedimiento = Procedimiento::join('usuario_roles','usuario_roles.codUsuRol','=','procedimiento.codUsuRol')
                                             ->join('users','users.codUsu','=','usuario_roles.codUsu')
-                                            ->where('codPlanF',$request->codPlanF)
+                                            ->where('procedimiento.eliminado',false)
+                                            ->where('codObjEsp',$request->codObjEsp)
                                             ->get();
             $codPlanF = $request->codPlanF;
             $codObjEsp = $request->codObjEsp;
