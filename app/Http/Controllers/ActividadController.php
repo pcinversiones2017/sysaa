@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Actividad;
 use Illuminate\Http\Request;
 
@@ -14,9 +13,9 @@ class ActividadController extends Controller
      */
     public function listar()
     {
-        $actividades = Actividad::all();
+        $actividad = Actividad::all();
         $listarActividad = 'active';
-        return view('actividad.listar')->with(compact('actividades','listarActividad'));
+        return view('actividad.listar')->with(compact('actividad','listarActividad'));
     }
 
     /**
@@ -26,8 +25,8 @@ class ActividadController extends Controller
      */
     public function crear()
     {
-        $crearActividad = 'active';
-        return view('actividad.crear')->with(compact('crearActividad'));
+        $actividad = 'active';
+        return view('actividad.crear')->with(compact('actividad'));
     }
 
     /**
@@ -39,13 +38,11 @@ class ActividadController extends Controller
     public function guardar(Request $request)
     {
         $actividad = new Actividad();
-        $actividad->nombre = $request->nombre;
         $actividad->responsable = $request->responsable;
+        $actividad->nombre = $request->nombre;
         $actividad->codProSP = $request->codProSP;
         $actividad->save();
-
-        return redirect('procedimientosp/mostrar/' . $request->codProSP);
-
+        return redirect()->route('procedimientosp.mostrar', [$request->codProSP])->with('success','Se grabo correctamente');
     }
 
     /**
@@ -54,9 +51,10 @@ class ActividadController extends Controller
      * @param  \App\Models\Actividad  $actividad
      * @return \Illuminate\Http\Response
      */
-    public function show(Actividad $actividad)
+    public function mostrar($codAct)
     {
-        //
+        $actividad = Actividad::find($codAct);
+        return view('actividad.mostrar')->with(compact('actividad'));
     }
 
     /**
@@ -71,20 +69,14 @@ class ActividadController extends Controller
         return view('actividad.editar')->with(compact('actividad'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Actividad  $actividad
-     * @return \Illuminate\Http\Response
-     */
     public function actualizar(Request $request)
     {
         $actividad = Actividad::find($request->codAct);
-        $actividad->nombre = $request->nombre;
         $actividad->responsable = $request->responsable;
+        $actividad->nombre = $request->nombre;
         $actividad->codProSP = $request->codProSP;
         $actividad->save();
+        return redirect()->route('procedimientosp.mostrar', [$request->codProSP])->with('update','Se actualizo correctamente');
     }
 
     /**

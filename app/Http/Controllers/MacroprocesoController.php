@@ -1,10 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Macroproceso;
-use App\Models\Procesoma;
-use App\Models\Subproceso;
 use Illuminate\Http\Request;
 
 class MacroprocesoController extends Controller
@@ -45,8 +42,6 @@ class MacroprocesoController extends Controller
      */
     public function guardar(Request $request)
     {
-
-
         $macroprocesoss = new Macroproceso();
         $macroprocesoss->nombre = $request->nombre;
         $macroprocesoss->estado = 'activo';
@@ -96,14 +91,10 @@ class MacroprocesoController extends Controller
      */
     public function actualizar(Request $request)
     {
-
         $macroproceso = Macroproceso::find($request->codMacroP);
         $macroproceso->nombre = $request->nombre;
         $macroproceso->save();
-
         return redirect('macroproceso/listar');
-
-
     }
 
     /**

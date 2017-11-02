@@ -92,7 +92,7 @@
                                                 </div>
                                             @endif
 
-                                            <table class="table" style="margin-top: 10px">
+                                            <table class="table table-bordered" style="margin-top: 10px">
                                                 <thead>
                                                 <tr>
                                                     <th>#</th>
@@ -102,14 +102,14 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($procedimientosp->actividadeS as $n => $actividad)
+                                                @foreach($procedimientosp->actividadeS as $n => $actividades)
                                                     <tr>
                                                         <td align="middle">{{$n+1}}</td>
-                                                        <td>{{$actividad->responsable}}</td>
-                                                        <td>{{$actividad->nombre}}</td>
+                                                        <td>{{$actividades->responsable}}</td>
+                                                        <td>{{$actividades->nombre}}</td>
                                                         <td>
-                                                            <a href="{{URL::to('actividad/mostrar')}}/{{$actividad->codAct}}" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
-                                                            <a href="{{URL::to('actividad/editar')}}/{{$actividad->codAct}}" id="btnActualizar" class="btn btn-white btn-sm"><i class="fa fa-pencil" ></i> Editar </a>
+                                                            <a href="{{URL::to('actividades/mostrar')}}/{{$actividades->codAct}}" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
+                                                            <a href="{{URL::to('actividades/editar')}}/{{$actividades->codAct}}" id="btnActualizar" class="btn btn-white btn-sm"><i class="fa fa-pencil" ></i> Editar </a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
