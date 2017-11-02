@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ObjetivoEspecifico\RegistroRequest;
+use App\Models\Auditoria;
+use App\Models\Macroproceso;
 use App\Models\ObjetivoEspecifico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -32,6 +34,29 @@ class ObjetivoEspecificoController extends Controller
         }
     }
 
+    public function crear(Request $request)
+    {
+        try{
+            $macroprocesos = Macroproceso::all();
+            $auditoria = Auditoria::find($request->codPlanF);
+            return view('objetivo_especifico.crear', compact('macroprocesos', 'auditoria'));
+        }catch (\Exception $e){
+
+        }
+    }
+
+    public function editar(Request $request)
+    {
+        try{
+            $macroprocesos = Macroproceso::all();
+            $objetivoEspecifico = ObjetivoEspecifico::find($request->codObjEsp);
+
+            return view('objetivo_especifico.editar', compact('macroprocesos', 'objetivoEspecifico'));
+        }catch (\Exception $e){
+
+        }
+    }
+
     public function actualizar(Request $request)
     {
         try{
@@ -41,9 +66,10 @@ class ObjetivoEspecificoController extends Controller
             $objetivoEspecifico->codMacroP  = $request->codMacroP;
             $objetivoEspecifico->save();
 
-            return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success', 'Objetivo especifico actualizado');
+            return redirect()->route('auditoria.mostrar', $objetivoEspecifico->objetivoGeneral->auditoria->codPlanF)->with('success', 'Objetivo especifico actualizado');
         }catch (\Exception $e){
             Log::error($e->getMessage());
+            echo $e->getMessage();
         }
     }
 

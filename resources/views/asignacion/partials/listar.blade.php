@@ -17,8 +17,6 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <a type="button" href="{!! route('asignarr.crear', $auditoria->codPlanF) !!}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Asignacion</a>
-                        <p>
-
                     </div>
                 </div>
 
@@ -41,7 +39,7 @@
                             <td>{!! $row->cargofuncional->nombre !!}</td>
                             <td>{!! $row->rol->nombre !!}</td>
                             <td>
-                                <a href="{!! url('asignarrol/asignar-rol-editar/'.$row->codUsuRol) !!}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
+                                <a href="{!! url('asignarrol/asignar-rol-editar/'.$row->codUsuRol) !!}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> Editar </a>
                                 <a href="{!! url('asignarrol/asignar-rol-eliminar/'.$row->codUsuRol) !!}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar </a>
                             </td>
                         </tr>

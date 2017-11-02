@@ -98,9 +98,6 @@
                                         <i class="fa fa-info-circle"></i> Objetivo Especifico
                                     </div>
                                     <div class="panel-body">
-                                        <h3>Crear Objetivo Especifico</h3>
-                                        @include('objetivo_especifico.partials.editar')
-                                        @include('objetivo_especifico.partials.crear')
                                         @include('objetivo_especifico.partials.listar')
                                     </div>
 

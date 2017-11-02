@@ -24,5 +24,9 @@ class ObjetivoEspecifico extends Model
         return $this->belongsTo(Macroproceso::class, 'codMacroP');
     }
 
+    public function objetivoGeneral()
+    {
+        return $this->belongsTo(ObjetivoGeneral::class, 'codObjGen');
+    }
 
 }
