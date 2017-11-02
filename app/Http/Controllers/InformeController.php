@@ -23,8 +23,9 @@ class InformeController extends Controller
 
     public function registrar(Request $request)
     {
-    	Informe::create(['informe' => $request->informe, 'elaborado' => date("Y-m-d"), 'codProc' => $request->codProc]);
-    	return redirect()->route('informe.listar')->with('success','Informe registrado');
+
+    	$id = Informe::create(['informe' => $request->informe, 'elaborado' => date("Y-m-d"), 'codProc' => $request->codProc]);
+    	return redirect('informe/informe/'.$request->codProc)->with('success','Informe registrado');
     }
 
     public function editar($id)
