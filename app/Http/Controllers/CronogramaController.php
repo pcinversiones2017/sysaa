@@ -28,7 +28,7 @@ class CronogramaController extends Controller
         //validar que no se pongan varios cronogramas para la misma auditoria (una auditoria un cronograma)
             $auditorias = Auditoria::all();
 
-            if(empty($cronogramas->codPlanf)) {
+            if(!empty($cronogramas->codPlanf)) {
                 foreach ($cronogramas as $cronograma) {
                     $auditorias = Auditoria::find('codPlanf', '!=', $cronograma->codPlanf)->get();
                 }
