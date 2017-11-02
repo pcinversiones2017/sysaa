@@ -17,6 +17,7 @@ class CreateObjetivoGeneralTable extends Migration
             $table->increments('codObjGen');
             $table->string('nombre');
             $table->integer('codPlanF')->unsigned();
+            $table->boolean('eliminado')->default(false);
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
             $table->foreign('codPlanF')->references('codPlanF')->on('Auditoria');

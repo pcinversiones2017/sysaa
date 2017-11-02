@@ -18,6 +18,7 @@ class CreateProcesoMATable extends Migration
             $table->string('nombre');
             $table->string('estado');
             $table->integer('codMacroP')->unsigned();
+            $table->boolean('eliminado')->default(false);
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
             $table->foreign('codMacroP')->references('codMacroP')->on('Macroproceso');

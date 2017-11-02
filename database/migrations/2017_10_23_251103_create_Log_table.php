@@ -18,6 +18,7 @@ class CreateLogTable extends Migration
             $table->string('tabla');
             $table->string('accion');
             $table->integer('codUsu')->unsigned();
+            $table->boolean('eliminado')->default(false);
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
             $table->foreign('codUsu')->references('codUsu')->on('Usuarios');

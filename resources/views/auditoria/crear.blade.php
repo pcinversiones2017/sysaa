@@ -58,7 +58,7 @@
                             </div>
                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
-                                    <button class="btn btn-primary" type="submit">Guardar</button>
+                                    <button class="btn btn-primary btn-outline" type="submit">REGISTRAR </button>
                             </div>
                         </div>
                     {!! Form::close() !!}

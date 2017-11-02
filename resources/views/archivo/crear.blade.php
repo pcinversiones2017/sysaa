@@ -19,6 +19,7 @@
                         <strong>NOTA: PESO MAXIMO 5 MB</strong>
                     </div>
                     {!! Form::open(['method' => 'POST', 'route' => 'archivo.registrar', 'files' => true]) !!}
+                    {!! Form::hidden('codInf',$codInf) !!}
                         <div class="col-md-6 b-r">
                             
                             {!! Field::file('archivo') !!}

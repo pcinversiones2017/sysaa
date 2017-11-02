@@ -17,6 +17,7 @@ class CreateInfoSoftwareTable extends Migration
             $table->increments('cod_soft');
             $table->string('nombre_software');
             $table->string('version_software');
+            $table->boolean('eliminado')->default(false);
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
         });

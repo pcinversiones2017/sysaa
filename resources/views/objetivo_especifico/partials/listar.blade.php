@@ -5,7 +5,7 @@
             <div class="ibox-content">
                 <div class="row">
                     <div class="col-sm-3">
-                        <a type="button" href="{!! route('objetivo-especifico.crear', $auditoria->codPlanF) !!}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Objetivo Especifico</a>
+                        <a type="button" href="{!! route('objetivo-especifico.crear', $auditoria->codPlanF) !!}" class="btn btn-sm btn-primary btn-outline"><i class="fa fa-plus"></i> CREAR OBJETIVO ESPECÍFICO</a>
                     </div>
                 </div>
 
@@ -28,9 +28,9 @@
                             <td>{{$objetivoEsp->nombre}}</td>
                             <td>{{$objetivoEsp->macroproceso->nombre}}</td>
                             <td>{{$objetivoEsp->materia}}</td>
-                            <td><a href="#" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a></td>
+                            <td><a href="{{route('macroproceso.mostrar', $objetivoEsp->macroproceso->codMacroP)}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a></td>
                             <td>
-                                <a href="{{url('objetivo-especifico/mostrar')}}/{{$objetivoEsp->codObjEsp}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
+                                <a href="{{url('objetivo-especifico/mostrar')}}/{{$auditoria->codPlanF}}/{{$objetivoEsp->codObjEsp}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
                                 <a href="{{route('objetivo-especifico.editar', $objetivoEsp->codObjEsp) }}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
                                 <a href="" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i></a>
                             </td>

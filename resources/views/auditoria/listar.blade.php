@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de auditorias </h5>
+                    <h5>LISTA DE AUDITORIAS </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -28,7 +28,7 @@
 
                     <div class="row">
                         <div class="col-sm-3">
-                            <a type="button" href="{{URL::to('auditoria/crear')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Auditoria</a>
+                            <a type="button" href="{{URL::to('auditoria/crear')}}" class="btn btn-sm btn-primary btn-outline"><i class="fa fa-plus"></i> CREAR AUDITORIA</a>
                         </div>
                     </div>
 
@@ -58,7 +58,7 @@
                                 <td>{{$auditoria->entidadAuditada}}</td>
                                 <td>{{$auditoria->tipoDemanda}}</td>
                                 <td>{{$auditoria->planAnual->nombrePlan}}</td>
-                                <td>
+                                <td width="10%">
                                     <a href="{{URL::to('auditoria/mostrar')}}/{{$auditoria->codPlanF}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
                                     <a href="{{URL::to('auditoria/editar')}}/{{$auditoria->codPlanF}}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
                                 </td>

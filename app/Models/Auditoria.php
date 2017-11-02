@@ -24,7 +24,7 @@ class Auditoria extends Model
 
     public function cronogramaGeneral()
     {
-            return $this->hasOne(Cronograma::class, 'codPlanF');
+            return $this->hasMany(Cronograma::class, 'codPlanF');
     }
 
     public function macroprocesos()

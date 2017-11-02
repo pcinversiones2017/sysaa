@@ -13,9 +13,13 @@ class ArchivoController extends Controller
     	return view('archivo.listar', compact('archivos'));
     }
 
-    public function crear()
+    public function crear($codPlanF, $codObjEsp, $codProc, $codInf)
     {
-    	return view('archivo.crear');
+        $codPlanF   = $codPlanF;
+        $codObjEsp  = $codObjEsp;
+        $codProc    = $codProc;
+        $codInf     = $codInf;
+    	return view('archivo.crear', compact(['codPlanF', 'codObjEsp', 'codProc', 'codInf']));
     }
 
     public function registrar(Request $request)
@@ -23,8 +27,9 @@ class ArchivoController extends Controller
     	if($request->hasFile('archivo'))
         {
             $archivo = $request->file('archivo')->store('archivo','public');
-            Archivo::create(['nombre' => $request->file('archivo')->getClientOriginalName(),'ruta' => $archivo, 'codInf' => 0 ]);
-            return redirect()->route('archivo.listar')->with('success','Archivo cargado');
+            Archivo::create(['nombre' => $request->file('archivo')->getClientOriginalName(),'ruta' => $archivo, 'codInf' => $request->codInf ]);
+            return redirect('archivo/listar/'.$request->codInf)->with('success','Archivo cargado');
+
         }else
         {
             return redirect()->route('archivo.listar')->with('danger','Debe cargar un archivo');

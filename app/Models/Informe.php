@@ -14,6 +14,11 @@ class Informe extends Model
 
     const UPDATED_AT = "fecha_modificado";
 
+    public function scopeExiste($cadenaSQL, $id)
+    {
+    	return $cadenaSQL->where('codProc',$id);
+    }
+
     public function procedimiento()
     {
     	return $this->hasOne(Procedimiento::class,'codProc','codProc');

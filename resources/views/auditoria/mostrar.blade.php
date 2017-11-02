@@ -71,7 +71,7 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-info">
                                     <div class="panel-heading">
-                                        <i class="fa fa-info-circle"></i> Origen
+                                        <i class="fa fa-info-circle"></i> ORIGEN
                                     </div>
                                     <div class="panel-body">
                                         <p>{{$auditoria->origen}}</p>
@@ -83,7 +83,7 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-info">
                                     <div class="panel-heading">
-                                        <i class="fa fa-info-circle"></i> Objetivo General
+                                        <i class="fa fa-info-circle"></i> OBJETIVO GENERAL
                                     </div>
                                     <div class="panel-body">
                                         <p>{{$auditoria->objetivoGeneral->nombre}}</p>
@@ -95,7 +95,7 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-info">
                                     <div class="panel-heading">
-                                        <i class="fa fa-info-circle"></i> Objetivo Especifico
+                                        <i class="fa fa-info-circle"></i> OBJETIVO ESPECÍFICO
                                     </div>
                                     <div class="panel-body">
                                         @include('objetivo_especifico.partials.listar')
@@ -107,10 +107,32 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-info">
                                     <div class="panel-heading">
-                                        <i class="fa fa-info-circle"></i> Comisión Auditora
+                                        <i class="fa fa-info-circle"></i> PERIODO A EXAMINAR
+                                    </div>
+                                    <div class="panel-body">
+                                        <h5>DESDE {{ date('d-m-Y', strtotime($auditoria->periodoIniPlanF))}} HASTA {{ date('d-m-Y', strtotime($auditoria->periodoFinPlanF)) }}</h5>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-info-circle"></i> COMISIÓN AUDITORA
                                     </div>
                                     <div class="panel-body">
                                         @include('asignacion.partials.listar')
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-info-circle"></i> CRONOGRAMA Y PLAZOS DE ENTREGA DE DOCUMENTOS
+                                    </div>
+                                    <div class="panel-body">
+                                        @include('cronograma.partials.mostrar')
                                     </div>
 
                                 </div>
