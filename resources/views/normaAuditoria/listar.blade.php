@@ -45,9 +45,7 @@
                                     <td>{{$normaCAuditoria->numero}}</td>
                                     <td>{{$normaCAuditoria->nombre}}</td>
                                     <td>{{$normaCAuditoria->fecha}}</td>
-                                    <td>
 
-                                    </td>
                                 </tr>
                                 <?php $i++ ?>
                             @endforeach

@@ -21,26 +21,53 @@
 
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 {!! Field::text('numero',$normativaMacroproceso->Normativac->numero) !!}
                             </div>
 
-                            <div class="col-md-3">
-                                {!! Field::text('nombre',$normativaMacroproceso->Normativac->nombre) !!}
-                            </div>
                             <div class="col-md-3">
                                 <label class="">Marcoproceso</label>
                                 {!! Form::select('codMacroP', $macroProcesos, null, ['class' => 'form-control'] ) !!}
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 {!! Field::date('fecha',$normativaMacroproceso->Normativac->fecha) !!}
                             </div>
+                            <div class="col-md-12">
+                                {!! Field::textarea('nombre') !!}
+                            </div>
+                            @if(!empty($normativaMacroproceso->nombre_archivo))
+                            <div class="row">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>ruta</th>
+                                        <th>Archivo</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                      <tr>
+                                            <td><a href="{{URL::to('norma-auditoria/archivo-descargar')}}/{{$normativaMacroproceso->codNormMacro}}"><i class="fa fa-file-text fa-2x" aria-hidden="true"></i></a>
+                                            </td>
+                                            <td>{{$normativaMacroproceso->nombre_archivo}}</td>
+                                          <td><a href="{{URL::to('norma-auditoria/archivo-eliminar')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-danger btn-outline btn-sm"><i class="fa fa-trash"></i>ELIMINAR</a>
+
+                                      </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            @endif
                             <div class="col-md-2" style="margin-top: 20px;">
                                 <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
+                                <a href="{!! route('normaAuditoria.listarAplica') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+
                             </div>
                         </div>
                         {!! Form::close() !!}
+
                     </div>
                 </div>
             </div>

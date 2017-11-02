@@ -55,13 +55,15 @@
                                 <td>{{$normativaMacroproceso->Macroproceso->nombre}}</td>
                                 <td>{{$normativaMacroproceso->Normativac->fecha}}</td>
                                 <th><?php if(!empty($normativaMacroproceso->nombre_archivo)) { ?>
-                                    <a href="{{URL::to('normaAuditoria/archivodescargar')}}/{{$normativaMacroproceso->codNormMacro}}"><i class="fa fa-file-text fa-2x" aria-hidden="true"></i></a>
+                                    <a href="{{URL::to('norma-auditoria/archivo-descargar')}}/{{$normativaMacroproceso->codNormMacro}}"><i class="fa fa-file-text fa-2x" aria-hidden="true"></i></a>
                                     <?php } ?>
                                 </th>
-                                <td><a href="{{URL::to('normaAuditoria/editar')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
+                                    <td><a href="{{URL::to('norma-auditoria/editar')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i> Editar </a>
                                     <?php if(empty($normativaMacroproceso->nombre_archivo)) { ?>
-                                    <a href="{{URL::to('normaAuditoria/archivocrear')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-white btn-sm"> Adjuntar </a></td>
+                                    <a href="{{URL::to('norma-auditoria/archivo-crear')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-info btn-outline"> Adjuntar </a>
                                 <?php } ?>
+                                <a href="{{URL::to('norma-auditoria/eliminar')}}/{{$normativaMacroproceso->codNormMacro}}"  class="btn btn-danger btn-outline btn-sm"><i class="fa fa-trash"></i> Eliminar  </a></td>
+                                </td>
                                 </td>
 
                             </tr>
