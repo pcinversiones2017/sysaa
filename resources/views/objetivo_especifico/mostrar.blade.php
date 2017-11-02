@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <a href="{!! url('procedimiento/procedimiento-crear/'.$objetivoEspecifico->codObjEsp) !!}" class="btn btn-warning btn-outline">CREAR PROCEDIMIENTO</a>
-                            <a href="{!! url('auditoria/mostrar/'.$objetivoEspecifico->codObjEsp) !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                            <a href="{!! url('auditoria/mostrar/'.$codPlanF) !!}" class="btn btn-danger btn-outline">ATRAS</a>
                         </div>
                     </div>
                 </div>

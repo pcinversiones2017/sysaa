@@ -28,14 +28,7 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <a type="button" href="{!! route('informe.crear') !!}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Informe</a>
-                            <p>
-                            
-                        </div>
-                    </div>
+                    <a href="{!! url('objetivo-especifico/mostrar/'.$id) !!}" class="btn btn-danger btn-outline">ATRAS</a>
 
                     <table class="table table-bordered">
                         <thead>
@@ -60,8 +53,9 @@
                                 <td>{!! $row->supervisado !!}</td>
                                 <td>{!! $row->procedimiento->justificacion !!}</td>
                                 <td>
-                                    <a href="{!! url('informe/informe-editar/'.$row->codInf) !!}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
-                                    <a href="{!! url('informe/informe-eliminar/'.$row->codInf) !!}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar </a>
+                                    <a href="{!! url('informe/informe-editar/'.$row->codInf) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
+                                    <a href="{!! url('informe/informe-eliminar/'.$row->codInf) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
+                                    <a href="{!! url('informe/informe-adjuntar/'.$row->codInf) !!}" class="btn btn-success btn-outline"><i class="fa fa-upload"></i>  </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

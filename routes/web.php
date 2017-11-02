@@ -49,7 +49,7 @@ Route::group(['prefix' => 'archivo'], function(){
 });
 
 Route::group(['prefix' => 'informe'], function(){
-    Route::get('informe','InformeController@listar')->name('informe.listar');
+    Route::get('informe/{id}','InformeController@listar')->name('informe.listar');
     Route::get('informe-crear/{id}','InformeController@crear')->name('informe.crear');
     Route::post('informe-registrar','InformeController@registrar')->name('informe.registrar');
     Route::get('informe-editar/{id}','InformeController@editar')->name('informe.editar');
@@ -214,7 +214,7 @@ Route::prefix('objetivo-especifico')->group(function (){
    Route::get('crear/{codPlanF}', 'ObjetivoEspecificoController@crear')->name('objetivo-especifico.crear');
    Route::get('editar/{codObjEsp}', 'ObjetivoEspecificoController@editar')->name('objetivo-especifico.editar');
    Route::post('guardar', 'ObjetivoEspecificoController@guardar')->name('objetivo-especifico.guardar');
-   Route::get('mostrar/{codObjEsp}', 'ObjetivoEspecificoController@mostrar')->name('objetivo-especifico.mostrar');
+   Route::get('mostrar/{codObjEsp}/{codPlanF}', 'ObjetivoEspecificoController@mostrar')->name('objetivo-especifico.mostrar');
    Route::post('actualizar', 'ObjetivoEspecificoController@actualizar')->name('objetivo-especifico.actualizar');
    Route::get('ajax-get-objetivo-especifico/{codObjEsp}', 'ObjetivoEspecificoController@ajaxGetObjetivoEspecifico');
 });

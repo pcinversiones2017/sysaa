@@ -73,16 +73,18 @@ class ObjetivoEspecificoController extends Controller
         }
     }
 
-    public function mostrar(Request $request)
+    public function mostrar($codObjEsp, $codPlanF)
     {
         try{
 
-            $objetivoEspecifico = ObjetivoEspecifico::find($request->codObjEsp);
+            $objetivoEspecifico = ObjetivoEspecifico::find($codObjEsp);
 
             $procedimiento = Procedimiento::join('usuario_roles','usuario_roles.codUsuRol','=','procedimiento.codUsuRol')
                                             ->join('users','users.codUsu','=','usuario_roles.codUsu')
+                                            ->where('codObjEsp', $codObjEsp)
                                             ->get();
-            return view('objetivo_especifico.mostrar', compact(['objetivoEspecifico','procedimiento']));
+            $codPlanF = $codPlanF;
+            return view('objetivo_especifico.mostrar', compact(['objetivoEspecifico','procedimiento','codPlanF']));
         
         }catch (\Exception $e){
             Log::error($e->getMessage());

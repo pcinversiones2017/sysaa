@@ -9,7 +9,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de Asignaciones </h5>
+                    <h5>Crear Informe </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -20,7 +20,13 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                	<textarea class="summernote" name="informe" rows="4" cols="15"></textarea>
+                    {!! Form::open(['method' => 'POST', 'route' => 'informe.registrar']) !!}
+                    {!! Form::hidden('codProc',$id)!!}
+                    {!! Field::textarea('informe', null, ['class' => 'summernote']) !!}
+                	{!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-outline']) !!}
+                    <a href="{!! url('informe/informe',$id) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
+                    <a href="{!! url('objetivo-especifico/mostrar',$id) !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
