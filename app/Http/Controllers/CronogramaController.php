@@ -23,13 +23,16 @@ class CronogramaController extends Controller
             ->get()->toArray();
         // $planes = Plan::all();
 
-        $cronogramas = Cronograma::all();
 
         //validar que no se pongan varios cronogramas para la misma auditoria (una auditoria un cronograma)
-            $auditorias = Auditoria::all();
+        $auditorias = Auditoria::all();
 
-            if(!empty($cronogramas->codPlanf)) {
+        $cronogramas = Cronograma::all();
+
+            if(!empty($cronogramas->codPlanf)){
+
                 foreach ($cronogramas as $cronograma) {
+
                     $auditorias = Auditoria::find('codPlanf', '!=', $cronograma->codPlanf)->get();
                 }
             }

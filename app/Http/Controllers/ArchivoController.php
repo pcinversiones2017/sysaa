@@ -29,6 +29,7 @@ class ArchivoController extends Controller
             $archivo = $request->file('archivo')->store('archivo','public');
             Archivo::create(['nombre' => $request->file('archivo')->getClientOriginalName(),'ruta' => $archivo, 'codInf' => $request->codInf ]);
             return redirect('archivo/listar/'.$request->codInf)->with('success','Archivo cargado');
+
         }else
         {
             return redirect()->route('archivo.listar')->with('danger','Debe cargar un archivo');
