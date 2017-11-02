@@ -50,8 +50,7 @@ class SubprocesoController extends Controller
         $subProceso-> estado = 'active';
         $subProceso-> codProMA = $request->codProMA;
         $subProceso->save();
-
-        return redirect('procesoma/mostrar/' . $request->codProMA);
+        return redirect()->route('procesoma.mostrar', [$request->codProMA])->with('success','Se grabo correctamente');
     }
 
     /**
@@ -74,8 +73,9 @@ class SubprocesoController extends Controller
      */
     public function editar(Request $request)
     {
-        $subProceso = Subproceso::find($request->codSubPro);
-        return view ('subproceso.editar')->with(compact('subProceso'));
+        $subproceso = Subproceso::find($request->codSubPro);
+        return view ('subproceso.editar')->with(compact('subproceso'));
+
     }
 
     /**
@@ -85,15 +85,14 @@ class SubprocesoController extends Controller
      * @param  \App\Models\Subproceso  $subproceso
      * @return \Illuminate\Http\Response
      */
-    public function actualizar(Request $request, Subproceso $subproceso)
+    public function actualizar(Request $request)
     {
-        $subProceso = Subproceso::find($request->codSubPro);
-        $subProceso->nombre = $request->nombre;
-        $subProceso->estado = $request->estado;
-        $subProceso-> codProMA = $request->codProMA;
-        $subProceso->save();
-
-        return redirect('subproceso/listar');
+        $subproceso = Subproceso::find($request->codSubPro);
+        $subproceso->nombre = $request->nombre;
+        $subproceso->estado = 'activo';
+        $subproceso-> codProMA = $request->codProMA;
+        $subproceso->save();
+        return redirect()->route('procesoma.mostrar', [$request->codProMA])->with('update','Se actualizo correctamente');
     }
 
     /**

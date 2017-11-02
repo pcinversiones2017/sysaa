@@ -24,22 +24,15 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <form method="post" class="form-horizontal" action="{{URL::to('macroproceso/actualizar')}}">
-                        {{csrf_field()}}
-                        <input type="hidden" value="{{$macroproceso->codMacroP}}" name="codMacroP">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Nombre del MacroProceso</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="nombre" value="{{$macroproceso->nombre}}">
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-2">
-                                <button class="btn btn-primary" type="submit">Guardar</button>
-                            </div>
-                        </div>
-                    </form>
+                    {!! Form::open(['method' => 'POST', 'route' => 'macroproceso.actualizar']) !!}
+                    <input type="hidden" value="{{$macroproceso->codMacroP}}" name="codMacroP">
+                    {!! Field::text('nombre', $macroproceso->nombre, ['label' => 'Nombre']) !!}
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
+                        <a href="{!! route('macroproceso.listar') !!}" class="btn btn-danger btn-outline">CANCELAR</a>
+                    </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

@@ -1,8 +1,14 @@
 @extends('layout.admin')
 @section('content')
+
     <div class="row">
+        <div class="row wrapper border-bottom white-bg page-heading">
+
+        </div>
         <div class="col-lg-12">
+
             <div class="ibox float-e-margins">
+
                 <div class="ibox-title">
                     <h5>Generar Procedimiento para: <strong>{{$macroproceso->nombre}}</strong></h5>
                 </div>
@@ -25,7 +31,6 @@
                     </div>
                 </div>
                 <br>
-
                 @if (session('danger'))
                     <div class="alert alert-danger" role="alert">
                     {!! session('danger') !!}           
@@ -50,6 +55,11 @@
                                                         <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                                                         <a class="alert-link" href="#">{{session('success')}}</a>.
                                                     </div>
+                                                    @elseif(session('update'))
+                                                    <div class="alert alert-danger  alert-dismissable">
+                                                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                                                        <a class="alert-link" href="#">{{session('update')}}</a>.
+                                                    </div>
                                                 @endif
 
                                                 <table class="table table-bordered" style="margin-top: 10px">
@@ -67,8 +77,7 @@
                                                             <td>{{$procesoma->nombre}}</td>
                                                             <td>
                                                                 <a href="{{URL::to('procesoma/mostrar')}}/{{$procesoma->codProMA}}" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
-                                                                <a href="{{URL::to('procesoma/actualizar')}}/{{$procesoma->codProMA}}" id="btnActualizar"><i class="fa fa-pencil" >
-                                                                    </i> Editar </a>
+                                                                <a href="{{URL::to('procesoma/editar')}}/{{$procesoma->codProMA}}" id="btnActualizar" class="btn btn-white btn-sm"><i class="fa fa-pencil" ></i> Editar </a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -84,6 +93,4 @@
             </div>
         </div>
     </div>
-
-    
 @endsection

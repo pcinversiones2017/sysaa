@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Crear MacroProceso</h5>
+                    <h5>EDITAR SUBPROCESO</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -24,17 +24,16 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <div class="row">
-                        {!! Form::open(['method' => 'POST', 'route' => 'macroproceso.guardar']) !!}
-                        <div class="col-md-12">
-                            {!! Field::text('nombre', ['label' => 'Nombre']) !!}
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-outline" value="REGISTRAR">
-                                <a href="{!! route('macroproceso.listar') !!}" class="btn btn-danger btn-outline">CANCELAR</a>
-                            </div>
-                        </div>
-                        {!! Form::close() !!}
+
+                    {!! Form::open(['method' => 'POST', 'route' => 'subproceso.actualizar']) !!}
+                    <input type="hidden" value="{{$subproceso->codProMA}}" name="codProMA">
+                    <input type="hidden" value="{{$subproceso->codSubPro}}" name="codSubPro">
+                    {!! Field::text('nombre', $subproceso->nombre, ['label' => 'Nombre']) !!}
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
+                        <a href="{{URL::to('procesoma/mostrar')}}/{{$subproceso->codSubPro}}"  class="btn btn-danger btn-outline">CANCELAR</a>
                     </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
