@@ -58,9 +58,10 @@
                                 <td>{{$auditoria->entidadAuditada}}</td>
                                 <td>{{$auditoria->tipoDemanda}}</td>
                                 <td>{{$auditoria->planAnual->nombrePlan}}</td>
-                                <td width="10%">
+                                <td width="15%">
                                     <a href="{{URL::to('auditoria/mostrar')}}/{{$auditoria->codPlanF}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
                                     <a href="{{URL::to('auditoria/editar')}}/{{$auditoria->codPlanF}}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
+                                    <a href="{!! route('auditoria.eliminar', $auditoria->codPlanF) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

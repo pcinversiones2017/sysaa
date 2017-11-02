@@ -20,9 +20,10 @@ class CreateCronogramaGeneralTable extends Migration
             $table->date('fechaFin');
             $table->integer('codPlanf')->unsigned();
             $table->integer('dias_habiles');
-            $table->boolean('eliminado')->default(false);
+
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
+            $table->timestamp('fecha_eliminado')->nullable();
             $table->foreign('codPlanf')->references('codPlanf')->on('Auditoria');
             $table->foreign('codEtp')->references('codEtp')->on('Etapa');
         });

@@ -47,8 +47,9 @@
                             <td>{{$plan->nombrePlan}}</td>
                             <td>{{$plan->fecha_creado}}</td>
                             <td>
-                                <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> Ver </a>
-                                <a href="{{URL::to('plan/editar')}}/{{$plan->codPlanA}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
+                                <a href="#" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
+                                <a href="{{URL::to('plan/editar')}}/{{$plan->codPlanA}}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
+                                <a href="{!!  route('plan.eliminar', $plan->codPlanA)!!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

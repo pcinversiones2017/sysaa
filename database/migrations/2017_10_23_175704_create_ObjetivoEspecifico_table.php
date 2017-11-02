@@ -19,9 +19,10 @@ class CreateObjetivoEspecificoTable extends Migration
             $table->string('materia');
             $table->integer('codObjGen')->unsigned();
             $table->integer('codMacroP')->unsigned();
+
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
-            $table->boolean('eliminado')->default(false);
+            $table->timestamp('fecha_eliminado')->nullable();
             $table->foreign('codObjGen')->references('codObjGen')->on('Objetivo_General');
             $table->foreign('codMacroP')->references('codMacroP')->on('Macroproceso');
         });

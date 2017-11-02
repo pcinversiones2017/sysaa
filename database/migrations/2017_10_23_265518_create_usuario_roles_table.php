@@ -22,8 +22,10 @@ class CreateUsuarioRolesTable extends Migration
             $table->integer('codPlanF')->unsigned()->nullable();
             $table->integer('horasH')->unsigned()->nullable();
             $table->float('sueldo')->nullable();
+
             $table->timestamp('fecha_creado')->nullable();
-            $table->timestamp('fecha_modificado')->nullable(); 
+            $table->timestamp('fecha_modificado')->nullable();
+            $table->timestamp('fecha_eliminado')->nullable();
 
             $table->foreign('codRol')->references('codRol')->on('roles');
             $table->foreign('codUsu')->references('codUsu')->on('users');

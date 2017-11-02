@@ -93,6 +93,7 @@ Route::group(['prefix' => 'plan'], function () {
     Route::post('guardar', 'PlanController@guardar')->name('plan.guardar');
     Route::get('listar', 'PlanController@listar')->name('plan.listar');
     Route::get('editar/{codPlanA}', 'PlanController@editar')->name('plan.editar');
+    Route::get('eliminar/{codPlanA}', 'PlanController@eliminar')->name('plan.eliminar');
     Route::post('actualizar', 'PlanController@actualizar')->name('plan.actualizar');
 });
 
@@ -184,6 +185,7 @@ Route::group(['prefix' => 'auditoria'], function (){
    Route::get('listar', 'AuditoriaController@listar')->name('auditoria.listar');
    Route::get('editar/{codPlanF}', 'AuditoriaController@editar')->name('auditoria.editar');
    Route::post('actualizar', 'AuditoriaController@actualizar')->name('auditoria.actualizar');
+   Route::get('eliminar/{codPlanF}', 'AuditoriaController@eliminar')->name('auditoria.eliminar');
 
 });
 //Institucion

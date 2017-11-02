@@ -20,9 +20,10 @@ class CreateInformeTable extends Migration
             $table->date('revisado');
             $table->date('supervisado');
             $table->integer('codProc')->unsigned();
-            $table->boolean('eliminado')->default(false);
+
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
+            $table->timestamp('fecha_eliminado')->nullable();
 
             $table->foreign('codProc')->references('codProc')->on('Procedimiento');
         });

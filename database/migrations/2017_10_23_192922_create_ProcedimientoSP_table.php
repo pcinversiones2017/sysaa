@@ -17,9 +17,10 @@ class CreateProcedimientoSPTable extends Migration
             $table->increments('codProSP');
             $table->string('nombre');
             $table->integer('codSubPro')->unsigned();
-            $table->boolean('eliminado')->default(false);
+
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
+            $table->timestamp('fecha_eliminado')->nullable();
             $table->foreign('codSubPro')->references('codSubPro')->on('SubProceso');
         });
     }

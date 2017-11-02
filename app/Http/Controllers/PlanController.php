@@ -91,8 +91,15 @@ class PlanController extends Controller
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Plan $plan)
+    public function eliminar(Request $request)
     {
-        //
+        try{
+            $plan = Plan::find($request->codPlanA);
+            $plan->delete();
+            return redirect()->route('plan.listar')->with('success', 'Plan Eliminado');
+        }catch (\Exception $e){
+
+        }
+
     }
 }

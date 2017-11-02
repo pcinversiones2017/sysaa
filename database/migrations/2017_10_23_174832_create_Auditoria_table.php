@@ -28,9 +28,10 @@ class CreateAuditoriaTable extends Migration
             $table->date('periodoFinPlanF')->nullable();
             $table->string('estadoAuditoria');
             $table->integer('codPlanA')->unsigned();
-            $table->boolean('eliminado')->default(false);
+
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
+            $table->timestamp('fecha_eliminado')->nullable();
             $table->foreign('codPlanA')->references('codPlanA')->on('Plan_Anual');
         });
     }
