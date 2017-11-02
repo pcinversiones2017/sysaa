@@ -21,7 +21,7 @@ class UsuarioController extends Controller
     	return view('usuario.crear');
     }
 
-    public function registrar(RegistroRequest $request)
+    public function registrar(Request $request)
     {
     	User::create([	
     					'nombres' => $request->nombres, 

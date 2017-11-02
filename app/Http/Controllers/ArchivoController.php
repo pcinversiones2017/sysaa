@@ -22,9 +22,7 @@ class ArchivoController extends Controller
     {
     	if($request->hasFile('archivo'))
         {
-            $archivo = $request->file('archivo')->store('archivo'
-
-                ,'public');
+            $archivo = $request->file('archivo')->store('archivo','public');
             Archivo::create(['nombre' => $request->file('archivo')->getClientOriginalName(),'ruta' => $archivo, 'codInf' => 0 ]);
             return redirect()->route('archivo.listar')->with('success','Archivo cargado');
         }else

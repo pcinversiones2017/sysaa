@@ -178,8 +178,9 @@
 
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
-                                <button class="btn btn-white" type="submit">Cancelar</button>
-                                <button class="btn btn-primary" type="submit">Guardar</button>
+                                <button class="btn btn-primary btn-outline" type="submit">REGISTRAR</button>
+                                <a href="{!! route('cronograma.listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+
                             </div>
                         </div>
                     </form>
