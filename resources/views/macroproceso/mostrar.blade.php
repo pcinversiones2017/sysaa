@@ -21,7 +21,7 @@
                                 </div>
                                 @endif
                             <div class="m-b-md">
-                                {!! Form::open(['method' => 'POST', 'url' => 'procedimiento.registrar']) !!}
+                                {!! Form::open(['method' => 'POST', 'url' => 'procedimiento-registrar']) !!}
                                 {!! Form::hidden('id', $macroproceso->codMacroP) !!}
                                 {!! Field::text('proceso') !!}
                                 {!! Form::submit('REGISTRAR',['class' => 'btn btn-primary btn-outline']) !!}
