@@ -8,7 +8,7 @@ class Archivo extends Model
 {
     protected $table = "archivos";
 
-    protected $fillable = ['nombre','ruta'];
+    protected $fillable = ['nombre', 'ruta', 'codInf'];
     
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';

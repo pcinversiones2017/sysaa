@@ -17,9 +17,10 @@ class CreateNormativaMacroprocesoTable extends Migration
             $table->increments('codNormMacro');
             $table->integer('codNorm')->unsigned();
             $table->integer('codMacroP')->unsigned();
+            $table->string('nombre_archivo')->nullable();
+            $table->boolean('eliminado')->default(true);
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
-            $table->string('nombre_archivo')->nullable();
             $table->foreign('codNorm')->references('codNorm')->on('Normativa_C');
             $table->foreign('codMacroP')->references('codMacroP')->on('Macroproceso');
         });

@@ -18,6 +18,7 @@ class CreateActividadTable extends Migration
             $table->string('responsable');
             $table->text('nombre');
             $table->integer('codProSP')->unsigned();
+            $table->boolean('eliminado')->default(true);
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
             $table->foreign('codProSP')->references('codProSP')->on('Procedimiento_SP');

@@ -17,6 +17,7 @@ class CreateEtapaTable extends Migration
             $table->increments('codEtp');
             $table->text('nombre');
             $table->string('tipo');
+            $table->boolean('eliminado')->default(true);
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
         });

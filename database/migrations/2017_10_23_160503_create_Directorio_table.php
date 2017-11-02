@@ -18,6 +18,7 @@ class CreateDirectorioTable extends Migration
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('cargo');
+            $table->boolean('eliminado')->default(true);
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
 

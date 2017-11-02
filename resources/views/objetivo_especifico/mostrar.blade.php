@@ -11,7 +11,10 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <a href="{!! url('procedimiento/procedimiento-crear/'.$objetivoEspecifico->codObjEsp) !!}" class="btn btn-warning btn-outline">CREAR PROCEDIMIENTO</a>
-                            <a href="{!! url('auditoria/mostrar/'.$objetivoEspecifico->codObjEsp) !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                            <a href="{!! url('auditoria/mostrar/'.$codPlanF
+
+
+                            ) !!}" class="btn btn-danger btn-outline">ATRAS</a>
                         </div>
                     </div>
                 </div>
@@ -56,7 +59,7 @@
                                             <td>
                                                 <a href="{!! url('procedimiento/procedimiento-eliminar/'.$row->codProc) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
                                                 <a href="{!! url('procedimiento/procedimiento-editar/'.$row->codProc.'/'.$objetivoEspecifico->codObjEsp) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i>  </a>
-                                                <a href="{!! url('informe/informe-crear/'.$objetivoEspecifico->codObjEsp) !!}" class="btn btn-warning btn-outline"><i class="fa fa-folder-open"></i>  </a>
+                                                <a href="{!! url('informe/informe-crear/'.$codPlanF.'/'.$codObjEsp.'/'.$row->codProc) !!}" class="btn btn-warning btn-outline"><i class="fa fa-folder-open"></i>  </a>
                                             </td>
                                         </tr>
                                         <?php $i++ ?>

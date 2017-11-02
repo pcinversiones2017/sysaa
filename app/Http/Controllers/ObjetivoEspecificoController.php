@@ -75,8 +75,11 @@ class ObjetivoEspecificoController extends Controller
 
             $procedimiento = Procedimiento::join('usuario_roles','usuario_roles.codUsuRol','=','procedimiento.codUsuRol')
                                             ->join('users','users.codUsu','=','usuario_roles.codUsu')
+                                            ->where('codPlanF',$request->codPlanF)
                                             ->get();
-            return view('objetivo_especifico.mostrar', compact(['objetivoEspecifico','procedimiento']));
+            $codPlanF = $request->codPlanF;
+            $codObjEsp = $request->codObjEsp;
+            return view('objetivo_especifico.mostrar', compact(['objetivoEspecifico','procedimiento','codPlanF','codObjEsp']));
         
         }catch (\Exception $e){
             Log::error($e->getMessage());
@@ -94,7 +97,7 @@ class ObjetivoEspecificoController extends Controller
         }
     }
 
-    public function listar()
+    public function eliminar()
     {
         
     }

@@ -8,23 +8,27 @@ use App\Models\Procedimiento;
 
 class InformeController extends Controller
 {
-    public function listar($id)
+    public function listar($codPlanF, $codObjEsp, $codProc)
     {
-    	$informe = Informe::Existe($id)->with('procedimiento')->get();
-    	return view('informe.listar', compact('informe'));
+    	$informe = Informe::Existe($codProc)->with('procedimiento')->get();
+        $codPlanF = $codPlanF;
+        $codObjEsp = $codObjEsp;
+        $codProc = $codProc;
+    	return view('informe.listar', compact(['codPlanF', 'codObjEsp', 'codProc', 'informe']));
     }
 
-    public function crear($id)
+    public function crear($codPlanF, $codObjEsp, $codProc)
     {
-    	$id = $id;
-    	return view('informe.crear', compact('id'));
+    	$codPlanF = $codPlanF;
+        $codObjEsp = $codObjEsp;
+        $codProc = $codProc;
+    	return view('informe.crear', compact(['codPlanF', 'codObjEsp', 'codProc']));
     }
 
     public function registrar(Request $request)
     {
-
-    	$id = Informe::create(['informe' => $request->informe, 'elaborado' => date("Y-m-d"), 'codProc' => $request->codProc]);
-    	return redirect('informe/informe/'.$request->codProc)->with('success','Informe registrado');
+    	Informe::create(['informe' => $request->informe, 'elaborado' => date("Y-m-d"), 'codProc' => $request->codProc]);
+    	return redirect('informe/informe/'.$request->codPlanF.'/'.$request->codObjEsp.'/'.$request->codProc)->with('success','Informe registrado');
     }
 
     public function editar($id)
