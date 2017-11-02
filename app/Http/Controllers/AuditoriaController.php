@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Auditoria\ActualizarRequest;
 use App\Http\Requests\Auditoria\RegistroRequest;
 use App\Models\Auditoria;
+use App\Models\Cronograma;
 use App\Models\Macroproceso;
 use App\Models\ObjetivoGeneral;
 use App\Models\Plan;
@@ -89,6 +90,7 @@ class AuditoriaController extends Controller
         $auditoria = Auditoria::find($request->codPlanF);
         $macroprocesos = Macroproceso::all();
         $usuariorol = Usuariorol::Activo()->with(['usuario','cargofuncional','rol'])->get();
+
         return view('auditoria.mostrar')->with(compact('auditoria', 'macroprocesos', 'usuariorol'));
     }
 

@@ -16,7 +16,7 @@
             <div class="ibox-content">
                 <div class="row">
                     <div class="col-sm-3">
-                        <a type="button" href="{!! route('asignarr.crear', $auditoria->codPlanF) !!}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Asignacion</a>
+                        <a type="button" href="{!! route('asignarr.crear', $auditoria->codPlanF) !!}" class="btn btn-sm btn-primary btn-outline"><i class="fa fa-plus"></i> CREAR ASIGNACIÓN</a>
                     </div>
                 </div>
 

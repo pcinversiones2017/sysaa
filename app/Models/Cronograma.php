@@ -10,4 +10,9 @@ class Cronograma extends Model
 
     protected $primaryKey = 'codCroGen';
     protected $table = 'cronograma_general';
+
+    public function etapa()
+    {
+        return $this->belongsTo(Etapa::class, 'codEtp');
+    }
 }
