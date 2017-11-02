@@ -54,8 +54,9 @@
                                             <td>{!! $row->detalle !!}</td>
                                             <td>{!! $row->fechafin !!}</td>
                                             <td>
-                                                <a href="{!! url('procedimiento/procedimiento-eliminar/'.$row->codProc) !!}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar </a>
-                                                <a href="{!! url('procedimiento/procedimiento-editar/'.$row->codProc.'/'.$objetivoEspecifico->codObjEsp) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i> Editar </a>
+                                                <a href="{!! url('procedimiento/procedimiento-eliminar/'.$row->codProc) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
+                                                <a href="{!! url('procedimiento/procedimiento-editar/'.$row->codProc.'/'.$objetivoEspecifico->codObjEsp) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i>  </a>
+                                                <a href="{!! url('informe/informe-crear/'.$objetivoEspecifico->codObjEsp) !!}" class="btn btn-warning btn-outline"><i class="fa fa-folder-open"></i>  </a>
                                             </td>
                                         </tr>
                                         <?php $i++ ?>

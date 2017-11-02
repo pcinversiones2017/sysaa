@@ -36,6 +36,7 @@ Route::group(['prefix' => 'procedimiento'], function(){
     Route::get('procedimiento-crear','ProcedimientoController@crear')->name('procedimiento.crear');
     Route::get('procedimiento-eliminar/{id}','ProcedimientoController@eliminar')->name('procedimiento.eliminar');
     Route::get('procedimiento-descargar/{id}','ProcedimientoController@descargar')->name('procedimiento.descargar');
+    Route::get('procedimiento-adjuntar/{id}','ProcedimientoController@adjuntar')->name('procedimiento.adjuntar');
 });
 
 Route::group(['prefix' => 'archivo'], function(){
@@ -49,7 +50,7 @@ Route::group(['prefix' => 'archivo'], function(){
 
 Route::group(['prefix' => 'informe'], function(){
     Route::get('informe','InformeController@listar')->name('informe.listar');
-    Route::get('informe-crear','InformeController@crear')->name('informe.crear');
+    Route::get('informe-crear/{id}','InformeController@crear')->name('informe.crear');
     Route::post('informe-registrar','InformeController@registrar')->name('informe.registrar');
     Route::get('informe-editar/{id}','InformeController@editar')->name('informe.editar');
     Route::post('informe-actualizar','InformeController@actualizar')->name('informe.actualizar');
