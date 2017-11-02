@@ -6,6 +6,7 @@ use App\Models\Auditoria;
 use App\Models\Macroproceso;
 use App\Models\ObjetivoGeneral;
 use App\Models\Plan;
+use App\Models\Usuariorol;
 use Illuminate\Http\Request;
 
 class AuditoriaController extends Controller
@@ -85,7 +86,8 @@ class AuditoriaController extends Controller
     {
         $auditoria = Auditoria::find($request->codPlanF);
         $macroprocesos = Macroproceso::all();
-        return view('auditoria.mostrar')->with(compact('auditoria', 'macroprocesos'));
+        $usuariorol = Usuariorol::Activo()->with(['usuario','cargofuncional','rol'])->get();
+        return view('auditoria.mostrar')->with(compact('auditoria', 'macroprocesos', 'usuariorol'));
     }
 
     /**

@@ -19,12 +19,16 @@ class CreateUsuarioRolesTable extends Migration
             $table->integer('codRol')->unsigned();
             $table->integer('codCarFun')->unsigned();
             $table->boolean('estado')->default(true);
+            $table->integer('codPlanF')->unsigned()->nullable();
+            $table->integer('horasH')->unsigned()->nullable();
+            $table->float('sueldo')->nullable();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable(); 
 
             $table->foreign('codRol')->references('codRol')->on('roles');
-            $table->foreign('codUsu')->references('codUsu')->on('usuarios');
+            $table->foreign('codUsu')->references('codUsu')->on('users');
             $table->foreign('codCarFun')->references('codCarFun')->on('cargo_funcional');
+            $table->foreign('codPlanF')->references('codPlanF')->on('auditoria');
         });
     }
 

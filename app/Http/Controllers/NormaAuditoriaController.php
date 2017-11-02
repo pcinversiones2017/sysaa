@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Normativa\RegistrarRequest;
 use App\Models\Macroproceso;
 use App\Models\Normativac;
 use App\Models\normativaMarcoproceso;
@@ -29,7 +30,7 @@ class NormaAuditoriaController extends Controller
         return view('normaAuditoria.crear')->with(compact('macroProcesos'));
     }
 
-    public function  guardar(Request $request){
+    public function  guardar(RegistrarRequest $request){
 
         $normaCAuditoria = new Normativac();
         $normaCAuditoria -> tipoNormativa = $request->tipoNormativa;
@@ -94,6 +95,18 @@ class NormaAuditoriaController extends Controller
         {
             return redirect()->route('normaAuditoria.listarAplica')->with('danger','Debe cargar un archivo');
         }
+
+
+
+    }
+
+    public function archivodescargar(Request $request)
+    {
+        $normativaMacroproceso = NormativaMarcoproceso::find($request->codNormMacro);
+
+            $descargar  = storage_path('/app/public/'.$normativaMacroproceso->nombre_archivo);
+
+        return response()->download($descargar);
 
 
 

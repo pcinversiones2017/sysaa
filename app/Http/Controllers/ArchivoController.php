@@ -22,8 +22,10 @@ class ArchivoController extends Controller
     {
     	if($request->hasFile('archivo'))
         {
-            $archivo = $request->file('archivo')->store('archivo','public');
-            Archivo::create(['nombre' => $archivo, 'codInf' => 0 ]);
+            $archivo = $request->file('archivo')->store('archivo'
+
+                ,'public');
+            Archivo::create(['nombre' => $request->file('archivo')->getClientOriginalName(),'ruta' => $archivo, 'codInf' => 0 ]);
             return redirect()->route('archivo.listar')->with('success','Archivo cargado');
         }else
         {
@@ -35,7 +37,7 @@ class ArchivoController extends Controller
     {
         $archivo = Archivo::Existe($id)->get();
         foreach($archivo as $row):
-            $descargar  = storage_path().$row->nombre;
+            $descargar  = storage_path('/app/public/'.$row->ruta);
         endforeach;
         return response()->download($descargar);
     }

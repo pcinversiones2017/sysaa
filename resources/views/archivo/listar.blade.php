@@ -2,7 +2,7 @@
 @section('content')
 
     @if (session('success'))
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success alert-dismissable">
         {!! session('success') !!}          
     </div>
     @endif
@@ -31,7 +31,7 @@
 
                     <div class="row">
                         <div class="col-sm-3">
-                            <a type="button" href="{{URL::to('archivo/archivo-crear')}}/{{$codInf}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Cargar Archivo</a>
+                            <a type="button" href="{!! url('archivo/archivo-crear') !!}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Cargar Archivo</a>
                             <p>
                             
                         </div>
@@ -39,11 +39,11 @@
 
                     <table class="table table-bordered">
                         <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nombre</th>
-                            <th>Accion</th>
-                        </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Accion</th>
+                            </tr>
                         </thead>
                         <tbody>
                         <?php $i=1 ?>
@@ -53,7 +53,7 @@
                                 <td>{!! $row->nombre !!}</td>
                                 <td>
                                     <a href="{!! url('archivo/archivo-eliminar/'.$row->codArc) !!}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar </a>
-                                    <a href="{!! url('archivo/archivo-descargar/'.$row->codArc) !!}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Descargar </a>
+                                    <a href="{!! url('archivo/archivo-descargar/'.$row->codArc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-trash"></i> Descargar </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

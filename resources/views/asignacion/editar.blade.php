@@ -27,7 +27,7 @@
 
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
-                                <a href="{!! route('usuario.listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                                <a href="{{url()->previous()}}" class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
                             <div class="hr-line-dashed"></div>
 

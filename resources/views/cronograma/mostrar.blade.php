@@ -43,12 +43,12 @@
                                     <div class="col-md-4 ">
                                         <input placeholder="Fecha de inicio" class="form-control" type="text"
                                                onfocus="(this.type='date')"  id="date"
-                                               value=" {{$fechasIni[$i]}}" readonly>
+                                               value=" {{$fechasIni[$i]}}" disabled>
                                     </div>
                                     <div class="col-md-4">
                                         <input placeholder="Fecha de fin" class="form-control" type="text"
                                                onfocus="(this.type='date')"  id="date"
-                                               value="{{$fechaFin[$i]}}" readonly>
+                                               value="{{$fechaFin[$i]}}" disabled>
                                     </div>
                                     <div class="col-md-3">
                                         <input type="number" placeholder="Dias habiles" class="form-control"

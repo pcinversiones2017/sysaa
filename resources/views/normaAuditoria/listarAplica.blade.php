@@ -55,7 +55,7 @@
                                 <td>{{$normativaMacroproceso->Macroproceso->nombre}}</td>
                                 <td>{{$normativaMacroproceso->Normativac->fecha}}</td>
                                 <th><?php if(!empty($normativaMacroproceso->nombre_archivo)) { ?>
-                                    <a href="#"><i class="fa fa-file-text fa-2x" aria-hidden="true"></i></a>
+                                    <a href="{{URL::to('normaAuditoria/archivodescargar')}}/{{$normativaMacroproceso->codNormMacro}}"><i class="fa fa-file-text fa-2x" aria-hidden="true"></i></a>
                                     <?php } ?>
                                 </th>
                                 <td><a href="{{URL::to('normaAuditoria/editar')}}/{{$normativaMacroproceso->codNormMacro}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>

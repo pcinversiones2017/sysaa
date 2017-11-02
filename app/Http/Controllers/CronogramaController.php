@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\CronogramaGeneral\RegistrarRequest;
 use App\Models\Cronograma;
 use App\Models\Etapa;
-use App\Models\Plan;
 use App\Models\Auditoria;
 use Illuminate\Http\Request;
-use App\Http\Requests\Usuario\CronogramaRequest;
+
 
 class CronogramaController extends Controller
 {
@@ -22,7 +23,17 @@ class CronogramaController extends Controller
             ->get()->toArray();
         // $planes = Plan::all();
 
-        $auditorias = Auditoria::all();
+        $cronogramas = Cronograma::all();
+
+        //validar que no se pongan varios cronogramas para la misma auditoria (una auditoria un cronograma)
+            $auditorias = Auditoria::all();
+
+            if(!empty($cronogramas->codPlanf)) {
+                foreach ($cronogramas as $cronograma) {
+                    $auditorias = Auditoria::find('codPlanf', '!=', $cronograma->codPlanf)->get();
+                }
+            }
+
         $crearCronograma = 'active';
         return view('cronograma.crear')
             ->with(compact('crearCronograma','auditorias'))
@@ -32,11 +43,13 @@ class CronogramaController extends Controller
 
     }
 
-    public function guardar(Request $request)
+
+    public function guardar(RegistrarRequest $request)
     {
+
         $auditoria = Auditoria::find($request->codPlanf[0]);
-        $auditoria->fechaIniPlanF = $request->fechaIni[0];
-        $auditoria->fechaFinPlanF = $request->fechaFin[4];
+        $auditoria->fechaIniPlanF = date('Y-m-d',strtotime($request->fechaIni[0]));
+        $auditoria->fechaFinPlanF = date('Y-m-d',strtotime($request->fechaFin[4]));
         $auditoria->save();
 
        $i=0;
@@ -44,8 +57,8 @@ class CronogramaController extends Controller
         $cronograma = new Cronograma();
         $cronograma->codPlanf = $request->codPlanf[0];
         $cronograma->codEtp = $request->etapa[$i];
-        $cronograma->fechaIni = $request->fechaIni[$i];
-        $cronograma->fechaFin = $request->fechaFin[$i];
+        $cronograma->fechaIni = date('Y-m-d',strtotime($request->fechaIni[$i]));
+        $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[$i]));
         $cronograma->dias_habiles = $request->dias_habiles[$i];
         $cronograma->save();
        }
@@ -54,8 +67,8 @@ class CronogramaController extends Controller
             $cronograma = new Cronograma();
             $cronograma->codPlanf = $request->codPlanf[0];
             $cronograma->codEtp = $request->etapa[$j];
-            $cronograma->fechaIni = $request->fechaIni[2];
-            $cronograma->fechaFin = $request->fechaFin[2];
+            $cronograma->fechaIni = date('Y-m-d',strtotime($request->fechaIni[2]));;
+            $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[2]));
             $cronograma->dias_habiles = $request->dias_habiles[2];
             $cronograma->save();
         }
@@ -64,8 +77,8 @@ class CronogramaController extends Controller
             $cronograma = new Cronograma();
             $cronograma->codPlanf = $request->codPlanf[0];
             $cronograma->codEtp = $request->etapa[$k];
-            $cronograma->fechaIni = $request->fechaIni[3];
-            $cronograma->fechaFin = $request->fechaFin[3];
+            $cronograma->fechaIni = date('Y-m-d',strtotime($request->fechaIni[3]));
+            $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[3]));
             $cronograma->dias_habiles = $request->dias_habiles[3];
             $cronograma->save();
         }
@@ -74,8 +87,8 @@ class CronogramaController extends Controller
             $cronograma = new Cronograma();
             $cronograma->codPlanf = $request->codPlanf[0];
             $cronograma->codEtp = $request->etapa[$l];
-            $cronograma->fechaIni = $request->fechaIni[4];
-            $cronograma->fechaFin = $request->fechaFin[4];
+            $cronograma->fechaIni = date('Y-m-d',strtotime($request->fechaIni[4]));
+            $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[4]));
             $cronograma->dias_habiles = $request->dias_habiles[4];
             $cronograma->save();
         }
@@ -180,8 +193,8 @@ class CronogramaController extends Controller
     {
 
         $auditoria = Auditoria::find($request->codPlanf[0]);
-        $auditoria->fechaIniPlanF = $request->fechaIni[0];
-        $auditoria->fechaFinPlanF = $request->fechaFin[4];
+        $auditoria->fechaIniPlanF = date('Y-m-d',strtotime($request->fechaIni[0]));
+        $auditoria->fechaFinPlanF = date('Y-m-d',strtotime($request->fechaFin[4]));
         $auditoria->save();
 
         $i=0;
@@ -189,8 +202,8 @@ class CronogramaController extends Controller
             $cronograma = Cronograma::find($request->codCroGen[$i]);
             $cronograma->codPlanf = $request->codPlanf[0];
             $cronograma->codEtp = $request->etapa[$i];
-            $cronograma->fechaIni = $request->fechaIni[$i];
-            $cronograma->fechaFin = $request->fechaFin[$i];
+            $cronograma->fechaIni = date('Y-m-d',strtotime($request->fechaIni[$i]));
+            $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[$i]));
             $cronograma->dias_habiles = $request->dias_habiles[$i];
             $cronograma->save();
         }
@@ -200,8 +213,8 @@ class CronogramaController extends Controller
 
             $cronograma->codPlanf = $request->codPlanf[0];
             $cronograma->codEtp = $request->etapa[$j];
-            $cronograma->fechaIni = $request->fechaIni[2];
-            $cronograma->fechaFin = $request->fechaFin[2];
+            $cronograma->fechaIni =  date('Y-m-d',strtotime($request->fechaIni[2]));
+            $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[2]));
             $cronograma->dias_habiles = $request->dias_habiles[2];
             $cronograma->save();
         }
@@ -210,8 +223,8 @@ class CronogramaController extends Controller
             $cronograma = Cronograma::find($request->codCroGen[$i]);
             $cronograma->codPlanf = $request->codPlanf[0];
             $cronograma->codEtp = $request->etapa[$k];
-            $cronograma->fechaIni = $request->fechaIni[3];
-            $cronograma->fechaFin = $request->fechaFin[3];
+            $cronograma->fechaIni = date('Y-m-d',strtotime($request->fechaIni[3]));
+            $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[3]));
             $cronograma->dias_habiles = $request->dias_habiles[3];
             $cronograma->save();
         }
@@ -221,8 +234,8 @@ class CronogramaController extends Controller
 
             $cronograma->codPlanf = $request->codPlanf[0];
             $cronograma->codEtp = $request->etapa[$l];
-            $cronograma->fechaIni = $request->fechaIni[4];
-            $cronograma->fechaFin = $request->fechaFin[4];
+            $cronograma->fechaIni = date('Y-m-d',strtotime($request->fechaFin[4]));
+            $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[4]));
             $cronograma->dias_habiles = $request->dias_habiles[4];
             $cronograma->save();
         }

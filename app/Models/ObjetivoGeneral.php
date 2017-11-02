@@ -23,4 +23,9 @@ class ObjetivoGeneral extends Model
     {
         return $this->hasMany(ObjetivoEspecifico::class, 'codObjGen');
     }
+
+    public function auditoria()
+    {
+        return $this->hasOne(Auditoria::class, 'codPlanF');
+    }
 }

@@ -1,4 +1,9 @@
 @extends('layout.admin')
+@section('css-style')
+    <link href="{{url('css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
+    <link href="{{url('css/plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet">
+
+@stop
 @section('content')
     <div class="row">
         <div class="col-lg-12">
@@ -28,7 +33,7 @@
                         {{ csrf_field() }}
                         <div class="form-group"><label class="col-sm-2 control-label">SELECCIONAR AUDITORIA</label>
                             <div class="col-sm-4">
-                            <select class="form-control" id="sel1" name="codPlanf[]" required>
+                            <select class="form-control" id="sel1" name="codPlanf[]" >
                                 <option value="">::SELECCIONE::</option>
                                 @foreach($auditorias as $auditoria)
                                     <option value="{{$auditoria->codPlanF}}">{{$auditoria->nombrePlanF}}</option>
@@ -50,19 +55,18 @@
                                 <input type="hidden" value="{{$etapaPlanificacion['codEtp']}}"
                                        name="etapa[]">
                             <div class="col-sm-7">
-                                <div class="col-md-4 ">
-                                    <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date"
-                                           name="fechaIni[]"  required>
-                                </div>
-                                <div class="col-md-4">
-                                    <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date"
-                                           name="fechaFin[]" required>
+                                <div class="col-sm-8 form-group" id="data_5">
+                                    <div class="input-group input-daterange" id="datepicker">
+                                        <input placeholder="Fecha de inicio" type="text" class="input-sm form-control"
+                                               name="fechaIni[]" />
+                                        <span class="input-group-addon">AL</span>
+                                        <input placeholder="Fecha de fin" type="text" class="input-sm form-control"
+                                               name="fechaFin[]"  />
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
-                                           name="dias_habiles[]" required>
+                                           name="dias_habiles[]" >
                                 </div>
                             </div>
                         </div>
@@ -76,17 +80,18 @@
                                    name="etapa[]">
 
                             <div class="col-sm-7">
-                                <div class="col-md-4 ">
-                                    <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]" required>
+                                <div class="col-sm-8 form-group" id="data_5">
+                                    <div class="input-group input-daterange" id="datepicker">
+                                        <input placeholder="Fecha de inicio" type="text" class="input-sm form-control"
+                                               name="fechaIni[]" />
+                                        <span class="input-group-addon">AL</span>
+                                        <input placeholder="Fecha de fin" type="text" class="input-sm form-control"
+                                               name="fechaFin[]"  />
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
-                                           name="dias_habiles[]" required>
+                                           name="dias_habiles[]" >
                                 </div>
                             </div>
                         </div>
@@ -118,13 +123,14 @@
                                 <label class="col-sm-12" style="color: red; ">*ESTAS ACTIVIDADES COMPARTEN FECHA INICIO
                                     , FECHA FIN Y DIAS HABILES</label>
 
-                                <div class="col-md-4 ">
-                                    <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]" required>
+                                <div class="col-sm-8 form-group" id="data_5">
+                                    <div class="input-group input-daterange" id="datepicker">
+                                        <input placeholder="Fecha de inicio" type="text" class="input-sm form-control"
+                                               name="fechaIni[]" />
+                                        <span class="input-group-addon">AL</span>
+                                        <input placeholder="Fecha de fin" type="text" class="input-sm form-control"
+                                               name="fechaFin[]"  />
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
@@ -152,28 +158,28 @@
                                 <label class="col-sm-12" style="color: red; ">*ESTAS ACTIVIDADES COMPARTEN FECHA INICIO
                                     , FECHA FIN Y DIAS HABILES</label>
 
-                                <div class="col-md-4 ">
-                                    <input placeholder="Fecha de inicio" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaIni[]" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <input placeholder="Fecha de fin" class="form-control" type="text"
-                                           onfocus="(this.type='date')"  id="date" name="fechaFin[]" required>
+                                <div class="col-sm-8 form-group" id="data_5">
+                                    <div class="input-group input-daterange" id="datepicker">
+                                        <input placeholder="Fecha de inicio" type="text" class="input-sm form-control"
+                                               name="fechaIni[]" />
+                                        <span class="input-group-addon">AL</span>
+                                        <input placeholder="Fecha de fin" type="text" class="input-sm form-control"
+                                               name="fechaFin[]"  />
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" placeholder="Dias habiles" class="form-control"
-                                           name="dias_habiles[]" required>
+                                           name="dias_habiles[]" >
                                 </div>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <!-- total de dias habiles------------------------------------------------------------------->
 
-                        <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
-                                <button class="btn btn-white" type="submit">Cancel</button>
-                                <button class="btn btn-primary" type="submit">Save changes</button>
+                                <button class="btn btn-white" type="submit">Cancelar</button>
+                                <button class="btn btn-primary" type="submit">Guardar</button>
                             </div>
                         </div>
                     </form>
@@ -181,5 +187,21 @@
             </div>
         </div>
     </div>
+@stop
+
+@section('js-script')
+
+    <script src="{{url('js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
+    <script src="{{url('js/plugins/fullcalendar/moment.min.js')}}"></script>
+    <script src="{{url('js/plugins/daterangepicker/daterangepicker.js')}}"></script>
+
+
+    <script>
+        $('#data_5 .input-daterange').datepicker({
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true
+        });
+    </script>
 
 @stop

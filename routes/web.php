@@ -24,21 +24,33 @@ Route::post('iniciar-sesion', 'LoginController@authenticate');
 //Route::post('iniciar-sesion','SesionController@authenticate');
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('inicio','InicioController@index')->name('inicio.inicio');
+    Route::get('/','InicioController@index')->name('inicio.inicio');
+});
+
+Route::group(['prefix' => 'procedimiento'], function(){
+    Route::get('procedimiento-crear/{codInf}','ProcedimientoController@crear')->name('procedimiento.crear');
+    Route::post('procedimiento-registrar','ProcedimientoController@registrar')->name('procedimiento.registrar');
+    Route::get('listar','ProcedimientoController@listar')->name('procedimiento.listar');
+    Route::get('procedimiento-editar/{id}/{oe}','ProcedimientoController@editar')->name('procedimiento.listar');
+    Route::post('procedimiento-actualizar','ProcedimientoController@actualizar')->name('procedimiento.actualizar');
+    Route::get('procedimiento-crear','ProcedimientoController@crear')->name('procedimiento.crear');
+    Route::get('procedimiento-eliminar/{id}','ProcedimientoController@eliminar')->name('procedimiento.eliminar');
+    Route::get('procedimiento-descargar/{id}','ProcedimientoController@descargar')->name('procedimiento.descargar');
+    Route::get('procedimiento-adjuntar/{id}','ProcedimientoController@adjuntar')->name('procedimiento.adjuntar');
 });
 
 Route::group(['prefix' => 'archivo'], function(){
     Route::get('archivo-crear/{codInf}','ArchivoController@crear')->name('archivo.crear');
     Route::post('archivo-registrar','ArchivoController@registrar')->name('archivo.registrar');
     Route::get('listar','ArchivoController@listar')->name('archivo.listar');
-    //Route::get('archivo-crear','ArchivoController@crear')->name('archivo.crear');
+    Route::get('archivo-crear','ArchivoController@crear')->name('archivo.crear');
     Route::get('archivo-eliminar/{id}','ArchivoController@eliminar')->name('archivo.eliminar');
     Route::get('archivo-descargar/{id}','ArchivoController@descargar')->name('archivo.descargar');
 });
 
 Route::group(['prefix' => 'informe'], function(){
     Route::get('informe','InformeController@listar')->name('informe.listar');
-    Route::get('informe-crear','InformeController@crear')->name('informe.crear');
+    Route::get('informe-crear/{id}','InformeController@crear')->name('informe.crear');
     Route::post('informe-registrar','InformeController@registrar')->name('informe.registrar');
     Route::get('informe-editar/{id}','InformeController@editar')->name('informe.editar');
     Route::post('informe-actualizar','InformeController@actualizar')->name('informe.actualizar');
@@ -67,9 +79,9 @@ Route::group(['prefix' => 'cargofuncional'], function(){
     Route::get('cargo-funcional-eliminar/{id}','CargofuncionalController@eliminar')->name('cargof.eliminar');
 });
 
-Route::group(['prefix' => 'asignarrol'], function(){
-    Route::get('asignar-rol','AsignacionController@listar')->name('asignarr.listar');
-    Route::get('asignar-rol-crear','AsignacionController@crear')->name('asignarr.crear');
+Route::group(['prefix' => 'asignar-rol'], function(){
+    Route::get('listar','AsignacionController@listar')->name('asignarr.listar');
+    Route::get('crear/{codPlanF}','AsignacionController@crear')->name('asignarr.crear');
     Route::post('asignar-rol-registrar','AsignacionController@registrar')->name('asignarr.registrar');
     Route::get('asignar-rol-editar/{id}','AsignacionController@editar')->name('asignarr.editar');
     Route::post('asignar-rol-actualizar','AsignacionController@actualizar')->name('asignarr.actualizar');
@@ -123,6 +135,7 @@ Route::group(['prefix' => 'procedimientosp'],function () {
     Route::post('actualizar', 'ProcedimientospController@actualizar')->name('procedimientosp.actualizar');
 });
 
+
 Route::group(['prefix' => 'actividad'],function () {
     Route::get('crear', 'ActividadController@crear')->name('actividad.crear');
     Route::get('mostrar/{codAct}', 'ActividadController@mostrar')->name('actividad.mostrar');
@@ -160,6 +173,7 @@ Route::group(['prefix' => 'normaAuditoria'], function(){
     Route::post('actualizar', 'NormaAuditoriaController@actualizar')->name('normaAuditoria.actualizar');
     Route::get('archivocrear/{codNormMacro}', 'NormaAuditoriaController@archivocrear')->name('normaAuditoria.archivocrear');
     Route::post('archivoregistrar', 'NormaAuditoriaController@archivoregistrar')->name('normaAuditoria.archivoregistrar');
+    Route::get('archivodescargar/{codNormMacro}', 'NormaAuditoriaController@archivodescargar')->name('normaAuditoria.archivodescargar');
 
 });
 //Auditoria
@@ -182,8 +196,6 @@ Route::group(['prefix' => 'institucion'], function (){
     Route::post('actualizar', 'InstitucionController@actualizar')->name('institucion.actualizar');
     Route::get('listarSoftware', 'InstitucionController@listarSoftware')->name('institucion.listarSoftware');
 
-
-
 });
 
 
@@ -193,14 +205,18 @@ Route::group(['prefix' => 'institucion'], function (){
 Route::prefix('objetivo-general')->group(function (){
 
     Route::post('guardar', 'ObjetivoGeneralController@guardar')->name('objetivogen.guardar');
+
 });
 
 //Objetivo Especifico
 Route::prefix('objetivo-especifico')->group(function (){
 
+   Route::get('crear/{codPlanF}', 'ObjetivoEspecificoController@crear')->name('objetivo-especifico.crear');
+   Route::get('editar/{codObjEsp}', 'ObjetivoEspecificoController@editar')->name('objetivo-especifico.editar');
    Route::post('guardar', 'ObjetivoEspecificoController@guardar')->name('objetivo-especifico.guardar');
    Route::get('mostrar/{codObjEsp}', 'ObjetivoEspecificoController@mostrar')->name('objetivo-especifico.mostrar');
-   Route::post('actualizar', 'ObjetivoEspecificoConotroller@actualizar')->name('objetivo-especifico.actualizar');
+   Route::post('actualizar', 'ObjetivoEspecificoController@actualizar')->name('objetivo-especifico.actualizar');
+   Route::get('ajax-get-objetivo-especifico/{codObjEsp}', 'ObjetivoEspecificoController@ajaxGetObjetivoEspecifico');
 });
 
 

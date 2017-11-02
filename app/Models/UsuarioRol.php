@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Usuariorol extends Model
+class UsuarioRol extends Model
 {
     protected $table = "usuario_roles";
 
-    protected $fillable = ['codUsu','codRol','codCarFun'];
+    protected $fillable = ['codUsu','codRol','codCarFun', 'codPlanF', 'horasH', 'sueldo'];
 
     const CREATED_AT = "fecha_creado";
 
