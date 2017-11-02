@@ -36,7 +36,6 @@ Route::group(['prefix' => 'procedimiento'], function(){
     Route::get('procedimiento-crear','ProcedimientoController@crear')->name('procedimiento.crear');
     Route::get('procedimiento-eliminar/{id}','ProcedimientoController@eliminar')->name('procedimiento.eliminar');
     Route::get('procedimiento-descargar/{id}','ProcedimientoController@descargar')->name('procedimiento.descargar');
-    Route::get('procedimiento-adjuntar/{id}','ProcedimientoController@adjuntar')->name('procedimiento.adjuntar');
 });
 
 Route::group(['prefix' => 'archivo'], function(){
@@ -49,8 +48,8 @@ Route::group(['prefix' => 'archivo'], function(){
 });
 
 Route::group(['prefix' => 'informe'], function(){
-    Route::get('informe/{id}','InformeController@listar')->name('informe.listar');
-    Route::get('informe-crear/{id}','InformeController@crear')->name('informe.crear');
+    Route::get('informe','InformeController@listar')->name('informe.listar');
+    Route::get('informe-crear','InformeController@crear')->name('informe.crear');
     Route::post('informe-registrar','InformeController@registrar')->name('informe.registrar');
     Route::get('informe-editar/{id}','InformeController@editar')->name('informe.editar');
     Route::post('informe-actualizar','InformeController@actualizar')->name('informe.actualizar');
@@ -83,7 +82,7 @@ Route::group(['prefix' => 'asignar-rol'], function(){
     Route::get('listar','AsignacionController@listar')->name('asignarr.listar');
     Route::get('crear/{codPlanF}','AsignacionController@crear')->name('asignarr.crear');
     Route::post('asignar-rol-registrar','AsignacionController@registrar')->name('asignarr.registrar');
-    Route::get('asignar-rol-editar/{id}','AsignacionController@editar')->name('asignarr.editar');
+    Route::get('editar/{id}','AsignacionController@editar')->name('asignarr.editar');
     Route::post('asignar-rol-actualizar','AsignacionController@actualizar')->name('asignarr.actualizar');
     Route::get('asignar-rol-eliminar/{id}','AsignacionController@eliminar')->name('asignarr.eliminar');
 });
@@ -214,7 +213,7 @@ Route::prefix('objetivo-especifico')->group(function (){
    Route::get('crear/{codPlanF}', 'ObjetivoEspecificoController@crear')->name('objetivo-especifico.crear');
    Route::get('editar/{codObjEsp}', 'ObjetivoEspecificoController@editar')->name('objetivo-especifico.editar');
    Route::post('guardar', 'ObjetivoEspecificoController@guardar')->name('objetivo-especifico.guardar');
-   Route::get('mostrar/{codObjEsp}/{codPlanF}', 'ObjetivoEspecificoController@mostrar')->name('objetivo-especifico.mostrar');
+   Route::get('mostrar/{codObjEsp}', 'ObjetivoEspecificoController@mostrar')->name('objetivo-especifico.mostrar');
    Route::post('actualizar', 'ObjetivoEspecificoController@actualizar')->name('objetivo-especifico.actualizar');
    Route::get('ajax-get-objetivo-especifico/{codObjEsp}', 'ObjetivoEspecificoController@ajaxGetObjetivoEspecifico');
 });

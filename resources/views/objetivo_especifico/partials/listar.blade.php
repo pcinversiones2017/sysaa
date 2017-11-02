@@ -28,10 +28,11 @@
                             <td>{{$objetivoEsp->nombre}}</td>
                             <td>{{$objetivoEsp->macroproceso->nombre}}</td>
                             <td>{{$objetivoEsp->materia}}</td>
-                            <td><a href="#" class="btn btn-white btn-sm"><i class="fa fa-eye"></i></a></td>
+                            <td><a href="#" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a></td>
                             <td>
-                                <a href="{{url('objetivo-especifico/mostrar')}}/{{$objetivoEsp->codObjEsp}}/{{$auditoria->codPlanF}}" class="btn btn-white"><i class="fa fa-eye"></i></a>
-                                <a href="{{route('objetivo-especifico.editar', $objetivoEsp->codObjEsp) }}" class="btn btn-primary editar_objetivo_especifico"><i class="fa fa-pencil"></i></a>
+                                <a href="{{url('objetivo-especifico/mostrar')}}/{{$objetivoEsp->codObjEsp}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
+                                <a href="{{route('objetivo-especifico.editar', $objetivoEsp->codObjEsp) }}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
+                                <a href="" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <?php $i++ ?>

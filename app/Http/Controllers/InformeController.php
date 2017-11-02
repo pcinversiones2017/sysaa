@@ -8,11 +8,10 @@ use App\Models\Procedimiento;
 
 class InformeController extends Controller
 {
-    public function listar($id)
+    public function listar()
     {
-    	$informe = Informe::Existe($id)->with('procedimiento')->get();
-        $id = $id;
-    	return view('informe.listar', compact(['informe', 'id']));
+    	$informe = Informe::with('procedimiento')->get();
+    	return view('informe.listar', compact('informe'));
     }
 
     public function crear($id)
@@ -23,7 +22,7 @@ class InformeController extends Controller
 
     public function registrar(Request $request)
     {
-    	Informe::create(['informe' => $request->informe, 'elaborado' => date("Y-m-d"), 'codProc' => $request->codProc]);
+    	Informe::create(['informe' => $request->informe, 'revisado' => $request->rol, 'codCarFun' => $request->cargo]);
     	return redirect()->route('informe.listar')->with('success','Informe registrado');
     }
 
