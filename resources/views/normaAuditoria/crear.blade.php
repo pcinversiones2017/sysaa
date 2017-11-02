@@ -22,13 +22,11 @@
 
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                             {!! Field::text('numero') !!}
                             </div>
 
-                            <div class="col-md-3">
-                            {!! Field::text('nombre') !!}
-                             </div>
+
                             <div class="col-md-3">
                             <label class="">Marcoproceso</label>
                             {!! Form::select('codMacroP', $macroProcesos, null, ['class' => 'form-control'] ) !!}
@@ -37,11 +35,14 @@
                             <div class="col-md-3">
                             {!! Field::date('fecha', \Carbon\Carbon::now()) !!}
                             </div>
-
-                            <div class="col-md-2" style="margin-top: 20px;">
+                            <div class="col-md-12">
+                                {!! Field::textarea('nombre') !!}
+                            </div>
+                            <div class="col-md-12 " style="margin-top: 20px;">
                                 <input type="submit" class="btn btn-primary btn-outline" value="GUARDAR">
                             </div>
                         </div>
+
                         {!! Form::close() !!}
                     </div>
                 </div>
