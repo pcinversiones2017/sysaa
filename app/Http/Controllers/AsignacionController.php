@@ -13,18 +13,18 @@ class AsignacionController extends Controller
 {
     public function listar()
     {
-    	$usuariorol = Usuariorol::Activo()->with(['usuario','cargofuncional','rol'])->get();
+    	$usuariorol = Usuariorol::all()->with(['usuario','cargofuncional','rol'])->get();
     	return view('asignacion.listar', compact('usuariorol'));
     }
 
     public function crear(Request $request)
     {
-        $cargo = Cargofuncional::Activo()->pluck('nombre','codCarFun');
+        $cargo = Cargofuncional::all()->pluck('nombre','codCarFun');
         $rol = rol::pluck('nombre','codRol');
 
         $codPlanF = $request->codPlanF;
         $usuariosRol = UsuarioRol::where('codPlanF', $codPlanF)->pluck('codUsuRol')->toArray();
-        $usuario = User::Activo()->pluck('nombres','codUsu')->except($usuariosRol);
+        $usuario = User::all()->pluck('nombres','codUsu')->except($usuariosRol);
 
     	return view('asignacion.crear', compact(['cargo', 'rol', 'usuario', 'codPlanF']));
     }

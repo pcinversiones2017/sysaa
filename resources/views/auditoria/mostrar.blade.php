@@ -6,6 +6,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
+            @include('partials.alert')
             <div class="wrapper wrapper-content animated fadeInUp">
                 <div class="ibox">
                     <div class="ibox-content">

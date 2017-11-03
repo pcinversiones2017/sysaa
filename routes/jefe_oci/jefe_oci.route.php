@@ -196,6 +196,7 @@ Route::prefix('objetivo-especifico')->group(function (){
    Route::get('mostrar/{codPlanF}/{codObjEsp}', 'ObjetivoEspecificoController@mostrar')->name('objetivo-especifico.mostrar');
    Route::post('actualizar', 'ObjetivoEspecificoController@actualizar')->name('objetivo-especifico.actualizar');
    Route::get('ajax-get-objetivo-especifico/{codObjEsp}', 'ObjetivoEspecificoController@ajaxGetObjetivoEspecifico');
+   Route::get('eliminar/{codObjEsp}', 'ObjetivoEspecificoController@eliminar')->name('objetivo-especifico.eliminar');
 });
 
 
