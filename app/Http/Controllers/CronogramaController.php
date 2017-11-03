@@ -148,6 +148,27 @@ class CronogramaController extends Controller
 
     }
 
+    public function eliminar(Request $request){
+
+
+        $auditoria = Auditoria::find($request->codPlanF);
+        $auditoria->fechaIniPlanF =null;
+        $auditoria->fechaFinPlanF =null;
+        $auditoria->save();
+
+        $cronogramas = Cronograma::where('codPlanF','=',$request->codPlanF)->get();
+
+        foreach ($cronogramas as $cronograma){
+            $cronograma->delete();
+        }
+
+
+
+        return redirect()->route('cronograma.listar')->with('success','Cronograma eliminado');
+
+
+    }
+
 
 
 

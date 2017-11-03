@@ -34,8 +34,10 @@ $factory->define(App\Models\Plan::class, function (Faker $faker) {
 
 $factory->define(App\Models\Auditoria::class, function (Faker $faker) {
 
+    $planes= \App\Models\Plan::pluck('codPlanA');
+
     return [
-        'nombrePlanF' => 'Auditoria'. $faker->numberBetween(1,5),
+        'nombrePlanF' => 'Auditoria '. $faker->numberBetween(1,5),
         'codigoServicioCP' => $faker->randomNumber().'-4669-2016-001',
         'tipoServicioCP' => 'AUDITORÍA DE CUMPLIMIENTO',
         'organoCI' => 'OCI – Z.R.N°XIII',
@@ -48,9 +50,48 @@ $factory->define(App\Models\Auditoria::class, function (Faker $faker) {
         $periodoFinPlanF = date ( 'Y-m-d' , $periodoFinPlanF ),
         'periodoFinPlanF' => $periodoFinPlanF,
         'estadoAuditoria' => $faker->randomElement($array = array ('PENDIENTE','ACTIVO','TERMINADO')),
-
+        'codPlanA' => $planes->random(),
     ];
 });
+
+$factory->define(App\Models\ObjetivoGeneral::class, function (Faker $faker) {
+
+     $auditorias = \App\Models\Auditoria::pluck('codPlanF');
+
+    return [
+        'nombre' => 'DETERMINAR SI LAS CONTRATACIONES DE BIENES Y SERVICIOS SE REALIZARON DE CONFORMIDAD CON LA NORMATIVA APLICABLE, DISPOSICIONES INTERNAS Y ESTIPULACIONES CONTRACTUALES ESTABLECIDAS.',
+        'codPlanF' => $auditorias->random(),
+        'eliminado' => false,
+    ];
+});
+$factory->define(App\Models\ObjetivoEspecifico::class, function (Faker $faker) {
+
+    $auditorias = \App\Models\Auditoria::pluck('codPlanF');
+
+    return [
+        'nombre' => 'DETERMINAR SI LAS CONTRATACIONES DE BIENES Y SERVICIOS SE REALIZARON DE CONFORMIDAD CON LA NORMATIVA APLICABLE, DISPOSICIONES INTERNAS Y ESTIPULACIONES CONTRACTUALES ESTABLECIDAS.',
+        'codPlanF' => $auditorias->random(),
+      ];
+});
+
+$factory->define(App\Models\Macroproceso::class, function (Faker $faker) {
+
+
+    return [
+        'Nombre' => 'DETERMINAR SI LAS CONTRATACIONES DE BIENES Y SERVICIOS SE REALIZARON DE CONFORMIDAD CON LA NORMATIVA APLICABLE, DISPOSICIONES INTERNAS Y ESTIPULACIONES CONTRACTUALES ESTABLECIDAS.',
+        'estado' =>'activo'
+    ];
+});
+
+$factory->define(App\Models\Macroproceso::class, function (Faker $faker) {
+
+
+    return [
+        'Nombre' => 'DETERMINAR SI LAS CONTRATACIONES DE BIENES Y SERVICIOS SE REALIZARON DE CONFORMIDAD CON LA NORMATIVA APLICABLE, DISPOSICIONES INTERNAS Y ESTIPULACIONES CONTRACTUALES ESTABLECIDAS.',
+        'estado' =>'activo'
+    ];
+});
+
 
 
 

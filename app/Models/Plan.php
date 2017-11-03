@@ -16,14 +16,12 @@ class Plan extends Model
     protected $primaryKey = 'codPlanA';
     protected $table = 'plan_anual';
 
-
-    public static function eliminar($codPlanA)
+    public static function boot()
     {
-        $plan = self::find($codPlanA);
-        $plan->eliminado = Plan::ELIMINADO;
-        $plan->save();
-
-        $plan->auditorias->eliminar();
+        parent::boot();
+        static::deleted(function ($plan){
+            $plan->auditorias()->delete();
+        });
     }
 
     public function scopeActivo($sql)

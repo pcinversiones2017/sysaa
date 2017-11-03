@@ -160,13 +160,11 @@ class AuditoriaController extends Controller
     {
         try{
             $auditoria = Auditoria::find($request->codPlanF);
-            $auditoria->eliminado = Auditoria::ELIMINADO;
-            $auditoria->save();
+            $auditoria->delete();
 
-            return redirect()->route('auditoria. listar')->with('success', 'Auditoria eliminada correctamente');
+            return redirect()->route('auditoria.listar')->with('success', 'Auditoria eliminada correctamente');
         }catch (\Exception $e){
-            //Log::error($e->getMessage());
+            echo  $e->getMessage();
         }
-
     }
 }
