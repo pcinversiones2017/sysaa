@@ -22,7 +22,7 @@ class AuditoriaController extends Controller
      */
     public function listar()
     {
-        $auditorias = Auditoria::activo()->get();
+        $auditorias = Auditoria::all();
         return view('auditoria.listar')->with(compact('auditorias'));
     }
 

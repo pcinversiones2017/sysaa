@@ -45,7 +45,7 @@ class InformeController extends Controller
 
     public function eliminar($id)
     {
-    	Informe::Existe($id)->update(['eliminado' => false]);
-    	return redirect()->route('informe.listar')->with('danger','Informe eliminado');
+    	Informe::Existe($id)->delete();
+    	return back()->with('danger','Informe eliminado');
     }
 }

@@ -30,8 +30,9 @@
                 <div class="ibox-content">
 
                     <div class="row">
-                        <div class="col-sm-3">
-                            <a type="button" href="{!! url('archivo/archivo-crear') !!}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Cargar Archivo</a>
+                        <div class="col-sm-9">
+                            <a type="button" href="{!! url('archivo/archivo-crear/'.$codPlanF.'/'.$codObjEsp.'/'.$codProc.'/'.$codInf) !!}" class="btn btn-outline btn-primary"><i class="fa fa-plus"></i> CARGAR ARCHIVO</a>
+                            <a type="button" href="{!! url('informe/informe/'.$codPlanF.'/'.$codObjEsp.'/'.$codProc) !!}" class="btn btn-outline btn-danger"> REGRESAR INFORME</a>
                             <p>
                             
                         </div>
@@ -52,8 +53,8 @@
                                 <td>{{$i}}</td>
                                 <td>{!! $row->nombre !!}</td>
                                 <td>
-                                    <a href="{!! url('archivo/archivo-eliminar/'.$row->codArc) !!}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar </a>
-                                    <a href="{!! url('archivo/archivo-descargar/'.$row->codArc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-trash"></i> Descargar </a>
+                                    <a href="{!! url('archivo/archivo-eliminar/'.$row->codArc) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
+                                    <a href="{!! url('archivo/archivo-descargar/'.$row->codArc) !!}" class="btn btn-success btn-outline"><i class="fa fa-cloud-download"></i>  </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

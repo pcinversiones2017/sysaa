@@ -33,7 +33,7 @@ class LoginController extends Controller
     		{
     			if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
 		    	{
-		    		return redirect('inicio');
+		    		return redirect('/');
 		    	}else 
 		    	{
 		    		return back()->with('danger','No se ha podido iniciar sesion.');
@@ -54,7 +54,7 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect('/');
+        return redirect('login');
     }
 
     protected function guard()
