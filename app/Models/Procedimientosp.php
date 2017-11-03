@@ -8,6 +8,7 @@ class Procedimientosp extends Model
 {
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
+    const DELETED_AT  = 'fecha_eliminado';
 
     protected $primaryKey = 'codProSP';
     protected $table = 'procedimiento_sp';
@@ -20,5 +21,10 @@ class Procedimientosp extends Model
     {
         return $this->hasMany(Actividad::class,'codProSP');
     }
-
+    public static function eliminar($codProSP)
+    {
+        $procedimientosp = self::find($codProSP);
+        $procedimientosp->eliminado = Procedimientosp::ELIMINADO;
+        $procedimientosp->save();
+    }
 }

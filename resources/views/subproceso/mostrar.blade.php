@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('content')
-
+    @include('partials.alert')
     <div class="row">
         <div class="row wrapper border-bottom white-bg page-heading">
 
@@ -76,18 +76,6 @@
                                 <div class="tab-content">
                                     <div id="tab-10" class="tab-pane active">
                                         <div class="panel-body">
-                                            @if(session('success'))
-                                                <div class="alert alert-success  alert-dismissable">
-                                                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                                                    <a class="alert-link" href="#">{{session('success')}}</a>.
-                                                </div>
-                                            @elseif(session('update'))
-                                                <div class="alert alert-danger  alert-dismissable">
-                                                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                                                    <a class="alert-link" href="#">{{session('update')}}</a>.
-                                                </div>
-                                            @endif
-
                                             <table class="table table-bordered" style="margin-top: 10px">
                                                 <thead>
                                                 <tr>
@@ -97,13 +85,14 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($subproceso->procedimientoSP  as $n => $procedimientosp)
+                                                @foreach($subproceso->procedimientoSP as $n => $procedimientosp)
                                                     <tr>
                                                         <td align="middle">{{$n+1}}</td>
                                                         <td>{{$procedimientosp->nombre}}</td>
                                                         <td>
-                                                            <a href="{{URL::to('procedimientosp/mostrar')}}/{{$procedimientosp->codProSP}}" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
-                                                            <a href="{{URL::to('procedimientosp/editar')}}/{{$procedimientosp->codProSP}}" id="btnActualizar" class="btn btn-white btn-sm"><i class="fa fa-pencil" ></i> Editar </a>
+                                                            <a href="{!!  route('procedimientosp.mostrar', $procedimientosp->codProSP) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
+                                                            <a href="{!!  route('procedimientosp.editar', $procedimientosp->codProSP) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
+                                                            <a href="{!!  route('procedimientosp.eliminar', $procedimientosp->codProSP)!!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
