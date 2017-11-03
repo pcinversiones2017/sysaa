@@ -177,7 +177,7 @@ $factory->define(App\User::class, function (Faker $faker) {
             'codUsu' => $faker->randomElement($array = array ('2','3')),
             'codRol' => $roles->random(),
             'codCarFun' => $cargofuncional->random(),
-            'estado' =>  false,
+            'activo' =>  true,
             'codPlanF' => $auditorias->random(),
             'horasH' => $faker->randomNumber(),
             'sueldo' => (float) '899.55',
