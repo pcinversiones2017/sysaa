@@ -85,8 +85,16 @@ class ActividadController extends Controller
      * @param  \App\Models\Actividad  $actividad
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Actividad $actividad)
+    public function eliminar(Request $request)
     {
-        //
+        try{
+            $actividad = Actividad::find($request->codAct);
+            $actividad->delete();
+            //return redirect()->route('macroproceso.mostrar', [$request->codMacroP])->with('update','Se actualizo correctamente');
+
+            return redirect()->route('macroproceso.listar')->with('danger','Se elimino correctamente');
+        }catch (\Exception $e){
+
+        }
     }
 }

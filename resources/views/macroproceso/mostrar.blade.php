@@ -1,10 +1,7 @@
 @extends('layout.admin')
 @section('content')
-
+    @include('partials.alert')
     <div class="row">
-        <div class="row wrapper border-bottom white-bg page-heading">
-
-        </div>
         <div class="col-lg-12">
 
             <div class="ibox float-e-margins">
@@ -68,18 +65,6 @@
                                 <div class="tab-content">
                                     <div id="tab-10" class="tab-pane active">
                                         <div class="panel-body">
-                                            @if(session('success'))
-                                                <div class="alert alert-success  alert-dismissable">
-                                                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                                                    <a class="alert-link" href="#">{{session('success')}}</a>.
-                                                </div>
-                                            @elseif(session('update'))
-                                                <div class="alert alert-danger  alert-dismissable">
-                                                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                                                    <a class="alert-link" href="#">{{session('update')}}</a>.
-                                                </div>
-                                            @endif
-
                                             <table class="table table-bordered" style="margin-top: 10px">
                                                 <thead>
                                                 <tr>
@@ -94,8 +79,10 @@
                                                         <td align="middle">{{$n+1}}</td>
                                                         <td>{{$procesoma->nombre}}</td>
                                                         <td>
-                                                            <a href="{{URL::to('procesoma/mostrar')}}/{{$procesoma->codProMA}}" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
-                                                            <a href="{{URL::to('procesoma/editar')}}/{{$procesoma->codProMA}}" id="btnActualizar" class="btn btn-white btn-sm"><i class="fa fa-pencil" ></i> Editar </a>
+                                                            <a href="{!!  route('procesoma.mostrar', $procesoma->codProMA) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
+                                                            <a href="{!!  route('procesoma.editar', $procesoma->codProMA) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
+                                                            <a href="{!!  route('procesoma.eliminar', $procesoma->codProMA)!!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i></a>
+
                                                         </td>
                                                     </tr>
                                                 @endforeach

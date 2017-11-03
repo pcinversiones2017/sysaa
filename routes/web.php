@@ -106,6 +106,7 @@ Route::group(['prefix' => 'macroproceso'], function () {
     Route::get('listar', 'MacroprocesoController@listar')->name('macroproceso.listar');
     Route::get('editar/{codMacroP}', 'MacroprocesoController@editar')->name('macroproceso.editar');
     Route::post('actualizar', 'MacroprocesoController@actualizar')->name('macroproceso.actualizar');
+    Route::get('eliminar/{codMacroP}', 'MacroprocesoController@eliminar')->name('macroproceso.eliminar');
 });
 
 Route::group(['prefix' => 'procesoma'],function () {
@@ -115,6 +116,8 @@ Route::group(['prefix' => 'procesoma'],function () {
     Route::get('listar', 'ProcesomaController@listar')->name('procesoma.listar');
     Route::get('editar/{codProMA}', 'ProcesomaController@editar')->name('procesoma.editar');
     Route::post('actualizar', 'ProcesomaController@actualizar')->name('procesoma.actualizar');
+    Route::get('eliminar/{codProMA}', 'ProcesomaController@eliminar')->name('procesoma.eliminar');
+
 });
 
 Route::group(['prefix' => 'subproceso'],function () {
@@ -124,6 +127,8 @@ Route::group(['prefix' => 'subproceso'],function () {
     Route::get('listar', 'SubprocesoController@listar')->name('subproceso.listar');
     Route::get('editar/{codSubPro}', 'SubprocesoController@editar')->name('subproceso.editar');
     Route::post('actualizar', 'SubprocesoController@actualizar')->name('subproceso.actualizar');
+    Route::get('eliminar/{codSubPro}', 'SubprocesoController@eliminar')->name('subproceso.eliminar');
+
 });
 
 Route::group(['prefix' => 'procedimientosp'],function () {
@@ -133,6 +138,8 @@ Route::group(['prefix' => 'procedimientosp'],function () {
     Route::get('listar', 'ProcedimientospController@listar')->name('procedimientosp.listar');
     Route::get('editar/{codProSP}', 'ProcedimientospController@editar')->name('procedimientosp.editar');
     Route::post('actualizar', 'ProcedimientospController@actualizar')->name('procedimientosp.actualizar');
+    Route::get('eliminar/{codProSP}', 'ProcedimientospController@eliminar')->name('procedimientosp.eliminar');
+
 });
 
 
@@ -144,6 +151,8 @@ Route::group(['prefix' => 'actividad'],function () {
     Route::get('listar', 'ActividadController@listar')->name('actividad.listar');
     Route::get('editar/{codAct}', 'ActividadController@editar')->name('actividad.editar');
     Route::post('actualizar', 'ActividadController@actualizar')->name('actividad.actualizar');
+    Route::get('eliminar/{codAct}', 'ActividadController@eliminar')->name('actividad.eliminar');
+
 });
 
 Route::group(['prefix' => 'tipo_normativa'],function () {

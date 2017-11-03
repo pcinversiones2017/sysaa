@@ -1,5 +1,6 @@
 @extends('layout.admin')
 @section('content')
+    @include('partials.alert')
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -47,9 +48,10 @@
                                 <td>{{$macroproceso->nombre}}</td>
                                 <td>{{$macroproceso->fecha_creado}}</td>
                                 <td>
-                                    <a href="{{URL::to('macroproceso/mostrar')}}/{{$macroproceso->codMacroP}}" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> Ver </a>
-                                    <a href="{{URL::to('macroproceso/editar')}}/{{$macroproceso->codMacroP}}" class="btn btn-white btn-sm">
-                                        <i class="fa fa-pencil"></i> Editar </a>
+
+                                    <a href="{!!  route('macroproceso.mostrar', $macroproceso->codMacroP) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
+                                    <a href="{!!  route('macroproceso.editar', $macroproceso->codMacroP) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
+                                    <a href="{!!  route('macroproceso.eliminar', $macroproceso->codMacroP)!!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach

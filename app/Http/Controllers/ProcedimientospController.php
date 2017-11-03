@@ -91,8 +91,16 @@ class ProcedimientospController extends Controller
      * @param  \App\Models\Procedimientosp  $procedimientosp
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Procedimientosp $procedimientosp)
+    public function eliminar(Request $request)
     {
-        //
+        try{
+            $procedimientosp = Procedimientosp::find($request->codProSP);
+            $procedimientosp->delete();
+            //return redirect()->route('macroproceso.mostrar', [$request->codMacroP])->with('update','Se actualizo correctamente');
+
+            return redirect()->route('macroproceso.listar')->with('danger','Se elimino correctamente');
+        }catch (\Exception $e){
+
+        }
     }
 }
