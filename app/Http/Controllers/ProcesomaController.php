@@ -99,8 +99,16 @@ class ProcesomaController extends Controller
      * @param  \App\Models\Procesoma  $procesoMA
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Procesoma $procesoMA)
+    public function eliminar(Request $request)
     {
-        //
+        try{
+            $procesoma = Procesoma::find($request->codProMA);
+            $procesoma->delete();
+            //return redirect()->route('macroproceso.mostrar', [$request->codMacroP])->with('update','Se actualizo correctamente');
+
+            return redirect()->route('macroproceso.listar')->with('danger','Se elimino correctamente');
+        }catch (\Exception $e){
+
+        }
     }
 }

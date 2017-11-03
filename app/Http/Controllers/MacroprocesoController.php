@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Macroproceso;
 use Illuminate\Http\Request;
+use App\Http\Requests\Plan\ActualizarRequest;
+use App\Http\Requests\Plan\RegistroRequest;
+
 
 class MacroprocesoController extends Controller
 {
@@ -94,7 +97,8 @@ class MacroprocesoController extends Controller
         $macroproceso = Macroproceso::find($request->codMacroP);
         $macroproceso->nombre = $request->nombre;
         $macroproceso->save();
-        return redirect('macroproceso/listar');
+        return redirect()->route('macroproceso.listar')->with('update','Se actualizo correctamente');
+
     }
 
     /**
@@ -103,10 +107,14 @@ class MacroprocesoController extends Controller
      * @param  \App\Models\Macroproceso  $macroproceso
      * @return \Illuminate\Http\Response
      */
-    public function eliminar($codMacroP)
+    public function eliminar(Request $request)
     {
-      /*
-        Macroproceso::find($id)->delete();
-        return response()->json(['done']);*/
+        try{
+            $macroproceso = Macroproceso::find($request->codMacroP);
+            $macroproceso->delete();
+            return redirect()->route('macroproceso.listar')->with('danger', 'Macroproceso Eliminado');
+        }catch (\Exception $e){
+
+        }
     }
 }

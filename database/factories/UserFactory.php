@@ -63,7 +63,7 @@ $factory->define(App\User::class, function (Faker $faker) {
            'periodoIniPlanF' => $periodoInicio,
              'periodoFinPlanF' => $periodoFinPlanF,
             'estadoAuditoria' => $faker->randomElement($array = array('PENDIENTE', 'ACTIVO', 'TERMINADO')),
-            'codPlanA' => factory(\App\Models\Plan::class)->create(),
+            'codPlanA' => $planes->random(),
         ];
     });
 
@@ -72,11 +72,11 @@ $factory->define(App\User::class, function (Faker $faker) {
 
     $factory->define(App\Models\ObjetivoGeneral::class, function (Faker $faker) {
 
-  //        $auditorias = \App\Models\Auditoria::pluck('codPlanF');
+        $auditorias = \App\Models\Auditoria::pluck('codPlanF');
 
         return [
-            'nombre' => $faker->paragraph($nbSentences = 5, $variableNbSentences = true),
-            'codPlanF' => factory(\App\Models\Auditoria::class)->create(),
+            'nombre' => $faker->sentence($nbWords = 2, $variableNbWords = true),
+            'codPlanF' => $auditorias->random(),
         ];
     });
 
@@ -87,7 +87,7 @@ $factory->define(App\User::class, function (Faker $faker) {
 
 
         return [
-            'Nombre' => 'Auditoria Macroproceso ' . $faker->numberBetween(1, 5),
+            'Nombre' => 'Macroproceso ' . $faker->numberBetween(1, 5),
             'estado' => 'activo',
         ];
     });
@@ -101,10 +101,10 @@ $factory->define(App\User::class, function (Faker $faker) {
         $macroProcesos = \App\Models\Macroproceso::pluck('codMacroP');
 
         return [
-            'Nombre' => 'objetivo especifico ' .$faker->paragraph($nbSentences = 5, $variableNbSentences = true),
+            'Nombre' => 'objetivo especifico ' . $faker->numberBetween(1, 5),
             'materia' => $faker->sentence($nbWords = 4, $variableNbWords = true),
-            'codObjGen' => factory(\App\Models\ObjetivoGeneral::class)->create(),
-            'codMacroP' => factory(\App\Models\Macroproceso::class)->create(),
+            'codObjGen' => $objetivoGeneral->random(),
+            'codMacroP' => $macroProcesos->random(),
         ];
     });
 

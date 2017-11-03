@@ -21,9 +21,6 @@
                             {!! Form::select('rol',$rol,$row->codRol,['class' => 'form-control']) !!}
                             <div class="hr-line-dashed"></div>
 
-                            <label>CARGO FUNCIONAL</label>
-                            {!! Form::select('cargo',$cargo,$row->codCarFun,['class' => 'form-control']) !!}
-                            <div class="hr-line-dashed"></div>
                             {!! Field::text('horasH', $row->horasH, ['label' => 'HORAS HOMBRES']) !!}
                             <div class="hr-line-dashed"></div>
                             {!! Field::text('sueldo', $row->sueldo, ['label' => 'SUELDO']) !!}

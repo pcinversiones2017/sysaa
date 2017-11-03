@@ -8,6 +8,8 @@ class Actividad extends Model
 {
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
+    const DELETED_AT  = 'fecha_eliminado';
+
 
     protected $primaryKey = 'codAct';
     protected $table = 'actividad';
@@ -16,5 +18,10 @@ class Actividad extends Model
     {
         return $this->belongsTo(Procedimientosp::class, 'codProSP');
     }
-
+    public static function eliminar($codAct)
+    {
+        $actividad = self::find($codAct);
+        $actividad->eliminado = Actividad::ELIMINADO;
+        $actividad->save();
+    }
 }
