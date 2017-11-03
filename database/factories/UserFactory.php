@@ -161,16 +161,19 @@ $factory->define(App\User::class, function (Faker $faker) {
     $factory->define(App\Models\Usuariorol::class, function (Faker $faker) {
 
         $users = \App\User::pluck('codUsu');
-        $cargofuncional = \App\Models\ObjetivoEspecifico::pluck('codCarFun');
+        $cargofuncional = \App\Models\Cargofuncional::pluck('codCarFun');
         $roles = \App\Models\Rol::pluck('codRol');
+        $auditorias = \App\Models\Auditoria::pluck('codPlanF');
 
 
         return [
             'codUsu' => $users->random(),
-            'codRol' => $roles->random(),
+            'codRol' => $faker->randomElement($array = array ('2','3','4')),
             'codCarFun' => $cargofuncional->random(),
-            'estado' => 'activo'
-
+            'estado' =>  false,
+            'codPlanF' => $auditorias->random(),
+            'horasH' => $faker->randomNumber(),
+            'sueldo' => (float) '899.55',
         ];
     });
 
@@ -213,21 +216,22 @@ $factory->define(App\User::class, function (Faker $faker) {
     $factory->define(App\Models\Cronograma::class, function (Faker $faker) {
 
         $auditorias = \App\Models\Auditoria::pluck('codPlanF');
-        $etapa = \App\Models\Etapa::pluck('codEtp');
-        for ($j = 1; $j <= 13; $j++){
+        $fechaIni = $faker->date($format = 'Y-m-d');
+          $fechaFin = strtotime('+3 month', strtotime($fechaIni));
+            $fechaFin = date('Y-m-d', $fechaFin);
+
+
         return [
-            'codEtp' => $j,
-            $fechaIni = $faker->date($format = 'Y-m-d'),
+
+            'codEtp' => $faker->numberBetween($min = 1, $max = 13),
             'fechaIni' => $fechaIni,
-            $fechaFin = strtotime('+3 month', strtotime($fechaIni)),
-            $fechaFin = date('Y-m-d', $fechaIni),
             'fechaFin' => $fechaFin,
             'codPlanf' => $auditorias->random(),
-            'dias_habiles' => $faker->randomNumber(),
+            'dias_habiles' => $faker->numberBetween($min = 1, $max = 30),
 
-        ];
-      }
+          ];
     });
+
 
 
 $factory->define(App\Models\NormativaMarcoproceso::class, function (Faker $faker) {
@@ -247,9 +251,9 @@ $factory->define(App\Models\Normativac::class, function (Faker $faker) {
     $tipoNormativas = \App\Models\TipoNormativa::pluck('codTipNorm');
 
     return [
-        'tipoNormativa'  => $faker->text(),
-        'nombre' => $faker->paragraph(),
-        'numero' =>  $faker->randomNumber(),
+        'tipoNormativa'  => $faker->sentence($nbWords = 2, $variableNbWords = true),
+        'nombre' => $faker->sentence($nbWords = 2, $variableNbWords = true),
+        'numero' =>  $faker->sentence($nbWords = 2, $variableNbWords = true),
         'fecha' => $faker->date($format = 'Y-m-d'),
         'codTipNorm' => $tipoNormativas->random(),
 

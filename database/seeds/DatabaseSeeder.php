@@ -41,13 +41,12 @@ class DatabaseSeeder extends Seeder
         factory('App\Models\Subproceso', 15)->create();
         factory('App\Models\Procedimientosp', 15)->create();
         factory('App\Models\Actividad', 15)->create();
-        factory('App\Models\Usuariorol', 15)->create();
+        factory('App\Models\Usuariorol', 5)->create();
         factory('App\Models\Procedimiento', 15)->create();
         factory('App\Models\Informe', 10)->create();
-        factory('App\Models\Cronograma', 10)->create();
-        factory('App\Models\NormativaMarcoproceso', 15)->create();
+        factory('App\Models\Cronograma',65)->create();
         factory('App\Models\Normativac', 10)->create();
-
+        factory('App\Models\NormativaMarcoproceso', 15)->create();
 
 
 
