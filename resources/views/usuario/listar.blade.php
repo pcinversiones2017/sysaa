@@ -31,7 +31,7 @@
 
                     <div class="row">
                         <div class="col-sm-3">
-                            <a type="button" href="{!! route('usuario.crear') !!}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Usuario</a>
+                            <a type="button" href="{!! route('usuario.crear') !!}" class="btn btn-outline btn-primary">CREAR USUARIO</a>
                             <p>
                         </div>
                     </div>
@@ -53,9 +53,9 @@
                                 <td>{!! $row->datos !!}</td>
                                 <td>{!! $row->email !!}</td>
                                 <td>
-                                    <a href="{!! url('usuario/usuario-editar/'.$row->codUsu) !!}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
-                                    <a href="{!! url('usuario/usuario-eliminar/'.$row->codUsu) !!}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar </a>
-                                    <a href="{!! url('permiso/permiso/'.$row->codUsu) !!}" class="btn btn-primary btn-sm"><i class="fa fa-id-card"></i> Permisos </a>
+                                    <a href="{!! url('usuario/usuario-editar/'.$row->codUsu) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i>  </a>
+                                    <a href="{!! url('usuario/usuario-eliminar/'.$row->codUsu) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
+                                    <a href="{!! url('historial/historial/'.$row->codUsu) !!}" class="btn btn-success btn-outline"><i class="fa fa-history"></i>  </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

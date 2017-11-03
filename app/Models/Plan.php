@@ -11,7 +11,7 @@ class Plan extends Model
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
     const DELETED_AT  = 'fecha_eliminado';
-
+    const TABLA  = "PLAN";
 
     protected $primaryKey = 'codPlanA';
     protected $table = 'plan_anual';

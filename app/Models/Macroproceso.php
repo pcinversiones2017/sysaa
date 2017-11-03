@@ -8,6 +8,7 @@ class Macroproceso extends Model
 {
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
+    const TABLA 	 = 'MACROPROCESO';
 
     protected $primaryKey = 'codMacroP';
     protected $table = 'macroproceso';

@@ -12,7 +12,7 @@ class UsuarioController extends Controller
 {
     public function listar()
     {
-    	$usuarios = User::Activo()->get();
+    	$usuarios = User::all();
     	return view('usuario.listar', compact('usuarios'));
     }
 

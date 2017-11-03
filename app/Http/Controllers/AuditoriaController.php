@@ -12,25 +12,18 @@ use App\Models\ObjetivoGeneral;
 use App\Models\Plan;
 use App\Models\Usuariorol;
 use Illuminate\Http\Request;
+use App\Models\Historial;
+use Auth;
 
 class AuditoriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function listar()
     {
         $auditorias = Auditoria::all();
+        RegistrarActividad(Auditoria::TABLA,Historial::LEER,'vió el listado de Auditorias');
         return view('auditoria.listar')->with(compact('auditorias'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function crear()
     {
         $planes = Plan::pluck('nombrePlan', 'codPlanA');
@@ -38,15 +31,10 @@ class AuditoriaController extends Controller
         $peridoFin = date('d-m-Y', strtotime('+14 day', strtotime($peridoIni)));
         $periodo = $peridoIni . ' hasta ' . $peridoFin;
         $crearAuditoria = 'active';
+        RegistrarActividad(Auditoria::TABLA,Historial::CREAR,'vió el formulario de crear Auditoria');
         return view('auditoria.crear')->with(compact('planes', 'crearAuditoria', 'periodo'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function guardar(RegistroRequest $request)
     {
         $auditoria = new Auditoria();
@@ -67,6 +55,7 @@ class AuditoriaController extends Controller
         $periodo = explode('hasta', $request->periodo);
         $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($periodo[0]));
         $auditoria->periodoFinPlanF = date('Y-m-d', strtotime($periodo[1]));
+        RegistrarActividad(Auditoria::TABLA,Historial::REGISTRAR,'registró la Auditoria '.$request->nombrePlanF);
 
         $auditoria->save();
 
@@ -80,12 +69,6 @@ class AuditoriaController extends Controller
         return redirect()->route('auditoria.listar')->with('success', 'Auditoria registrada');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Auditoria  $auditoria
-     * @return \Illuminate\Http\Response
-     */
     public function mostrar(Request $request)
     {
         $auditoria = Auditoria::find($request->codPlanF);
@@ -95,12 +78,6 @@ class AuditoriaController extends Controller
         return view('auditoria.mostrar')->with(compact('auditoria', 'macroprocesos', 'usuariorol', 'codPlanF'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Auditoria  $auditoria
-     * @return \Illuminate\Http\Response
-     */
     public function editar(Request $request)
     {
         $planes = Plan::pluck('nombrePlan', 'codPlanA');
@@ -108,16 +85,10 @@ class AuditoriaController extends Controller
         $periodoIni = date('d-m-Y', strtotime($auditoria->periodoIniPlanF));
         $periodoFin = date('d-m-Y', strtotime($auditoria->periodoFinPlanF));
         $periodo = $periodoIni . ' hasta ' . $periodoFin;
+        RegistrarActividad(Auditoria::TABLA,Historial::EDITAR,'vió el formulario de editar la Auditoria '.$auditoria->nombrePlanF);
         return view('auditoria.editar')->with(compact('planes', 'auditoria', 'periodo'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Auditoria  $auditoria
-     * @return \Illuminate\Http\Response
-     */
     public function actualizar(ActualizarRequest $request)
     {
         $auditoria = Auditoria::find($request->codPlanF);
@@ -139,6 +110,7 @@ class AuditoriaController extends Controller
         $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($periodo[0]));
         $auditoria->periodoFinPlanF = date('Y-m-d', strtotime($periodo[1]));
 
+        RegistrarActividad(Auditoria::TABLA,Historial::ACTUALIZAR,'actualizó la Auditoria '.$request->nombrePlanF);
         $auditoria->save();
 
         if(!empty($request->nombreObjetivoGeneral)){
@@ -150,17 +122,12 @@ class AuditoriaController extends Controller
         return redirect()->route('auditoria.listar')->with('success', 'Auditoria actualizada correctamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Auditoria  $auditoria
-     * @return \Illuminate\Http\Response
-     */
     public function eliminar(Request $request)
     {
         try{
             $auditoria = Auditoria::find($request->codPlanF);
             $auditoria->delete();
+            RegistrarActividad(Auditoria::TABLA,Historial::ELIMINAR,'eliminó la Auditoria '.$auditoria->nombrePlanF);
 
             return redirect()->route('auditoria.listar')->with('success', 'Auditoria eliminada correctamente');
         }catch (\Exception $e){
