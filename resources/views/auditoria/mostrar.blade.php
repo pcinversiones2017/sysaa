@@ -13,7 +13,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="m-b-md">
-                                    <a href="#" class="btn btn-white btn-xs pull-right">Edit project</a>
+                                    <a href="{{URL::to('auditoria/editar')}}/{{$auditoria->codPlanF}}" class="btn btn-primary btn-outline pull-right" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i> EDITAR</a>
                                     <h2>{{$auditoria->nombrePlanF}}</h2>
                                 </div>
                             </div>

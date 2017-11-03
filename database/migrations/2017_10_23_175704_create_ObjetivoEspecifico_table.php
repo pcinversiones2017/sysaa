@@ -15,7 +15,7 @@ class CreateObjetivoEspecificoTable extends Migration
     {
         Schema::create('Objetivo_Especifico', function (Blueprint $table) {
             $table->increments('codObjEsp')->unsigned();
-            $table->string('nombre');
+            $table->text('nombre');
             $table->string('materia');
             $table->integer('codObjGen')->unsigned();
             $table->integer('codMacroP')->unsigned();
