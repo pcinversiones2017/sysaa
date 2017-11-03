@@ -7,7 +7,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Editar Auditoria</h5>
+                    <h5>EDITAR AUDITORIA</h5>
                 </div>
                 <div class="ibox-content">
                     <div class="row">
@@ -15,50 +15,51 @@
                             {{csrf_field()}}
                             <input type="hidden" name="codPlanF" value="{{$auditoria->codPlanF}}">
                             <div class="col-md-6 b-r">
-                                {!! Field::text('nombrePlanF', $auditoria->nombrePlanF, ['label' => 'Nombre Auditoria']) !!}
+                                {!! Field::text('nombrePlanF', $auditoria->nombrePlanF, ['label' => 'NOMBRE AUDITORIA']) !!}
                                 <div class="hr-line-dashed"></div>
 
-                                {!! Field::text('codigoServicioCP', $auditoria->codigoServicioCP, ['label' => 'Código del servicio de control posterior']) !!}
+                                {!! Field::text('codigoServicioCP', $auditoria->codigoServicioCP, ['label' => 'CÓDIGO DEL SERVICIO DEL SERVICIO DE CONTROL POSTERIOR']) !!}
                                 <div class="hr-line-dashed"></div>
 
-                                {!! Field::text('tipoServicioCP', $auditoria->tipoServicioCP, ['label' => 'Tipo de servicio de control posterior']) !!}
+                                {!! Field::text('tipoServicioCP', $auditoria->tipoServicioCP, ['label' => 'TIPO DE SERVICIO DE CONTROL POSTERIOR']) !!}
                                 <div class="hr-line-dashed"></div>
 
-                                {!! Field::text('organoCI', $auditoria->organoCI, ['label' => 'Órgano de control institucional']) !!}
+                                {!! Field::text('organoCI', $auditoria->organoCI, ['label' => 'ÓRGANO DE CONTROL INSTITUCIONAL']) !!}
                                 <div class="hr-line-dashed"></div>
 
                             </div>
 
                             <div class="col-md-6">
-                                {!! Field::text('entidadAuditada', $auditoria->entidadAuditada, ['label' => 'Entidad Auditada']) !!}
+                                {!! Field::text('entidadAuditada', $auditoria->entidadAuditada, ['label' => 'ENTIDAD AUDITADA']) !!}
                                 <div class="hr-line-dashed"></div>
 
-                                {!! Field::text('tipoDemanda', $auditoria->tipoDemanda, ['label' => 'Tipo de demanda de control (demanda autogenerada / demanda imprevisible)']) !!}
+                                {!! Field::text('tipoDemanda', $auditoria->tipoDemanda, ['label' => 'TIPO DE DEMANDA DE CONTROL (demanda autogenerada / demanda imprevisible)']) !!}
                                 <div class="hr-line-dashed"></div>
 
-                                <div class="form-group"><label class="">Plan</label>
+                                <div class="form-group"><label class="">PLAN</label>
                                     {!! Form::select('codPlanA', $planes, $auditoria->planAnual->codPlanA, ['class' => 'form-control m-b'] ) !!}
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
-                                <label class="">Periodo inicio - Periodo Final</label>
+                                <label class="">PERIODO INICIO - PERIODO FIN</label>
                                 <input id="perido" class="form-control" type="text" name="periodo" value="{{$periodo}}" />
 
                             </div>
 
                             <div class="col-md-12">
-                                <div class="form-group"><label class="">Origen</label>
+                                <div class="form-group"><label class="">ORÍGEN</label>
                                     {!! Form::textarea('origen', $auditoria->origen, ['class' => 'form-control', 'size' => '50x5']) !!}
 
                                 </div>
 
                                 <div class="hr-line-dashed"></div>
-                                <div class="form-group"><label class="">Objetivo General</label>
+                                <div class="form-group"><label class="">OBJETIVO GENERAL</label>
                                     {!! Form::textarea('nombreObjetivoGeneral', $auditoria->objetivoGeneral->nombre, ['class' => 'form-control', 'size' => '50x5']) !!}
                                 </div>
 
                                 <div class="form-group">
-                                    <button class="btn btn-primary" type="submit">Guardar</button>
+                                    <button class="btn btn-primary btn-outline" type="submit">ACTUALIZAR</button>
+                                    <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRÁS</a>
                                 </div>
                             </div>
                         {!! Form::close() !!}

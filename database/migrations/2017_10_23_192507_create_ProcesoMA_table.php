@@ -15,7 +15,7 @@ class CreateProcesoMATable extends Migration
     {
         Schema::create('Proceso_MA', function (Blueprint $table) {
             $table->increments('codProMA');
-            $table->string('nombre');
+            $table->text('nombre');
             $table->string('estado');
             $table->integer('codMacroP')->unsigned();
 

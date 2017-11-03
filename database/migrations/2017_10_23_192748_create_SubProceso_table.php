@@ -15,7 +15,7 @@ class CreateSubProcesoTable extends Migration
     {
         Schema::create('SubProceso', function (Blueprint $table) {
             $table->increments('codSubPro');
-            $table->string('nombre');
+            $table->text('nombre');
             $table->string('estado');
             $table->integer('codProMA')->unsigned();
 

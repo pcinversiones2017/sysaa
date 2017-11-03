@@ -15,7 +15,7 @@ class CreateProcedimientoSPTable extends Migration
     {
         Schema::create('Procedimiento_SP', function (Blueprint $table) {
             $table->increments('codProSP');
-            $table->string('nombre');
+            $table->text('nombre');
             $table->integer('codSubPro')->unsigned();
 
             $table->timestamp('fecha_creado')->nullable();
