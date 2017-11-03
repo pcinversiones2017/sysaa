@@ -6,6 +6,7 @@ use App\Http\Requests\ObjetivoEspecifico\RegistroRequest;
 use App\Models\Auditoria;
 use App\Models\Macroproceso;
 use App\Models\ObjetivoEspecifico;
+use App\Models\ObjetivoGeneral;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Procedimiento;
@@ -21,7 +22,7 @@ class ObjetivoEspecificoController extends Controller
             $objetivoEspecifico->codMacroP  = $request->codMacroP;
             $objetivoEspecifico->codObjGen  = $request->codObjGen;
             $objetivoEspecifico->save();
-            return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success', 'Objetivo Especifico Registrado');
+            return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success', 'Objetivo especifico registrado');
 
         }catch (\Exception $e){
             Log::error($e->getMessage());
@@ -60,7 +61,8 @@ class ObjetivoEspecificoController extends Controller
             $objetivoEspecifico->codMacroP  = $request->codMacroP;
             $objetivoEspecifico->save();
 
-            return redirect()->route('auditoria.mostrar', $objetivoEspecifico->objetivoGeneral->auditoria->codPlanF)->with('success', 'Objetivo especifico actualizado');
+            return redirect()->route('auditoria.mostrar', $objetivoEspecifico->objetivoGeneral->auditoria->codPlanF)
+                ->with('success', 'Objetivo especifico actualizado');
         }catch (\Exception $e){
             Log::error($e->getMessage());
             echo $e->getMessage();
@@ -75,7 +77,6 @@ class ObjetivoEspecificoController extends Controller
 
             $procedimiento = Procedimiento::join('usuario_roles','usuario_roles.codUsuRol','=','procedimiento.codUsuRol')
                                             ->join('users','users.codUsu','=','usuario_roles.codUsu')
-                                            ->where('procedimiento.eliminado',false)
                                             ->where('codObjEsp',$request->codObjEsp)
                                             ->get();
             $codPlanF = $request->codPlanF;
@@ -98,8 +99,18 @@ class ObjetivoEspecificoController extends Controller
         }
     }
 
-    public function eliminar()
+    public function eliminar(Request $request)
     {
-        
+        try{
+            $objetivoEspecifico = ObjetivoEspecifico::find($request->codObjEsp);
+            $codPlanF = $objetivoEspecifico->objetivoGeneral->auditoria->codPlanF;
+            $objetivoEspecifico->delete();
+
+            return redirect()->route('auditoria.mostrar', $codPlanF)->with('success', 'Objetivo especifico eliminado');
+        }catch (\Exception $e){
+            Log::error($e->getMessage());
+        }
+
+
     }
 }

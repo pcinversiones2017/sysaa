@@ -3,16 +3,19 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Str;
 
 
 class User extends Authenticatable
 {
+    use SoftDeletes;
     use Notifiable;
 
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
+    const DELETED_AT = 'fecha_eliminado';
 
     protected $primaryKey = 'codUsu';
 
@@ -22,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombres', 'paterno','materno','email', 'password','estado'
+        'nombres', 'paterno','materno','email', 'password'
     ];
 
     /**
@@ -34,11 +37,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function scopeActivo($cadenaSQL)
-    {
-        return $cadenaSQL->where('estado',true);
-    }
-
     public function scopeExiste($cadenaSQL, $id)
     {
         return $cadenaSQL->where('codUsu',$id);
@@ -46,8 +44,7 @@ class User extends Authenticatable
 
     public function scopeExisteEmail($cadenaSQL, $email)
     {
-        return $cadenaSQL->where('email',$email)
-                        ->where('estado',true);
+        return $cadenaSQL->where('email',$email);
     }
 
     public function setNombresAttribute($value)
@@ -68,5 +65,10 @@ class User extends Authenticatable
     public function getDatosAttribute()
     {
         return $this->attributes['nombres'].' '.$this->attributes['paterno'].' '.$this->attributes['materno'];
+    }
+
+    public function usuariorol()
+    {
+        return $this->hasOne(Models\UsuarioRol::class,'codUsu','codUsu');
     }
 }

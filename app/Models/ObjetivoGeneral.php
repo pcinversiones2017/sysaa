@@ -23,6 +23,14 @@ class ObjetivoGeneral extends Model
     protected $primaryKey = 'codObjGen';
     protected $table = 'objetivo_general';
 
+    public static function boot()
+    {
+        parent::boot();
+        static::deleted(function ($objetivoGeneral){
+            $objetivoGeneral->objetivosEspecificos()->delete();
+        });
+    }
+
     public function objetivosEspecificos()
     {
         return $this->hasMany(ObjetivoEspecifico::class, 'codObjGen');

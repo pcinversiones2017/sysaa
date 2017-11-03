@@ -32,7 +32,7 @@
                             <td>
                                 <a href="{{url('objetivo-especifico/mostrar')}}/{{$auditoria->codPlanF}}/{{$objetivoEsp->codObjEsp}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
                                 <a href="{{route('objetivo-especifico.editar', $objetivoEsp->codObjEsp) }}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
-                                <a href="" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i></a>
+                                <a href="{{route('objetivo-especifico.eliminar', $objetivoEsp->codObjEsp )}}" class="btn btn-danger btn-outline eliminar-objetivo-especifico"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <?php $i++ ?>
@@ -43,6 +43,21 @@
             </div>
         </div>
     </div>
-
 </div>
 
+@section('js-script')
+    {!! Html::script('js/plugins/alertifyjs/alertify.min.js') !!}
+    <script>
+        $('.eliminar-objetivo-especifico').on('click', function (e) {
+            e.preventDefault();
+            var data = $(this);
+            alertify.confirm('Eliminar Objetivo Especifico', 'Esta seguro que desea eliminar este objetivo especifico, se borraran todo el contenido involucrado!!',
+                function(){
+                    window.location.href = data.attr('href');
+                },
+                function(){
+                    alertify.error('Cancelado');
+                }).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
+        });
+    </script>
+@stop
