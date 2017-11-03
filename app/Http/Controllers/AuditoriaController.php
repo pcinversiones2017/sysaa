@@ -73,7 +73,7 @@ class AuditoriaController extends Controller
     {
         $auditoria = Auditoria::find($request->codPlanF);
         $macroprocesos = Macroproceso::all();
-        $usuariorol = Usuariorol::Activo()->with(['usuario','cargofuncional','rol'])->get();
+        $usuariorol = UsuarioRol::where('codPlanF', $request->codPlanF)->with(['usuario','cargofuncional','rol'])->get();
         $codPlanF  = $request->codPlanF;
         return view('auditoria.mostrar')->with(compact('auditoria', 'macroprocesos', 'usuariorol', 'codPlanF'));
     }

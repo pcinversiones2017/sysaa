@@ -1,15 +1,3 @@
-@if (session('success'))
-<div class="alert alert-success" role="alert">
-    {!! session('success') !!}
-</div>
-@endif
-
-@if (session('danger'))
-<div class="alert alert-danger" role="alert">
-    {!! session('danger') !!}
-</div>
-@endif
-
 <div class="row">
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
@@ -38,9 +26,9 @@
                             <td>{!! $row->usuario->datos !!}</td>
                             <td>{!! $row->cargofuncional->nombre !!}</td>
                             <td>{!! $row->rol->nombre !!}</td>
-                            <td>
-                                <a href="{!! url('asignar-rol/editar/' . $row->codUsuRol) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
-                                <a href="{!! url('asignarrol/asignar-rol-eliminar/'.$row->codUsuRol) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i></a>
+                            <td class="tooltip-demo">
+                                <a href="{!! url('asignar-rol/editar/' . $row->codUsuRol) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
+                                <a href="{!! url('asignarrol/asignar-rol-eliminar/'.$row->codUsuRol) !!}" class="btn btn-danger btn-outline" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php $i++ ?>

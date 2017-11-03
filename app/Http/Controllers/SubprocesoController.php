@@ -101,8 +101,16 @@ class SubprocesoController extends Controller
      * @param  \App\Models\Subproceso  $subproceso
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subproceso $subproceso)
+    public function eliminar(Request $request)
     {
-        //
+        try{
+            $subproceso = Subproceso::find($request->codSubPro);
+            $subproceso->delete();
+            //return redirect()->route('macroproceso.mostrar', [$request->codMacroP])->with('update','Se actualizo correctamente');
+
+            return redirect()->route('macroproceso.listar')->with('danger','Se elimino correctamente');
+        }catch (\Exception $e){
+
+        }
     }
 }

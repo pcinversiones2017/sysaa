@@ -1,4 +1,3 @@
-@include('partials.alert')
 <div class="row">
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
@@ -29,10 +28,10 @@
                             <td>{{$objetivoEsp->macroproceso->nombre}}</td>
                             <td>{{$objetivoEsp->materia}}</td>
                             <td><a href="{{route('macroproceso.mostrar', $objetivoEsp->macroproceso->codMacroP)}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a></td>
-                            <td>
-                                <a href="{{url('objetivo-especifico/mostrar')}}/{{$auditoria->codPlanF}}/{{$objetivoEsp->codObjEsp}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
-                                <a href="{{route('objetivo-especifico.editar', $objetivoEsp->codObjEsp) }}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
-                                <a href="{{route('objetivo-especifico.eliminar', $objetivoEsp->codObjEsp )}}" class="btn btn-danger btn-outline eliminar-objetivo-especifico"><i class="fa fa-trash"></i></a>
+                            <td class="tooltip-demo">
+                                <a href="{{url('objetivo-especifico/mostrar')}}/{{$auditoria->codPlanF}}/{{$objetivoEsp->codObjEsp}}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Ver"><i class="fa fa-eye"></i></a>
+                                <a href="{{route('objetivo-especifico.editar', $objetivoEsp->codObjEsp) }}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
+                                <a href="{{route('objetivo-especifico.eliminar', $objetivoEsp->codObjEsp )}}" class="btn btn-danger btn-outline eliminar-objetivo-especifico" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <?php $i++ ?>

@@ -14,15 +14,16 @@
                         <div class="col-md-6 b-r">
                             <input type="hidden" value="{{$codPlanF}}" name="codPlanF">
                             <label>USUARIO</label>
-                            {!! Form::select('usuario',$usuario, null, ['class' => 'form-control', 'placeholder' => 'SELECCIONE']) !!}
+                            <select class="form-control">
+                            @foreach($usuario as $usu)
+                                <option value="{{$usu->codUsu}}">{{$usu->nombres}} {{ $usu->activo ? ' - activo' : ''}}</option>
+                            @endforeach
+                            </select>
+                            {{--{!! Form::select('usuario', $usuario, null, ['class' => 'form-control', 'placeholder' => 'SELECCIONE']) !!}--}}
                             <div class="hr-line-dashed"></div>
 
                             <label>ROL</label>
                             {!! Form::select('rol', $rol, null, ['class' => 'form-control', 'placeholder' => 'SELECCIONE']) !!}
-                            <div class="hr-line-dashed"></div>
-
-                            <label>CARGO FUNCIONAL</label>
-                            {!! Form::select('cargo', $cargo, null, ['class' => 'form-control', 'placeholder' => 'SELECCIONE']) !!}
                             <div class="hr-line-dashed"></div>
 
                             {!! Field::text('horasH', ['label' => 'HORAS HOMBRES']) !!}
