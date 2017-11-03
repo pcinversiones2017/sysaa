@@ -16,9 +16,10 @@ class CreateRolesTable extends Migration
         Schema::create('Roles', function (Blueprint $table) {
             $table->increments('codRol');
             $table->string('nombre');
-            $table->boolean('eliminado')->default(false);
+
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
+            $table->timestamp('fecha_eliminado')->nullable();
         });
     }
 

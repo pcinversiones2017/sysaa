@@ -8,14 +8,14 @@ class Procedimiento extends Model
 {
     protected $table = "procedimiento";
 
-    protected $fillable = ['justificacion', 'detalle', 'fechafin', 'codObjEsp','codObjGen','codUsuRol'];
+    protected $fillable = ['justificacion', 'detalle', 'fechafin', 'codObjEsp','codObjGen','codUsuRol','eliminado'];
 
     const CREATED_AT = "fecha_creado";
     const UPDATED_AT = "fecha_modificado";
 
     public function scopeActivo($cadenaSQL)
     {
-        return $cadenaSQL->where('estado',true);
+        return $cadenaSQL->where('eliminado',false);
     }
 
     public function scopeExiste($cadenaSQL, $id)

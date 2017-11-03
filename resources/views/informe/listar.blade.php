@@ -60,9 +60,9 @@
                                 <td>{!! $row->revisado !!}</td>
                                 <td>{!! $row->supervisado !!}</td>
                                 <td>
-                                    <a href="{!! url('informe/informe-editar/'.$row->codInf) !!}" class="btn btn-white btn-outline"><i class="fa fa-pencil"></i>  </a>
+                                    <a href="{!! url('informe/informe-editar/'.$codPlanF.'/'.$codObjEsp.'/'.$codProc.'/'.$row->codInf) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
                                     <a href="{!! url('informe/informe-eliminar/'.$row->codInf) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
-                                    <a href="{!! url('archivo/archivo-crear/'.$codPlanF.'/'.$codObjEsp.'/'.$codProc.'/'.$row->codInf) !!}" class="btn btn-primary btn-outline"><i class="fa fa-upload"></i>  </a>
+                                    <a href="{!! url('archivo/archivo-crear/'.$codPlanF.'/'.$codObjEsp.'/'.$codProc.'/'.$row->codInf) !!}" class="btn btn-success btn-outline"><i class="fa fa-upload"></i>  </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

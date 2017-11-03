@@ -6,6 +6,7 @@ use App\Http\Requests\Auditoria\ActualizarRequest;
 use App\Http\Requests\Auditoria\RegistroRequest;
 use App\Models\Auditoria;
 use App\Models\Cronograma;
+use App\Models\Log;
 use App\Models\Macroproceso;
 use App\Models\ObjetivoGeneral;
 use App\Models\Plan;
@@ -21,7 +22,7 @@ class AuditoriaController extends Controller
      */
     public function listar()
     {
-        $auditorias = Auditoria::all();
+        $auditorias = Auditoria::activo()->get();
         return view('auditoria.listar')->with(compact('auditorias'));
     }
 
@@ -146,7 +147,7 @@ class AuditoriaController extends Controller
             $objetivoGeneral->save();
         }
 
-        return redirect()->route('auditoria.listar')->with('success', 'Registro actualizado correctamente');
+        return redirect()->route('auditoria.listar')->with('success', 'Auditoria actualizada correctamente');
     }
 
     /**
@@ -155,8 +156,17 @@ class AuditoriaController extends Controller
      * @param  \App\Models\Auditoria  $auditoria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Auditoria $auditoria)
+    public function eliminar(Request $request)
     {
-        //
+        try{
+            $auditoria = Auditoria::find($request->codPlanF);
+            $auditoria->eliminado = Auditoria::ELIMINADO;
+            $auditoria->save();
+
+            return redirect()->route('auditoria. listar')->with('success', 'Auditoria eliminada correctamente');
+        }catch (\Exception $e){
+            //Log::error($e->getMessage());
+        }
+
     }
 }

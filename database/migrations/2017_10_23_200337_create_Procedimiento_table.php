@@ -21,9 +21,10 @@ class CreateProcedimientoTable extends Migration
             $table->integer('codObjEsp')->unsigned()->nullable();
             $table->integer('codObjGen')->unsigned()->nullable();
             $table->integer('codUsuRol');
-            $table->boolean('eliminado')->default(false);
+
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
+            $table->timestamp('fecha_eliminado')->nullable();
             $table->foreign('codObjEsp')->references('codObjEsp')->on('Objetivo_Especifico');
             $table->foreign('codObjGen')->references('codObjGen')->on('Objetivo_General');
         });
