@@ -2,12 +2,14 @@
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-content">
+
+                @if($auditoria->cronogramaGeneral->isEmpty())
                 <div class="row">
                     <div class="col-sm-3">
-                        <a type="button" href="" class="btn btn-sm btn-primary btn-outline"><i class="fa fa-plus"></i> CREAR CRONOGRAMA</a>
+                        <a type="button" href="{{url('cronograma/crear')}}" class="btn btn-sm btn-primary btn-outline"><i class="fa fa-plus"></i> CREAR CRONOGRAMA</a>
                     </div>
                 </div>
-
+                @endif
                 <table class="table table-bordered">
                     <thead>
                     <tr>
