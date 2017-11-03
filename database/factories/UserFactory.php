@@ -63,7 +63,7 @@ $factory->define(App\User::class, function (Faker $faker) {
            'periodoIniPlanF' => $periodoInicio,
              'periodoFinPlanF' => $periodoFinPlanF,
             'estadoAuditoria' => $faker->randomElement($array = array('PENDIENTE', 'ACTIVO', 'TERMINADO')),
-            'codPlanA' => $planes->random(),
+            'codPlanA' => factory(\App\Models\Plan::class)->create(),
         ];
     });
 
@@ -75,7 +75,7 @@ $factory->define(App\User::class, function (Faker $faker) {
   //        $auditorias = \App\Models\Auditoria::pluck('codPlanF');
 
         return [
-            'nombre' => $faker->sentence($nbWords = 5, $variableNbWords = true),
+            'nombre' => $faker->paragraph($nbSentences = 5, $variableNbSentences = true),
             'codPlanF' => factory(\App\Models\Auditoria::class)->create(),
         ];
     });
@@ -87,7 +87,7 @@ $factory->define(App\User::class, function (Faker $faker) {
 
 
         return [
-            'Nombre' => 'Macroproceso ' . $faker->numberBetween(1, 5),
+            'Nombre' => 'Auditoria Macroproceso ' . $faker->numberBetween(1, 5),
             'estado' => 'activo',
         ];
     });
@@ -101,10 +101,10 @@ $factory->define(App\User::class, function (Faker $faker) {
         $macroProcesos = \App\Models\Macroproceso::pluck('codMacroP');
 
         return [
-            'Nombre' => 'objetivo especifico ' . $faker->numberBetween(1, 5),
+            'Nombre' => 'objetivo especifico ' .$faker->paragraph($nbSentences = 5, $variableNbSentences = true),
             'materia' => $faker->sentence($nbWords = 4, $variableNbWords = true),
-            'codObjGen' => $objetivoGeneral->random(),
-            'codMacroP' => $macroProcesos->random(),
+            'codObjGen' => factory(\App\Models\ObjetivoGeneral::class)->create(),
+            'codMacroP' => factory(\App\Models\Macroproceso::class)->create(),
         ];
     });
 
@@ -178,7 +178,7 @@ $factory->define(App\User::class, function (Faker $faker) {
             'codRol' => $roles->random(),
             'codCarFun' => $cargofuncional->random(),
             'estado' =>  false,
-            'codPlanF' => $auditorias->random(),
+            'codPlanF' =>  factory(\App\Models\Auditoria::class)->create(),
             'horasH' => $faker->randomNumber(),
             'sueldo' => (float) '899.55',
         ];

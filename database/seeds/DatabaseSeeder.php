@@ -32,13 +32,29 @@ class DatabaseSeeder extends Seeder
          //   ActividadesSeeder::class
             ]);
 
-        factory('App\Models\Plan', 3)->create();
+        factory(\App\Models\Plan::class, 3)->create()->each(function ($planes) {
+
+            factory(\App\Models\Auditoria::class, 4)->create(['codPlanA'=>$planes->codPlanA]);
+
+        });
+
         //factory('App\Models\Auditoria', 5)->create();
 
-        factory('App\Models\ObjetivoGeneral', 10)->create();
-    /*
-        factory('App\Models\Macroproceso', 5)->create();
-        factory('App\Models\ObjetivoEspecifico', 5)->create();
+      factory('App\Models\ObjetivoGeneral', 10)->create();
+
+        // factory('App\Models\Macroproceso', 5)->create();
+     //   factory(\App\Models\ObjetivoGeneral::class, 5)->create()->each(function ($objetivoGeneral) {
+            //create 5 posts for each user
+       //     factory(\App\Models\ObjetivoEspecifico::class, 3)->create(['codObjGen'=>$objetivoGeneral->codObjGen]);
+       // });
+
+      /*
+        factory(\App\Models\Auditoria::class, 4)->create()->each(function ($auditoria) {
+            //create 5 posts for each user
+            factory(\App\Models\Usuariorol::class, 3)->create(['codPlanF'=>$auditoria->codPlanF]);
+        });
+*/
+        /*
         factory('App\Models\Procesoma', 5)->create();
         factory('App\Models\Subproceso', 10)->create();
         factory('App\Models\Procedimientosp', 10)->create();
