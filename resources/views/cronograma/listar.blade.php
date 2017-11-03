@@ -59,8 +59,9 @@
                                 <td>{{$auditoria->fechaFinPlanF}}</td>
                                 <td>{{$auditoria->planAnual->nombrePlan}}</td>
                                 <td>
-                                    <a href="{{URL::to('cronograma/mostrar')}}/{{$auditoria->codPlanF}}" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> Ver </a>
-                                    <a href="{{URL::to('cronograma/editar')}}/{{$auditoria->codPlanF}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
+                                    <a href="{{URL::to('cronograma/mostrar')}}/{{$auditoria->codPlanF}}" class="btn btn-info btn-outline btn-sm"><i class="fa fa-eye"></i> Ver </a>
+                                    <a href="{{URL::to('cronograma/editar')}}/{{$auditoria->codPlanF}}" class="btn btn-primary btn-outline btn-sm"><i class="fa fa-pencil"></i> Editar </a>
+                                    <a href="{{URL::to('cronograma/eliminar')}}/{{$auditoria->codPlanF}}" class="btn btn-danger btn-outline btn-sm"><i class="fa fa-trash"></i> Eliminar </a>
                                 </td>
                             </tr>
 

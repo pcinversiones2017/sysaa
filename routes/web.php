@@ -162,6 +162,8 @@ Route::group(['prefix' => 'cronograma'], function(){
      Route::get('listar', 'CronogramaController@listar')->name('cronograma.listar');
     Route::get('mostrar/{codPlanF}', 'CronogramaController@mostrar')->name('cronograma.mostrar');
      Route::get('editar/{codPlanF}','CronogramaController@editar')->name('cronograma.editar');
+    Route::get('eliminar/{codPlanF}','CronogramaController@eliminar')->name('cronograma.eliminar');
+
 });
 //normaAuditoria
 Route::group(['prefix' => 'norma-auditoria'], function(){
