@@ -45,6 +45,11 @@ $factory->define(App\User::class, function (Faker $faker) {
         $periodoFinPlanF = date('Y-m-d', $periodoFinPlanF);
 
 
+        $fechaIniPlanF = $faker->date($format = 'Y-m-d');
+        $fechaFinPlanF = strtotime('+3 month', strtotime($fechaIniPlanF));
+        $fechaFinPlanF = date('Y-m-d', $fechaFinPlanF);
+
+
         return [
             'nombrePlanF' => 'Auditoria ' . $faker->numberBetween(1, 5),
             'codigoServicioCP' => $faker->randomNumber() . '-4669-2016-001',
@@ -53,6 +58,8 @@ $factory->define(App\User::class, function (Faker $faker) {
             'entidadAuditada' => 'ZONA REGISTRAL N°XIII SEDE TACNA',
             'origen' => 'LA AUDITORÍA DE CUMPLIMIENTO A LA ZONA REGISTRAL N°XIII SEDE TACNA, CORRRESPONDE A UN SERVICIO DE CONTROL POSTERIOR PROGRAMADO EN EL PLAN ANUAL DE CONTROL 2016 DEL ÓRGANO DE CONTROL INSTITUCIONAL, APROBADO MEDIANTE RESOLUCIÓN DE CONTRALORÍA N° 067-2016-CG DEL 15 DE FEBRERO DE 2016, REGISTRADO EN EL SISTEMA SCG, CON EL CÓDIGO N° 2-4669-2016-001. LA COMISIÓN AUDITORA COMUNICÓ EL INICIO DE LA AUDITORÍA CON EL OFICIO N° 021-2016/Z.R.N°XIII-OCI DE 1 DE ABRIL DE 2016.',
             'tipoDemanda' => $faker->sentence($nbWords = 2, $variableNbWords = true),
+            'fechaIniPlanF' =>$fechaIniPlanF,
+            'fechaFinPlanF' =>$fechaFinPlanF,
            'periodoIniPlanF' => $periodoInicio,
              'periodoFinPlanF' => $periodoFinPlanF,
             'estadoAuditoria' => $faker->randomElement($array = array('PENDIENTE', 'ACTIVO', 'TERMINADO')),
@@ -167,8 +174,8 @@ $factory->define(App\User::class, function (Faker $faker) {
 
 
         return [
-            'codUsu' => $users->random(),
-            'codRol' => $faker->randomElement($array = array ('2','3','4')),
+            'codUsu' => $faker->randomElement($array = array ('2','3')),
+            'codRol' => $roles->random(),
             'codCarFun' => $cargofuncional->random(),
             'estado' =>  false,
             'codPlanF' => $auditorias->random(),
