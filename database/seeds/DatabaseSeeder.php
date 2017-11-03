@@ -32,9 +32,11 @@ class DatabaseSeeder extends Seeder
          //   ActividadesSeeder::class
             ]);
 
-        factory('App\Models\Plan', 2)->create();
-        factory('App\Models\Auditoria', 5)->create();
-        factory('App\Models\ObjetivoGeneral', 3)->create();
+        factory('App\Models\Plan', 3)->create();
+        //factory('App\Models\Auditoria', 5)->create();
+
+        factory('App\Models\ObjetivoGeneral', 10)->create();
+    /*
         factory('App\Models\Macroproceso', 5)->create();
         factory('App\Models\ObjetivoEspecifico', 5)->create();
         factory('App\Models\Procesoma', 5)->create();
@@ -47,7 +49,7 @@ class DatabaseSeeder extends Seeder
         factory('App\Models\Cronograma',65)->create();
         factory('App\Models\Normativac', 10)->create();
         factory('App\Models\NormativaMarcoproceso', 15)->create();
-
+*/
 
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

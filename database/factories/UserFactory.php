@@ -72,11 +72,11 @@ $factory->define(App\User::class, function (Faker $faker) {
 
     $factory->define(App\Models\ObjetivoGeneral::class, function (Faker $faker) {
 
-        $auditorias = \App\Models\Auditoria::pluck('codPlanF');
+  //        $auditorias = \App\Models\Auditoria::pluck('codPlanF');
 
         return [
-            'nombre' => $faker->sentence($nbWords = 2, $variableNbWords = true),
-            'codPlanF' => $auditorias->random(),
+            'nombre' => $faker->sentence($nbWords = 5, $variableNbWords = true),
+            'codPlanF' => factory(\App\Models\Auditoria::class)->create(),
         ];
     });
 
