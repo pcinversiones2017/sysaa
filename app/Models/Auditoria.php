@@ -3,27 +3,26 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Auditoria extends Model
 {
+    use SoftDeletes;
 
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
-    const ELIMINADO = 1;
+    const DELETED_AT = 'fecha_eliminado';
 
     protected $primaryKey = 'codPlanF';
     protected $table = 'auditoria';
 
-    public function scopeActivo($sql)
-    {
-        return $sql->where('eliminado', false);
-    }
 
-    public function eliminar($codPlanF)
+    public static function boot()
     {
-        $auditoria = self::find($codPlanF);
-        $auditoria->eliminar = self::ELIMINADO;
-        $auditoria->save();
+        parent::boot();
+        static::deleted(function ($auditoria){
+            $auditoria->objetivoGeneral()->delete();
+        });
     }
 
     public function planAnual()

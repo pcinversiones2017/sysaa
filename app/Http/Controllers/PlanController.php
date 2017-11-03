@@ -98,7 +98,7 @@ class PlanController extends Controller
             $plan->delete();
             return redirect()->route('plan.listar')->with('success', 'Plan Eliminado');
         }catch (\Exception $e){
-
+            echo $e->getMessage();
         }
 
     }
