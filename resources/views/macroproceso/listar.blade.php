@@ -1,35 +1,29 @@
 @extends('layout.admin')
 @section('content')
-    @include('partials.alert')
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissable">
+        <button class="close" aria-hidden="true" type="button" data-dismiss="alert">×</button>
+        {!! session('success') !!}          
+    </div>
+    @endif
+
+    @if (session('danger'))
+    <div class="alert alert-danger alert-dismissable">
+        <button class="close" aria-hidden="true" type="button" data-dismiss="alert">×</button>
+        {!! session('danger') !!}           
+    </div>
+    @endif
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Lista de MacroProcesos </h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-wrench"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#">Config option 1</a>
-                            </li>
-                            <li><a href="#">Config option 2</a>
-                            </li>
-                        </ul>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
-                    </div>
                 </div>
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-sm-3">
-                            <a type="button" href="{{URL::to('macroproceso/crear')}}" class="btn btn-sm btn-primary">
-                                <i class="fa fa-plus">
-                                </i> Crear Macroproceso</a>
+                            <a type="button" href="{{URL::to('macroproceso/crear')}}" class="btn btn-outline btn-primary">
+                            Crear Macroproceso</a><p>
                         </div>
                     </div>
                     <table class="table table-bordered">
@@ -48,10 +42,11 @@
                                 <td>{{$macroproceso->nombre}}</td>
                                 <td>{{$macroproceso->fecha_creado}}</td>
                                 <td>
-
-                                    <a href="{!!  route('macroproceso.mostrar', $macroproceso->codMacroP) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
-                                    <a href="{!!  route('macroproceso.editar', $macroproceso->codMacroP) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
-                                    <a href="{!!  route('macroproceso.eliminar', $macroproceso->codMacroP)!!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i></a>
+                                    <a href="{{URL::to('macroproceso/mostrar')}}/{{$macroproceso->codMacroP}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i>  </a>
+                                    <a href="{{URL::to('macroproceso/editar')}}/{{$macroproceso->codMacroP}}" class="btn btn-primary btn-outline">
+                                        <i class="fa fa-edit"></i>  </a>
+                                    <a href="{{URL::to('macroproceso/eliminar')}}/{{$macroproceso->codMacroP}}" class="btn btn-danger btn-outline">
+                                        <i class="fa fa-trash"></i>  </a>
                                 </td>
                             </tr>
                         @endforeach

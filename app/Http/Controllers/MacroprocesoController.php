@@ -1,120 +1,66 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Macroproceso;
 use Illuminate\Http\Request;
-use App\Http\Requests\Plan\ActualizarRequest;
-use App\Http\Requests\Plan\RegistroRequest;
-
+use App\Http\Requests\Macroproceso\ValidarRequest;
+use App\Models\Macroproceso;
+use App\Models\Historial;
 
 class MacroprocesoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-
     public function listar()
     {
         $macroprocesos = Macroproceso::all();
         $listarmacroprocesos = 'active';
-        return view('macroproceso.listar')->with(compact('macroprocesos','listarmacroprocesos'));
+        RegistrarActividad(Macroproceso::TABLA,Historial::LEER,'vió el listado de Macroprocesos');
+        return view('macroproceso.listar', compact(['macroprocesos','listarmacroprocesos']));
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *      $table->increments('codMacroP');
-            $table->string('nombre');
-            $table->string('estado');
-     * @return \Illuminate\Http\Response
-     */
     public function crear()
     {
         $macroprocesos = 'active';
-        return view('macroproceso.crear')->with(compact('macroprocesos'));
+        RegistrarActividad(Macroproceso::TABLA,Historial::CREAR,'vió el formulario de crear Macroproceso');
+        return view('macroproceso.crear', compact('macroprocesos'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function guardar(Request $request)
+    public function guardar(ValidarRequest $request)
     {
         $macroprocesoss = new Macroproceso();
         $macroprocesoss->nombre = $request->nombre;
         $macroprocesoss->estado = 'activo';
         $macroprocesoss->save();
-        return redirect('macroproceso/listar');
+        RegistrarActividad(Macroproceso::TABLA,Historial::REGISTRAR,'registró el Macroproceso '.$request->nombrePlan);
+        return redirect('macroproceso/listar')->with('success', 'Se registro nuevo Macroproceso');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Macroproceso  $macroproceso
-     * @return \Illuminate\Http\Response
-     */
     public function mostrar($codMacroP)
     {
         $macroproceso = Macroproceso::find($codMacroP);
-        return view('macroproceso.mostrar')->with(compact('macroproceso'));
+        RegistrarActividad(Macroproceso::TABLA,Historial::EDITAR,'vió el formulario de editar el Macroproceso '.$macroproceso->nombrePlan);
+        return view('macroproceso.mostrar', compact('macroproceso'));
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Macroproceso  $macroproceso
-     * @return \Illuminate\Http\Response
-     */
     public function editar(Request $request)
     {
         $macroproceso = Macroproceso::find($request->codMacroP);
-        return view('macroproceso.editar')->with(compact('macroproceso'));
-
+        RegistrarActividad(Macroproceso::TABLA,Historial::ACTUALIZAR,'actualizó el Macroproceso '.$macroproceso->nombrePlan);
+        return view('macroproceso.editar', compact('macroproceso'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Macroproceso  $macroproceso
-     * @return \Illuminate\Http\Response
-     */
-    public function actualizar(Request $request)
+    public function actualizar(ValidarRequest $request)
     {
         $macroproceso = Macroproceso::find($request->codMacroP);
         $macroproceso->nombre = $request->nombre;
         $macroproceso->save();
-        return redirect()->route('macroproceso.listar')->with('update','Se actualizo correctamente');
-
+        RegistrarActividad(Macroproceso::TABLA,Historial::ACTUALIZAR,'actualizó el Macroproceso '.$macroproceso->nombrePlan);
+        return redirect('macroproceso/listar')->with('success', 'Se actualizo el Macroproceso');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Macroproceso  $macroproceso
-     * @return \Illuminate\Http\Response
-     */
-    public function eliminar(Request $request)
+    public function eliminar($codMacroP)
     {
-        try{
-            $macroproceso = Macroproceso::find($request->codMacroP);
-            $macroproceso->delete();
-            return redirect()->route('macroproceso.listar')->with('danger', 'Macroproceso Eliminado');
-        }catch (\Exception $e){
-
-        }
+        $macroproceso = Macroproceso::find($codMacroP);
+        $macroproceso->delete();
+        RegistrarActividad(Macroproceso::TABLA,Historial::ELIMINAR,'eliminó el Macroproceso '.$macroproceso->nombre);
+        return back()->with('danger', 'Macroproceso Eliminado');
     }
 }

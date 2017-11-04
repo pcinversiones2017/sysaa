@@ -13,16 +13,16 @@ class CreateLogTable extends Migration
      */
     public function up()
     {
-        Schema::create('Log', function (Blueprint $table) {
-            $table->increments('codLog');
+        Schema::create('Historial', function (Blueprint $table) {
+            $table->increments('codHis');
             $table->string('tabla');
             $table->string('accion');
             $table->integer('codUsu')->unsigned();
-
+            $table->string('mensaje');
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
             $table->timestamp('fecha_eliminado')->nullable();
-            $table->foreign('codUsu')->references('codUsu')->on('Usuarios');
+            $table->foreign('codUsu')->references('codUsu')->on('users');
         });
     }
 
@@ -33,6 +33,6 @@ class CreateLogTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Log');
+        Schema::dropIfExists('Historial');
     }
 }

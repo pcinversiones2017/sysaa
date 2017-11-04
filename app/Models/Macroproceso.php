@@ -10,6 +10,7 @@ class Macroproceso extends Model
     use SoftDeletes;
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
+    const TABLA 	 = 'MACROPROCESO';
     const DELETED_AT  = 'fecha_eliminado';
 
     protected $primaryKey = 'codMacroP';

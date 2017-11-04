@@ -41,8 +41,8 @@ Route::group(['prefix' => 'usuario'], function(){
     Route::get('usuario-eliminar/{id}','UsuarioController@eliminar')->name('usuario.eliminar');
 });
 
-Route::group(['prefix' => 'permiso'], function(){
-    Route::get('permiso/{id}','PermisoController@autorizar')->name('permiso.autorizar');
+Route::group(['prefix' => 'historial'], function(){
+    Route::get('historial/{id}','HistorialController@mostrar')->name('historial.buscar');
 });
 
 Route::group(['prefix' => 'cargofuncional'], function(){
@@ -82,6 +82,7 @@ Route::group(['prefix' => 'macroproceso'], function () {
     Route::get('listar', 'MacroprocesoController@listar')->name('macroproceso.listar');
     Route::get('editar/{codMacroP}', 'MacroprocesoController@editar')->name('macroproceso.editar');
     Route::post('actualizar', 'MacroprocesoController@actualizar')->name('macroproceso.actualizar');
+    Route::get('eliminar/{codMacroP}', 'MacroprocesoController@eliminar')->name('macroproceso.eliminar');
 });
 
 Route::group(['prefix' => 'procesoma'],function () {

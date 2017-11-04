@@ -33,6 +33,7 @@ class LoginController extends Controller
     		{
     			if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
 		    	{
+                    RegistrarActividad('LOGIN','INICIO SESION','acaba de iniciar sesion');
 		    		return redirect('/');
 		    	}else 
 		    	{
