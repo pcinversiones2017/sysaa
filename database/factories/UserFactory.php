@@ -63,7 +63,9 @@ $factory->define(App\User::class, function (Faker $faker) {
            'periodoIniPlanF' => $periodoInicio,
              'periodoFinPlanF' => $periodoFinPlanF,
             'estadoAuditoria' => $faker->randomElement($array = array('PENDIENTE', 'ACTIVO', 'TERMINADO')),
-            'codPlanA' => $planes->random(),
+            'codPlanA' => function() {
+                return factory(\App\Models\Plan::class)->create()->codPlanA;
+            },
         ];
     });
 
@@ -76,7 +78,9 @@ $factory->define(App\User::class, function (Faker $faker) {
 
         return [
             'nombre' => $faker->sentence($nbWords = 2, $variableNbWords = true),
-            'codPlanF' => $auditorias->random(),
+            'codPlanF' => function() {
+                return factory(\App\Models\Auditoria::class)->create()->codPlanF;
+            },
         ];
     });
 
@@ -103,8 +107,12 @@ $factory->define(App\User::class, function (Faker $faker) {
         return [
             'Nombre' => 'objetivo especifico ' . $faker->numberBetween(1, 5),
             'materia' => $faker->sentence($nbWords = 4, $variableNbWords = true),
-            'codObjGen' => $objetivoGeneral->random(),
-            'codMacroP' => $macroProcesos->random(),
+            'codObjGen' => function() {
+                return factory(\App\Models\ObjetivoGeneral::class)->create()->codObjGen;
+            },
+            'codMacroP' => function() {
+                return factory(\App\Models\Macroproceso::class)->create()->codMacroP;
+            },
         ];
     });
 

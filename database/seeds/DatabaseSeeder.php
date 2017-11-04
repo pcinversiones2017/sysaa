@@ -34,13 +34,36 @@ class DatabaseSeeder extends Seeder
 
         factory(\App\Models\Plan::class, 3)->create()->each(function ($planes) {
 
-            factory(\App\Models\Auditoria::class, 4)->create(['codPlanA'=>$planes->codPlanA]);
+           factory(\App\Models\Auditoria::class, 2)->create(['codPlanA'=>$planes->codPlanA]);
+
 
         });
 
-        //factory('App\Models\Auditoria', 5)->create();
+        factory(\App\Models\Auditoria::class)->create()->each(function ($auditorias) {
 
-      factory('App\Models\ObjetivoGeneral', 10)->create();
+            factory(\App\Models\ObjetivoGeneral::class)->create(['codPlanF'=>$auditorias->codPlanF]);
+
+
+        });
+
+        factory(\App\Models\ObjetivoGeneral::class)->create()->each(function ($objetivoGeneral) {
+
+            factory(\App\Models\ObjetivoEspecifico::class,3)->create(['codObjGen'=>$objetivoGeneral->codObjGen]);
+
+
+        });
+
+        factory(\App\Models\Macroproceso::class)->create()->each(function ($macroProcesos) {
+
+            factory(\App\Models\ObjetivoEspecifico::class)->create(['codMacroP'=>$macroProcesos->codMacroP]);
+
+
+        });
+
+
+  //     factory('App\Models\Auditoria', 5)->create();
+
+       // factory('App\Models\ObjetivoGeneral')->create();
 
         // factory('App\Models\Macroproceso', 5)->create();
      //   factory(\App\Models\ObjetivoGeneral::class, 5)->create()->each(function ($objetivoGeneral) {
@@ -66,7 +89,7 @@ class DatabaseSeeder extends Seeder
         factory('App\Models\Normativac', 10)->create();
         factory('App\Models\NormativaMarcoproceso', 15)->create();
 */
-        factory('App\Models\Plan', 2)->create();
+    //    factory('App\Models\Plan', 2)->create();
 //        factory('App\Models\Auditoria', 5)->create();
 //        factory('App\Models\ObjetivoGeneral', 3)->create();
 //        factory('App\Models\Macroproceso', 5)->create();
