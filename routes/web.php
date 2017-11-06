@@ -17,4 +17,6 @@ require __DIR__.'/jefe_oci/jefe_oci.route.php';
 require __DIR__.'/supervisor/supervisor.route.php';
 require __DIR__.'/autentificacion/autentificacion.route.php';
 
+Route::get('/', 'InicioController@index')->middleware('auth');
+
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

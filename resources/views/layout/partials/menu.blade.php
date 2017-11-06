@@ -18,7 +18,7 @@ use App\Models\Rol;
                 @if(Auth::user()->usuariorol->rol->codRol == Rol::JEFE_OCI)
                 @include('layout.partials.partials.jefeoci')
                 @elseif(Auth::user()->usuariorol->rol->codRol == Rol::JEFE_DE_COMISION) 
-                @include('layout.partials.partials.jefeoci')
+                @include('layout.partials.partials.jefecomision')
                 @elseif(Auth::user()->usuariorol->rol->codRol == Rol::AUDITOR) 
                 @include('layout.partials.partials.auditor')
                 @elseif(Auth::user()->usuariorol->rol->codRol == Rol::SUPERVISOR) 

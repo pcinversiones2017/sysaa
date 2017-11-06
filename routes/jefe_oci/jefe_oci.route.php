@@ -1,7 +1,6 @@
 <?php
 
 Route::group(['middleware' => ['auth','jefe_oci']], function(){
-    Route::get('/','InicioController@index')->name('inicio.inicio');
 
 Route::group(['prefix' => 'procedimiento'], function(){
     Route::get('procedimiento-crear/{codPlanF}/{codObjEsp}','ProcedimientoController@crear')->name('procedimiento.crear');

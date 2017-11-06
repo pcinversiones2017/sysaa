@@ -16,6 +16,6 @@ class Rol extends Model
     
     const JEFE_OCI = 1;
     const JEFE_DE_COMISION = 2;
-    const AUDITOR = 3;
-    const SUPERVISOR = 4;
+    const AUDITOR = 4;
+    const SUPERVISOR = 3;
 }

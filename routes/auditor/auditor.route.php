@@ -1,9 +1,8 @@
 <?php
 Route::group(['middleware' => ['auth','auditor']], function(){
 
-    Route::group(['prefix' => 'auditor'], function(){
-
-        Route::get('procedimientos','AuditorController@index')->name('auditor.inicio');
+    Route::group(['namespace' => 'Auditor','prefix' => 'auditor/procedimiento'], function(){
+        Route::get('procedimientos-listar','ProcedimientoController@listar')->name('auditor.procedimiento.listar');
     });
 
 });

@@ -13,7 +13,7 @@ class ProcedimientoController extends Controller
 {
     public function listar()
     {
-    	$procedimiento = Procedimiento::Activo()->get();
+    	$procedimiento = Procedimiento::all();
         RegistrarActividad(Procedimiento::TABLA,Historial::LEER,'vió el listado de Procedimientos');
     	return view('procedimiento.listar', compact('procedimiento'));
     }

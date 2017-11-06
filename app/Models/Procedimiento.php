@@ -29,4 +29,9 @@ class Procedimiento extends Model
         return $this->hasOne(Usuariorol::class,'codUsuRol','codUsuRol');
     }
 
+    public function objetivoespecifico()
+    {
+        return $this->hasOne(ObjetivoEspecifico::class, 'codObjEsp', 'codObjEsp');
+    }
+
 }
