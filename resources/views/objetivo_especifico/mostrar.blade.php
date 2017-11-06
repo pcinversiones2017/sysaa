@@ -49,7 +49,6 @@
                                             <td class="center-block">
                                                 <a href="{!! url('procedimiento/procedimiento-eliminar/'.$row->codProc) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
                                                 <a href="{!! url('procedimiento/procedimiento-editar/'.$codPlanF.'/'.$objetivoEspecifico->codObjEsp.'/'.$row->codProc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i>  </a>
-                                                <a href="{!! url('informe/informe-crear/'.$codPlanF.'/'.$codObjEsp.'/'.$row->codProc) !!}" class="btn btn-warning btn-outline"><i class="fa fa-folder-open"></i>  </a>
                                             </td>
                                         </tr>
                                         <?php $i++ ?>

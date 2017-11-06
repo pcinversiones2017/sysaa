@@ -37,6 +37,7 @@
                             <th>detalle</th>
                             <th>fecha fin</th>
                             <th>Objetivo Especifico</th>
+                            <th>ACCION</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -48,6 +49,7 @@
                                 <td>{!! $row->detalle !!}</td>
                                 <td>{!! $row->fechafin !!}</td>
                                 <td>{!! $row->objetivoespecifico->nombre !!}</td>
+                                <td><a href="{!! url('auditor/informe/crear/'.$row->codProc) !!}" class="btn btn-warning btn-outline"><i class="fa fa-folder-open"></i>  </a></td>
                             </tr>
                         <?php $i++ ?>
                         @endforeach

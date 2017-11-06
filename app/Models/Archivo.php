@@ -16,7 +16,9 @@ class Archivo extends Model
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
     const DELETED_AT = 'fecha_eliminado';
-    const TABLA      'ARCHIVO';
+    const TABLA   =   'ARCHIVO';
+
+    protected $primaryKey = 'codArc';
 
     public function scopeExiste($cadenaSQL, $id)
     {

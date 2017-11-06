@@ -17,10 +17,7 @@
                     <div class="alert alert-danger" role="alert">
                         <strong>NOTA: PESO MAXIMO 5 MB</strong>
                     </div>
-                    {!! Form::open(['method' => 'POST', 'route' => 'archivo.registrar', 'files' => true]) !!}
-                    {!! Form::hidden('codPlanF',$codPlanF) !!}
-                    {!! Form::hidden('codObjEsp',$codObjEsp) !!}
-                    {!! Form::hidden('codProc',$codProc) !!}
+                    {!! Form::open(['method' => 'POST', 'route' => 'auditor.archivo.registrar', 'files' => true]) !!}
                     {!! Form::hidden('codInf',$codInf) !!}
                         <div class="col-md-6 b-r">
                             
@@ -30,8 +27,8 @@
 
                             <div class="form-group">
                                 {!! Form::submit('CARGAR', ['class' => 'btn btn-primary btn-outline']) !!}
-                                <a href="{!! url('informe/informe/'.$codPlanF.'/'.$codObjEsp.'/'.$codProc) !!}" class="btn btn-danger btn-outline">ATRAS</a>
-                                <a href="{!! url('archivo/listar/'.$codPlanF.'/'.$codObjEsp.'/'.$codProc.'/'.$codInf) !!}" class="btn btn-success btn-outline">VER DOCUMENTOS</a>
+                                <a href="{!! url('auditor/informe/listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                                <a href="{!! url('auditor/archivo/listar/'.$codInf) !!}" class="btn btn-success btn-outline">VER DOCUMENTOS</a>
                             </div>
                             <div class="hr-line-dashed"></div>
 

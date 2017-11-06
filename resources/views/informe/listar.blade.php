@@ -31,7 +31,7 @@
 
                     <div class="row">
                         <div class="col-sm-3">
-                            <a type="button" href="{!! url('/objetivo-especifico/mostrar/'.$codPlanF.'/'.$codObjEsp) !!}" class="btn btn-outline btn-danger"> ATRAS</a>
+                            <a type="button" href="" class="btn btn-outline btn-danger"> ATRAS</a>
                             <p>
                             
                         </div>
@@ -60,9 +60,9 @@
                                 <td>{!! $row->revisado !!}</td>
                                 <td>{!! $row->supervisado !!}</td>
                                 <td>
-                                    <a href="{!! url('informe/informe-editar/'.$codPlanF.'/'.$codObjEsp.'/'.$codProc.'/'.$row->codInf) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
-                                    <a href="{!! url('informe/informe-eliminar/'.$row->codInf) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
-                                    <a href="{!! url('archivo/archivo-crear/'.$codPlanF.'/'.$codObjEsp.'/'.$codProc.'/'.$row->codInf) !!}" class="btn btn-success btn-outline"><i class="fa fa-upload"></i>  </a>
+                                    <a href="{!! url('auditor/informe/editar/'.$row->codInf) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
+                                    <a href="{!! url('auditor/informe/eliminar/'.$row->codInf) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
+                                    <a href="{!! url('auditor/archivo/crear/'.$row->codInf) !!}" class="btn btn-success btn-outline"><i class="fa fa-upload"></i>  </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

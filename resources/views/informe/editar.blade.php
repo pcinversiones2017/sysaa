@@ -20,16 +20,13 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    {!! Form::open(['method' => 'POST', 'route' => 'informe.actualizar']) !!}
+                    {!! Form::open(['method' => 'POST', 'route' => 'auditor.informe.actualizar']) !!}
                     @foreach($informe as $row)
-                    {!! Form::hidden('codPlanF',$codPlanF) !!}
-                    {!! Form::hidden('codObjEsp',$codObjEsp) !!}
-                    {!! Form::hidden('codProc',$codProc) !!}
                     {!! Form::hidden('codInf',$row->codInf) !!}
                     {!! Field::textarea('informe', $row->informe , ['class' => 'summernote']) !!}
                     {!! Form::submit('ACTUALIZAR', ['class' => 'btn btn-primary btn-outline']) !!}
                     @endforeach
-                    <a href="{!! url('informe/informe/'.$codPlanF.'/'.$codObjEsp.'/'.$codProc) !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                    <a href="{!! url('auditor/informe/listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     {!! Form::close() !!}
                 </div>
             </div>

@@ -20,14 +20,12 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    {!! Form::open(['method' => 'POST', 'route' => 'informe.registrar']) !!}
-                    {!! Form::hidden('codPlanF',$codPlanF) !!}
-                    {!! Form::hidden('codObjEsp',$codObjEsp) !!}
+                    {!! Form::open(['method' => 'POST', 'route' => 'auditor.informe.registrar']) !!}
                     {!! Form::hidden('codProc',$codProc) !!}
                     {!! Field::textarea('informe', ['class' => 'summernote']) !!}
                     {!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-outline']) !!}
-                    <a href="{!! url('objetivo-especifico/mostrar/'.$codPlanF.'/'.$codObjEsp) !!}" class="btn btn-danger btn-outline">ATRAS</a>
-                    <a href="{!! url('informe/informe/'.$codPlanF.'/'.$codObjEsp.'/'.$codProc) !!}" class="btn btn-success btn-outline">LISTAR</a>
+                    <a href="{!! url('auditor/procedimiento/procedimientos-listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                    <a href="{!! url('informe/informe/'.$codProc) !!}" class="btn btn-success btn-outline">LISTAR</a>
                     {!! Form::close() !!}
                 </div>
             </div>

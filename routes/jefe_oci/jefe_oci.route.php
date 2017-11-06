@@ -22,15 +22,6 @@ Route::group(['prefix' => 'archivo'], function(){
     Route::get('archivo-descargar/{id}','ArchivoController@descargar')->name('archivo.descargar');
 });
 
-Route::group(['prefix' => 'informe'], function(){
-    Route::get('informe/{codPlanF}/{codObjEsp}/{codProc}','InformeController@listar')->name('informe.listar');
-    Route::get('informe-crear/{codPlanF}/{codObjEsp}/{codProc}','InformeController@crear')->name('informe.crear');
-    Route::post('informe-registrar','InformeController@registrar')->name('informe.registrar');
-    Route::get('informe-editar/{codPlanF}/{codObjEsp}/{codProc}/{codInf}','InformeController@editar')->name('informe.editar');
-    Route::post('informe-actualizar','InformeController@actualizar')->name('informe.actualizar');
-    Route::get('informe-eliminar/{id}','InformeController@eliminar')->name('informe.eliminar');
-});
-
 Route::group(['prefix' => 'usuario'], function(){
     Route::get('usuario','UsuarioController@listar')->name('usuario.listar');
     Route::get('usuario-crear','UsuarioController@crear')->name('usuario.crear');
