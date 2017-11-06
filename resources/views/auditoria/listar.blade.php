@@ -2,6 +2,7 @@
 @section('css-style')
     {!! Html::style('css/plugins/alertifyjs/themes/default.css') !!}
     {!! Html::style('css/plugins/alertifyjs/alertify.min.css') !!}
+    {!! Html::style('css/plugins/dataTables/datatables.min.css') !!}
 @stop
 @section('content')
     @include('partials.alert')
@@ -36,7 +37,7 @@
                         </div>
                     </div>
 
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-auditoria">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -82,6 +83,9 @@
 
 @section('js-script')
     {!! Html::script('js/plugins/alertifyjs/alertify.min.js') !!}
+    {!! Html::script('js/plugins/dataTables/datatables.min.js') !!}
+
+
     <script>
         $('.eliminar-auditoria').on('click', function (e) {
             e.preventDefault();
@@ -95,4 +99,37 @@
                 }).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
         });
     </script>
+
+    <script>
+        $(document).ready(function(){
+            $('.table-auditoria').DataTable({
+                language: {
+                    url : '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
+                },
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+
+                    {extend: 'excel', title: 'Lista Auditorias'},
+                    {extend: 'pdf', title: 'Lista Auditorias'},
+
+                    {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
+
+    </script>
+
 @stop

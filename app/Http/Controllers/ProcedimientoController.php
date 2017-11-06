@@ -30,7 +30,7 @@ class ProcedimientoController extends Controller
     	Procedimiento::create([	
     					'justificacion' => $request->justificacion, 
     					'detalle' 		=> $request->detalle, 
-    					'fechafin' 		=> $request->fechafin,
+    					'fechafin' 		=> date('Y-m-d', strtotime($request->fechafin)),
     					'codUsuRol'		=> $request->codusurol,
     					'codObjEsp' 	=> $request->codObjEsp
     				]);
@@ -55,8 +55,11 @@ class ProcedimientoController extends Controller
 
     public function eliminar($codProc)
     {
-    	Procedimiento::Existe($codProc)->update(['eliminado' => true]);
+
+    	$procedimiento = Procedimiento::find($codProc);
+    	$procedimiento->delete();
         RegistrarActividad(Procedimiento::TABLA,Historial::ELIMINAR,'eliminó el Procedimiento ');
+
     	return back()->with('danger','Procedimiento eliminado');
     }
 }

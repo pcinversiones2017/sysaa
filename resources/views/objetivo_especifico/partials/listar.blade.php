@@ -8,7 +8,7 @@
                     </div>
                 </div>
 
-                <table class="table table-bordered" style="margin-top: 10px">
+                <table class="table table-striped table-bordered table-hover table-objetivo-especifico" style="margin-top: 10px">
                     <thead>
                     <tr>
                         <th>#</th>
@@ -46,6 +46,7 @@
 
 @section('js-script')
     {!! Html::script('js/plugins/alertifyjs/alertify.min.js') !!}
+    {!! Html::script('js/plugins/dataTables/datatables.min.js') !!}
     <script>
         $('.eliminar-objetivo-especifico').on('click', function (e) {
             e.preventDefault();
@@ -58,5 +59,36 @@
                     alertify.error('Cancelado');
                 }).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
         });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('.table-objetivo-especifico').DataTable({
+                language: {
+                    url : '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
+                },
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+
+                    {extend: 'excel', title: 'Lista Objetivos Especificos'},
+                    {extend: 'pdf', title: 'Lista Objetivos Especificos'},
+
+                    {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
+
     </script>
 @stop

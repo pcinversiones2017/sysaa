@@ -23,7 +23,13 @@
 
                             {!! Field::textarea('detalle') !!}
                             <div class="hr-line-dashed"></div>
-                            {!! Field::date('fechafin',['label' => 'Fecha Fin']) !!}
+
+                            <div class="form-group" id="fecha-fin">
+                                <label class="">Fecha Fin</label>
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" name="fechafin" class="form-control" value="">
+                                </div>
+                            </div>
                             <div class="hr-line-dashed"></div>
                             <label>Usuario</label>
                             <select name="codusurol" class="form-control">
@@ -50,5 +56,20 @@
 @stop
 
 @section('js-script')
-{!! Html::script('js/plugins/daterangepicker/daterangepicker.js') !!}
+{!! Html::script('js/plugins/datapicker/bootstrap-datepicker.js') !!}
+<script>
+    $(document).ready(function(){
+
+        $('#fecha-fin .input-group.date').datepicker({
+            startView: 1,
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true,
+            format: "dd-mm-yyyy"
+        });
+
+    });
+
+</script>
 @stop
