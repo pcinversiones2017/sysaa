@@ -11,7 +11,7 @@ class Archivo extends Model
 
     protected $table = "archivos";
 
-    protected $fillable = ['nombre', 'ruta', 'codInf'];
+    protected $fillable = ['nombre', 'ruta', 'codDes'];
     
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
@@ -27,6 +27,6 @@ class Archivo extends Model
 
     public function scopeInforme($cadenaSQL, $id)
     {
-        return $cadenaSQL->where('codInf', $id);
+        return $cadenaSQL->where('codDes', $id);
     }
 }

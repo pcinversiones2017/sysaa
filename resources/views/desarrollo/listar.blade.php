@@ -17,15 +17,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de Informe </h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
-                    </div>
+                    <h5>Lista de Desarrollo de Procedimiento </h5>
                 </div>
                 <div class="ibox-content">
 
@@ -51,7 +43,7 @@
                         </thead>
                         <tbody>
                         <?php $i=1 ?>
-                        @foreach($informe as $row)
+                        @foreach($desarrollo as $row)
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{!! $row->informe !!}</td>
@@ -60,9 +52,10 @@
                                 <td>{!! $row->revisado !!}</td>
                                 <td>{!! $row->supervisado !!}</td>
                                 <td>
-                                    <a href="{!! url('auditor/informe/editar/'.$row->codInf) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
-                                    <a href="{!! url('auditor/informe/eliminar/'.$row->codInf) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
-                                    <a href="{!! url('auditor/archivo/crear/'.$row->codInf) !!}" class="btn btn-success btn-outline"><i class="fa fa-upload"></i>  </a>
+                                    <a href="{!! url('auditor/desarrollo/editar/'.$row->codDes) !!}" class="btn btn-success  btn-outline"><i class="fa fa-eye"></i>  </a>
+                                    <a href="{!! url('auditor/desarrollo/editar/'.$row->codDes) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
+                                    <a href="{!! url('auditor/desarrollo/eliminar/'.$row->codDes) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
+                                    <a href="{!! url('auditor/archivo/crear/'.$row->codDes) !!}" class="btn btn-warning btn-outline"><i class="fa fa-upload"></i>  </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

@@ -17,7 +17,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de Procedimientos </h5>
+                    <h5>Lista de Desarrollo de Procedimiento </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -49,7 +49,7 @@
                                 <td>{!! $row->detalle !!}</td>
                                 <td>{!! $row->fechafin !!}</td>
                                 <td>{!! $row->objetivoespecifico->nombre !!}</td>
-                                <td><a href="{!! url('auditor/informe/crear/'.$row->codProc) !!}" class="btn btn-warning btn-outline"><i class="fa fa-folder-open"></i>  </a></td>
+                                <td><a href="{!! url('auditor/desarrollo/crear/'.$row->codProc) !!}" class="btn btn-warning btn-outline"><i class="fa fa-folder-open"></i>  </a></td>
                             </tr>
                         <?php $i++ ?>
                         @endforeach

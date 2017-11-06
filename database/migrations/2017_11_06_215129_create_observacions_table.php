@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArchivosTable extends Migration
+class CreateObservacionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateArchivosTable extends Migration
      */
     public function up()
     {
-        Schema::create('Archivos', function (Blueprint $table) {
-            $table->increments('codArc');
-            $table->string('nombre');
-            $table->string('ruta');
-            $table->integer('codDes')->unsigned()->nullable();
-            $table->integer('codObs')->unsigned()->nullable();
+        Schema::create('observacion', function (Blueprint $table) {
+            $table->increments('codObs');
+            $table->text('descripcion');
+            $table->integer('codDes');
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
             $table->timestamp('fecha_eliminado')->nullable();
-
         });
     }
 
@@ -33,6 +30,6 @@ class CreateArchivosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Archivos');
+        Schema::dropIfExists('observacion');
     }
 }
