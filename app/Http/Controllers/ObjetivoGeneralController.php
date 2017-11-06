@@ -1,16 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Programador1
- * Date: 25/10/2017
- * Time: 16:13
- */
 
 namespace App\Http\Controllers;
 
 
 use App\Models\ObjetivoGeneral;
 use Illuminate\Http\Request;
+use App\Models\Historial;
+use Auth;
 
 class ObjetivoGeneralController extends Controller
 {
@@ -20,6 +16,7 @@ class ObjetivoGeneralController extends Controller
         $objetivoGeneral->nombre = $request->nombre;
         $objetivoGeneral->codPlanF = $request->codPlanF;
         $objetivoGeneral->save();
+            RegistrarActividad(ObjetivoGeneral::TABLA,Historial::REGISTRAR,'registró el Objetivo General '.$request->nombre);
 
         return redirect('auditoria/mostrar/' . $request->codPlanF);
     }

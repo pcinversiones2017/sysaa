@@ -8,23 +8,6 @@
 
                 <div class="ibox-title">
                     <h5>GENERAR PROCESOS</h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-wrench"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#">Config option 1</a>
-                            </li>
-                            <li><a href="#">Config option 2</a>
-                            </li>
-                        </ul>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
-                    </div>
                 </div>
                 <div class="ibox-content">
                     <div class="row">
@@ -81,7 +64,7 @@
                                                         <td>
                                                             <a href="{!!  route('procesoma.mostrar', $procesoma->codProMA) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
                                                             <a href="{!!  route('procesoma.editar', $procesoma->codProMA) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
-                                                            <a href="{!!  route('procesoma.eliminar', $procesoma->codProMA)!!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i></a>
+                                                            <a href="{!!  url('procesoma/eliminar/'.$macroproceso->codMacroP.'/'.$procesoma->codProMA)!!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i></a>
 
                                                         </td>
                                                     </tr>

@@ -4,95 +4,52 @@ namespace App\Http\Controllers;
 
 use App\Models\TipoNormativa;
 use Illuminate\Http\Request;
+use App\Models\Historial;
+use Auth;
 
 class TipoNormativaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function listar()
     {
         $tipoNormativas = TipoNormativa::all();
         $listarTipoNormativa = 'active';
+        RegistrarActividad(TipoNormativa::TABLA,Historial::LEER,'vió el listado de Tipos de Normativas');
         return view('tipo_normativa.listar')->with(compact('tipoNormativas', 'listarTipoNormativa' ));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function crear()
     {
         $tipoNormativas = 'active';
+        RegistrarActividad(TipoNormativa::TABLA,Historial::CREAR,'vió el formulario de crear Tipo Normativa');
         return view('tipo_normativa.crear')->with(compact('tipoNormativas'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function guardar(Request $request)
     {
         $tipoNormativa = new TipoNormativa();
         $tipoNormativa->nombre = $request->nombre;
         $tipoNormativa->estado = 'activo';
         $tipoNormativa->save();
+        RegistrarActividad(TipoNormativa::TABLA,Historial::REGISTRAR,'registró Tipo Normativa '.$request->nombre);
 
         return redirect('tipo_normativa/listar');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\TipoNormativa  $tipoNormativa
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TipoNormativa $tipoNormativa)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\TipoNormativa  $tipoNormativa
-     * @return \Illuminate\Http\Response
-     */
     public function editar(Request $request)
     {
         $tipoNormativa = TipoNormativa::find($request->codTipNorm);
+        RegistrarActividad(TipoNormativa::TABLA,Historial::EDITAR,'vió el formulario de editar Tipo Normativa '.$actividad->nombre);
         return view('tipo_normativa.editar')->with(compact('tipoNormativa'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\TipoNormativa  $tipoNormativa
-     * @return \Illuminate\Http\Response
-     */
     public function actualizar(Request $request)
     {
         $tipoNormativa = TipoNormativa::find($request->codTipNorm);
         $tipoNormativa->nombre = $request->nombre;
         $tipoNormativa->save();
+        RegistrarActividad(TipoNormativa::TABLA,Historial::ACTUALIZAR,'actualizó Tipo Normativa '.$request->nombre);
 
         return redirect('tipo_normativa/listar');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\TipoNormativa  $tipoNormativa
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(TipoNormativa $tipoNormativa)
-    {
-        //
-    }
 }

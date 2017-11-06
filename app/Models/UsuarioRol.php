@@ -14,6 +14,7 @@ class Usuariorol extends Model
     const CREATED_AT = "fecha_creado";
 
     const UPDATED_AT = "fecha_modificado";
+    const TABLA = 'ASIGNACION DE ROL Y CARGO';
 
     public function scopeActivo($cadenaSQL)
     {

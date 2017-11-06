@@ -11,6 +11,7 @@ class Normativac extends Model
 
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
+    const TABLA = 'NORMATIVA';
 
     protected $primaryKey = 'codNorm';
     protected $table = 'normativa_c';

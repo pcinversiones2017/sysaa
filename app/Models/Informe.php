@@ -20,6 +20,8 @@ class Informe extends Model
 
     const DELETED_AT = "fecha_eliminado";
 
+    const TABLA = 'INFORME';
+
     public function scopeExiste($cadenaSQL, $id)
     {
     	return $cadenaSQL->where('codInf',$id);

@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Macroproceso\ValidarRequest;
 use App\Models\Macroproceso;
 use App\Models\Historial;
+use Auth;
 
 class MacroprocesoController extends Controller
 {
@@ -36,7 +37,6 @@ class MacroprocesoController extends Controller
     public function mostrar($codMacroP)
     {
         $macroproceso = Macroproceso::find($codMacroP);
-        RegistrarActividad(Macroproceso::TABLA,Historial::EDITAR,'vió el formulario de editar el Macroproceso '.$macroproceso->nombrePlan);
         return view('macroproceso.mostrar', compact('macroproceso'));
     }
 

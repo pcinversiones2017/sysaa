@@ -8,18 +8,20 @@ use App\Models\UsuarioRol;
 use App\Models\Cargofuncional;
 use App\User;
 use App\Models\Rol;
+use App\Models\Historial;
+use Auth;
 
 class AsignacionController extends Controller
 {
     public function listar()
     {
     	$usuariorol = Usuariorol::all()->with(['usuario','cargofuncional','rol'])->get();
+        RegistrarActividad(UsuarioRol::TABLA,Historial::LEER,'vió el listado de Asignacion de Rol y Cargo');
     	return view('asignacion.listar', compact('usuariorol'));
     }
 
     public function crear(Request $request)
     {
-       // $cargo = Cargofuncional::all()->pluck('nombre','codCarFun');
         $rol = rol::pluck('nombre','codRol');
 
         $codPlanF = $request->codPlanF;
@@ -27,6 +29,7 @@ class AsignacionController extends Controller
         $usuarios = User::all()->except($usuariosRol);
         $usuario = $usuarios->map(function($item, $key){
             $usuarioRol = UsuarioRol::where('codUsu', $key)->get();
+        RegistrarActividad(UsuarioRol::TABLA,Historial::CREAR,'vió el formulario de cargar Asignacion de Rol y Cargo');
             if($usuarioRol->isNotEmpty()){
                 $item->activo = true;
                 return $item;
@@ -56,6 +59,7 @@ class AsignacionController extends Controller
         $usuarioRol->activo     = $activo;
         $usuarioRol->sueldo     = $request->sueldo;
         $usuarioRol->save();
+        RegistrarActividad(UsuarioRol::TABLA,Historial::REGISTRAR,'registró la Asignacion de Rol y Cargo '.$request->nombre);
 
     	return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success','Usuario asignado registrado');
     }
@@ -66,6 +70,7 @@ class AsignacionController extends Controller
         $rol = rol::pluck('nombre','codRol');
         $usuario = User::Activo()->pluck('nombres','codUsu');
     	$usuariorol = UsuarioRol::Existe($id)->get();
+        RegistrarActividad(UsuarioRol::TABLA,Historial::EDITAR,'vió el formulario de editar la Asignacion de Rol y Cargo '.$actividad->nombre);
     	return view('asignacion.editar', compact(['usuariorol','cargo','usuario','rol']));
     }
 
@@ -78,6 +83,7 @@ class AsignacionController extends Controller
         $usuarioRol->horasH     = $request->horasH;
         $usuarioRol->sueldo     = $request->sueldo;
         $usuarioRol->save();
+        RegistrarActividad(UsuarioRol::TABLA,Historial::ACTUALIZAR,'actualizó la Asignacion de Rol y Cargo '.$request->nombre);
 
     	return redirect()->route('auditoria.mostrar', $usuarioRol->codPlanF)->with('success','Usuario asignado actualizado');
     }
@@ -85,6 +91,7 @@ class AsignacionController extends Controller
     public function eliminar($id)
     {
     	UsuarioRol::Existe($id)->update(['estado' => false]);
+        RegistrarActividad(UsuarioRol::TABLA,Historial::ELIMINAR,'eliminó la Asignacion de Rol y Cargo '.$archivo->nombre);
     	return redirect()->route('asignarr.listar')->with('danger','Usuario asignado eliminado');
     }
 }

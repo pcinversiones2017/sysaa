@@ -3,38 +3,26 @@
 namespace App\Http\Controllers;
 use App\Models\Actividad;
 use Illuminate\Http\Request;
+use App\Models\Historial;
+use Auth;
 
 class ActividadController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function listar()
     {
         $actividad = Actividad::all();
         $listarActividad = 'active';
+        RegistrarActividad(Actividad::TABLA,Historial::LEER,'vió el listado de Actividades');
         return view('actividad.listar')->with(compact('actividad','listarActividad'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function crear()
     {
         $actividad = 'active';
+        RegistrarActividad(Actividad::TABLA,Historial::CREAR,'vió el formulario de crear Actividad');
         return view('actividad.crear')->with(compact('actividad'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function guardar(Request $request)
     {
         $actividad = new Actividad();
@@ -42,30 +30,20 @@ class ActividadController extends Controller
         $actividad->nombre = $request->nombre;
         $actividad->codProSP = $request->codProSP;
         $actividad->save();
+        RegistrarActividad(Actividad::TABLA,Historial::REGISTRAR,'registró la Actividad '.$request->nombre);
         return redirect()->route('procedimientosp.mostrar', [$request->codProSP])->with('success','Se grabo correctamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Actividad  $actividad
-     * @return \Illuminate\Http\Response
-     */
     public function mostrar($codAct)
     {
         $actividad = Actividad::find($codAct);
         return view('actividad.mostrar')->with(compact('actividad'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Actividad  $actividad
-     * @return \Illuminate\Http\Response
-     */
     public function editar(Request $request)
     {
         $actividad = Actividad::find($request->codAct);
+        RegistrarActividad(Actividad::TABLA,Historial::EDITAR,'vió el formulario de editar la Actividad '.$actividad->nombre);
         return view('actividad.editar')->with(compact('actividad'));
     }
 
@@ -76,22 +54,16 @@ class ActividadController extends Controller
         $actividad->nombre = $request->nombre;
         $actividad->codProSP = $request->codProSP;
         $actividad->save();
+        RegistrarActividad(Actividad::TABLA,Historial::ACTUALIZAR,'actualizó la Actividad '.$request->nombre);
         return redirect()->route('procedimientosp.mostrar', [$request->codProSP])->with('update','Se actualizo correctamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Actividad  $actividad
-     * @return \Illuminate\Http\Response
-     */
     public function eliminar(Request $request)
     {
         try{
             $actividad = Actividad::find($request->codAct);
             $actividad->delete();
-            //return redirect()->route('macroproceso.mostrar', [$request->codMacroP])->with('update','Se actualizo correctamente');
-
+            RegistrarActividad(Actividad::TABLA,Historial::ELIMINAR,'eliminó la Actividad '.$actividad->nombre);
             return redirect()->route('macroproceso.listar')->with('danger','Se elimino correctamente');
         }catch (\Exception $e){
 

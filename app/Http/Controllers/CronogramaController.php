@@ -8,6 +8,8 @@ use App\Models\Cronograma;
 use App\Models\Etapa;
 use App\Models\Auditoria;
 use Illuminate\Http\Request;
+use App\Models\Historial;
+use Auth;
 
 
 class CronogramaController extends Controller
@@ -37,6 +39,7 @@ class CronogramaController extends Controller
                 }
             }
 
+        RegistrarActividad(Cronograma::TABLA,Historial::CREAR,'vió el formulario de crear Cronograma');
         $crearCronograma = 'active';
         return view('cronograma.crear')
             ->with(compact('crearCronograma','auditorias'))
@@ -95,6 +98,7 @@ class CronogramaController extends Controller
             $cronograma->dias_habiles = $request->dias_habiles[4];
             $cronograma->save();
         }
+        RegistrarActividad(Cronograma::TABLA,Historial::REGISTRAR,'registró el Cronograma '.$request->nombre);
 
 
         return redirect()->route('cronograma.listar')->with('success','Cronograma Creado');
@@ -107,6 +111,7 @@ class CronogramaController extends Controller
         $cronogramas = Cronograma::all();
         $auditorias = Auditoria::all();
         $listarCronograma = 'active';
+        RegistrarActividad(Cronograma::TABLA,Historial::LEER,'vió el listado de Cronogramas');
         return view('cronograma.listar')
             ->with(compact('auditorias', 'listarCronograma'))
         ->with(compact('cronogramas'));
@@ -162,6 +167,7 @@ class CronogramaController extends Controller
             $cronograma->delete();
         }
 
+        RegistrarActividad(Cronograma::TABLA,Historial::ELIMINAR,'eliminó el Cronograma '.$auditoria->nombre);
 
 
         return redirect()->route('cronograma.listar')->with('success','Cronograma eliminado');
@@ -195,6 +201,7 @@ class CronogramaController extends Controller
 
         }
 
+        RegistrarActividad(Cronograma::TABLA,Historial::EDITAR,'vió el formulario de editar Cronograma '.$actividad->nombre);
 
         $auditoria = Auditoria::find($request->codPlanF);
 
@@ -263,6 +270,7 @@ class CronogramaController extends Controller
             $cronograma->dias_habiles = $request->dias_habiles[4];
             $cronograma->save();
         }
+        RegistrarActividad(Cronograma::TABLA,Historial::ACTUALIZAR,'actualizó el Cronograma '.$request->nombre);
 
 
 

@@ -92,6 +92,7 @@ Route::group(['prefix' => 'procesoma'],function () {
     Route::get('listar', 'ProcesomaController@listar')->name('procesoma.listar');
     Route::get('editar/{codProMA}', 'ProcesomaController@editar')->name('procesoma.editar');
     Route::post('actualizar', 'ProcesomaController@actualizar')->name('procesoma.actualizar');
+    Route::get('eliminar/{codMacroP}/{codProMA}', 'ProcesomaController@eliminar')->name('procesoma.eliminar');
 });
 
 Route::group(['prefix' => 'subproceso'],function () {

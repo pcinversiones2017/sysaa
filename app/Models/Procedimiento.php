@@ -12,6 +12,7 @@ class Procedimiento extends Model
 
     const CREATED_AT = "fecha_creado";
     const UPDATED_AT = "fecha_modificado";
+    const TABLA = 'PROCEDIMIENTO';
 
     public function scopeActivo($cadenaSQL)
     {

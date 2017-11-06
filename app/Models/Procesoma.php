@@ -10,6 +10,7 @@ class Procesoma extends Model
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
     const DELETED_AT  = 'fecha_eliminado';
+    const TABLA     = 'PROCESO';
 
     protected $primaryKey = 'codProMA';
     protected $table = 'proceso_ma';

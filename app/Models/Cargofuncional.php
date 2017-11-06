@@ -9,6 +9,7 @@ class Cargofuncional extends Model
 {
 	const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
+    const TABLA = 'CARGO FUNCIONAL';
 
     protected $table = "cargo_funcional";
 

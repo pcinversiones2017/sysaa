@@ -4,43 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Procesoma;
 use Illuminate\Http\Request;
+use App\Models\Historial;
+use Auth;
 
 class ProcesomaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-
     public function listar()
     {
         $procesosma = Procesoma::all();
         $listarprocesosma = 'active';
+        RegistrarActividad(Procesoma::TABLA,Historial::LEER,'vió el listado de Proceso');
         return view('procesoma.listar')->with(compact('procesosma', 'listarprocesosma'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function crear()
     {
         $procesosma = Procesoma::all();
+        RegistrarActividad(Procesoma::TABLA,Historial::CREAR,'vió el formulario de crear Proceso');
         return view('procesoma.crear')->with(compact('procesosma'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *   $table->increments('codProMA');
-        $table->string('nombre');
-        $table->string('estado');
-        $table->integer('codMacroP')->unsigned();
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function guardar(Request $request)
     {
         $procesoma = new Procesoma();
@@ -48,41 +31,23 @@ class ProcesomaController extends Controller
         $procesoma->estado = 'activo';
         $procesoma->codMacroP = $request->codMacroP;
         $procesoma->save();
-            return redirect()->route('macroproceso.mostrar', [$request->codMacroP])->with('success','Se grabo correctamente');
+        RegistrarActividad(Procesoma::TABLA,Historial::REGISTRAR,'registró el Proceso '.$request->nombre);
+        return redirect()->route('macroproceso.mostrar', [$request->codMacroP])->with('success','Se grabo correctamente');
     }
 
-    /**s
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Procesoma  $procesoMA
-     * @return \Illuminate\Http\Response
-     */
     public function mostrar($codProMA)
     {
         $procesoma = Procesoma::find($codProMA);
         return view('procesoma.mostrar')->with(compact('procesoma'));
     }
 
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Procesoma  $procesoMA
-     * @return \Illuminate\Http\Response
-     */
     public function editar(Request $request)
     {
         $procesoma = Procesoma::find($request->codProMA);
+        RegistrarActividad(Procesoma::TABLA,Historial::EDITAR,'vió el formulario de editar el Proceso '.$procesoma->nombre);
         return view('procesoma.editar')->with(compact('procesoma'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Procesoma  $procesoMA
-     * @return \Illuminate\Http\Response
-     */
     public function actualizar(Request $request)
     {
         $procesoma = Procesoma::find($request-> codProMA);
@@ -90,25 +55,15 @@ class ProcesomaController extends Controller
         $procesoma->estado = 'activo';
         $procesoma->codMacroP = $request->codMacroP;
         $procesoma->save();
+        RegistrarActividad(Procesoma::TABLA,Historial::ACTUALIZAR,'actualizó el Proceso '.$request->nombre);
         return redirect()->route('macroproceso.mostrar', [$request->codMacroP])->with('update','Se actualizo correctamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Procesoma  $procesoMA
-     * @return \Illuminate\Http\Response
-     */
-    public function eliminar(Request $request)
+    public function eliminar($codMacroP, $codProMA)
     {
-        try{
-            $procesoma = Procesoma::find($request->codProMA);
-            $procesoma->delete();
-            //return redirect()->route('macroproceso.mostrar', [$request->codMacroP])->with('update','Se actualizo correctamente');
-
-            return redirect()->route('macroproceso.listar')->with('danger','Se elimino correctamente');
-        }catch (\Exception $e){
-
-        }
+        $procesoma = Procesoma::find($codProMA);
+        $procesoma->delete();
+        RegistrarActividad(Procesoma::TABLA,Historial::ELIMINAR,'eliminó el Proceso '.$procesoma->nombre);
+        return redirect()->route('macroproceso.mostrar', [$codMacroP])->with('danger','Se elimino correctamente');
     }
 }
