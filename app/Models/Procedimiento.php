@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Procedimiento extends Model
 {
     protected $table = "procedimiento";
+    protected $primaryKey = 'codProc';
 
     protected $fillable = ['justificacion', 'detalle', 'fechafin', 'codObjEsp','codObjGen','codUsuRol','eliminado'];
 
