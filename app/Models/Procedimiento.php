@@ -35,4 +35,9 @@ class Procedimiento extends Model
         return $this->hasOne(ObjetivoEspecifico::class, 'codObjEsp', 'codObjEsp');
     }
 
+    public function desarrollo()
+    {
+        return $this->hasOne(Desarrollo::class,'codProc','codProc');
+    }
+
 }

@@ -31,12 +31,17 @@
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>
-                            <label>Usuario</label>
-                            <select name="codusurol" class="form-control">
+                            <label>Usuario {!! $usuariorol->isEmpty() ? '<span style="color:red">(Debe asignar usuarios de comisión)</span>' : '' !!}</label>
+
+                            <select name="codUsuRol" class="form-control">
                                 @foreach($usuariorol as $row)
                                 <option value="{!! $row->codUsuRol !!}">{!! $row->usuario->datos !!}</option>
                                 @endforeach
                             </select>
+                            @if($errors->has('codUsuRol'))
+                                <p style="color:#a94442">{{$errors->first('codUsuRol')}}</p>
+                            @endif
+
                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-outline" value="REGISTRAR">

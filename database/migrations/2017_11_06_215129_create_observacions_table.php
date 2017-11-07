@@ -15,7 +15,9 @@ class CreateObservacionsTable extends Migration
     {
         Schema::create('observacion', function (Blueprint $table) {
             $table->increments('codObs');
+            $table->string('titulo');
             $table->text('descripcion');
+            $table->text('recomendacion');
             $table->integer('codDes');
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();

@@ -1,25 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auditor;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\Archivo;
 use App\Models\Historial;
 use Auth;
 
 class ArchivoController extends Controller
 {
-    public function listar($codDes)
+    public function listar($codDes, $codObs)
     {
-    	$archivos = Archivo::Procedimiento($codDes)->get();
+    	$archivos = Archivo::Desarrollo($codObs)->get();
         RegistrarActividad(Archivo::TABLA,Historial::LEER,'vió el listado de Archivos');
-    	return view('archivo.listar', compact(['archivos','codDes']));
+    	return view('auditor.archivo.listar', compact(['archivos','codDes', 'codObs']));
     }
 
-    public function crear($codDes)
+    public function crear($codDes, $codObs)
     {
         RegistrarActividad(Archivo::TABLA,Historial::CREAR,'vió el formulario de cargar Archivo');
-    	return view('archivo.crear', compact(['codDes']));
+    	return view('auditor.archivo.crear', compact(['codDes', 'codObs']));
     }
 
     public function registrar(Request $request)
@@ -27,9 +28,9 @@ class ArchivoController extends Controller
     	if($request->hasFile('archivo'))
         {
             $archivo = $request->file('archivo')->store('archivo','public');
-            Archivo::create(['nombre' => $request->file('archivo')->getClientOriginalName(),'ruta' => $archivo, 'codDes' => $request->codDes ]);
-            RegistrarActividad(Archivo::TABLA,Historial::ACTUALIZAR,'actualizó la Actividad '.$request->nombre);
-            return redirect('auditor/archivo/listar/'.$request->codDes)->with('success','Archivo cargado');
+            Archivo::create(['nombre' => $request->file('archivo')->getClientOriginalName(),'ruta' => $archivo, 'codObs' => $request->codObs ]);
+            RegistrarActividad(Archivo::TABLA,Historial::ACTUALIZAR,'registró el archivo '.$request->nombre);
+            return redirect('auditor/observacion/archivo/listar/'.$request->codDes. '/'. $request->codObs)->with('success','Archivo cargado');
         }else
         {
             return back()->with('danger','Debe cargar un archivo');

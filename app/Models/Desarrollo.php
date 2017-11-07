@@ -28,4 +28,9 @@ class Desarrollo extends Model
     {
         return $this->hasOne(Procedimiento::class,'codProc','codProc');
     }
+
+    public function observacion()
+    {
+        return $this->hasOne(Observacion::class, 'codObs', 'codObs');
+    }
 }

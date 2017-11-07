@@ -18,14 +18,6 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Lista de Desarrollo de Procedimiento </h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
-                    </div>
                 </div>
                 <div class="ibox-content">
 
@@ -48,8 +40,14 @@
                                 <td>{!! $row->justificacion !!}</td>
                                 <td>{!! $row->detalle !!}</td>
                                 <td>{!! $row->fechafin !!}</td>
-                                <td>{!! $row->objetivoespecifico->nombre !!}</td>
-                                <td><a href="{!! url('auditor/desarrollo/crear/'.$row->codProc) !!}" class="btn btn-warning btn-outline"><i class="fa fa-folder-open"></i>  </a></td>
+                                <td>{!! $row->objetivoespecifico->nombre !!}
+                                    </td>
+                                <td>
+                                    <a href="{!! url('auditor/procedimiento/mostrar/'.$row->codProc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-eye"></i>  </a>
+                                    @if(count($row->desarrollo) == 0)
+                                    <a href="{!! url('auditor/desarrollo/crear/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-pencil"></i>  </a>
+                                    @endif
+                                </td>
                             </tr>
                         <?php $i++ ?>
                         @endforeach

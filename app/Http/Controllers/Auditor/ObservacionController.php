@@ -13,9 +13,7 @@ class ObservacionController extends Controller
 {
     public function listar()
     {
-    	$observacion = Observacion::join('informe', 'informe.codProc', '=', 'observacion.codProc')
-                            ->where('informe.codUsuRol',Auth::user()->usuariorol->codUsuRol)
-                            ->get();
+    	$observacion = Observacion::all();
         RegistrarActividad(Observacion::TABLA,Historial::LEER,'vió el listado de Observaciones');
     	return view('observacion.listar', compact(['observacion']));
     }
@@ -28,30 +26,30 @@ class ObservacionController extends Controller
 
     public function registrar(Request $request)
     {
-    	Observacion::create(['descripcion' => $request->descripcion, 'elaborado' => date("Y-m-d"), 'codDes' => $request->codDes]);
+    	Observacion::create(['titulo' => $request->titulo,'descripcion' => $request->informe, 'recomendacion' => $request->recomendacion, 'elaborado' => date("Y-m-d"), 'codDes' => $request->codDes]);
         RegistrarActividad(Observacion::TABLA,Historial::REGISTRAR,'registró la Observacion '.$request->nombre);
-    	return redirect('auditor/observacion/listar')->with('success','Observacion registrado');
+    	return redirect('auditor/procedimiento/mostrar/'.$request->codDes)->with('success','Observacion registrado');
     }
 
-    public function editar($id)
+    public function editar($codDes, $codObs)
     {
-        $observacion = Observacion::Existe($id)->get();
+        $observacion = Observacion::find($codObs);
         RegistrarActividad(Observacion::TABLA,Historial::EDITAR,'vió el formulario de editar Observacion ');
-    	return view('observacion.editar', compact('observacion'));
+    	return view('observacion.editar', compact(['observacion', 'codDes']));
     }
 
     public function actualizar(Request $request)
     {
-    	Observacion::Existe($request->codObs)->update(['descripcion' => $request->descripcion, 'elaborado' => date("Y-m-d")]);
-        RegistrarActividad(Observacion::TABLA,Historial::ACTUALIZAR,'actualizó la Observacion '.$request->descripcion);
-    	return redirect('auditor/observacion/listar')->with('success','Desarrollo actualizado');	
+    	Observacion::Existe($request->codObs)->update(['titulo' => $request->titulo, 'recomendacion' => $request->recomendacion,'descripcion' => $request->informe]);
+        RegistrarActividad(Observacion::TABLA,Historial::ACTUALIZAR,'actualizó la Observacion '.$request->titulo);
+    	return redirect('auditor/procedimiento/mostrar/'. $request->codDes)->with('success','Observacion actualizado');	
     }
 
-    public function eliminar($id)
+    public function eliminar($codDes, $codObs)
     {
-    	$observacion = Observacion::find($id);
+    	$observacion = Observacion::find($codObs);
         $observacion->delete();
         RegistrarActividad(Observacion::TABLA,Historial::ELIMINAR,'eliminó el observacion '.$observacion->informe);
-    	return back()->with('danger','Desarrollo eliminado');
+    	return back()->with('danger','Observacion eliminado');
     }
 }

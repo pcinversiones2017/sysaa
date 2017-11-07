@@ -20,7 +20,7 @@ class ProcedimientoController extends Controller
 
     public function crear($codPlanF, $codObjEsp)
     {
-    	$usuariorol = Usuariorol::with('usuario')->get();
+    	$usuariorol = Usuariorol::where('codPlanF', $codPlanF)->with('usuario')->get()->except(1);
         RegistrarActividad(Procedimiento::TABLA,Historial::CREAR,'vió el formulario de crear Procedimiento');
     	return view('procedimiento.crear', compact(['codPlanF', 'codObjEsp', 'usuariorol']));
     }
@@ -31,7 +31,7 @@ class ProcedimientoController extends Controller
     					'justificacion' => $request->justificacion, 
     					'detalle' 		=> $request->detalle, 
     					'fechafin' 		=> date('Y-m-d', strtotime($request->fechafin)),
-    					'codUsuRol'		=> $request->codusurol,
+    					'codUsuRol'		=> $request->codUsuRol,
     					'codObjEsp' 	=> $request->codObjEsp
     				]);
         RegistrarActividad(Procedimiento::TABLA,Historial::REGISTRAR,'registró el Procedimiento '.$request->justificacion);

@@ -30,7 +30,7 @@ class DesarrolloController extends Controller
     {
     	Desarrollo::create(['informe' => $request->informe, 'elaborado' => date("Y-m-d"), 'codProc' => $request->codProc]);
         RegistrarActividad(Desarrollo::TABLA,Historial::REGISTRAR,'registró el Desarrollo '.$request->nombre);
-    	return redirect('auditor/desarrollo/listar')->with('success','Desarrollo registrado');
+    	return redirect('auditor/procedimiento/mostrar/'.$request->codProc)->with('success','Desarrollo registrado');
     }
 
     public function editar($id)
@@ -43,8 +43,8 @@ class DesarrolloController extends Controller
     public function actualizar(Request $request)
     {
     	Desarrollo::Existe($request->codDes)->update(['informe' => $request->informe, 'elaborado' => date("Y-m-d")]);
-        RegistrarActividad(Desarrollo::TABLA,Historial::ACTUALIZAR,'actualizó el Desarrollo '.$request->informe);
-    	return redirect('auditor/desarrollo/listar')->with('success','Desarrollo actualizado');	
+        RegistrarActividad(Desarrollo::TABLA,Historial::ACTUALIZAR,'actualizó el Desarrollo '.substr($request->informe,0,50));
+    	return redirect('auditor/procedimiento/mostrar/'.$request->codDes)->with('success','Desarrollo actualizado');	
     }
 
     public function eliminar($id)
