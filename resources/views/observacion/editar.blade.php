@@ -9,16 +9,17 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Actualizar Desarrollo de Procedimiento </h5>
+                    <h5>Actualizar Observacion</h5>
                 </div>
                 <div class="ibox-content">
-                    {!! Form::open(['method' => 'POST', 'route' => 'auditor.desarrollo.actualizar']) !!}
-                    @foreach($desarrollo as $row)
-                    {!! Form::hidden('codDes',$row->codDes) !!}
-                    {!! Field::textarea('informe', $row->informe , ['class' => 'summernote']) !!}
+                    {!! Form::open(['method' => 'POST', 'route' => 'auditor.observacion.actualizar']) !!}
+                    {!! Form::hidden('codDes',$codDes) !!}
+                    {!! Form::hidden('codObs',$observacion->codObs) !!}
+                    {!! Field::text('titulo', $observacion->titulo ) !!}
+                    {!! Field::textarea('informe', $observacion->descripcion , ['class' => 'summernote']) !!}
+                    {!! Field::textarea('recomendacion', $observacion->recomendacion , ['class' => 'summernote']) !!}
                     {!! Form::submit('ACTUALIZAR', ['class' => 'btn btn-primary btn-outline']) !!}
-                    @endforeach
-                    <a href="{!! url('auditor/desarrollo/listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                    <a href="{!! url('auditor/procedimiento/mostrar/'. $codDes) !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     {!! Form::close() !!}
                 </div>
             </div>

@@ -17,13 +17,13 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de Desarrollo de Procedimiento </h5>
+                    <h5>Lista de Observaciones </h5>
                 </div>
                 <div class="ibox-content">
 
                     <div class="row">
                         <div class="col-sm-3">
-                            <a type="button" href="" class="btn btn-outline btn-danger"> ATRAS</a>
+                            <a type="button" href="{!! url('auditor/desarrollo/listar') !!}" class="btn btn-outline btn-danger"> ATRAS</a>
                             <p>
                             
                         </div>
@@ -33,29 +33,20 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>INFORME</th>
-                            <th>JUSTIFICACION</th>
-                            <th>ELABORADO</th>
-                            <th>REVISADO</th>
-                            <th>SUPERVISADO</th>
+                            <th>DESCRIPCION</th>
                             <th>Accion</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php $i=1 ?>
-                        @foreach($desarrollo as $row)
+                        @foreach($observacion as $row)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{!! $row->informe !!}</td>
-                                <td>{!! $row->procedimiento->justificacion !!}</td>
-                                <td>{!! $row->elaborado !!}</td>
-                                <td>{!! $row->revisado !!}</td>
-                                <td>{!! $row->supervisado !!}</td>
+                                <td>{!! $row->descripcion !!}</td>
                                 <td>
-                                    <a href="{!! url('auditor/desarrollo/editar/'.$row->codDes) !!}" class="btn btn-success  btn-outline"><i class="fa fa-eye"></i>  </a>
-                                    <a href="{!! url('auditor/desarrollo/editar/'.$row->codDes) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
-                                    <a href="{!! url('auditor/desarrollo/eliminar/'.$row->codDes) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
-                                    <a href="{!! url('auditor/archivo/crear/'.$row->codDes) !!}" class="btn btn-warning btn-outline"><i class="fa fa-upload"></i>  </a>
+                                    <a href="{!! url('auditor/observacion/editar/'.$row->codObs) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
+                                    <a href="{!! url('auditor/observacion/eliminar/'.$row->codObs) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
+                                    <a href="{!! url('auditor/observacion/archivo/crear/'.$row->codObs) !!}" class="btn btn-warning btn-outline"><i class="fa fa-upload"></i>  </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

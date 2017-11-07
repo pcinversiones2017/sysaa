@@ -23,7 +23,7 @@
 
                     <div class="row">
                         <div class="col-sm-3">
-                            <a type="button" href="" class="btn btn-outline btn-danger"> ATRAS</a>
+                            <a type="button" href="{!! url('auditor/procedimiento/procedimientos-listar') !!}" class="btn btn-outline btn-danger"> ATRAS</a>
                             <p>
                             
                         </div>
@@ -33,7 +33,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>INFORME</th>
+                            <th>DESARROLLO DE PROCEDIMIENTO</th>
                             <th>JUSTIFICACION</th>
                             <th>ELABORADO</th>
                             <th>REVISADO</th>
@@ -52,7 +52,7 @@
                                 <td>{!! $row->revisado !!}</td>
                                 <td>{!! $row->supervisado !!}</td>
                                 <td>
-                                    <a href="{!! url('auditor/desarrollo/editar/'.$row->codDes) !!}" class="btn btn-success  btn-outline"><i class="fa fa-eye"></i>  </a>
+                                    <a href="{!! url('auditor/observacion/crear/'.$row->codDes) !!}" class="btn btn-success  btn-outline"><i class="fa fa-eye"></i>  </a>
                                     <a href="{!! url('auditor/desarrollo/editar/'.$row->codDes) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
                                     <a href="{!! url('auditor/desarrollo/eliminar/'.$row->codDes) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
                                     <a href="{!! url('auditor/archivo/crear/'.$row->codDes) !!}" class="btn btn-warning btn-outline"><i class="fa fa-upload"></i>  </a>

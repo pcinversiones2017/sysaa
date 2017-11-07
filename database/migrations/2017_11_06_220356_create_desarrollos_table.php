@@ -26,7 +26,6 @@ class CreateDesarrollosTable extends Migration
             $table->timestamp('fecha_eliminado')->nullable();
 
             $table->foreign('codProc')->references('codProc')->on('Procedimiento');
-            $table->timestamps();
         });
     }
 

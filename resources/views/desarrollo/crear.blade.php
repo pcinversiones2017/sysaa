@@ -17,6 +17,7 @@
                     {!! Field::textarea('informe', ['class' => 'summernote']) !!}
                     {!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-outline']) !!}
                     <a href="{!! url('auditor/procedimiento/procedimientos-listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                    <a href="{!! url('auditor/desarrollo/listar') !!}" class="btn btn-success btn-outline">LISTAR</a>
                     {!! Form::close() !!}
                 </div>
             </div>

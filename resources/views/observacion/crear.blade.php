@@ -9,14 +9,16 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Crear Desarrollo de procedimiento </h5>
+                    <h5>Crear Observacion del Desarrollo de procedimiento </h5>
                 </div>
                 <div class="ibox-content">
-                    {!! Form::open(['method' => 'POST', 'route' => 'auditor.desarrollo.registrar']) !!}
-                    {!! Form::hidden('codProc',$codProc) !!}
+                    {!! Form::open(['method' => 'POST', 'route' => 'auditor.observacion.registrar']) !!}
+                    {!! Form::hidden('codDes',$codDes) !!}
+                    {!! Field::text('titulo') !!}
                     {!! Field::textarea('informe', ['class' => 'summernote']) !!}
+                    {!! Field::textarea('recomendacion', ['class' => 'summernote']) !!}
                     {!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-outline']) !!}
-                    <a href="{!! url('auditor/procedimiento/procedimientos-listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                    <a href="{!! url('auditor/procedimiento/mostrar/'. $codDes) !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     {!! Form::close() !!}
                 </div>
             </div>
