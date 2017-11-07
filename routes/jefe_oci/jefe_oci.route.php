@@ -92,6 +92,7 @@ Route::group(['prefix' => 'subproceso'],function () {
     Route::get('listar', 'SubprocesoController@listar')->name('subproceso.listar');
     Route::get('editar/{codSubPro}', 'SubprocesoController@editar')->name('subproceso.editar');
     Route::post('actualizar', 'SubprocesoController@actualizar')->name('subproceso.actualizar');
+    Route::get('eliminar/{codSubPro}', 'SubprocesoController@eliminar')->name('subproceso.eliminar');
 });
 
 Route::group(['prefix' => 'procedimientosp'],function () {
@@ -101,6 +102,7 @@ Route::group(['prefix' => 'procedimientosp'],function () {
     Route::get('listar', 'ProcedimientospController@listar')->name('procedimientosp.listar');
     Route::get('editar/{codProSP}', 'ProcedimientospController@editar')->name('procedimientosp.editar');
     Route::post('actualizar', 'ProcedimientospController@actualizar')->name('procedimientosp.actualizar');
+    Route::get('eliminar/{codProSP}', 'ProcedimientospController@eliminar')->name('procedimientosp.eliminar');
 });
 
 

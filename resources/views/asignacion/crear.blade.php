@@ -14,7 +14,7 @@
                         <div class="col-md-6 b-r">
                             <input type="hidden" value="{{$codPlanF}}" name="codPlanF">
                             <label>USUARIO</label>
-                            <select class="form-control">
+                            <select class="form-control" name="codUsu" >
                             @foreach($usuario as $usu)
                                 <option value="{{$usu->codUsu}}">{{$usu->nombres}} {{ $usu->activo ? ' - activo' : ''}}</option>
                             @endforeach

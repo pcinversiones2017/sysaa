@@ -10,7 +10,7 @@ class Subproceso extends Model
     const CREATED_AT = 'fecha_creado';
     const UPDATED_AT = 'fecha_modificado';
     const DELETED_AT  = 'fecha_eliminado';
-    const TABLA     = 'SUBPROCESO'
+    const TABLA     = 'SUBPROCESO';
 
     protected $primaryKey = 'codSubPro';
     protected $table = 'subproceso';

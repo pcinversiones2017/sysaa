@@ -67,7 +67,7 @@ class SubprocesoController extends Controller
             $subproceso->delete();
             RegistrarActividad(Subproceso::TABLA,Historial::ELIMINAR,'eliminó el SubProceso '.$subproceso->nombre);
 
-            return redirect()->route('macroproceso.listar')->with('danger','Se elimino correctamente');
+            return redirect()->route('procesoma.mostrar', $subproceso->procesoMA->codProMA)->with('danger','Se elimino correctamente');
         }catch (\Exception $e){
 
         }

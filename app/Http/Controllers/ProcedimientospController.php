@@ -64,7 +64,7 @@ class ProcedimientospController extends Controller
             $procedimientosp->delete();
             RegistrarActividad(Procedimientosp::TABLA,Historial::ELIMINAR,'eliminó el Proceso '.$procedimientosp->nombre);
 
-            return redirect()->route('macroproceso.listar')->with('danger','Se elimino correctamente');
+            return redirect()->route('subproceso.mostrar', $procedimientosp->subProceso->codSubPro)->with('danger','Se elimino correctamente');
         }catch (\Exception $e){
 
         }

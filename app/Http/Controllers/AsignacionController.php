@@ -27,15 +27,17 @@ class AsignacionController extends Controller
         $codPlanF = $request->codPlanF;
         $usuariosRol = UsuarioRol::where('codPlanF', $codPlanF)->pluck('codUsuRol')->toArray();
         $usuarios = User::all()->except($usuariosRol);
-        $usuario = $usuarios->map(function($item, $key){
-            $usuarioRol = UsuarioRol::where('codUsu', $key)->get();
-        RegistrarActividad(UsuarioRol::TABLA,Historial::CREAR,'vió el formulario de cargar Asignacion de Rol y Cargo');
+        $usuario = $usuarios->map(function($user){
+            $usuarioRol = UsuarioRol::where('codUsu', $user->codUsu)->get();
+
             if($usuarioRol->isNotEmpty()){
-                $item->activo = true;
-                return $item;
+                $user->activo = true;
+                return $user;
             }
-            return $item;
+            return $user;
         });
+
+        RegistrarActividad(UsuarioRol::TABLA,Historial::CREAR,'vió el formulario de cargar Asignacion de Rol y Cargo');
 
     	return view('asignacion.crear', compact(['rol', 'usuario', 'codPlanF']));
     }
@@ -51,7 +53,7 @@ class AsignacionController extends Controller
         }
 
         $usuarioRol  = new UsuarioRol();
-        $usuarioRol->codUsu     = $request->usuario;
+        $usuarioRol->codUsu     = $request->codUsu;
         $usuarioRol->codRol     = $request->rol;
         $usuarioRol->codCarFun  = 2;
         $usuarioRol->codPlanF   = $request->codPlanF;
@@ -59,6 +61,7 @@ class AsignacionController extends Controller
         $usuarioRol->activo     = $activo;
         $usuarioRol->sueldo     = $request->sueldo;
         $usuarioRol->save();
+
         RegistrarActividad(UsuarioRol::TABLA,Historial::REGISTRAR,'registró la Asignacion de Rol y Cargo '.$request->nombre);
 
     	return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success','Usuario asignado registrado');

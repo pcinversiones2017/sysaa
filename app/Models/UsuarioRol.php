@@ -43,6 +43,6 @@ class Usuariorol extends Model
 
     public function cargofuncional($value='')
     {
-    	return  $this->hasOne(cargofuncional::class,'codCarFun','codCarFun');
+    	return  $this->hasOne(Cargofuncional::class,'codCarFun','codCarFun');
     }
 }
