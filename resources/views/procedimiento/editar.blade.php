@@ -10,33 +10,33 @@
             <div class="ibox-content">
                 <div class="row">
                     {!! Form::open(['method' => 'POST', 'route' => 'procedimiento.actualizar']) !!}
-                    @foreach($procedimiento as $row)
+
                         <div class="col-md-12 b-r">
                             {!! Form::hidden('codPlanF',$codPlanF) !!}
                             {!! Form::hidden('codObjEsp',$codObjEsp) !!}
                             {!! Form::hidden('codProc',$codProc) !!}
-                            {!! Field::textarea('justificacion', $row->justificacion) !!}
+                            {!! Field::textarea('justificacion', $procedimiento->justificacion) !!}
                             <div class="hr-line-dashed"></div>
 
-                            {!! Field::textarea('detalle', $row->detalle) !!}
+                            {!! Field::textarea('detalle', $procedimiento->detalle) !!}
                             <div class="hr-line-dashed"></div>
-                            {!! Field::date('fechafin', $row->fechafin,['label' => 'Fecha Fin']) !!}
+                            {!! Field::date('fechafin', $procedimiento->fechafin,['label' => 'Fecha Fin']) !!}
 
                             <div class="hr-line-dashed"></div>
                             <label>Usuario</label>
                             <select name="codusurol" class="form-control">
-                                @foreach($usuariorol as $row2)
-                                <option value="{!! $row2->codUsuRol !!}" <?php if($row2->codusurol === $row->codusurol){ echo "selected"; }?> >{!! $row2->usuario->datos !!}</option>
+                                @foreach($usuariorol as $row)
+                                <option value="{!! $row->codUsuRol !!}" {{$row->codUsuRol == $procedimiento->codUsuRol? 'selected':'' }}>{!! $row->usuario->datos !!}</option>
                                 @endforeach
                             </select>
                             <br>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
-                                <a href="{!! url('objetivo-especifico/mostrar/'.$codPlanF.'/'.$codObjEsp) !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                                <a href="{!! url('objetivo-especifico/mostrar/' . $codPlanF . '/' . $codObjEsp) !!}" class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
                             <div class="hr-line-dashed"></div>
                         </div>
-                    @endforeach
+
                     {!! Form::close() !!}
                 </div>
             </div>
