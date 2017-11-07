@@ -31,8 +31,8 @@
 
                     <div class="row">
                         <div class="col-sm-9">
-                            <a type="button" href="{!! url('auditor/archivo/crear/'.$codInf) !!}" class="btn btn-outline btn-primary"><i class="fa fa-plus"></i> CARGAR ARCHIVO</a>
-                            <a type="button" href="{!! url('auditor/informe/listar') !!}" class="btn btn-outline btn-danger"> REGRESAR INFORME</a>
+                            <a type="button" href="{!! url('auditor/archivo/crear/'.$codDes) !!}" class="btn btn-outline btn-primary"><i class="fa fa-plus"></i> CARGAR ARCHIVO</a>
+                            <a type="button" href="{!! url('auditor/desarrollo/listar') !!}" class="btn btn-outline btn-danger"> REGRESAR INFORME</a>
                             <p>
                             
                         </div>

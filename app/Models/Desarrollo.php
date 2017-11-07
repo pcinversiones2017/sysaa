@@ -5,27 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Informe extends Model
+class Desarrollo extends Model
 {
     use SoftDeletes;
 
-    protected $table = "informe";
-
-    protected $primaryKey = "codInf";
-
+    protected $table = 'desarrollo';
+    protected $primaryKey = "codDes";
     protected $fillable = ['informe','elaborado','revisado','supervisado','codProc'];
 
     const CREATED_AT = "fecha_creado";
-
     const UPDATED_AT = "fecha_modificado";
-
     const DELETED_AT = "fecha_eliminado";
 
-    const TABLA = 'INFORME';
+    const TABLA = 'DESARROLLO';
 
     public function scopeExiste($cadenaSQL, $id)
     {
-        return $cadenaSQL->where('codInf',$id);
+        return $cadenaSQL->where('codDes',$id);
     }
 
     public function procedimiento()

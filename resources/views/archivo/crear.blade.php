@@ -18,7 +18,7 @@
                         <strong>NOTA: PESO MAXIMO 5 MB</strong>
                     </div>
                     {!! Form::open(['method' => 'POST', 'route' => 'auditor.archivo.registrar', 'files' => true]) !!}
-                    {!! Form::hidden('codInf',$codInf) !!}
+                    {!! Form::hidden('codDes',$codDes) !!}
                         <div class="col-md-6 b-r">
                             
                             {!! Field::file('archivo') !!}
@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 {!! Form::submit('CARGAR', ['class' => 'btn btn-primary btn-outline']) !!}
                                 <a href="{!! url('auditor/informe/listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
-                                <a href="{!! url('auditor/archivo/listar/'.$codInf) !!}" class="btn btn-success btn-outline">VER DOCUMENTOS</a>
+                                <a href="{!! url('auditor/archivo/listar/'.$codDes) !!}" class="btn btn-success btn-outline">VER DOCUMENTOS</a>
                             </div>
                             <div class="hr-line-dashed"></div>
 
