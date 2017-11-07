@@ -26,7 +26,15 @@ class ValidarRequest extends FormRequest
         return [
             'justificacion' => 'required|min:3',
             'detalle'       => 'required|min:3',
-            'fechafin'      => 'required'
+            'fechafin'      => 'required',
+            'codUsuRol'     => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'codUsuRol.required' => 'Debe escoger un usuario'
         ];
     }
 }
