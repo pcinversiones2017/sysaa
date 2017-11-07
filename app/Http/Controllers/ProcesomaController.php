@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Procesoma\ActualizarRequest;
+use App\Http\Requests\Procesoma\RegistroRequest;
 use App\Models\Procesoma;
 use Illuminate\Http\Request;
 use App\Models\Historial;
@@ -13,25 +15,25 @@ class ProcesomaController extends Controller
     {
         $procesosma = Procesoma::all();
         $listarprocesosma = 'active';
-        RegistrarActividad(Procesoma::TABLA,Historial::LEER,'vió el listado de Proceso');
+        RegistrarActividad(Procesoma::TABLA,Historial::LEER,'vió el listado de Procesoma');
         return view('procesoma.listar')->with(compact('procesosma', 'listarprocesosma'));
     }
 
     public function crear()
     {
         $procesosma = Procesoma::all();
-        RegistrarActividad(Procesoma::TABLA,Historial::CREAR,'vió el formulario de crear Proceso');
+        RegistrarActividad(Procesoma::TABLA,Historial::CREAR,'vió el formulario de crear Procesoma');
         return view('procesoma.crear')->with(compact('procesosma'));
     }
 
-    public function guardar(Request $request)
+    public function guardar(RegistroRequest $request)
     {
         $procesoma = new Procesoma();
         $procesoma->nombre = $request->nombre;
         $procesoma->estado = 'activo';
         $procesoma->codMacroP = $request->codMacroP;
         $procesoma->save();
-        RegistrarActividad(Procesoma::TABLA,Historial::REGISTRAR,'registró el Proceso '.$request->nombre);
+        RegistrarActividad(Procesoma::TABLA,Historial::REGISTRAR,'registró el Procesoma '.$request->nombre);
         return redirect()->route('macroproceso.mostrar', [$request->codMacroP])->with('success','Se grabo correctamente');
     }
 
@@ -44,18 +46,18 @@ class ProcesomaController extends Controller
     public function editar(Request $request)
     {
         $procesoma = Procesoma::find($request->codProMA);
-        RegistrarActividad(Procesoma::TABLA,Historial::EDITAR,'vió el formulario de editar el Proceso '.$procesoma->nombre);
+        RegistrarActividad(Procesoma::TABLA,Historial::EDITAR,'vió el formulario de editar el Procesoma '.$procesoma->nombre);
         return view('procesoma.editar')->with(compact('procesoma'));
     }
 
-    public function actualizar(Request $request)
+    public function actualizar(ActualizarRequest $request)
     {
         $procesoma = Procesoma::find($request-> codProMA);
         $procesoma->nombre = $request->nombre;
         $procesoma->estado = 'activo';
         $procesoma->codMacroP = $request->codMacroP;
         $procesoma->save();
-        RegistrarActividad(Procesoma::TABLA,Historial::ACTUALIZAR,'actualizó el Proceso '.$request->nombre);
+        RegistrarActividad(Procesoma::TABLA,Historial::ACTUALIZAR,'actualizó el Procesoma '.$request->nombre);
         return redirect()->route('macroproceso.mostrar', [$request->codMacroP])->with('update','Se actualizo correctamente');
     }
 
@@ -63,7 +65,7 @@ class ProcesomaController extends Controller
     {
         $procesoma = Procesoma::find($codProMA);
         $procesoma->delete();
-        RegistrarActividad(Procesoma::TABLA,Historial::ELIMINAR,'eliminó el Proceso '.$procesoma->nombre);
+        RegistrarActividad(Procesoma::TABLA,Historial::ELIMINAR,'eliminó el Procesoma '.$procesoma->nombre);
         return redirect()->route('macroproceso.mostrar', [$codMacroP])->with('danger','Se elimino correctamente');
     }
 }

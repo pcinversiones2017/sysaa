@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\Actividad\ActualizarRequest;
+use App\Http\Requests\Actividad\RegistroRequest;
 use App\Models\Actividad;
 use Illuminate\Http\Request;
 use App\Models\Historial;
@@ -23,15 +25,15 @@ class ActividadController extends Controller
         return view('actividad.crear')->with(compact('actividad'));
     }
 
-    public function guardar(Request $request)
+    public function guardar(RegistroRequest $request)
     {
         $actividad = new Actividad();
         $actividad->responsable = $request->responsable;
         $actividad->nombre = $request->nombre;
         $actividad->codProSP = $request->codProSP;
         $actividad->save();
-        RegistrarActividad(Actividad::TABLA,Historial::REGISTRAR,'registró la Actividad '.$request->nombre);
-        return redirect()->route('procedimientosp.mostrar', [$request->codProSP])->with('success','Se grabo correctamente');
+        RegistrarActividad(Actividad::TABLA,Historial::REGISTRAR,'registró la Actividad ' . $request->nombre);
+        return redirect()->route('procedimientosp.mostrar', [$request->codProSP])->with('success', 'Se grabo correctamente');
     }
 
     public function mostrar($codAct)
@@ -43,18 +45,18 @@ class ActividadController extends Controller
     public function editar(Request $request)
     {
         $actividad = Actividad::find($request->codAct);
-        RegistrarActividad(Actividad::TABLA,Historial::EDITAR,'vió el formulario de editar la Actividad '.$actividad->nombre);
+        RegistrarActividad(Actividad::TABLA,Historial::EDITAR,'vió el formulario de editar la Actividad ' . $actividad->nombre);
         return view('actividad.editar')->with(compact('actividad'));
     }
 
-    public function actualizar(Request $request)
+    public function actualizar(ActualizarRequest $request)
     {
         $actividad = Actividad::find($request->codAct);
         $actividad->responsable = $request->responsable;
         $actividad->nombre = $request->nombre;
         $actividad->codProSP = $request->codProSP;
         $actividad->save();
-        RegistrarActividad(Actividad::TABLA,Historial::ACTUALIZAR,'actualizó la Actividad '.$request->nombre);
+        RegistrarActividad(Actividad::TABLA,Historial::ACTUALIZAR,'actualizó la Actividad ' . $request->nombre);
         return redirect()->route('procedimientosp.mostrar', [$request->codProSP])->with('update','Se actualizo correctamente');
     }
 
@@ -63,8 +65,8 @@ class ActividadController extends Controller
         try{
             $actividad = Actividad::find($request->codAct);
             $actividad->delete();
-            RegistrarActividad(Actividad::TABLA,Historial::ELIMINAR,'eliminó la Actividad '.$actividad->nombre);
-            return redirect()->route('macroproceso.listar')->with('danger','Se elimino correctamente');
+            RegistrarActividad(Actividad::TABLA,Historial::ELIMINAR,'eliminó la Actividad ' . $actividad->nombre);
+            return redirect()->route('procedimientosp.mostrar', $actividad->procedimientoSP->codProSP)->with('danger','Se elimino correctamente');
         }catch (\Exception $e){
 
         }

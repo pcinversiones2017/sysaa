@@ -98,7 +98,7 @@
         $('.eliminar-proceso').on('click', function (e) {
             e.preventDefault();
             var data = $(this);
-            alertify.confirm('Eliminar Proceso', 'Esta seguro que desea eliminar este proceso, se borraran todo el contenido involucrado!!',
+            alertify.confirm('Eliminar Procesoma', 'Esta seguro que desea eliminar este proceso, se borraran todo el contenido involucrado!!',
                 function(){
                     window.location.href = data.attr('href');
                 },

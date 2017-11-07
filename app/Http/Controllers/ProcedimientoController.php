@@ -40,7 +40,7 @@ class ProcedimientoController extends Controller
 
     public function editar($codPlanF, $codObjEsp, $codProc)
     {
-    	$procedimiento = Procedimiento::Existe($codProc)->get();
+    	$procedimiento = Procedimiento::find($codProc);
     	$usuariorol = Usuariorol::with('usuario')->get();
         RegistrarActividad(Procedimiento::TABLA,Historial::EDITAR,'vió el formulario de editar el Procedimiento ');
     	return view('procedimiento.editar', compact(['codPlanF', 'codObjEsp', 'codProc','procedimiento', 'usuariorol']));

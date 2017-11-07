@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SubProceso\ActualizarRequest;
+use App\Http\Requests\SubProceso\RegistroRequest;
 use Illuminate\Http\Request;
 use App\Models\Subproceso;
 use App\Models\Historial;
@@ -24,7 +26,7 @@ class SubprocesoController extends Controller
         return view('subproceso.crear')->with(compact('crearSubProceso'));
     }
 
-    public function guardar(Request $request)
+    public function guardar(RegistroRequest $request)
     {
         $subProceso = new Subproceso();
         $subProceso-> nombre = $request->nombre;
@@ -49,7 +51,7 @@ class SubprocesoController extends Controller
 
     }
 
-    public function actualizar(Request $request)
+    public function actualizar(ActualizarRequest $request)
     {
         $subproceso = Subproceso::find($request->codSubPro);
         $subproceso->nombre = $request->nombre;

@@ -29,7 +29,7 @@
                     <input type="hidden" value="{{$actividad->codProSP}}" name="codProSP">
                     <input type="hidden" value="{{$actividad->codAct}}" name="codAct">
                     {!! Field::text('responsable', $actividad->responsable, ['label' => 'Responsable']) !!}
-                    {!! Field::text('nombre', $actividad->nombre, ['label' => 'Actividad']) !!}
+                    {!! Field::textarea('nombre', $actividad->nombre, ['label' => 'Actividad']) !!}
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
                         <a href="{{URL::to('procedimientosp/mostrar')}}/{{$actividad->codProSP}}"  class="btn btn-danger btn-outline">CANCELAR</a>
