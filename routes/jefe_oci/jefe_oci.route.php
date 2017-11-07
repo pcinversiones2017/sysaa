@@ -114,6 +114,7 @@ Route::group(['prefix' => 'actividad'],function () {
     Route::get('listar', 'ActividadController@listar')->name('actividad.listar');
     Route::get('editar/{codAct}', 'ActividadController@editar')->name('actividad.editar');
     Route::post('actualizar', 'ActividadController@actualizar')->name('actividad.actualizar');
+    Route::get('eliminar/{codAct}', 'ActividadController@eliminar')->name('actividad.eliminar');
 });
 
 Route::group(['prefix' => 'tipo_normativa'],function () {

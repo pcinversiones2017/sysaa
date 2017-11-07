@@ -1,10 +1,12 @@
 @extends('layout.admin')
+@section('css-style')
+    {!! Html::style('css/plugins/alertifyjs/themes/default.css') !!}
+    {!! Html::style('css/plugins/alertifyjs/alertify.min.css') !!}
+    {!! Html::style('css/plugins/dataTables/datatables.min.css') !!}
+@stop
 @section('content')
     @include('partials.alert')
     <div class="row">
-        <div class="row wrapper border-bottom white-bg page-heading">
-
-        </div>
         <div class="col-lg-12">
 
             <div class="ibox float-e-margins">
@@ -61,7 +63,7 @@
                             <input type="hidden" value="{{$procedimientosp->codProSP}}" name="codProSP">
                             <div class="col-md-12">
                                 {!! Field::text('responsable', ['label' => 'RESPONSABLE']) !!}
-                                {!! Field::text('nombre', ['label' => 'ACTIVIDAD']) !!}
+                                {!! Field::textarea('nombre', ['label' => 'ACTIVIDAD', 'rows' => 3]) !!}
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-primary btn-outline" value="REGISTRAR">
                                     <a href="{{URL::to('macroproceso/listar')}}" class="btn btn-danger btn-outline">CANCELAR</a>
@@ -80,7 +82,7 @@
                                 <div class="tab-content">
                                     <div id="tab-10" class="tab-pane active">
                                         <div class="panel-body">
-                                            <table class="table" style="margin-top: 10px">
+                                            <table class="table table-actividades" style="margin-top: 10px">
                                                 <thead>
                                                 <tr>
                                                     <th>#</th>
@@ -90,7 +92,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($procedimientosp->actividadeS as $n => $actividad)
+                                                @foreach($procedimientosp->actividades as $n => $actividad)
                                                     <tr>
                                                         <td align="middle">{{$n+1}}</td>
                                                         <td>{{$actividad->responsable}}</td>
@@ -98,7 +100,7 @@
                                                         <td>
                                                             <a href="{!!  route('actividad.mostrar', $actividad->codAct) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
                                                             <a href="{!!  route('actividad.editar', $actividad->codAct) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
-                                                            <a href="{!!  route('actividad.eliminar', $actividad->codAct)!!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i></a>
+                                                            <a href="{!!  route('actividad.eliminar', $actividad->codAct)!!}" class="btn btn-danger btn-outline eliminar-actividad"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -116,3 +118,55 @@
     </div>
 
 @endsection
+@section('js-script')
+    {!! Html::script('js/plugins/alertifyjs/alertify.min.js') !!}
+    {!! Html::script('js/plugins/dataTables/datatables.min.js') !!}
+
+
+    <script>
+        $('.eliminar-actividad').on('click', function (e) {
+            e.preventDefault();
+            var data = $(this);
+            alertify.confirm('Eliminar Actividad', 'Esta seguro que desea eliminar este procedimiento, se borraran todo el contenido involucrado!!',
+                function(){
+                    window.location.href = data.attr('href');
+                },
+                function(){
+                    alertify.error('Cancelado');
+                }).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $('.table-actividades').DataTable({
+                language: {
+                    url : '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
+                },
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+
+                    {extend: 'excel', title: 'Lista de Procedimiento'},
+                    {extend: 'pdf', title: 'Lista de Procedimiento'},
+
+                    {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
+
+    </script>
+
+@stop

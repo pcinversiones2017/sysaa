@@ -31,7 +31,7 @@
                     {!! Field::text('nombre', $procedimientosp->nombre, ['label' => 'Nombre']) !!}
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
-                        <a href="{{URL::to('subproceso/mostrar')}}/{{$procedimientosp->codProSP}}"  class="btn btn-danger btn-outline">CANCELAR</a>
+                        <a href="{{URL::to('subproceso/mostrar')}}/{{$procedimientosp->subProceso->codSubPro}}"  class="btn btn-danger btn-outline">CANCELAR</a>
                     </div>
                     {!! Form::close() !!}
                 </div>
