@@ -27,6 +27,17 @@
                     <ul class="nav nav-second-level">
                         <li class="{{$crearPlan?? ''}}"><a href="{{URL::to('plan/crear')}}"><i class="fa fa-pencil"></i> Crear </a></li>
                         <li class="{{$listarPlan?? ''}}"><a href="{{URL::to('plan/listar')}}"><i class="fa fa-list-alt"></i> Listar </a></li>
+                        <li>
+                            <a href="#"><i class="fa fa-th-large"></i> Auditoria <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li class="{{$crearAuditoria?? ''}}">
+                                    <a href="{{URL::to('auditoria/crear')}}"><i class="fa fa-pencil"></i> Crear </a>
+                                </li>
+                                <li class="{{$listarCronograma??''}}">
+                                    <a href="{{URL::to('auditoria/listar')}}"><i class="fa fa-list-alt"></i> Listar </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li class="">
@@ -37,14 +48,6 @@
                     </ul>
                 </li>
 
-                <li class="">
-                    <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Auditoria</span>
-                        <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li class="{{$crearAuditoria?? ''}}"><a href="{{URL::to('auditoria/crear')}}"><i class="fa fa-pencil"></i> Crear </a></li>
-                        <li class="{{$listarAuditorias?? ''}}"><a href="{{URL::to('auditoria/listar')}}"><i class="fa fa-list-alt"></i> Listar </a></li>
-                    </ul>
-                </li>
                 <li>
                     <a href="index-2.html"><i class="fa fa-tags"></i> <span class="nav-label">Cronograma y Plazos
                         </span>

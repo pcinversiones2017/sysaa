@@ -17,7 +17,8 @@ class CreateProcedimientoTable extends Migration
             $table->increments('codProc');
             $table->text('justificacion');
             $table->text('detalle');
-            $table->date('fechafin');
+            $table->date('fecha_fin');
+            $table->date('fecha_terminado')->nullable();
             $table->integer('codObjEsp')->unsigned()->nullable();
             $table->integer('codObjGen')->unsigned()->nullable();
             $table->integer('codUsuRol');

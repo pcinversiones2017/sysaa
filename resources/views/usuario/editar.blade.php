@@ -10,25 +10,26 @@
             <div class="ibox-content">
                 <div class="row">
                     {!! Form::open(['method' => 'POST', 'route' => 'usuario.actualizar']) !!}
-                    @foreach($usuario as $row)
-                        <input type="hidden" name="codUsu" value="{!! $row->codUsu !!}">
+                        {!! Form::hidden('codUsu', $usuario->codUsu) !!}
                         <div class="col-md-6 b-r">
-                            {!! Field::email('email',$row->email) !!}
+                            {!! Field::email('email',$usuario->email) !!}
                             <div class="hr-line-dashed"></div>
 
-                            {!! Field::text('nombres',$row->nombres) !!}
+                            {!! Field::text('nombres',$usuario->nombres) !!}
                             <div class="hr-line-dashed"></div>
 
-                            {!! Field::text('materno',$row->materno) !!}
+                            {!! Field::text('materno',$usuario->materno) !!}
                             <div class="hr-line-dashed"></div>
 
                         </div>
                         <div class="col-md-6 b-r">
+                            {!! Field::text('username', $usuario->username) !!}
+                            <div class="hr-line-dashed"></div>
                             
                             {!! Field::password('password') !!}
                             <div class="hr-line-dashed"></div>
 
-                            {!! Field::text('paterno',$row->paterno) !!}
+                            {!! Field::text('paterno',$usuario->paterno) !!}
                             <div class="hr-line-dashed"></div>
 
                             <div class="form-group">
@@ -38,7 +39,6 @@
                             <div class="hr-line-dashed"></div>
 
                         </div>
-                    @endforeach
                     {!! Form::close() !!}
                 </div>
             </div>

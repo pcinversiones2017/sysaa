@@ -32,9 +32,9 @@
 {!! Html::script('js/bootstrap.min.js') !!}
 {!! Html::script('js/plugins/metisMenu/jquery.metisMenu.js') !!}
 {!! Html::script('js/plugins/slimscroll/jquery.slimscroll.min.js') !!}
+@yield('js-script')
 {!! Html::script('js/inspinia.js') !!}
 {!! Html::script('js/pace.min.js') !!}
-@yield('js-script')
 
 </body>
 

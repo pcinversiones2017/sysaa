@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             NormativaCSeeder::class,
             InstitucionTableSeeder::class,
             InfoSoftwareSeeder::class,
+            EstadoTableSeeder::class,
            // MacroprocesoSeeder::class,
             //ProcesomaSeeder::class,
             //SubprocesoSeeder::class,

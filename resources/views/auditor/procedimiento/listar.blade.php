@@ -43,9 +43,12 @@
                                 <td>{!! $row->objetivoespecifico->nombre !!}
                                     </td>
                                 <td>
+                                    @if(count($row->desarrollo) == 1 && $row->fecha_terminado == '')
                                     <a href="{!! url('auditor/procedimiento/mostrar/'.$row->codProc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-eye"></i>  </a>
-                                    @if(count($row->desarrollo) == 0)
+                                    @elseif($row->fecha_terminado == '')
                                     <a href="{!! url('auditor/desarrollo/crear/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-pencil"></i>  </a>
+                                    @else
+                                    <a href="" class="btn btn-danger btn-outline">CONCLUIDO</a>
                                     @endif
                                 </td>
                             </tr>

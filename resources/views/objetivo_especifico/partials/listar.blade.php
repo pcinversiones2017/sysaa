@@ -4,7 +4,7 @@
             <div class="ibox-content">
                 <div class="row">
                     <div class="col-sm-3">
-                        <a type="button" href="{!! route('objetivo-especifico.crear', $auditoria->codPlanF) !!}" class="btn btn-sm btn-primary btn-outline"><i class="fa fa-plus"></i> CREAR OBJETIVO ESPECÍFICO</a>
+                        <a type="button" href="{!! route('objetivo-especifico.crear', $auditoria->codPlanF) !!}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-pencil"></i> CREAR OBJETIVO ESPECÍFICO</a>
                     </div>
                 </div>
 

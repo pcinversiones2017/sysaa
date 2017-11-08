@@ -6,9 +6,9 @@ use App\Models\Rol;
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> 
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{!! Auth::user()->datos !!}</strong>
-                             </span> <span class="text-muted text-xs block">{!! Auth::user()->usuariorol->rol->nombre !!} <b class="caret"></b></span> </span> </a>
+                        <a data-toggle="dropdown" class="dropdown-toggle">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><a href="{!! url('/') !!}" >{!! Auth::user()->datos !!}</a></strong>
+                             </span> <span class="text-muted text-xs block">{!! Auth::user()->usuariorol->rol->nombre !!} </span> </span> </a>
                     </div>
                     <div class="logo-element">
                         

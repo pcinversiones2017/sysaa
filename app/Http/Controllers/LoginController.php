@@ -21,17 +21,17 @@ class LoginController extends Controller
 
     public function authenticate(ValidarRequest $request)
     {
-    	$UsuarioExiste = User::ExisteEmail($request->email)->count();
+    	$UsuarioExiste = User::ExisteEmail($request->username)->count();
     	if($UsuarioExiste == 1)
     	{
-    		$Usuario = User::ExisteEmail($request->email)->get();
+    		$Usuario = User::ExisteEmail($request->username)->get();
     		foreach($Usuario as $row):
     			$ObtenerID = $row->codUsu;
     		endforeach;
     		$ValidarUsuario = Usuariorol::Validar($ObtenerID)->count(); 
     		if($ValidarUsuario == 1)
     		{
-    			if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
+    			if(Auth::attempt(['username' => $request->username, 'password' => $request->password]))
 		    	{
                     RegistrarActividad('LOGIN','INICIO SESION','acaba de iniciar sesion');
 		    		return redirect('/');
