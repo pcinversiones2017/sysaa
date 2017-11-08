@@ -1,5 +1,5 @@
 <?php
-Route::group(['middleware' => ['auth','auditor']], function(){
+Route::group(['middleware' => ['auth','auditor','jefe_comision']], function(){
 
     Route::group(['namespace' => 'Auditor','prefix' => 'auditor/procedimiento'], function(){
         Route::get('listar','ProcedimientoController@listar')->name('auditor.procedimiento.listar');

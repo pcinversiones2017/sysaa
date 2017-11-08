@@ -25,9 +25,29 @@ class Procedimiento extends Model
         return $cadenaSQL->where('codProc',$id);
     }
 
+    public function scopeAsignado($cadenaSQL)
+    {
+        return $cadenaSQL->where('codEst',1);
+    }
+
+    public function scopePendiente($cadenaSQL)
+    {
+        return $cadenaSQL->where('codEst',2);
+    }
+
     public function scopeFinalizado($cadenaSQL)
     {
-        return $cadenaSQL->whereNotNull('fecha_terminado');
+        return $cadenaSQL->where('codEst',3);
+    }
+
+    public function scopeAprobado($cadenaSQL)
+    {
+        return $cadenaSQL->where('codEst',4);
+    }
+
+    public function scopeRechazado($cadenaSQL)
+    {
+        return $cadenaSQL->where('codEst',5);
     }
 
     public function codusurol()

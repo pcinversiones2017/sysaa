@@ -14,10 +14,12 @@
                         <th>OBJETIVO ESPECIFICO</th>
                         <th>JUSTIFICACION</th>
                         <th>DETALLE</th>
-                        <th>FECHA TERMINADO</th>
+                        <th>F. TERMINADO</th>
+                        <th>F. RECHAZADO</th>
                         <th>FECHA FIN</th>
                         <th>PERSONA</th>
                         <th>ESTADO</th>
+                        <th>ACCION</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,13 +28,36 @@
                     <tr>
                         <td>{{$i}}</td>
                         <td>{!! $row->objetivoespecifico->nombre !!}</td>
-                        <td>{!! $row->justificacion !!}</td>
-                        <td>{!! $row->detalle !!}</td>
+                        <td>{!! substr($row->justificacion,0,10) !!}</td>
+                        <td>{!! substr($row->detalle,0,10) !!}</td>
                         <td>{!! $row->fecha_terminado !!}</td>
+                        <td>{!! $row->fecha_rechazado !!}</td>
                         <td>{!! $row->fecha_fin !!}</td>
                         <td>{!! $row->nombres !!} {!! $row->paterno !!} {!! $row->materno !!}</td>
                         <td>
-                                
+                            @if($row->codEst == 1)
+                            <span class="label label-info">NUEVO</span>
+                            @elseif($row->codEst == 2)
+                            <span class="label label-warning">PENDIENTE</span>
+                            @elseif($row->codEst == 3)
+                            <span class="label label-primary">TERMINADO</span>
+                            @elseif($row->codEst == 4)
+                            <span class="label label-success">APROBADO</span>
+                            @elseif($row->codEst == 5)
+                            <span class="label label-danger">RECHAZADO</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if($row->codEst == 3)
+                        	<a href="{!! url('jefe-comision/procedimiento/aprobar/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-check"></i></a>
+                        	<a href="{!! url('jefe-comision/procedimiento/rechazar/'.$row->codProc) !!}" class="btn btn-danger btn-outline"><i class="fa fa-remove"></i></a>
+                            @elseif($row->codEst == 4)
+                            <span class="label label-success">APROBADO</span>
+                            @elseif($row->codEst == 1)
+                            <a href="{!! url('auditor/desarrollo/crear/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-pencil"></i> </a>
+                            @elseif($row->codEst == 2)
+                            <span class="label label-warning">PENDIENTE</span>
+                            @endif
                         </td>
                     </tr>
                     <?php $i++ ?>
@@ -46,6 +71,7 @@
     <script>
         $(document).ready(function(){
             $('.tabla-procedimientos').DataTable({
+  				"ordering": false,
                 language: {
                     url : '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
                 },
