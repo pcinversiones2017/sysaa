@@ -24,11 +24,13 @@ class ObjetivoEspecificoController extends Controller
             $objetivoEspecifico->codMacroP  = $request->codMacroP;
             $objetivoEspecifico->codObjGen  = $request->codObjGen;
             $objetivoEspecifico->save();
-            RegistrarActividad(ObjetivoEspecifico::TABLA,Historial::REGISTRAR,'registró el Objetivo Especifico '.$request->nombre);
-            return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success', 'Objetivo especifico registrado');
+            //dd($objetivoEspecifico->codObjEsp, $request->codPlanF);
+            RegistrarActividad(ObjetivoEspecifico::TABLA,Historial::REGISTRAR,'registró el Objetivo Especifico '. substr($request->nombre, 0, 50));
+            return redirect()->route('objetivo-especifico.mostrar', [$request->codPlanF, $objetivoEspecifico->codObjEsp])->with('success', 'Objetivo especifico registrado');
 
         }catch (\Exception $e){
             Log::error($e->getMessage());
+            echo $e->getMessage();
         }
     }
 
@@ -49,7 +51,7 @@ class ObjetivoEspecificoController extends Controller
         try{
             $macroprocesos = Macroproceso::all();
             $objetivoEspecifico = ObjetivoEspecifico::find($request->codObjEsp);
-            RegistrarActividad(ObjetivoEspecifico::TABLA,Historial::EDITAR,'vió el formulario de editar el Objetivo Especifico '.$objetivoEspecifico->nombre);
+            RegistrarActividad(ObjetivoEspecifico::TABLA,Historial::EDITAR,'vió el formulario de editar el Objetivo Especifico ' . substr($objetivoEspecifico->nombre, 0, 50));
 
             return view('objetivo_especifico.editar', compact('macroprocesos', 'objetivoEspecifico'));
         }catch (\Exception $e){
@@ -65,7 +67,8 @@ class ObjetivoEspecificoController extends Controller
             $objetivoEspecifico->materia    = $request->materia;
             $objetivoEspecifico->codMacroP  = $request->codMacroP;
             $objetivoEspecifico->save();
-            RegistrarActividad(ObjetivoEspecifico::TABLA,Historial::ACTUALIZAR,'actualizó el Objetivo Especifico '.$request->nombre);
+
+            RegistrarActividad(ObjetivoEspecifico::TABLA,Historial::ACTUALIZAR,'actualizó el Objetivo Especifico ' . substr($request->nombre, 0, 50));
 
             return redirect()->route('auditoria.mostrar', $objetivoEspecifico->objetivoGeneral->auditoria->codPlanF)
                 ->with('success', 'Objetivo especifico actualizado');
@@ -112,7 +115,7 @@ class ObjetivoEspecificoController extends Controller
             $codPlanF = $objetivoEspecifico->objetivoGeneral->auditoria->codPlanF;
             $objetivoEspecifico->delete();
 
-            RegistrarActividad(Actividad::TABLA,Historial::ELIMINAR,'eliminó el Objetivo Especifico '.$actividad->nombre);
+            RegistrarActividad(ObjetivoEspecifico::TABLA,Historial::ELIMINAR,'eliminó el Objetivo Especifico '. $objetivoEspecifico->nombre);
             return redirect()->route('auditoria.mostrar', $codPlanF)->with('success', 'Objetivo especifico eliminado');
         }catch (\Exception $e){
             Log::error($e->getMessage());

@@ -32,7 +32,7 @@
 
                     <div class="row">
                         <div class="col-sm-3">
-                            <a type="button" href="{{URL::to('cronograma/crear')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Crear Cronograma</a>
+                            <a type="button" href="{{URL::to('cronograma/crear')}}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i> Crear Cronograma</a>
                         </div>
                     </div>
 

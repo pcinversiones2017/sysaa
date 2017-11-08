@@ -47,14 +47,11 @@ class AuditoriaController extends Controller
         $auditoria->tipoDemanda = $request->tipoDemanda;
         $auditoria->fechaIniPlanF = $request->fechaIniPlanF;
         $auditoria->fechaFinPlanF = $request->fechaFinPlanF;
-        $auditoria->periodoIniPlanF = $request->periodoIniPlanF;
-        $auditoria->periodoFinPlanF = $request->periodoFinPlanF;
         $auditoria->codPlanA = $request->codPlanA;
         $auditoria->estadoAuditoria = 'pendiente';
 
-        $periodo = explode('hasta', $request->periodo);
-        $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($periodo[0]));
-        $auditoria->periodoFinPlanF = date('Y-m-d', strtotime($periodo[1]));
+        $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($request->periodoIniPlanF));
+        $auditoria->periodoFinPlanF = date('Y-m-d', strtotime($request->periodoFinPlanF));
         RegistrarActividad(Auditoria::TABLA,Historial::REGISTRAR,'registró la Auditoria '.$request->nombrePlanF);
 
         $auditoria->save();
