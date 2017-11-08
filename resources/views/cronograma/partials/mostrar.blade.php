@@ -6,7 +6,7 @@
                 @if($auditoria->cronogramaGeneral->isEmpty())
                 <div class="row">
                     <div class="col-sm-3">
-                        <a type="button" href="{{url('cronograma/crear')}}" class="btn btn-sm btn-primary btn-outline"><i class="fa fa-plus"></i> CREAR CRONOGRAMA</a>
+                        <a type="button" href="{{url('cronograma/crear')}}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-pencil"></i> CREAR CRONOGRAMA</a>
                     </div>
                 </div>
                 @endif
