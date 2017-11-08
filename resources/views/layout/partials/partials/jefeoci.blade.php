@@ -18,6 +18,7 @@
                         <li ><a href="{!! route('institucion.listarSoftware') !!}"> <i class="fa fa-rebel"></i> Informacion del Software</a></li>
                     </ul>
                 </li>
+                <li class="header" style="padding: 5px 25px 5px 40px; background: #1d3040; color: #a7b1c2"><span class="nav-label">ETAPAS DE AUDITORIA</span></li>
                 @if(isset($crearPlan) || isset($listarPlan))
                 <li class="active">
                 @else

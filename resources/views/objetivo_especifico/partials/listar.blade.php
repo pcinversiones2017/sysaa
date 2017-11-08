@@ -12,11 +12,11 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Detalle</th>
-                        <th>MacroProceso</th>
-                        <th>Materia a examinar</th>
-                        <th>Procesos</th>
-                        <th>Acciones</th>
+                        <th>DETALLE</th>
+                        <th>MACROPROCESO</th>
+                        <th>PROCESOS</th>
+                        <th>MATERIAS A EXAMINAR</th>
+                        <th>ACCIONES</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -26,9 +26,9 @@
                             <td>{{$i}}</td>
                             <td>{{$objetivoEsp->nombre}}</td>
                             <td>{{$objetivoEsp->macroproceso->nombre}}</td>
+                            <td style="text-align: center"><a href="{{route('macroproceso.mostrar', $objetivoEsp->macroproceso->codMacroP)}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a></td>
                             <td>{{$objetivoEsp->materia}}</td>
-                            <td><a href="{{route('macroproceso.mostrar', $objetivoEsp->macroproceso->codMacroP)}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a></td>
-                            <td class="tooltip-demo">
+                            <td class="tooltip-demo" style="text-align: center">
                                 <a href="{{url('objetivo-especifico/mostrar')}}/{{$auditoria->codPlanF}}/{{$objetivoEsp->codObjEsp}}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Ver"><i class="fa fa-eye"></i></a>
                                 <a href="{{route('objetivo-especifico.editar', $objetivoEsp->codObjEsp) }}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
                                 <a href="{{route('objetivo-especifico.eliminar', $objetivoEsp->codObjEsp )}}" class="btn btn-danger btn-outline eliminar-objetivo-especifico" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>

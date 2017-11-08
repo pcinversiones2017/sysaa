@@ -8,41 +8,44 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>LISTA DE PLANES ANUALES </h5>
-                </div>
                 <div class="ibox-content">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <a type="button" href="{{URL::to('auditoria/crear')}}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-pencil"></i> CREAR AUDITORIA</a>
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            LISTA DE PLANES ANUALES
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <a type="button" href="{{URL::to('auditoria/crear')}}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-pencil"></i> CREAR AUDITORIA</a>
+                                </div>
+                            </div>
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>NOMBRE</th>
+                                    <th>FECHA CREACIÓN</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php $i=1 ?>
+                                @foreach($planes as $plan)
+                                    <tr>
+                                        <td>{{$i}}</td>
+                                        <td>{{$plan->nombrePlan}}</td>
+                                        <td>{{$plan->fecha_creado}}</td>
+                                        <td>
+                                            <a href="#" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
+                                            <a href="{{URL::to('plan/editar')}}/{{$plan->codPlanA}}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
+                                            <a href="{!!  route('plan.eliminar', $plan->codPlanA)!!}" class="btn btn-danger btn-outline eliminar-plan"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>NOMBRE</th>
-                            <th>FECHA CREACIÓN</th>
-                            <th>ACCIONES</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php $i=1 ?>
-                        @foreach($planes as $plan)
-                        <tr>
-                            <td>{{$i}}</td>
-                            <td>{{$plan->nombrePlan}}</td>
-                            <td>{{$plan->fecha_creado}}</td>
-                            <td>
-                                <a href="#" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
-                                <a href="{{URL::to('plan/editar')}}/{{$plan->codPlanA}}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
-                                <a href="{!!  route('plan.eliminar', $plan->codPlanA)!!}" class="btn btn-danger btn-outline eliminar-plan"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-
                 </div>
             </div>
         </div>
