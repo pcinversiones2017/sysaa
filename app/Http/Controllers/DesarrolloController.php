@@ -29,6 +29,7 @@ class DesarrolloController extends Controller
     public function registrar(Request $request)
     {
     	Desarrollo::create(['informe' => $request->informe, 'elaborado' => date("Y-m-d"), 'codProc' => $request->codProc]);
+        Procedimiento::existe($request->codProc)->update(['codEst' => 2]);
         RegistrarActividad(Desarrollo::TABLA,Historial::REGISTRAR,'registró el Desarrollo '.$request->nombre);
     	return redirect('auditor/procedimiento/mostrar/'.$request->codProc)->with('success','Desarrollo registrado');
     }

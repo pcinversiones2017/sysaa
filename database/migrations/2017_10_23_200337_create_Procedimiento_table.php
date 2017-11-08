@@ -19,9 +19,12 @@ class CreateProcedimientoTable extends Migration
             $table->text('detalle');
             $table->date('fecha_fin');
             $table->date('fecha_terminado')->nullable();
+            $table->date('fecha_aprobado')->nullable();
+            $table->date('fecha_rechazado')->nullable();
             $table->integer('codObjEsp')->unsigned()->nullable();
             $table->integer('codObjGen')->unsigned()->nullable();
             $table->integer('codUsuRol');
+            $table->integer('codEst');
 
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();

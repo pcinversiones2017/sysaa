@@ -9,7 +9,7 @@ class Procedimiento extends Model
     protected $table = "procedimiento";
     protected $primaryKey = 'codProc';
 
-    protected $fillable = ['justificacion', 'detalle', 'fecha_fin', 'codObjEsp','codObjGen','codUsuRol','eliminado', 'fecha_terminado'];
+    protected $fillable = ['justificacion', 'detalle', 'fecha_fin', 'codObjEsp','codObjGen','codUsuRol','eliminado', 'fecha_terminado', 'codEst'];
 
     const CREATED_AT = "fecha_creado";
     const UPDATED_AT = "fecha_modificado";
@@ -25,9 +25,29 @@ class Procedimiento extends Model
         return $cadenaSQL->where('codProc',$id);
     }
 
+    public function scopeAsignado($cadenaSQL)
+    {
+        return $cadenaSQL->where('codEst',1);
+    }
+
+    public function scopePendiente($cadenaSQL)
+    {
+        return $cadenaSQL->where('codEst',2);
+    }
+
     public function scopeFinalizado($cadenaSQL)
     {
-        return $cadenaSQL->whereNotNull('fecha_terminado');
+        return $cadenaSQL->where('codEst',3);
+    }
+
+    public function scopeAprobado($cadenaSQL)
+    {
+        return $cadenaSQL->where('codEst',4);
+    }
+
+    public function scopeRechazado($cadenaSQL)
+    {
+        return $cadenaSQL->where('codEst',5);
     }
 
     public function codusurol()

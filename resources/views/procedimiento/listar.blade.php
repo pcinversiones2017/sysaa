@@ -33,7 +33,7 @@
                         </thead>
                         <tbody>
                         <?php $i=1 ?>
-                        @foreach($usuarios as $row)
+                        @foreach($procedimiento_general as $row)
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{!! $row->datos !!}</td>

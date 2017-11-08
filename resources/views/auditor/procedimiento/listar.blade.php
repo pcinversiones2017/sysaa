@@ -1,27 +1,31 @@
 @extends('layout.admin')
+
+@section('css-style')
+    {!! Html::style('css/plugins/dataTables/datatables.min.css') !!}
+@stop
+
 @section('content')
 
-    @if (session('success'))
-    <div class="alert alert-success" role="alert">
-        {!! session('success') !!}          
-    </div>
-    @endif
-
-    @if (session('danger'))
-    <div class="alert alert-danger" role="alert">
-        {!! session('danger') !!}           
-    </div>
-    @endif
+    @include('partials.alert')
 
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de Desarrollo de Procedimiento </h5>
+                <h3>LISTADO DE PROCEDIMIENTOS</h3>
+                <hr>
+                <h3>
+                 TOTAL: <a class="btn btn-success m-r-sm">{!! $procedimiento->count() !!}</a>
+                 ASIGNADOS: <a class="btn btn-danger m-r-sm">{!! $asignado->count() !!}</a> 
+                 PENDIENTES: <a class="btn btn-warning m-r-sm">{!! $pendiente->count() !!}</a>
+                 APROBADOS: <a class="btn btn-primary m-r-sm">{!! $aprobado->count() !!}</a>
+                 RECHAZADOS: <a class="btn btn-danger m-r-sm">{!! $rechazado->count() !!}</a>
+                 FINALIZADOS: <a class="btn btn-primary m-r-sm">{!! $finalizado->count() !!}</a>
+                </h3>
                 </div>
                 <div class="ibox-content">
 
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-procedimientos">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -39,16 +43,20 @@
                                 <td>{{$i}}</td>
                                 <td>{!! $row->justificacion !!}</td>
                                 <td>{!! $row->detalle !!}</td>
-                                <td>{!! $row->fechafin !!}</td>
+                                <td>{!! $row->fecha_fin !!}</td>
                                 <td>{!! $row->objetivoespecifico->nombre !!}
                                     </td>
                                 <td>
-                                    @if(count($row->desarrollo) == 1 && $row->fecha_terminado == '')
+                                    @if($row->codEst == 2)
                                     <a href="{!! url('auditor/procedimiento/mostrar/'.$row->codProc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-eye"></i>  </a>
-                                    @elseif($row->fecha_terminado == '')
+                                    @elseif($row->codEst == 1)
                                     <a href="{!! url('auditor/desarrollo/crear/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-pencil"></i>  </a>
+                                    @elseif($row->codEst == 4)
+                                    <a href="" class="btn btn-success btn-outline">APROBADO</a>
+                                    @elseif($row->codEst == 3)
+                                    <a href="" class="btn btn-danger btn-outline">FINALIZADO</a>
                                     @else
-                                    <a href="" class="btn btn-danger btn-outline">CONCLUIDO</a>
+                                    <a href="" class="btn btn-primary btn-outline">CONCLUIDO</a>
                                     @endif
                                 </td>
                             </tr>
@@ -63,3 +71,38 @@
 
     </div>
 @endsection
+
+@section('js-script')
+    {!! Html::script('js/plugins/dataTables/datatables.min.js') !!}
+    <script>
+        $(document).ready(function(){
+            $('.table-procedimientos').DataTable({
+                language: {
+                    url : '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
+                },
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+
+                    {extend: 'excel', title: 'Lista Auditorias'},
+                    {extend: 'pdf', title: 'Lista Auditorias'},
+
+                    {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
+
+    </script>
+@stop
