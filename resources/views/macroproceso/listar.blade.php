@@ -9,43 +9,46 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Lista de MacroProcesos </h5>
-                </div>
                 <div class="ibox-content">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <a type="button" href="{{URL::to('macroproceso/crear')}}" class="btn btn-outline btn-primary">
-                            Crear Macroproceso</a><p>
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            LISTA DE MACROPROCESOS
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <a type="button" href="{{URL::to('macroproceso/crear')}}" class="btn btn-outline btn-success">
+                                        <i class="fa fa-pencil"></i> CREAR MACROPROCESO</a><p>
+                                </div>
+                            </div>
+                            <table class="table table-bordered table-macroprocesos">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha creacion</th>
+                                    <th>Acciones</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($macroprocesos as $n =>$macroproceso)
+                                    <tr>
+                                        <td align="middle">{{$n+1}}</td>
+                                        <td>{{$macroproceso->nombre}}</td>
+                                        <td>{{$macroproceso->fecha_creado}}</td>
+                                        <td width="15%" style="text-align: center">
+                                            <a href="{{URL::to('macroproceso/mostrar')}}/{{$macroproceso->codMacroP}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i>  </a>
+                                            <a href="{{URL::to('macroproceso/editar')}}/{{$macroproceso->codMacroP}}" class="btn btn-primary btn-outline">
+                                                <i class="fa fa-edit"></i>  </a>
+                                            <a href="{{URL::to('macroproceso/eliminar')}}/{{$macroproceso->codMacroP}}" class="btn btn-danger btn-outline eliminar-macroproceso">
+                                                <i class="fa fa-trash"></i>  </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <table class="table table-bordered table-macroprocesos">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nombre</th>
-                            <th>Fecha creacion</th>
-                            <th>Acciones</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($macroprocesos as $n =>$macroproceso)
-                            <tr>
-                                <td align="middle">{{$n+1}}</td>
-                                <td>{{$macroproceso->nombre}}</td>
-                                <td>{{$macroproceso->fecha_creado}}</td>
-                                <td width="15%" style="text-align: center">
-                                    <a href="{{URL::to('macroproceso/mostrar')}}/{{$macroproceso->codMacroP}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i>  </a>
-                                    <a href="{{URL::to('macroproceso/editar')}}/{{$macroproceso->codMacroP}}" class="btn btn-primary btn-outline">
-                                        <i class="fa fa-edit"></i>  </a>
-                                    <a href="{{URL::to('macroproceso/eliminar')}}/{{$macroproceso->codMacroP}}" class="btn btn-danger btn-outline eliminar-macroproceso">
-                                        <i class="fa fa-trash"></i>  </a>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-
                 </div>
             </div>
         </div>
