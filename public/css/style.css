@@ -71,7 +71,7 @@ h5 {
 }
 .navbar-default {
   background-color: transparent;
-  border-color: #263949;
+  border-color: #32485a;
 }
 .navbar-top-links li {
   display: inline-block;
@@ -169,7 +169,7 @@ h5 {
 }
 .nav-header {
   padding: 33px 25px;
-  background-color: #263949;
+  background-color: #32485a;
   background-image: url("patterns/header-profile.png");
 }
 .pace-done .nav-header {
@@ -272,7 +272,7 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
   position: absolute;
   left: 70px;
   top: 0;
-  background-color: #263949;
+  background-color: #32485a;
   padding: 10px 10px 10px 10px;
   font-size: 12px;
 }
@@ -498,7 +498,7 @@ body.canvas-menu.mini-navbar .navbar-default .nav li .profile-element a span {
 }
 body.canvas-menu nav.navbar-static-side {
   z-index: 2001;
-  background: #263949;
+  background: #32485a;
   height: 100%;
   position: fixed;
   display: none;
@@ -632,7 +632,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
   color: #1ab394;
 }
 .btn-success.btn-outline {
-  color: #263949;
+  color: #32485a;
 }
 .btn-info.btn-outline {
   color: #23c6c8;
@@ -692,8 +692,8 @@ fieldset[disabled] .btn-primary.active {
   border-color: #1dc5a3;
 }
 .btn-success {
-  background-color: #263949;
-  border-color: #263949;
+  background-color: #32485a;
+  border-color: #32485a;
   color: #FFFFFF;
 }
 .btn-success:hover,
@@ -705,8 +705,8 @@ fieldset[disabled] .btn-primary.active {
 .btn-success:active:hover,
 .btn-success.active:hover,
 .btn-success.active:focus {
-  background-color: #263949;
-  border-color: #263949;
+  background-color: #32485a;
+  border-color: #32485a;
   color: #FFFFFF;
 }
 .btn-success:active,
@@ -1096,7 +1096,7 @@ button.dim:active:before {
 }
 .label-success,
 .badge-success {
-  background-color: #263949;
+  background-color: #32485a;
   color: #FFFFFF;
 }
 .label-warning,
@@ -1275,19 +1275,19 @@ button.dim:active:before {
 }
 /* TOOLTIPS */
 .tooltip-inner {
-  background-color: #263949;
+  background-color: #32485a;
 }
 .tooltip.top .tooltip-arrow {
-  border-top-color: #263949;
+  border-top-color: #32485a;
 }
 .tooltip.right .tooltip-arrow {
-  border-right-color: #263949;
+  border-right-color: #32485a;
 }
 .tooltip.bottom .tooltip-arrow {
-  border-bottom-color: #263949;
+  border-bottom-color: #32485a;
 }
 .tooltip.left .tooltip-arrow {
-  border-left-color: #263949;
+  border-left-color: #32485a;
 }
 /* EASY PIE CHART*/
 .easypiechart {
@@ -1897,7 +1897,7 @@ div.dt-button-info {
 }
 .form-control:focus,
 .single-line:focus {
-  border-color: #263949;
+  border-color: #32485a;
 }
 .has-success .form-control,
 .has-success .form-control:focus {
@@ -2531,7 +2531,7 @@ label.error {
   border-left: 6px solid #f8ac59;
 }
 .inspinia-notify.alert-success {
-  border-left: 6px solid #263949;
+  border-left: 6px solid #32485a;
 }
 .inspinia-notify.alert-danger {
   border-left: 6px solid #ed5565;
@@ -3273,8 +3273,8 @@ body.tour-open .animated {
 }
 .stream .stream-badge i.bg-success {
   color: #ffffff;
-  background-color: #263949;
-  border-color: #263949;
+  background-color: #32485a;
+  border-color: #32485a;
 }
 .stream .stream-badge i.bg-primary {
   color: #ffffff;
@@ -3405,7 +3405,7 @@ body.tour-open .animated {
   padding: 12px 10px;
   margin: 0;
   border-radius: 0;
-  background: #263949;
+  background: #32485a;
   color: #fff;
   text-align: center;
   border-right: 1px solid #334556;
@@ -3478,7 +3478,7 @@ body.tour-open .animated {
 }
 body {
   font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #263949;
+  background-color: #32485a;
   font-size: 13px;
   color: #676a6c;
   overflow-x: hidden;
@@ -3498,7 +3498,7 @@ body.boxed-layout {
   background: url('patterns/shattered.png');
 }
 body.boxed-layout #wrapper {
-  background-color: #263949;
+  background-color: #32485a;
   max-width: 1200px;
   margin: 0 auto;
   -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
@@ -4036,7 +4036,7 @@ table.table-mail tr td {
 }
 .blue-bg,
 .bg-success {
-  background-color: #263949;
+  background-color: #32485a;
   color: #ffffff;
 }
 .navy-bg,
@@ -4073,9 +4073,9 @@ table.table-mail tr td {
   border-color: #263a4a;
 }
 .panel-success > .panel-heading {
-  background-color: #263949;
-  background-image: url(patterns/header-profile.png);
-  border-color: #263949;
+  background-color: #32485a;
+  /*background-image: url(patterns/header-profile.png);*/
+  border-color: #32485a;
   color: #ffffff;
 }
 .panel-info {
@@ -4122,7 +4122,7 @@ table.table-mail tr td {
   background-color: #3dc7ab;
 }
 .progress-bar-success {
-  background-color: #263949;
+  background-color: #32485a;
 }
 .progress-bar-info {
   background-color: #23c6c8;
@@ -4151,7 +4151,7 @@ table.table-mail tr td {
   color: inherit;
 }
 .text-success {
-  color: #263949;
+  color: #32485a;
 }
 .text-info {
   color: #23c6c8;
@@ -4944,7 +4944,7 @@ ul.notes li div {
   color: #1ab394;
 }
 .category-list li a .text-primary {
-  color: #263949;
+  color: #32485a;
 }
 .category-list li a .text-info {
   color: #23c6c8;
@@ -5400,7 +5400,7 @@ dd.project-people {
 .article h1 {
   font-size: 48px;
   font-weight: 700;
-  color: #263949;
+  color: #32485a;
 }
 .article p {
   font-size: 15px;
@@ -5466,7 +5466,7 @@ table.issue-tracker tbody tr td {
   border-left: 3px solid #ed5565;
 }
 .agile-list li.info-element {
-  border-left: 3px solid #263949;
+  border-left: 3px solid #32485a;
 }
 .agile-list li.success-element {
   border-left: 3px solid #1ab394;
@@ -5771,7 +5771,7 @@ body.body-small .vote-icon {
   display: block;
 }
 .small-chat-box .heading {
-  background: #263949;
+  background: #32485a;
   padding: 8px 15px;
   font-weight: bold;
   color: #fff;
