@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombres', 'paterno','materno','email', 'password'
+        'nombres', 'paterno','materno','email', 'password', 'username'
     ];
 
     /**
@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     public function scopeExisteEmail($cadenaSQL, $email)
     {
-        return $cadenaSQL->where('email',$email);
+        return $cadenaSQL->where('username',$email);
     }
 
     public function setNombresAttribute($value)

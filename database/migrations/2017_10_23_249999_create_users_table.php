@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('materno');
             $table->string('nombres');
             $table->string('email');
+            $table->string('username');
             $table->string('password');
             $table->string('remember_token')->nullable();
             $table->timestamp('fecha_creado')->nullable();

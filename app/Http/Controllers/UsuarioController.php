@@ -24,13 +24,14 @@ class UsuarioController extends Controller
     	return view('usuario.crear');
     }
 
-    public function registrar(Request $request)
+    public function registrar(RegistroRequest $request)
     {
     	User::create([	
     					'nombres' => $request->nombres, 
     					'paterno' => $request->paterno, 
     					'materno' => $request->materno,
     					'email' => $request->email, 
+                        'username' => $request->username, 
     					'password' => bcrypt($request->password)
     				]);
         RegistrarActividad(User::TABLA,Historial::REGISTRAR,'registró el Usuario '.$request->nombre);
@@ -39,21 +40,22 @@ class UsuarioController extends Controller
 
     public function editar($id)
     {
-    	$usuario = User::Existe($id)->get();
-        RegistrarActividad(User::TABLA,Historial::EDITAR,'vió el formulario de editar el Usuario '.$actividad->nombre);
+    	$usuario = User::find($id);
+        RegistrarActividad(User::TABLA,Historial::EDITAR,'vió el formulario de editar el Usuario '.$usuario->nombres);
     	return view('usuario.editar', compact('usuario'));
     }
 
     public function actualizar(ActualizarRequest $request)
     {
+
     	if($request->has('password'))
     	{
-    		User::Existe($request->id)->update(['nombres' => $request->nombres, 'paterno' => $request->paterno, 'materno' => $request->materno,'email' => $request->email, 'password' => bcrypt($request->password)]);
+    		User::Existe($request->codUsu)->update(['nombres' => $request->nombres, 'paterno' => $request->paterno, 'materno' => $request->materno,'email' => $request->email, 'password' => bcrypt($request->password), 'username' => $request->username]);
             RegistrarActividad(User::TABLA,Historial::ACTUALIZAR,'actualizó el Usuario '.$request->nombre);
     		return redirect()->route('usuario.listar')->with('success','Usuario actualizado');	
     	}else 
     	{
-    		User::Existe($request->id)->update(['nombres' => $request->nombres, 'paterno' => $request->paterno, 'materno' => $request->materno,'email' => $request->email]);
+    		User::Existe($request->codUsu)->update(['nombres' => $request->nombres, 'paterno' => $request->paterno, 'materno' => $request->materno,'email' => $request->email, 'username' => $request->username]);
             RegistrarActividad(User::TABLA,Historial::ACTUALIZAR,'actualizó el Usuario '.$request->nombre);
     		return redirect()->route('usuario.listar')->with('success','Usuario actualizado');	
     	}

@@ -29,9 +29,9 @@
             </p>
             <p>Iniciar Sesion</p>
             {!! Form::open(['method' => 'POST', 'url' => 'iniciar-sesion']) !!}
-                {!! Field::text('email') !!}
+                {!! Field::text('username') !!}
                 {!! Field::password('password') !!}
-                <button type="submit" class="btn btn-primary block full-width m-b">INGRESAR</button>
+                {!! Form::submit('INGRESAR', ['class' => 'btn btn-primary block full-width m-b']) !!}
             {!! Form::close() !!}
 
             @if (session('danger'))

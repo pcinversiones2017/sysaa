@@ -23,6 +23,9 @@
                         </div>
                         <div class="col-md-6 b-r">
                             
+                            {!! Field::text('username') !!}
+                            <div class="hr-line-dashed"></div>
+                            
                             {!! Field::password('password') !!}
                             <div class="hr-line-dashed"></div>
 
