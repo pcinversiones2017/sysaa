@@ -30,7 +30,7 @@ class ProcedimientoController extends Controller
     	Procedimiento::create([	
     					'justificacion' => $request->justificacion, 
     					'detalle' 		=> $request->detalle, 
-    					'fechafin' 		=> date('Y-m-d', strtotime($request->fechafin)),
+    					'fecha_fin' 		=> date('Y-m-d', strtotime($request->fechafin)),
     					'codUsuRol'		=> $request->codUsuRol,
     					'codObjEsp' 	=> $request->codObjEsp
     				]);

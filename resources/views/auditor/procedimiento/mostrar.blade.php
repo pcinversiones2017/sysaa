@@ -11,10 +11,11 @@
                 <div class="ibox-title">
                     <h5>Detalle del Desarrollo de Procedimiento {!! substr($procedimiento->justificacion,0,15) !!}...</h5>
                     <div class="ibox-tools">
+                    <a href="{!! url('auditor/procedimiento/finalizar/'. $procedimiento->codProc) !!}" class="btn btn-success">FINALIZAR PROCEDIMIENTO</a>                        
                     <a href="{!! url('auditor/archivo/crear/'. $procedimiento->desarrollo->codDes) !!}" class="btn btn-primary "><i class="fa fa-upload"></i>  </a>
                     <a href="{!! url('auditor/archivo/listar/'. $procedimiento->desarrollo->codDes) !!}" class="btn btn-info "><i class="fa fa-paperclip"></i>  </a>
-                    <a href="{!! url('auditor/procedimiento/listar')!!}" class="btn btn-danger"><i class="fa fa-mail-reply"></i></a>
                     <a href="{!! url('auditor/desarrollo/editar/'.$procedimiento->desarrollo->codDes)!!}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                    <a href="{!! url('auditor/procedimiento/listar')!!}" class="btn btn-danger"><i class="fa fa-mail-reply"></i></a>
                 	</div>
                 </div>
                 <div class="ibox-content">

@@ -9,7 +9,7 @@ class Procedimiento extends Model
     protected $table = "procedimiento";
     protected $primaryKey = 'codProc';
 
-    protected $fillable = ['justificacion', 'detalle', 'fechafin', 'codObjEsp','codObjGen','codUsuRol','eliminado'];
+    protected $fillable = ['justificacion', 'detalle', 'fecha_fin', 'codObjEsp','codObjGen','codUsuRol','eliminado', 'fecha_terminado'];
 
     const CREATED_AT = "fecha_creado";
     const UPDATED_AT = "fecha_modificado";
@@ -23,6 +23,11 @@ class Procedimiento extends Model
     public function scopeExiste($cadenaSQL, $id)
     {
         return $cadenaSQL->where('codProc',$id);
+    }
+
+    public function scopeFinalizado($cadenaSQL)
+    {
+        return $cadenaSQL->whereNotNull('fecha_terminado');
     }
 
     public function codusurol()
