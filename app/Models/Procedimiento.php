@@ -9,7 +9,7 @@ class Procedimiento extends Model
     protected $table = "procedimiento";
     protected $primaryKey = 'codProc';
 
-    protected $fillable = ['justificacion', 'detalle', 'fecha_fin', 'codObjEsp','codObjGen','codUsuRol','eliminado', 'fecha_terminado'];
+    protected $fillable = ['justificacion', 'detalle', 'fecha_fin', 'codObjEsp','codObjGen','codUsuRol','eliminado', 'fecha_terminado', 'codEst'];
 
     const CREATED_AT = "fecha_creado";
     const UPDATED_AT = "fecha_modificado";

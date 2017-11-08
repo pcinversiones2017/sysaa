@@ -22,6 +22,7 @@ class CreateProcedimientoTable extends Migration
             $table->integer('codObjEsp')->unsigned()->nullable();
             $table->integer('codObjGen')->unsigned()->nullable();
             $table->integer('codUsuRol');
+            $table->integer('codEst');
 
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
