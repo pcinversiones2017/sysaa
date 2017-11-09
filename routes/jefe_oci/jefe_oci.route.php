@@ -136,17 +136,17 @@ Route::group(['prefix' => 'cronograma'], function(){
 });
 //normaAuditoria
 Route::group(['prefix' => 'norma-auditoria'], function(){
-    Route::get('listar', 'NormaAuditoriaController@listar')->name('normaAuditoria.listar');
-    Route::get('listarAplica', 'NormaAuditoriaController@listarAplica')->name('normaAuditoria.listarAplica');
-    Route::get('crear', 'NormaAuditoriaController@crear')->name('normaAuditoria.crear');
-    Route::post('guardar', 'NormaAuditoriaController@guardar')->name('normaAuditoria.guardar');
-    Route::get('editar/{codNormMacro}', 'NormaAuditoriaController@editar')->name('normaAuditoria.editar');
-    Route::post('actualizar', 'NormaAuditoriaController@actualizar')->name('normaAuditoria.actualizar');
-    Route::get('archivo-crear/{codNormMacro}', 'NormaAuditoriaController@archivocrear')->name('normaAuditoria.archivocrear');
-    Route::post('archivo-registrar', 'NormaAuditoriaController@archivoregistrar')->name('normaAuditoria.archivoregistrar');
-    Route::get('archivo-descargar/{codNormMacro}', 'NormaAuditoriaController@archivodescargar')->name('normaAuditoria.archivodescargar');
-    Route::get('archivo-eliminar/{codNormMacro}', 'NormaAuditoriaController@archivoeliminar')->name('normaAuditoria.archivoeliminar');
-    Route::get('eliminar/{codNormMacro}', 'NormaAuditoriaController@eliminar')->name('normaAuditoria.eliminar');
+    Route::get('listar', 'NormaAuditoriaController@listar')->name('norma-auditoria.listar');
+    Route::get('listar-aplica', 'NormaAuditoriaController@listarAplica')->name('norma-auditoria.listar-aplica');
+    Route::get('crear', 'NormaAuditoriaController@crear')->name('norma-auditoria.crear');
+    Route::post('guardar', 'NormaAuditoriaController@guardar')->name('norma-auditoria.guardar');
+    Route::get('editar/{codNormMacro}', 'NormaAuditoriaController@editar')->name('norma-auditoria.editar');
+    Route::post('actualizar', 'NormaAuditoriaController@actualizar')->name('norma-auditoria.actualizar');
+    Route::get('archivo-crear/{codNormMacro}', 'NormaAuditoriaController@archivocrear')->name('norma-auditoria.archivocrear');
+    Route::post('archivo-registrar', 'NormaAuditoriaController@archivoregistrar')->name('norma-auditoria.archivoregistrar');
+    Route::get('archivo-descargar/{codNormMacro}', 'NormaAuditoriaController@archivodescargar')->name('norma-auditoria.archivodescargar');
+    Route::get('archivo-eliminar/{codNormMacro}', 'NormaAuditoriaController@archivoeliminar')->name('norma-auditoria.archivoeliminar');
+    Route::get('eliminar/{codNormMacro}', 'NormaAuditoriaController@eliminar')->name('norma-auditoria.eliminar');
 
 });
 //Auditoria
