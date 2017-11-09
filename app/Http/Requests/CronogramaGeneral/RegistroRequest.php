@@ -3,7 +3,7 @@
 namespace App\Http\Requests\CronogramaGeneral;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegistrarRequest extends FormRequest
+class RegistroRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,16 +22,15 @@ class RegistrarRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
-            // put your static input fields here
-
+        return [
+            'codPlanF' => 'required'
         ];
-        // your arrays can be done like this
-        foreach($this->request->get('dias_habiles') as $key => $value)
-        {
-            $rules['dias_habiles.'.$key] = 'required'; // you can set rules for all the array items
-        }
+    }
 
-        return $rules;
+    public function messages()
+    {
+        return [
+            'codPlanF.required' => 'Seleccione una auditoria'
+        ];
     }
 }

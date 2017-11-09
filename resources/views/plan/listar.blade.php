@@ -33,10 +33,19 @@
                                 @foreach($planes as $plan)
                                     <tr>
                                         <td>{{$i}}</td>
-                                        <td>{{$plan->nombrePlan}}</td>
-                                        <td>{{$plan->fecha_creado}}</td>
                                         <td>
-                                            <a href="#" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
+                                            <h5>{{$plan->nombrePlan}}</h5>
+                                            @if($plan->auditorias->isNotEmpty())
+                                            <h5><strong>AUDITORIAS</strong></h5>
+                                            <ul>
+                                                @foreach($plan->auditorias as $auditoria)
+                                                    <li>{{$auditoria->nombrePlanF}}</li>
+                                                @endforeach
+                                            </ul>
+                                            @endif
+                                        </td>
+                                        <td>{{$plan->fecha_creado}}</td>
+                                        <td width="15%">
                                             <a href="{{URL::to('plan/editar')}}/{{$plan->codPlanA}}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
                                             <a href="{!!  route('plan.eliminar', $plan->codPlanA)!!}" class="btn btn-danger btn-outline eliminar-plan"><i class="fa fa-trash"></i></a>
                                         </td>

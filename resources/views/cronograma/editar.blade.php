@@ -5,194 +5,90 @@
 
 @stop
 @section('content')
-
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Crear Cronograma <small>CRONOGRAMA Y PLAZOS DE ENTREGA DE DOCUMENTOS (*)</small></h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-wrench"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#">Config option 1</a>
-                            </li>
-                            <li><a href="#">Config option 2</a>
-                            </li>
-                        </ul>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
-                    </div>
-                </div>
                 <div class="ibox-content">
-                    <form method="post" class="form-horizontal" action="{{URL::to('cronograma/actualizar')}}">
-                        {{ csrf_field() }}
 
-                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[0]}}">
-                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[1]}}">
-                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[2]}}">
-                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[3]}}">
-                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[4]}}">
-                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[5]}}">
-                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[6]}}">
-                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[7]}}">
-                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[8]}}">
-                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[9]}}">
-                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[10]}}">
-                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[11]}}">
-                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[12]}}">
-                        <input type="hidden" name="codCroGen[]" value="{{$codCroGen[10]}}">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            EDITAR CRONOGRAMA <small>CRONOGRAMA Y PLAZOS DE ENTREGA DE DOCUMENTOS (*)</small>
+                        </div>
+                        <div class="panel-body">
+                            <div class="">
+                                {!! Form::open(['method' => 'POST', 'route' => 'cronograma.actualizar']) !!}
 
-                        <div class="form-group"><label class="col-sm-2 control-label">NOMBRE DE AUDITORIA: </label>
-                            <label class="col-sm-2 control-label">{{$auditoria->nombrePlanF}}</label>
-                            <input type="hidden" value="{{$auditoria->codPlanF}}"
-                                   name="codPlanf[]">
-                        </div>
-                        <div class="hr-line-dashed"></div>
-                        <div class="form-group has-success"><label class="col-sm-1 control-label">PLANIFICACION</label>
-                        </div>
-                        <?php $i=0;?>
-                        @foreach($etapasPlanificacion as $etapaPlanificacion)
-                            <div class="form-group">
-                                <label class="col-sm-4 ">{{$etapaPlanificacion['nombre']}}</label>
-                                <input type="hidden" value="{{$etapaPlanificacion['codEtp']}}"
-                                       name="etapa[]">
-                                <div class="col-sm-7">
-                                    <div class="col-sm-8 form-group" id="data_5">
-                                        <div class="input-group input-daterange" id="datepicker">
-                                            <input placeholder="Fecha de inicio" type="text" class="input-sm form-control"
-                                                   value=" {{date('d/m/Y',strtotime($fechasIni[$i]))}}" name="fechaIni[]" />
-                                            <span class="input-group-addon">AL</span>
-                                            <input placeholder="Fecha de fin" type="text" class="input-sm form-control"
-                                                   value=" {{date('d/m/Y',strtotime($fechaFin[$i]))}}" name="fechaFin[]"  />
+                                    <div class="col-md-12">
+                                        {!! Field::hidden('codPlanF', $codPlanF) !!}
+                                        <label class="control-label">NOMBRE DE AUDITORIA</label>
+                                        <select class="form-control" id="sel1" name="codPlanF" disabled>
+                                            <option value=""> -- SELECCIONE -- </option>
+                                            @foreach($auditorias as $auditoria)
+                                                <option value="{{$auditoria->codPlanF}}" {{$auditoria->codPlanF == $codPlanF ? 'selected' : ''}}>{{$auditoria->nombrePlanF}}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('codPlanF'))
+                                            <label class="error has-error">{{$errors->first()}}</label>
+                                        @endif
+                                        <br><br>
+
+                                        <table class="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>ETAPAS / ACTIVIDADES</th>
+                                                <th width="40%">FECHAS</th>
+                                                <th width="15%">DÍAS HÁBILES</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php  $aux = '' ?>
+                                            @foreach($cronograma as $row)
+                                                {!! Field::hidden('codEtp[]', $row->etapa->codEtp) !!}
+                                                @if($row->etapa->tipo != $aux)
+                                                    <tr><td>
+                                                            <label class="has-success">{{$row->etapa->tipo}}</label>
+                                                        </td>
+                                                        <td></td><td></td>
+
+                                                    </tr>
+                                                    <?php $aux = $row->etapa->tipo?>
+                                                @endif
+                                                <tr>
+                                                    <td>{!! nl2br($row->etapa->nombre) !!}</td>
+                                                    <td  style="vertical-align: middle">
+                                                        <div class="col-md-12 form-group" id="data_5" style="margin-top: 15px">
+                                                            <div class="input-group input-daterange" id="datepicker">
+                                                                <input placeholder="Fecha de inicio" type="text" class="form-control"
+                                                                value="{{ $row->fecha_ini }}" name="fecha_ini[]" />
+                                                                <span class="input-group-addon">AL</span>
+                                                                <input placeholder="Fecha de fin" type="text" class="form-control"
+                                                                value="{{ $row->fecha_fin }}" name="fecha_fin[]" />
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td  style="vertical-align: middle"><input placeholder="Días Hábiles" type="number" name="dias_habiles[]" class="form-control" value="{{$row->dias_habiles}}"></td>
+
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-12 col-md-12">
+                                                <button class="btn btn-success btn-outline" type="submit">REGISTRAR</button>
+                                                <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
+
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <input type="number" placeholder="Dias habiles" class="form-control"
-                                               value="{{$dias_habiles[$i]}}" name="dias_habiles[]">
-                                    </div>
-                                </div>
+
+                                {{ Form::close() }}
                             </div>
-                            <?php $i++;?>
-                        @endforeach
-                        <div class="form-group">
-                            <label class="col-sm-4 ">ELABORACIÓN Y APROBACIÓN DEL PLAN DE AUDITORÍA DEFINITIVO.<br>
-                                REGISTRO DEL PLAN DE AUDITORÍA DEFINITIVO.</label>
-                            <input type="hidden" value="3"
-                                   name="etapa[]">
-                            <input type="hidden" value="4"
-                                   name="etapa[]">
-                            <div class="col-sm-7">
-                                <div class="col-sm-8 form-group" id="data_5">
-                                    <div class="input-group input-daterange" id="datepicker">
-                                        <input placeholder="Fecha de inicio" type="text" class="input-sm form-control"
-                                               value=" {{date('d/m/Y',strtotime($fechasIni[2]))}}" name="fechaIni[]" />
-                                        <span class="input-group-addon">AL</span>
-                                        <input placeholder="Fecha de fin" type="text" class="input-sm form-control"
-                                               value=" {{date('d/m/Y',strtotime($fechaFin[2]))}}" name="fechaFin[]"  />
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" placeholder="Dias habiles" class="form-control"
-                                           value="{{$dias_habiles[2]}}"
-                                           name="dias_habiles[]">
-                                </div>
-                            </div>
+
                         </div>
 
+                    </div>
 
-                        <div class="hr-line-dashed"></div>
-                        <!-- EJECUCION ------------------------------------------------------------------------>
-                        <div class="form-group has-success"><label class="col-sm-1 control-label">EJECUCION</label>
-                        </div>
-                        <div class="form-group">
-
-                            <label class="col-sm-4">@foreach($etapaseEjecucion as $etapaseEjecucion)
-                                    {{$etapaseEjecucion['nombre']}}<BR><BR> @endforeach</label>
-                            <input type="hidden" value="5"
-                                   name="etapa[]">
-                            <input type="hidden" value="6"
-                                   name="etapa[]">
-                            <input type="hidden" value="7"
-                                   name="etapa[]">
-                            <input type="hidden" value="8"
-                                   name="etapa[]">
-                            <input type="hidden" value="9"
-                                   name="etapa[]">
-                            <input type="hidden" value="10"
-                                   name="etapa[]">
-                            <div class="col-sm-7" style="margin-top: 30px;">
-
-                                <label class="col-sm-12" style="color: red; ">*ESTAS ACTIVIDADES COMPARTEN FECHA INICIO
-                                    , FECHA FIN Y DIAS HABILES</label>
-
-                                <div class="col-sm-8 form-group" id="data_5">
-                                    <div class="input-group input-daterange" id="datepicker">
-                                        <input placeholder="Fecha de inicio" type="text" class="input-sm form-control"
-                                               value=" {{date('d/m/Y',strtotime($fechasIni[3]))}}" name="fechaIni[]" />
-                                        <span class="input-group-addon">AL</span>
-                                        <input placeholder="Fecha de fin" type="text" class="input-sm form-control"
-                                               value=" {{date('d/m/Y',strtotime($fechaFin[3]))}}" name="fechaFin[]"  />
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" placeholder="Dias habiles" class="form-control"
-                                           value="{{$dias_habiles[3]}}"
-                                           name="dias_habiles[]">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ELABORACION DE INFORME ------------------------------------------------------------------->
-                        <div class="form-group has-success"><label class="col-sm-1 control-label">EJECUCION</label>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 ">@foreach($etapasReporte as $etapasReporte)
-                                    {{$etapasReporte['nombre']}}<BR><BR>
-                                @endforeach
-                            </label>
-                            <input type="hidden" value="11"
-                                   name="etapa[]">
-                            <input type="hidden" value="12"
-                                   name="etapa[]">
-                            <input type="hidden" value="13"
-                                   name="etapa[]">
-
-
-                            <div class="col-sm-7" STYLE="margin-top: -8px;">
-
-                                <label class="col-sm-12" style="color: red; ">*ESTAS ACTIVIDADES COMPARTEN FECHA INICIO
-                                    , FECHA FIN Y DIAS HABILES</label>
-
-                                <div class="col-sm-8 form-group" id="data_5">
-                                    <div class="input-group input-daterange" id="datepicker">
-                                        <input placeholder="Fecha de inicio" type="text" class="input-sm form-control"
-                                               value=" {{date('d/m/Y',strtotime($fechasIni[4]))}}" name="fechaIni[]" />
-                                        <span class="input-group-addon">AL</span>
-                                        <input placeholder="Fecha de fin" type="text" class="input-sm form-control"
-                                               value=" {{date('d/m/Y',strtotime($fechaFin[4]))}}" name="fechaFin[]"  />
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" placeholder="Dias habiles" class="form-control"
-                                           value="{{$dias_habiles[4]}}"
-                                           name="dias_habiles[]">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hr-line-dashed"></div>
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-2">
-                                <button class="btn btn-white" type="submit">Cancelar</button>
-                                <button class="btn btn-primary" type="submit">Guardar Cambios</button>
-                            </div>
-                        </div>
-                       
-                    </form>
                 </div>
             </div>
         </div>
@@ -210,7 +106,12 @@
         $('#data_5 .input-daterange').datepicker({
             keyboardNavigation: false,
             forceParse: false,
-            autoclose: true
+            autoclose: true,
+            daysOfWeekDisabled : [0,6],
+            format: 'd-m-yyyy'
         });
+
+
     </script>
+
 @stop
