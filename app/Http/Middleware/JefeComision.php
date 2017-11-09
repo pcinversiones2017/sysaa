@@ -28,6 +28,7 @@ class JefeComision
             return $next($request);
         }else 
         {
+            Auth::logout();
             return redirect('login');
         }
     }

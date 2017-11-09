@@ -16,10 +16,10 @@ class CreateCronogramaGeneralTable extends Migration
         Schema::create('Cronograma_General', function (Blueprint $table) {
             $table->increments('codCroGen');
             $table->integer('codEtp')->unsigned();
-            $table->date('fechaIni');
-            $table->date('fechaFin');
-            $table->integer('codPlanf')->unsigned();
-            $table->integer('dias_habiles');
+            $table->date('fecha_ini')->nullable();
+            $table->date('fecha_Fin')->nullable();
+            $table->integer('codPlanF')->unsigned();
+            $table->integer('dias_habiles')->nullable();
 
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();

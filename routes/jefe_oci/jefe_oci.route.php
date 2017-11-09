@@ -136,17 +136,17 @@ Route::group(['prefix' => 'cronograma'], function(){
 });
 //normaAuditoria
 Route::group(['prefix' => 'norma-auditoria'], function(){
-    Route::get('listar', 'NormaAuditoriaController@listar')->name('normaAuditoria.listar');
-    Route::get('listarAplica', 'NormaAuditoriaController@listarAplica')->name('normaAuditoria.listarAplica');
-    Route::get('crear', 'NormaAuditoriaController@crear')->name('normaAuditoria.crear');
-    Route::post('guardar', 'NormaAuditoriaController@guardar')->name('normaAuditoria.guardar');
-    Route::get('editar/{codNormMacro}', 'NormaAuditoriaController@editar')->name('normaAuditoria.editar');
-    Route::post('actualizar', 'NormaAuditoriaController@actualizar')->name('normaAuditoria.actualizar');
-    Route::get('archivo-crear/{codNormMacro}', 'NormaAuditoriaController@archivocrear')->name('normaAuditoria.archivocrear');
-    Route::post('archivo-registrar', 'NormaAuditoriaController@archivoregistrar')->name('normaAuditoria.archivoregistrar');
-    Route::get('archivo-descargar/{codNormMacro}', 'NormaAuditoriaController@archivodescargar')->name('normaAuditoria.archivodescargar');
-    Route::get('archivo-eliminar/{codNormMacro}', 'NormaAuditoriaController@archivoeliminar')->name('normaAuditoria.archivoeliminar');
-    Route::get('eliminar/{codNormMacro}', 'NormaAuditoriaController@eliminar')->name('normaAuditoria.eliminar');
+    Route::get('listar', 'NormaAuditoriaController@listar')->name('norma-auditoria.listar');
+    Route::get('listar-aplica', 'NormaAuditoriaController@listarAplica')->name('norma-auditoria.listar-aplica');
+    Route::get('crear', 'NormaAuditoriaController@crear')->name('norma-auditoria.crear');
+    Route::post('guardar', 'NormaAuditoriaController@guardar')->name('norma-auditoria.guardar');
+    Route::get('editar/{codNormMacro}', 'NormaAuditoriaController@editar')->name('norma-auditoria.editar');
+    Route::post('actualizar', 'NormaAuditoriaController@actualizar')->name('norma-auditoria.actualizar');
+    Route::get('archivo-crear/{codNormMacro}', 'NormaAuditoriaController@archivocrear')->name('norma-auditoria.archivocrear');
+    Route::post('archivo-registrar', 'NormaAuditoriaController@archivoregistrar')->name('norma-auditoria.archivoregistrar');
+    Route::get('archivo-descargar/{codNormMacro}', 'NormaAuditoriaController@archivodescargar')->name('norma-auditoria.archivodescargar');
+    Route::get('archivo-eliminar/{codNormMacro}', 'NormaAuditoriaController@archivoeliminar')->name('norma-auditoria.archivoeliminar');
+    Route::get('eliminar/{codNormMacro}', 'NormaAuditoriaController@eliminar')->name('norma-auditoria.eliminar');
 
 });
 //Auditoria
@@ -190,9 +190,17 @@ Route::prefix('objetivo-especifico')->group(function (){
    Route::post('guardar', 'ObjetivoEspecificoController@guardar')->name('objetivo-especifico.guardar');
    Route::get('mostrar/{codPlanF}/{codObjEsp}', 'ObjetivoEspecificoController@mostrar')->name('objetivo-especifico.mostrar');
    Route::post('actualizar', 'ObjetivoEspecificoController@actualizar')->name('objetivo-especifico.actualizar');
-   Route::get('ajax-get-objetivo-especifico/{codObjEsp}', 'ObjetivoEspecificoController@ajaxGetObjetivoEspecifico');
    Route::get('eliminar/{codObjEsp}', 'ObjetivoEspecificoController@eliminar')->name('objetivo-especifico.eliminar');
 });
 
+Route::prefix('objetivo-general')->group(function (){
+
+   Route::get('crear/{codPlanF}', 'ObjetivoGeneralController@crear')->name('objetivo-general.crear');
+   Route::get('editar/{codObjEsp}', 'ObjetivoGeneralController@editar')->name('objetivo-general.editar');
+   Route::post('guardar', 'ObjetivoGeneralController@guardar')->name('objetivo-general.guardar');
+   Route::get('mostrar/{codPlanF}/{codObjEsp}', 'ObjetivoGeneralController@mostrar')->name('objetivo-general.mostrar');
+   Route::post('actualizar', 'ObjetivoGeneralController@actualizar')->name('objetivo-general.actualizar');
+   Route::get('eliminar/{codObjEsp}', 'ObjetivoGeneralController@eliminar')->name('objetivo-general.eliminar');
+});
 
 });

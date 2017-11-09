@@ -101,8 +101,9 @@
                                     <div class="panel-heading">
                                         III. OBJETIVO GENERAL
                                     </div>
-                                    <div class="panel-body">
+                                    <div class="panel-body">    
                                         <p>{{$auditoria->objetivoGeneral->nombre}}</p>
+                                        @include('objetivo_general.partials.listar')
                                     </div>
 
                                 </div>

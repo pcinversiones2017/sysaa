@@ -13,6 +13,7 @@
                 </div>
                 <div class="ibox-content">
                     {!! Form::open(['method' => 'POST', 'route' => 'auditor.observacion.actualizar']) !!}
+                    {!! Form::hidden('codProc',$codProc) !!}
                     {!! Form::hidden('codDes',$codDes) !!}
                     {!! Form::hidden('codObs',$observacion->codObs) !!}
                     {!! Field::text('titulo', $observacion->titulo ) !!}

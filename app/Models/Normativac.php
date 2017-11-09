@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Normativac extends Model
+class Normativa extends Model
 {
     use Notifiable;
 
@@ -14,7 +14,7 @@ class Normativac extends Model
     const TABLA = 'NORMATIVA';
 
     protected $primaryKey = 'codNorm';
-    protected $table = 'normativa_c';
+    protected $table = 'normativa';
 
     /*
     protected $fillable = [

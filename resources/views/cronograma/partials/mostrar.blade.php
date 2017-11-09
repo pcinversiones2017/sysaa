@@ -3,13 +3,17 @@
         <div class="ibox float-e-margins">
             <div class="ibox-content">
 
-                @if($auditoria->cronogramaGeneral->isEmpty())
                 <div class="row">
                     <div class="col-sm-3">
+
+                        @if($auditoria->cronogramaGeneral->isEmpty())
                         <a type="button" href="{{url('cronograma/crear')}}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-pencil"></i> CREAR CRONOGRAMA</a>
+                        @else
+                        <a type="button" href="{{url('cronograma/editar', $auditoria->codPlanF)}}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-edit"></i> EDITAR CRONOGRAMA</a>
+                        @endif
                     </div>
                 </div>
-                @endif
+
                 <table class="table table-bordered">
                     <thead>
                     <tr>
@@ -25,12 +29,12 @@
                     <?php $i=1 ?>
                     @foreach($auditoria->cronogramaGeneral as $cronograma)
                         <tr>
-                            <td>{{$i}}</td>
-                            <td>{!! $cronograma->etapa->nombre !!}</td>
-                            <td>{!! $cronograma->etapa->tipo !!}</td>
-                            <td width="10%">{!! $cronograma->fechaIni !!}</td>
-                            <td width="10%">{!! $cronograma->fechaFin !!}</td>
-                            <td>{!! $cronograma->dias_habiles !!}</td>
+                            <td style="vertical-align: middle" >{{$i}}</td>
+                            <td>{!! nl2br($cronograma->etapa->nombre) !!}</td>
+                            <td width="15%" style="vertical-align: middle; text-align: center">{!! $cronograma->etapa->tipo !!}</td>
+                            <td width="15%" style="vertical-align: middle; text-align: center;">{!! $cronograma->fecha_ini !!}</td>
+                            <td width="15%" style="vertical-align: middle; text-align: center">{!! $cronograma->fecha_fin !!}</td>
+                            <td style="vertical-align: middle; text-align: center">{!! $cronograma->dias_habiles !!}</td>
                         </tr>
                         <?php $i++ ?>
                     @endforeach

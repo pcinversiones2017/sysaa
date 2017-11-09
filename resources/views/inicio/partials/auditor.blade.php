@@ -21,11 +21,11 @@
                     <small>{!! $row->fecha_creado !!}</small>
                     <h4>{!! substr($row->justificacion,0,10) !!}...</h4>
                     <p>{!! substr($row->detalle,0,30) !!}...</p>
-                    @if($row->codEst == 2)
+                    @if($row->codEst == App\Models\Estado::PENDIENTE)
                     <h3><a href="{!! url('auditor/procedimiento/mostrar/'.$row->codProc) !!}" data-toggle="tooltip" data-placement="top" title="Ver desarrollo de procedimiento creado"><i class="fa fa-eye "></i></a></h3>
-                    @elseif($row->codEst == 1)
+                    @elseif($row->codEst == App\Models\Estado::NUEVO)
                     <h3><a href="{!! url('auditor/desarrollo/crear/'.$row->codProc) !!}" data-toggle="tooltip" data-placement="top" title="Crear desarrollo de procedimiento"><i class="fa fa-pencil "></i></a></h3>
-                    @elseif($row->codEst == 4)
+                    @elseif($row->codEst == App\Models\Estado::APROBADO)
                     <a href="" class="btn btn-success btn-outline">APROBADO</a>
                     @else
                     <a href="" class="btn btn-danger btn-outline">FINALIZADO</a>
