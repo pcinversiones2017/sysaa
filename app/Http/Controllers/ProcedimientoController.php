@@ -39,6 +39,20 @@ class ProcedimientoController extends Controller
     	return redirect('objetivo-especifico/mostrar/'.$request->codPlanF.'/'.$request->codObjEsp)->with('success','Se agrego Procedimiento');
     }
 
+    public function actualizar(ValidarRequest $request)
+    {
+        Procedimiento::existe($request->codProc)->update([ 
+                        'justificacion' => $request->justificacion, 
+                        'detalle'       => $request->detalle, 
+                        'fecha_fin'     => date('Y-m-d', strtotime($request->fechafin)),
+                        'codUsuRol'     => $request->codusurol,
+                        'codObjEsp'     => $request->codObjEsp,
+                        'codEst'         => 1
+                    ]);
+        RegistrarActividad(Procedimiento::TABLA,Historial::REGISTRAR,'registró el Procedimiento '.$request->justificacion);
+        return redirect('objetivo-especifico/mostrar/'.$request->codPlanF.'/'.$request->codObjEsp)->with('success','Se agrego Procedimiento');
+    }
+
     public function editar($codPlanF, $codObjEsp, $codProc)
     {
     	$procedimiento = Procedimiento::find($codProc);

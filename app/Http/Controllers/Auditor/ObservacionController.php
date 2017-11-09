@@ -18,31 +18,31 @@ class ObservacionController extends Controller
     	return view('observacion.listar', compact(['observacion']));
     }
 
-    public function crear($codDes)
+    public function crear($codProc, $codDes)
     {
         RegistrarActividad(Observacion::TABLA,Historial::CREAR,'vió el formulario de crear Observacion');
-    	return view('observacion.crear', compact(['codDes']));
+    	return view('observacion.crear', compact(['codProc', 'codDes']));
     }
 
     public function registrar(Request $request)
     {
     	Observacion::create(['titulo' => $request->titulo,'descripcion' => $request->informe, 'recomendacion' => $request->recomendacion, 'elaborado' => date("Y-m-d"), 'codDes' => $request->codDes]);
         RegistrarActividad(Observacion::TABLA,Historial::REGISTRAR,'registró la Observacion '.$request->nombre);
-    	return redirect('auditor/procedimiento/mostrar/'.$request->codDes)->with('success','Observacion registrado');
+    	return redirect('auditor/procedimiento/mostrar/'.$request->codProc)->with('success','Observacion registrado');
     }
 
-    public function editar($codDes, $codObs)
+    public function editar($codProc, $codDes, $codObs)
     {
         $observacion = Observacion::find($codObs);
         RegistrarActividad(Observacion::TABLA,Historial::EDITAR,'vió el formulario de editar Observacion ');
-    	return view('observacion.editar', compact(['observacion', 'codDes']));
+    	return view('observacion.editar', compact(['observacion', 'codDes', 'codProc']));
     }
 
     public function actualizar(Request $request)
     {
     	Observacion::Existe($request->codObs)->update(['titulo' => $request->titulo, 'recomendacion' => $request->recomendacion,'descripcion' => $request->informe]);
         RegistrarActividad(Observacion::TABLA,Historial::ACTUALIZAR,'actualizó la Observacion '.$request->titulo);
-    	return redirect('auditor/procedimiento/mostrar/'. $request->codDes)->with('success','Observacion actualizado');	
+    	return redirect('auditor/procedimiento/mostrar/'. $request->codProc)->with('success','Observacion actualizado');	
     }
 
     public function eliminar($codDes, $codObs)

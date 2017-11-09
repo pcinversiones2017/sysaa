@@ -13,12 +13,11 @@
                 </div>
                 <div class="ibox-content">
                     {!! Form::open(['method' => 'POST', 'route' => 'auditor.desarrollo.actualizar']) !!}
-                    @foreach($desarrollo as $row)
-                    {!! Form::hidden('codDes',$row->codDes) !!}
-                    {!! Field::textarea('informe', $row->informe , ['class' => 'summernote']) !!}
+                    {!! Form::hidden('codProc',$codProc) !!}
+                    {!! Form::hidden('codDes',$desarrollo->codDes) !!}
+                    {!! Field::textarea('informe', $desarrollo->informe , ['class' => 'summernote']) !!}
                     {!! Form::submit('ACTUALIZAR', ['class' => 'btn btn-primary btn-outline']) !!}
-                    @endforeach
-                    <a href="{!! url('auditor/procedimiento/mostrar/'.$row->codDes) !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                    <a href="{!! url('auditor/procedimiento/mostrar/'.$desarrollo->codDes) !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     {!! Form::close() !!}
                 </div>
             </div>

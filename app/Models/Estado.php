@@ -8,5 +8,9 @@ class Estado extends Model
 {
     protected $table  = 'estado';
 
-    protected $fillable = ['nombre'];
+    const NUEVO = 1;
+    const PENDIENTE = 2;
+    const TERMINADO = 3;
+    const APROBADO = 4;
+    const RECHAZADO = 5;
 }

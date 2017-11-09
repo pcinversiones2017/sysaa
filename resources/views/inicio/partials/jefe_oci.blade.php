@@ -1,8 +1,8 @@
 @section('css-style')
     {!! Html::style('css/plugins/dataTables/datatables.min.css') !!}
 @stop
-	<div class="ibox-content">
-		<h2> BIENVENIDO <strong>{!! Auth::user()->usuariorol->rol->nombre !!}</strong> : {!! Auth::user()->datos !!}</h2>
+    <div class="ibox-content">
+        <h2> BIENVENIDO <strong>{!! Auth::user()->usuariorol->rol->nombre !!}</strong> : {!! Auth::user()->datos !!}</h2>
         <hr>
         <h3>PROCEDIMIENTOS</h3>
         <hr>
@@ -25,7 +25,7 @@
          RECHAZADOS: <a class="btn btn-danger m-r-sm">{!! $rechazado_g->count() !!}</a>
          FINALIZADOS: <a class="btn btn-primary m-r-sm">{!! $finalizado_g->count() !!}</a>
         </h3>
-	</div><hr>
+    </div><hr>
     <div class="ibox-content">
         <h3> <strong> LISTADO DE PROCEDIMIENTOS ASIGNADOS</strong></h3>
         <hr>
@@ -92,10 +92,10 @@
             </table>
     </div>
     <hr>
-	<div class="ibox-content">
-		<h3> <strong> LISTADO DE PROCEDIMIENTOS GENERAL</strong></h3>
-		<hr>
-			<table class="table table-bordered tabla-procedimientos">
+    <div class="ibox-content">
+        <h3> <strong> LISTADO DE PROCEDIMIENTOS GENERAL</strong></h3>
+        <hr>
+            <table class="table table-bordered tabla-procedimientos">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -111,7 +111,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                   	<?php $i=1 ?>
+                    <?php $i=1 ?>
                     @foreach($procedimiento_general as $row)
                     <tr>
                         <td>{{$i}}</td>
@@ -158,14 +158,14 @@
                     @endforeach
                 </tbody>
             </table>
-	</div>
+    </div>
 
 @section('js-script')
     {!! Html::script('js/plugins/dataTables/datatables.min.js') !!}
     <script>
         $(document).ready(function(){
             $('.tabla-procedimientos').DataTable({
-  				"ordering": false,
+                "ordering": false,
                 language: {
                     url : '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
                 },

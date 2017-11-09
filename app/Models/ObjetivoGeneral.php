@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Programador1
- * Date: 25/10/2017
- * Time: 16:13
- */
 
 namespace App\Models;
 
@@ -30,6 +24,11 @@ class ObjetivoGeneral extends Model
         static::deleted(function ($objetivoGeneral){
             $objetivoGeneral->objetivosEspecificos()->delete();
         });
+    }
+
+    public function scopeAuditoria($cadenaSQL, $codPlanF)
+    {
+        return $cadenaSQL->where('codPlanF', $codPlanF);
     }
 
     public function objetivosEspecificos()

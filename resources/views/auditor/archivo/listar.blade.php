@@ -21,8 +21,8 @@
 
                     <div class="row">
                         <div class="col-sm-9">
-                            <a type="button" href="{!! url('auditor/observacion/archivo/crear/'.$codDes.'/'.$codObs) !!}" class="btn btn-outline btn-primary"><i class="fa fa-plus"></i> CARGAR ARCHIVO</a>
-                            <a type="button" href="{!! url('auditor/procedimiento/mostrar/'.$codDes) !!}" class="btn btn-outline btn-danger"> REGRESAR DESARROLLO</a>
+                            <a type="button" href="{!! url('auditor/observacion/archivo/crear/'.$codProc.'/'.$codDes.'/'.$codObs) !!}" class="btn btn-outline btn-primary"><i class="fa fa-plus"></i> CARGAR ARCHIVO</a>
+                            <a type="button" href="{!! url('auditor/procedimiento/mostrar/'.$codProc) !!}" class="btn btn-outline btn-danger"> REGRESAR DESARROLLO</a>
                             <p>
                             
                         </div>

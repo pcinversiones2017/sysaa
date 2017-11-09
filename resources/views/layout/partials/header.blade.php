@@ -5,6 +5,7 @@
                     
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
+                <!--
                     <li class="dropdown">
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                             <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
@@ -48,7 +49,7 @@
                         </ul>
                     </li>
 
-
+                    -->
                     <li>
                         <a href="{!! url('cerrar-sesion') !!}">
                             <i class="fa fa-sign-out"></i> Cerrar Sesion

@@ -14,11 +14,12 @@
                 <div class="ibox-content">
                     {!! Form::open(['method' => 'POST', 'route' => 'auditor.observacion.registrar']) !!}
                     {!! Form::hidden('codDes',$codDes) !!}
+                    {!! Form::hidden('codProc',$codProc) !!}
                     {!! Field::text('titulo') !!}
                     {!! Field::textarea('informe', ['class' => 'summernote']) !!}
                     {!! Field::textarea('recomendacion', ['class' => 'summernote']) !!}
                     {!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-outline']) !!}
-                    <a href="{!! url('auditor/procedimiento/mostrar/'. $codDes) !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                    <a href="{!! url('auditor/procedimiento/mostrar/'. $codProc) !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     {!! Form::close() !!}
                 </div>
             </div>

@@ -10,7 +10,7 @@
             <div class="ibox-content">
                 <div class="row">
                     {!! Form::open(['method' => 'POST', 'route' => 'procedimiento.actualizar']) !!}
-
+                        {!! Form::hidden('codProc', $procedimiento->codProc) !!}
                         <div class="col-md-12 b-r">
                             {!! Form::hidden('codPlanF',$codPlanF) !!}
                             {!! Form::hidden('codObjEsp',$codObjEsp) !!}
@@ -20,7 +20,7 @@
 
                             {!! Field::textarea('detalle', $procedimiento->detalle) !!}
                             <div class="hr-line-dashed"></div>
-                            {!! Field::date('fechafin', $procedimiento->fechafin,['label' => 'Fecha Fin']) !!}
+                            {!! Field::date('fechafin', $procedimiento->fecha_fin,['label' => 'Fecha Fin']) !!}
 
                             <div class="hr-line-dashed"></div>
                             <label>Usuario</label>

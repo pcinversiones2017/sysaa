@@ -72,7 +72,8 @@ class AuditoriaController extends Controller
         $macroprocesos = Macroproceso::all();
         $usuariorol = UsuarioRol::where('codPlanF', $request->codPlanF)->with(['usuario','cargofuncional','rol'])->get();
         $codPlanF  = $request->codPlanF;
-        return view('auditoria.mostrar')->with(compact('auditoria', 'macroprocesos', 'usuariorol', 'codPlanF'));
+        $objetivoGeneral = ObjetivoGeneral::where('codPlanF',$request->codPlanF)->get();
+        return view('auditoria.mostrar')->with(compact('auditoria', 'macroprocesos', 'usuariorol', 'codPlanF', 'objetivoGeneral'));
     }
 
     public function editar(Request $request)

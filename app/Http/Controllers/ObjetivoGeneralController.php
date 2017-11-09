@@ -16,8 +16,16 @@ class ObjetivoGeneralController extends Controller
         $objetivoGeneral->nombre = $request->nombre;
         $objetivoGeneral->codPlanF = $request->codPlanF;
         $objetivoGeneral->save();
-            RegistrarActividad(ObjetivoGeneral::TABLA,Historial::REGISTRAR,'registró el Objetivo General '.$request->nombre);
+        RegistrarActividad(ObjetivoGeneral::TABLA,Historial::REGISTRAR,'registró el Objetivo General '.$request->nombre);
 
         return redirect('auditoria/mostrar/' . $request->codPlanF);
+    }
+
+    public function eliminar($id)
+    {
+    	$objetivoGeneral = ObjetivoGeneral::find($id);
+    	$objetivoGeneral->delete();
+    	RegistrarActividad(ObjetivoGeneral::TABLA,Historial::ELIMINAR,'eliminó el Objetivo General '.$objetivoGeneral->nombre);
+    	return back()->with('danger', 'Objetivo General eliminado');
     }
 }

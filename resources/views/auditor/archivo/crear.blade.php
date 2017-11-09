@@ -18,6 +18,7 @@
                         <strong>NOTA: PESO MAXIMO 5 MB</strong>
                     </div>
                     {!! Form::open(['method' => 'POST', 'url' => 'auditor/observacion/archivo/registrar', 'files' => true]) !!}
+                    {!! Form::hidden('codProc',$codProc) !!}
                     {!! Form::hidden('codDes',$codDes) !!}
                     {!! Form::hidden('codObs',$codObs) !!}
                         <div class="col-md-6 b-r">
@@ -28,7 +29,7 @@
 
                             <div class="form-group">
                                 {!! Form::submit('CARGAR', ['class' => 'btn btn-primary btn-outline']) !!}
-                                <a href="{!! url('auditor/observacion/listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                                <a href="{!! url('auditor/observacion/archivo/listar/'.$codProc.'/'.$codDes.'/'.$codObs) !!}" class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
                             <div class="hr-line-dashed"></div>
 

@@ -190,9 +190,17 @@ Route::prefix('objetivo-especifico')->group(function (){
    Route::post('guardar', 'ObjetivoEspecificoController@guardar')->name('objetivo-especifico.guardar');
    Route::get('mostrar/{codPlanF}/{codObjEsp}', 'ObjetivoEspecificoController@mostrar')->name('objetivo-especifico.mostrar');
    Route::post('actualizar', 'ObjetivoEspecificoController@actualizar')->name('objetivo-especifico.actualizar');
-   Route::get('ajax-get-objetivo-especifico/{codObjEsp}', 'ObjetivoEspecificoController@ajaxGetObjetivoEspecifico');
    Route::get('eliminar/{codObjEsp}', 'ObjetivoEspecificoController@eliminar')->name('objetivo-especifico.eliminar');
 });
 
+Route::prefix('objetivo-general')->group(function (){
+
+   Route::get('crear/{codPlanF}', 'ObjetivoGeneralController@crear')->name('objetivo-general.crear');
+   Route::get('editar/{codObjEsp}', 'ObjetivoGeneralController@editar')->name('objetivo-general.editar');
+   Route::post('guardar', 'ObjetivoGeneralController@guardar')->name('objetivo-general.guardar');
+   Route::get('mostrar/{codPlanF}/{codObjEsp}', 'ObjetivoGeneralController@mostrar')->name('objetivo-general.mostrar');
+   Route::post('actualizar', 'ObjetivoGeneralController@actualizar')->name('objetivo-general.actualizar');
+   Route::get('eliminar/{codObjEsp}', 'ObjetivoGeneralController@eliminar')->name('objetivo-general.eliminar');
+});
 
 });
