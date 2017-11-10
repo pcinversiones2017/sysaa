@@ -20,8 +20,8 @@ class CronogramaController extends Controller
     public function crear($codPlanF)
     {
         $etapas = Etapa::all();
-        $auditorias = Auditoria::all();
-        return view('cronograma.crear', compact('etapas', 'auditorias', 'codPlanF'));
+        $auditoria = Auditoria::find($codPlanF);
+        return view('cronograma.crear', compact('etapas', 'auditoria', 'codPlanF'));
 
     }
 
@@ -47,7 +47,7 @@ class CronogramaController extends Controller
             $cronograma = new Cronograma();
             $cronograma->codEtp = $request->codEtp[$i];
             $cronograma->fecha_ini = isset($request->fecha_ini[$i]) ? Carbon::parse($request->fecha_ini[$i])->format('Y-m-d') : null;
-            $cronograma->fecha_fin = isset($request->fecha_fin[$i]) ? Carbon::parse($request->fecha_iin[$i])->format('Y-m-d') : null;
+            $cronograma->fecha_fin = isset($request->fecha_fin[$i]) ? Carbon::parse($request->fecha_fin[$i])->format('Y-m-d') : null;
             $cronograma->dias_habiles = $request->dias_habiles[$i] ?? null;
             $cronograma->codPlanF = $request->codPlanF;
             $cronograma->save();
@@ -115,7 +115,7 @@ class CronogramaController extends Controller
                 $cronograma = new Cronograma();
                 $cronograma->codEtp = $request->codEtp[$i];
                 $cronograma->fecha_ini = isset($request->fecha_ini[$i]) ? Carbon::parse($request->fecha_ini[$i])->format('Y-m-d') : null;
-                $cronograma->fecha_fin = isset($request->fecha_fin[$i]) ? Carbon::parse($request->fecha_iin[$i])->format('Y-m-d') : null;
+                $cronograma->fecha_fin = isset($request->fecha_fin[$i]) ? Carbon::parse($request->fecha_fin[$i])->format('Y-m-d') : null;
                 $cronograma->dias_habiles = $request->dias_habiles[$i] ?? null;
                 $cronograma->codPlanF = $request->codPlanF;
                 $cronograma->save();

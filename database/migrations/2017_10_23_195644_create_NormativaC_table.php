@@ -21,7 +21,6 @@ class CreateNormativaCTable extends Migration
             $table->date('fecha');
             $table->integer('codTipNorm')->unsigned();
             $table->integer('codMacroP')->unsigned()->nullable();
-
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
             $table->timestamp('fecha_eliminado')->nullable();
@@ -38,6 +37,6 @@ class CreateNormativaCTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Normativa_C');
+        Schema::dropIfExists('Normativa');
     }
 }

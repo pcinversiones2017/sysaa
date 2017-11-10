@@ -23,12 +23,12 @@ class NormaAuditoriaController extends Controller
     }
     public function listarAplica()
     {
-        $normativaMacroproceso = NormativaMacroProceso::all();
+        $normativas = Normativa::all();
 
-        return view('norma_auditoria.listar-aplica')->with(compact('normativaMacroproceso'));
+        return view('norma_auditoria.listar-aplica')->with(compact('normativas'));
     }
 
-    public function crear(){
+    public function crear($codPlanF){
 
         $macroProcesos = Macroproceso::pluck('nombre', 'codMacroP');
 
