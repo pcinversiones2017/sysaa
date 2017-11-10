@@ -32,12 +32,12 @@ class ObjetivoGeneralController extends Controller
         return redirect('auditoria/mostrar/' . $request->codPlanF)->with('success', 'Se registró el Objetivo General');
     }
 
-    public function editar(Request $request)
+    public function editar($codPlanF, $codObjGen)
     {
         try{
-            $objetivoGeneral = ObjetivoGeneral::find($request->codObjEsp);
+            $objetivoGeneral = ObjetivoGeneral::find($codObjGen);
             RegistrarActividad(ObjetivoGeneral::TABLA,Historial::EDITAR,'vió el formulario de editar el Objetivo General ' . substr($objetivoGeneral->nombre, 0, 50));
-            return view('objetivo_general.editar', compact('macroprocesos', 'objetivoGeneral'));
+            return view('objetivo_general.editar', compact('objetivoGeneral'));
         }catch (\Exception $e){
 
         }
@@ -45,7 +45,6 @@ class ObjetivoGeneralController extends Controller
 
     public function actualizar(Request $request)
     {
-    	dd("hola");
         try{
             $objetivoGeneral             = ObjetivoGeneral::find($request->codObjGen);
             $objetivoGeneral->nombre     = $request->nombre;
@@ -53,7 +52,7 @@ class ObjetivoGeneralController extends Controller
 
             RegistrarActividad(ObjetivoGeneral::TABLA,Historial::ACTUALIZAR,'actualizó el Objetivo General ' . substr($request->nombre, 0, 50));
 
-            return redirect()->route('auditoria.mostrar', $objetivoEspecifico->objetivoGeneral->auditoria->codPlanF)
+            return redirect()->route('auditoria.mostrar', $request->codPlanF)
                 ->with('success', 'Objetivo general actualizado');
         }catch (\Exception $e){
             echo $e->getMessage();

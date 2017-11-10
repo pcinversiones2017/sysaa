@@ -19,6 +19,7 @@
                             <div class="col-md-12 b-r">
                                 {!! Form::hidden('codPlanF',$codPlanF) !!}
                                 {!! Form::hidden('codObjEsp',$codObjEsp) !!}
+                                {!! Form::hidden('codObjEsp',$codObjEsp) !!}
                                 {!! Field::textarea('justificacion', ['rows' => 4]) !!}
                                 <div class="hr-line-dashed"></div>
 

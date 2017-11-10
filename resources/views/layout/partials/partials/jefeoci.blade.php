@@ -13,8 +13,7 @@
                     <a href=""><i class="fa fa-cogs"></i> <span class="nav-label">Configuracion</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearPlan?? ''}}"><a href="{!! route('usuario.listar') !!}"><i class="fa fa-users"></i> Usuarios</a></li>
-                        <li class="{{$crearPlan?? ''}}"><a href="{!! route('usuario.recuperar') !!}"><i class="fa fa-key"></i> CAMBIAR CONTRASEÑA</a></li>
-                        <li class="{{$crearPlan?? ''}}"><a href="{!! route('cargof.listar') !!}"> <i class="fa fa-briefcase"></i> Cargo Funcional</a></li>
+                        <li class="{{$crearPlan?? ''}}"><a href="{!! route('usuario.recuperar') !!}"><i class="fa fa-key"></i> Cambiar Contraseña</a></li>
                        <li ><a href="{!! route('institucion.listar') !!}"> <i class="fa fa-institution"></i> Ver Institucion</a></li>
                         <li ><a href="{!! route('institucion.listarSoftware') !!}"> <i class="fa fa-rebel"></i> Informacion del Software</a></li>
                     </ul>

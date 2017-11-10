@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="hr-line-dashed"></div>
                                         <div class="form-group">
-                                            <label class="control-label">PROCESOS - XD</label>
+                                            <label class="control-label">PROCESOS</label>
                                             <div id="procesos">0</div>
                                         </div>
                                         <div class="hr-line-dashed"></div>

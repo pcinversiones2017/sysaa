@@ -60,4 +60,12 @@ class ProcedimientoController extends Controller
         RegistrarActividad(Procedimiento::TABLA,Historial::EDITAR,'vió el formulario de editar el Procedimiento ');
     	return view('procedimiento.editar', compact(['codPlanF', 'codObjEsp', 'codProc','procedimiento', 'usuariorol']));
     }
+
+    public function eliminar($codProc)
+    {
+        $procedimiento = Procedimiento::find($codProc);
+        $procedimiento->delete();
+        RegistrarActividad(Procedimiento::TABLA,Historial::ELIMINAR,'vió el formulario de editar el Procedimiento ');
+        return back()->with('danger', 'Se elimino el procedimiento');
+    }
 }

@@ -15,6 +15,7 @@
                                 <div class="row">
                                     {!! Form::open(['method' => 'POST', 'route' => 'objetivo-general.guardar', 'class' => 'form-horizontal']) !!}
                                     <input type="hidden" name="codPlanF" value="{{$codPlanF}}">
+                                    <input type="hidden" name="codObjGen" value="{{$codObjGen}}">
                                     <div class="col-lg-12 col-md-12">
 
                                         {!! Field::textarea('nombre', null, ['class' => 'form-control', 'size' => '50x5', 'label' => 'DETALLE']) !!}
