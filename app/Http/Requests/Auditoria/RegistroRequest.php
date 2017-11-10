@@ -27,17 +27,7 @@ class RegistroRequest extends FormRequest
 
         'nombrePlanF'               => 'required| min:5',
         'codigoServicioCP'          => 'required',
-        'tipoServicioCP'            => 'required',
-        'organoCI'                  => 'required',
-        'origen'                    => 'required',
-        'entidadAuditada'           => 'required',
-        'tipoDemanda'               => 'required',
-        //'fechaIniPlanF'     => 'required',
-        //'fechaFinPlanF'     => 'required',
-        //'periodoIniPlanF'   => 'required',
-        //'periodoFinPlanF'   => 'required',
         'codPlanA'                  => 'required',
-        'estadoAuditoria'           => 'pendiente',
         'nombreObjetivoGeneral'     => 'required'
         ];
     }

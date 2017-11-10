@@ -24,10 +24,8 @@ class ActualizarRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'     => 'required|email',
-            'nombres'   => 'required|min:3',
-            'paterno'   => 'required|min:3',
-            'materno'   => 'required|min:3'
+            'nombrePlanF'               => 'required| min:5',
+            'codPlanA'                  => 'required',
         ];
     }
 }

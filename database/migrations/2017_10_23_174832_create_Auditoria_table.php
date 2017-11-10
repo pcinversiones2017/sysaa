@@ -16,11 +16,11 @@ class CreateAuditoriaTable extends Migration
         Schema::create('Auditoria', function (Blueprint $table) {
             $table->increments('codPlanF');
             $table->string('nombrePlanF');
-            $table->string('codigoServicioCP')->comment('codigo del servicio de control posterior');;
-            $table->string('tipoServicioCP')->comment('tipo de servicio de control posterior');;
-            $table->string('organoCI')->comment('organo de control interno');
-            $table->text('origen')->nullable();;
-            $table->string('entidadAuditada');
+            $table->string('codigoServicioCP')->comment('codigo del servicio de control posterior');
+            $table->string('tipoServicioCP')->comment('tipo de servicio de control posterior')->nullable();
+            $table->string('organoCI')->comment('organo de control interno')->nullable();
+            $table->text('origen')->nullable();
+            $table->string('entidadAuditada')->nullable();
             $table->string('tipoDemanda')->nullable();
             $table->date('fechaIniPlanF')->nullable();
             $table->date('fechaFinPlanF')->nullable();

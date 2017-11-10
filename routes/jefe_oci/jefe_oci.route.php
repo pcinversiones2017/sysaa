@@ -65,7 +65,7 @@ Route::group(['prefix' => 'plan'], function () {
 
 
 Route::group(['prefix' => 'macroproceso'], function () {
-    Route::get('crear', 'MacroprocesoController@crear')->name('macroproceso.listar');
+    Route::get('crear', 'MacroprocesoController@crear')->name('macroproceso.crear');
     Route::get('mostrar/{codMacroP}', 'MacroprocesoController@mostrar')->name('macroproceso.mostrar');
     Route::post('guardar', 'MacroprocesoController@guardar')->name('macroproceso.guardar');
     Route::post('guardar_procesoMA', 'MacroprocesoController@guardar_procesoMA')->name('macroproceso.guardar_procesoMA');
@@ -128,11 +128,11 @@ Route::group(['prefix' => 'tipo_normativa'],function () {
 
 //cronograma
 Route::group(['prefix' => 'cronograma'], function(){
-     Route::get('crear', 'CronogramaController@crear')->name('cronograma.crear');
+     Route::get('crear/{codPlaF}', 'CronogramaController@crear')->name('cronograma.crear');
      Route::post('guardar', 'CronogramaController@guardar')->name('cronograma.guardar');
-    Route::post('actualizar', 'CronogramaController@actualizar')->name('cronograma.actualizar');
+     Route::post('actualizar', 'CronogramaController@actualizar')->name('cronograma.actualizar');
      Route::get('listar', 'CronogramaController@listar')->name('cronograma.listar');
-    Route::get('mostrar/{codPlanF}', 'CronogramaController@mostrar')->name('cronograma.mostrar');
+     Route::get('mostrar/{codPlanF}', 'CronogramaController@mostrar')->name('cronograma.mostrar');
      Route::get('editar/{codPlanF}','CronogramaController@editar')->name('cronograma.editar');
 });
 //normaAuditoria

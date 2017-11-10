@@ -20,11 +20,11 @@
 
                                     <div class="col-md-12">
                                         <label class="control-label">SELECCIONAR AUDITORIA</label>
-                                        <select class="form-control" id="sel1" name="codPlanF" >
+                                        <select class="form-control" id="sel1" name="codPlanF" disabled="">
                                             <option value=""> -- SELECCIONE -- </option>
                                             @foreach($auditorias as $auditoria)
                                                 @if($auditoria->cronogramaGeneral->isEmpty())
-                                                <option value="{{$auditoria->codPlanF}}">{{$auditoria->nombrePlanF}}</option>
+                                                <option value="{{$auditoria->codPlanF}}" {{$auditoria->codPlanF == $codPlanF ? 'selected' : ''}}>{{$auditoria->nombrePlanF}}</option>
                                                 @endif
                                             @endforeach
                                         </select>

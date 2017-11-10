@@ -1,8 +1,9 @@
 @extends('layout.admin')
 @section('css-style')
-    <link href="{{url('css/plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet">
+    <link href="{{url('css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
 @stop
 @section('content')
+
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -12,13 +13,13 @@
                 <div class="ibox-content">
                     <div class="row">
                         {!! Form::open(['method' => 'POST', 'route' => 'auditoria.actualizar']) !!}
-                            {{csrf_field()}}
+
                             <input type="hidden" name="codPlanF" value="{{$auditoria->codPlanF}}">
                             <div class="col-md-6 b-r">
                                 {!! Field::text('nombrePlanF', $auditoria->nombrePlanF, ['label' => 'NOMBRE AUDITORIA']) !!}
                                 <div class="hr-line-dashed"></div>
 
-                                {!! Field::text('codigoServicioCP', $auditoria->codigoServicioCP, ['label' => 'CÓDIGO DEL SERVICIO DEL SERVICIO DE CONTROL POSTERIOR']) !!}
+                                {!! Field::text('codigoServicioCP', $auditoria->codigoServicioCP, ['label' => 'CÓDIGO DEL SERVICIO DEL SERVICIO DE CONTROL POSTERIOR', 'disabled' => 'disabled']) !!}
                                 <div class="hr-line-dashed"></div>
 
                                 {!! Field::text('tipoServicioCP', $auditoria->tipoServicioCP, ['label' => 'TIPO DE SERVICIO DE CONTROL POSTERIOR']) !!}
@@ -41,8 +42,14 @@
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
-                                <label class="">PERIODO INICIO - PERIODO FIN</label>
-                                <input id="perido" class="form-control" type="text" name="periodo" value="{{$periodo}}" />
+                                <div class="form-group" id="data_5">
+                                    <label class="">PERIÓDO INICIO - PERIÓDO FIN</label>
+                                    <div class="input-daterange input-group col-md-12" id="datepicker">
+                                        <input type="text" class="form-control" name="periodoIniPlanF" value="{{ !empty($auditoria->periodoIniPlanF) ? date('d-m-Y', strtotime($auditoria->periodoIniPlanF)) : ''}}" />
+                                        <span class="input-group-addon">A</span>
+                                        <input type="text" class="form-control" name="periodoFinPlanF" value="{{ !empty($auditoria->periodoFinPlanF) ? date('d-m-Y', strtotime($auditoria->periodoFinPlanF)) : ''}}" />
+                                    </div>
+                                </div>
 
                             </div>
 
@@ -76,14 +83,25 @@
     <!-- Date range use moment.js same as full calendar plugin -->
     <script src="{{url('js/plugins/fullcalendar/moment.min.js')}}"></script>
     <!-- Date range picker -->
-    <script src="{{url('js/plugins/daterangepicker/daterangepicker.js')}}"></script>
+    <script src="{{url('js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
 
     <script>
 
-        $('input[name="periodo"]').daterangepicker({
-            "applyLabel": "Aplicar",
-            "format": "DD-MM-YYYY",
-            "separator": " hasta "
+        $.fn.datepicker.dates['en'] = {
+            days: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"],
+            daysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+            daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"],
+            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+            today: "Hoy"
+        };
+
+        $('#data_5 .input-daterange').datepicker({
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true,
+            format : 'dd-mm-yyyy'
         });
+
     </script>
 @stop

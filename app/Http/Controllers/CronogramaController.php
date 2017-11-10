@@ -17,11 +17,11 @@ use Mockery\Exception;
 
 class CronogramaController extends Controller
 {
-    public function crear()
+    public function crear($codPlanF)
     {
         $etapas = Etapa::all();
         $auditorias = Auditoria::all();
-        return view('cronograma.crear', compact('etapas', 'auditorias'));
+        return view('cronograma.crear', compact('etapas', 'auditorias', 'codPlanF'));
 
     }
 
@@ -32,7 +32,7 @@ class CronogramaController extends Controller
         $auditoria = Auditoria::find($request->codPlanF);
         $fechaIniPlanF = isset($request->fecha_ini[0]) ? Carbon::parse($request->fecha_ini[0])->format('Y-m-d') : null;
         $fechaFinPlanF = isset($request->fecha_fin[5]) ? Carbon::parse($request->fecha_fin[5])->format('Y-m-d') : null;
-
+        $animate = '#cronograma';
 
         if(isset($fechaIniPlanF)){
             $auditoria->fechaIniPlanF = $fechaIniPlanF;
@@ -53,11 +53,8 @@ class CronogramaController extends Controller
             $cronograma->save();
         }
 
-
         RegistrarActividad(Cronograma::TABLA,Historial::REGISTRAR,'registró el Cronograma '. $request->nombre);
-
-
-        return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success','Cronograma Creado');
+        return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success','Cronograma Creado')->with('animate', $animate);
 
     }
 

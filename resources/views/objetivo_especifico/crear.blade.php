@@ -1,6 +1,12 @@
 @extends('layout.admin')
 @section('content')
 
+    @if($macroprocesos->isEmpty())
+        <div class="alert alert-danger  alert-dismissable">
+            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+            TIENE QUE <a class="alert-link" href="{{ route('macroproceso.crear') }}">CREAR </a> MACROPROCESOS PARA QUE PUEDA CONTINUAR
+        </div>
+    @endif
 <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -40,7 +46,9 @@
                                         <div class="hr-line-dashed"></div>
 
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> REGISTRAR</button>
+                                            @if($macroprocesos->isNotEmpty())
+                                                <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> REGISTRAR</button>
+                                            @endif
                                             <a href="{{ url()->previous() }}" class="btn btn-danger btn-outline">ATRAS</a>
                                         </div>
                                         <div class="hr-line-dashed"></div>
