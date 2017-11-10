@@ -74,6 +74,7 @@ class UsuarioController extends Controller
     public function cambiar(ValidarRequest $request)
     {
         User::existe($request->codUsu)->update(['password' => bcrypt($request->password)]);
-        return back()->with('success','Se cambio la contraseña');
+        Auth::logout();
+        return redirect('login');
     }
 }
