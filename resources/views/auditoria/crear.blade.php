@@ -25,7 +25,7 @@
                                 {!! Field::text('nombrePlanF', ['label' => 'NOMBRE AUDITORIA']) !!}
                                 <div class="hr-line-dashed"></div>
 
-                                {!! Field::text('codigoServicioCP', ['label' => 'CODIGO DEL SERVICIO DE CONTROL POSTERIOR']) !!}
+                                {!! Field::text('codigoServicioCP', $codigoServicio, ['label' => 'CODIGO DEL SERVICIO DE CONTROL POSTERIOR', 'readonly' => 'readonly']) !!}
                                 <div class="hr-line-dashed"></div>
 
                                 {!! Field::text('tipoServicioCP', ['label' => 'TIPO DE SERVICIO DE CONTROL POSTERIOR']) !!}
@@ -117,11 +117,20 @@
 
     <script>
 
+        $.fn.datepicker.dates['en'] = {
+            days: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"],
+            daysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+            daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"],
+            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+            today: "Hoy"
+        };
+
         $('#data_5 .input-daterange').datepicker({
             keyboardNavigation: false,
             forceParse: false,
             autoclose: true,
-            format : 'd-m-yyyy'
+            format : 'dd-mm-yyyy'
         });
     </script>
 @stop

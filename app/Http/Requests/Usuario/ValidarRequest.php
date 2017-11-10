@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\ObjetivoEspecifico;
+namespace App\Http\Requests\Usuario;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Hash;
 
-class ActualizarRequest extends FormRequest
+class ValidarRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +24,9 @@ class ActualizarRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'nombre'   => 'required|min:3',
-            'materia'   => 'required',
-            'codMacroP'   => 'required'
+            return [
+            'password'          => 'required|min:3',
+            'password_confirmation' => 'min:3|same:password',
         ];
     }
 }

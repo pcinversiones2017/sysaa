@@ -22,10 +22,10 @@ class AsignacionController extends Controller
 
     public function crear(Request $request)
     {
-        $rol = rol::pluck('nombre','codRol');
+        $rol = rol::pluck('nombre','codRol')->except(Rol::JEFE_OCI);
 
         $codPlanF = $request->codPlanF;
-        $usuariosRol = UsuarioRol::where('codPlanF', $codPlanF)->pluck('codUsuRol')->toArray();
+        $usuariosRol = UsuarioRol::where('codPlanF', $codPlanF)->pluck('codUsu')->toArray();
         $usuarios = User::all()->except($usuariosRol);
         $usuario = $usuarios->map(function($user){
             $usuarioRol = UsuarioRol::where('codUsu', $user->codUsu)->get();
@@ -45,6 +45,7 @@ class AsignacionController extends Controller
     public function registrar(Request $request)
     {
     	$usuarioRol = UsuarioRol::where('codUsu', $request->usuario)->get();
+    	$animate = '#asignacion';
 
     	if($usuarioRol->isEmpty()){
     	    $activo = 1;
@@ -64,7 +65,7 @@ class AsignacionController extends Controller
 
         RegistrarActividad(UsuarioRol::TABLA,Historial::REGISTRAR,'registró la Asignacion de Rol y Cargo '.$request->nombre);
 
-    	return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success','Usuario asignado registrado');
+    	return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success','Usuario asignado registrado')->with('animate', $animate);
     }
 
     public function editar($id)

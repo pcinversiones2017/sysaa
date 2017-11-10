@@ -27,6 +27,7 @@ class RegistroRequest extends FormRequest
             'username'  => 'required|min:3|unique:users',
             'email'     => 'required|email',
             'password'  => 'required|min:3',
+            'password_confirmation' => 'min:3|same:password',
             'nombres'   => 'required|min:3',
             'paterno'   => 'required|min:3',
             'materno'   => 'required|min:3'

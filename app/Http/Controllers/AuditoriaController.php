@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Requests\Auditoria\ActualizarRequest;
 use App\Http\Requests\Auditoria\RegistroRequest;
 use App\Models\Auditoria;
-use App\Models\Cronograma;
-use App\Models\Log;
+
 use App\Models\Macroproceso;
 use App\Models\ObjetivoGeneral;
 use App\Models\Plan;
@@ -19,7 +19,7 @@ class AuditoriaController extends Controller
 {
     public function listar()
     {
-        $auditorias = Auditoria::all();
+        $auditorias = Auditoria::orderBy('codPlanF', 'des')->get();
         RegistrarActividad(Auditoria::TABLA,Historial::LEER,'vió el listado de Auditorias');
         return view('auditoria.listar')->with(compact('auditorias'));
     }
@@ -27,12 +27,19 @@ class AuditoriaController extends Controller
     public function crear()
     {
         $planes = Plan::pluck('nombrePlan', 'codPlanA');
+        $codigoServicio = Auditoria::orderBy('codPlanF', 'des')->first();
+        if(isset($codigoServicio)){
+            $codigoServicio = str_pad($codigoServicio->codPlanF + 1, 3, '0', STR_PAD_LEFT) .
+            '-UNH-PA-' . date('dmY');
+        }else{
+            $codigoServicio = str_pad(1, 3, '0', STR_PAD_LEFT) . '-UNH-PA-' . date('dmY');
+        }
         $peridoIni = date('d-m-Y');
         $peridoFin = date('d-m-Y', strtotime('+14 day', strtotime($peridoIni)));
         $periodo = $peridoIni . ' hasta ' . $peridoFin;
         $crearAuditoria = 'active';
         RegistrarActividad(Auditoria::TABLA,Historial::CREAR,'vió el formulario de crear Auditoria');
-        return view('auditoria.crear')->with(compact('planes', 'crearAuditoria', 'periodo'));
+        return view('auditoria.crear')->with(compact('planes', 'crearAuditoria', 'periodo', 'codigoServicio'));
     }
 
     public function guardar(RegistroRequest $request)
@@ -50,8 +57,14 @@ class AuditoriaController extends Controller
         $auditoria->codPlanA = $request->codPlanA;
         $auditoria->estadoAuditoria = 'pendiente';
 
-        $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($request->periodoIniPlanF));
-        $auditoria->periodoFinPlanF = date('Y-m-d', strtotime($request->periodoFinPlanF));
+        if(!empty($request->periodoIniPlanF)){
+            $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($request->periodoIniPlanF));
+        }
+
+        if(!empty($request->periodoFinPlanF)){
+            $auditoria->periodoFinPlanF = date('Y-m-d', strtotime($request->periodoFinPlanF));
+        }
+
         RegistrarActividad(Auditoria::TABLA,Historial::REGISTRAR,'registró la Auditoria '.$request->nombrePlanF);
 
         $auditoria->save();
@@ -80,18 +93,16 @@ class AuditoriaController extends Controller
     {
         $planes = Plan::pluck('nombrePlan', 'codPlanA');
         $auditoria = Auditoria::find($request->codPlanF);
-        $periodoIni = date('d-m-Y', strtotime($auditoria->periodoIniPlanF));
-        $periodoFin = date('d-m-Y', strtotime($auditoria->periodoFinPlanF));
-        $periodo = $periodoIni . ' hasta ' . $periodoFin;
         RegistrarActividad(Auditoria::TABLA,Historial::EDITAR,'vió el formulario de editar la Auditoria '.$auditoria->nombrePlanF);
         return view('auditoria.editar')->with(compact('planes', 'auditoria', 'periodo'));
     }
 
     public function actualizar(ActualizarRequest $request)
     {
+
         $auditoria = Auditoria::find($request->codPlanF);
         $auditoria->nombrePlanF = $request->nombrePlanF;
-        $auditoria->codigoServicioCP = $request->codigoServicioCP;
+
         $auditoria->tipoServicioCP = $request->tipoServicioCP;
         $auditoria->organoCI = $request->organoCI;
         $auditoria->origen = $request->origen;
@@ -104,9 +115,8 @@ class AuditoriaController extends Controller
         $auditoria->codPlanA = $request->codPlanA;
         $auditoria->estadoAuditoria = 'pendiente';
 
-        $periodo = explode('hasta', $request->periodo);
-        $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($periodo[0]));
-        $auditoria->periodoFinPlanF = date('Y-m-d', strtotime($periodo[1]));
+        $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($request->periodoIniPlanF));
+        $auditoria->periodoFinPlanF = date('Y-m-d', strtotime($request->periodoFinPlanF));
 
         RegistrarActividad(Auditoria::TABLA,Historial::ACTUALIZAR,'actualizó la Auditoria '.$request->nombrePlanF);
         $auditoria->save();

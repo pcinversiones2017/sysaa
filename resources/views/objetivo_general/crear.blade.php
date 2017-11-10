@@ -8,30 +8,16 @@
                 <div class="ibox-content">
                     <div class="panel panel-success">
                         <div class="panel-heading">
-                            CREAR OBJETIVO ESPECIFICO
+                            CREAR OBJETIVO GENERAL
                         </div>
                         <div class="panel-body">
                             <div class="col-lg-12 col-md-12">
                                 <div class="row">
-                                    {!! Form::open(['method' => 'POST', 'route' => 'objetivo-especifico.guardar', 'class' => 'form-horizontal']) !!}
-                                    <input type="hidden" name="codObjGen" value="{{$auditoria->objetivoGeneral->codObjGen}}">
-                                    <input type="hidden" name="codPlanF" value="{{$auditoria->codPlanF}}">
+                                    {!! Form::open(['method' => 'POST', 'route' => 'objetivo-general.guardar', 'class' => 'form-horizontal']) !!}
+                                    <input type="hidden" name="codPlanF" value="{{$codPlanF}}">
                                     <div class="col-lg-12 col-md-12">
 
                                         {!! Field::textarea('nombre', null, ['class' => 'form-control', 'size' => '50x5', 'label' => 'DETALLE']) !!}
-
-                                        <div class="form-group">
-                                            <label class="control-label">MACROPROCESO</label>
-                                            <select class="form-control m-b" name="codMacroP">
-                                                <option>-- Seleccione --</option>
-                                                @foreach($macroprocesos as $macroproceso)
-                                                    <option value="{{$macroproceso->codMacroP}}">{{$macroproceso->nombre}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <div class="hr-line-dashed"></div>
-                                        {!! Field::text('materia', ['label' => 'MATERIAS A EXAMINAR']) !!}
 
                                         <div class="hr-line-dashed"></div>
 
@@ -41,9 +27,6 @@
                                         </div>
                                         <div class="hr-line-dashed"></div>
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
