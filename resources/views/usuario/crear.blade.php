@@ -28,12 +28,15 @@
                             
                             {!! Field::password('password') !!}
                             <div class="hr-line-dashed"></div>
+                            
+                            {!! Field::password('password_confirmation') !!}
+                            <div class="hr-line-dashed"></div>
 
                             {!! Field::text('paterno') !!}
                             <div class="hr-line-dashed"></div>
 
                             <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-outline" value="REGISTRAR">
+                                <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> REGISTRAR</button>
                                 <a href="{!! route('usuario.listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
                             <div class="hr-line-dashed"></div>

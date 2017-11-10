@@ -68,4 +68,10 @@ class ProcesomaController extends Controller
         RegistrarActividad(Procesoma::TABLA,Historial::ELIMINAR,'eliminó el Procesoma '.$procesoma->nombre);
         return redirect()->route('macroproceso.mostrar', [$codMacroP])->with('danger','Se elimino correctamente');
     }
+
+    public function obtener($codMacroP)
+    {
+        $proceso = Procesoma::where('codMacroP',$codMacroP)->get();
+        return response()->json($proceso);
+    }
 }

@@ -47,4 +47,9 @@ Route::group(['middleware' => ['auth']], function(){
 	    Route::get('eliminar/{id}','ArchivoController@eliminar')->name('auditor.observacion.archivo.eliminar');
 	    Route::get('descargar/{id}','ArchivoController@descargar')->name('auditor.observacion.archivo.descargar');
 	});
+
+	Route::group(['prefix' => 'usuario'], function(){
+		Route::view('cambiar-clave','usuario.recuperar_clave')->name('usuario.recuperar');
+		Route::post('cambiar-contrasena','UsuarioController@cambiar')->name('usuario.cambiar');
+	});
 });

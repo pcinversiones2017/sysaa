@@ -10,9 +10,10 @@
                     </ul>
                 </li>
                 <li class="">
-                    <a href="index-2.html"><i class="fa fa-cogs"></i> <span class="nav-label">Configuracion</span> <span class="fa arrow"></span></a>
+                    <a href=""><i class="fa fa-cogs"></i> <span class="nav-label">Configuracion</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearPlan?? ''}}"><a href="{!! route('usuario.listar') !!}"><i class="fa fa-users"></i> Usuarios</a></li>
+                        <li class="{{$crearPlan?? ''}}"><a href="{!! route('usuario.recuperar') !!}"><i class="fa fa-key"></i> CAMBIAR CONTRASEÑA</a></li>
                         <li class="{{$crearPlan?? ''}}"><a href="{!! route('cargof.listar') !!}"> <i class="fa fa-briefcase"></i> Cargo Funcional</a></li>
                        <li ><a href="{!! route('institucion.listar') !!}"> <i class="fa fa-institution"></i> Ver Institucion</a></li>
                         <li ><a href="{!! route('institucion.listarSoftware') !!}"> <i class="fa fa-rebel"></i> Informacion del Software</a></li>
@@ -24,7 +25,7 @@
                 @else
                 <li class="">
                 @endif
-                    <a href="index-2.html"><i class="fa fa-tasks"></i> <span class="nav-label">Plan</span> <span class="fa arrow"></span></a>
+                    <a href=""><i class="fa fa-tasks"></i> <span class="nav-label">Plan</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearPlan?? ''}}"><a href="{{URL::to('plan/crear')}}"><i class="fa fa-pencil"></i> Crear </a></li>
                         <li class="{{$listarPlan?? ''}}"><a href="{{URL::to('plan/listar')}}"><i class="fa fa-list-alt"></i> Listar </a></li>
@@ -42,7 +43,7 @@
                     </ul>
                 </li>
                 <li class="">
-                    <a href="index-2.html"><i class="fa fa-sitemap"></i> <span class="nav-label">Macroproceso</span><span class="fa arrow"></span></a>
+                    <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">Macroproceso</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearMacroproceso?? ''}}"><a href="{{URL::to('macroproceso/crear')}}"><i class="fa fa-pencil"></i> Crear </a></li>
                         <li class="{{$listarMacroproceso?? ''}}"><a href="{{URL::to('macroproceso/listar')}}"><i class="fa fa-list-alt"></i> Listar </a></li>
@@ -50,7 +51,7 @@
                 </li>
 
                 <li>
-                    <a href="index-2.html"><i class="fa fa-tags"></i> <span class="nav-label">Cronograma y Plazos
+                    <a href=""><i class="fa fa-tags"></i> <span class="nav-label">Cronograma y Plazos
                         </span>
                         <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
@@ -59,7 +60,7 @@
                     </ul>
                 </li>
                     <li>
-                        <a href="index-2.html"><i class="fa fa-star"></i> <span class="nav-label">Normativas</span>
+                        <a href=""><i class="fa fa-star"></i> <span class="nav-label">Normativas</span>
                             <span class="fa arrow"></span></a>
                         <ul class="nav  collapse">
                             <li>

@@ -19,24 +19,28 @@
                                     <div class="col-lg-12 col-md-12">
 
                                         {!! Field::textarea('nombre', null, ['class' => 'form-control', 'size' => '50x5', 'label' => 'DETALLE']) !!}
-
+                                        <div class="hr-line-dashed"></div>
                                         <div class="form-group">
                                             <label class="control-label">MACROPROCESO</label>
-                                            <select class="form-control m-b" name="codMacroP">
+                                            <select class="form-control m-b" name="codMacroP" id="codMacroP">
                                                 <option>-- Seleccione --</option>
                                                 @foreach($macroprocesos as $macroproceso)
                                                     <option value="{{$macroproceso->codMacroP}}">{{$macroproceso->nombre}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-
+                                        <div class="hr-line-dashed"></div>
+                                        <div class="form-group">
+                                            <label class="control-label">PROCESOS</label>
+                                            <div id="procesos">0</div>
+                                        </div>
                                         <div class="hr-line-dashed"></div>
                                         {!! Field::text('materia', ['label' => 'MATERIAS A EXAMINAR']) !!}
 
                                         <div class="hr-line-dashed"></div>
 
                                         <div class="form-group">
-                                            <input type="submit" class="btn btn-success btn-outline" value="REGISTRAR">
+                                            <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> REGISTRAR</button>
                                             <a href="{{ url()->previous() }}" class="btn btn-danger btn-outline">ATRAS</a>
                                         </div>
                                         <div class="hr-line-dashed"></div>
@@ -56,4 +60,21 @@
         </div>
 </div>
 @endsection
+
+@section('js-script')
+<script type="text/javascript">
+    $("#codMacroP").change(function(){
+        var dato = $("#codMacroP").val();
+        $.get("{!! url('procesoma/obtener-procesos/') !!}"+"/"+dato, function(data){
+            $("#procesos").html('');
+            $.each(data, function(key, element){
+                $("#titulo").append("PROECSOS");
+                $("#procesos").append("<ul><li>procesos: "+element.nombre+"</li></ul>");
+                
+            });
+        });
+    });
+</script>
+
+@stop
 

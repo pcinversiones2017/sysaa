@@ -13,6 +13,8 @@ class ValidarRequest extends FormRequest
      */
     public function authorize()
     {
+
+        
         return true;
     }
 
@@ -27,7 +29,7 @@ class ValidarRequest extends FormRequest
             'justificacion' => 'required|min:3',
             'detalle'       => 'required|min:3',
             'fechafin'      => 'required',
-            'codusurol'     => 'required'
+            'codUsuRol'     => 'required'
         ];
     }
 

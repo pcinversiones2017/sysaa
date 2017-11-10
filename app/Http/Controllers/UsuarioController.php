@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Usuario\ValidarRequest;
 use App\Http\Requests\Usuario\RegistroRequest;
 use App\Http\Requests\Usuario\ActualizarRequest;
 use App\User;
@@ -68,5 +69,11 @@ class UsuarioController extends Controller
         $usuario->delete();
         RegistrarActividad(User::TABLA,Historial::ELIMINAR,'eliminó el Usuario '.$usuario->nombre);
     	return redirect()->route('usuario.listar')->with('danger','Usuario eliminado');
+    }
+
+    public function cambiar(ValidarRequest $request)
+    {
+        User::existe($request->codUsu)->update(['password' => bcrypt($request->password)]);
+        return back()->with('success','Se cambio la contraseña');
     }
 }
