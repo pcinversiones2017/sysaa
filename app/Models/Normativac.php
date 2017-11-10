@@ -21,6 +21,9 @@ class Normativa extends Model
         'tipoNormativa', 'nombre','numero','fecha', 'codTipNorm'];
 */
 
-
+    public function macroproceso()
+    {
+        return $this->hasOne(Macroproceso::class, 'codMacroP');
+    }
 
 }

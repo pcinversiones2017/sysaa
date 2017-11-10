@@ -75,7 +75,7 @@
 
                                         <div class="form-group">
                                             <div class="col-lg-12 col-md-12">
-                                                <button class="btn btn-success btn-outline" type="submit">REGISTRAR</button>
+                                                <button class="btn btn-success btn-outline" type="submit"><i class="fa fa-save"></i> ACTUALIZAR</button>
                                                 <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
 
                                             </div>
