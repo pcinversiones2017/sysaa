@@ -4,7 +4,7 @@
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Crear Usuario</h5>
+                <h5>Actualizar Usuario</h5>
 
             </div>
             <div class="ibox-content">
@@ -21,15 +21,15 @@
                             {!! Field::text('materno',$usuario->materno) !!}
                             <div class="hr-line-dashed"></div>
 
+                            {!! Field::text('paterno',$usuario->paterno) !!}
+                            <div class="hr-line-dashed"></div>
+
                         </div>
                         <div class="col-md-6 b-r">
                             {!! Field::text('username', $usuario->username) !!}
                             <div class="hr-line-dashed"></div>
                             
                             {!! Field::password('password') !!}
-                            <div class="hr-line-dashed"></div>
-
-                            {!! Field::text('paterno',$usuario->paterno) !!}
                             <div class="hr-line-dashed"></div>
 
                             <div class="form-group">
