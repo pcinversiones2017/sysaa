@@ -56,7 +56,6 @@
                         <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li class="{{$crearCronograma??''}}"><a href="{{URL::to('cronograma/crear')}}"><i class="fa fa-pencil"></i> Crear </a></li>
-                        <li class="{{$listarCronograma??''}}" ><a href="{{URL::to('cronograma/listar')}}"><i class="fa fa-list-alt"></i> Listar </a></li>
                     </ul>
                 </li>
                     <li>

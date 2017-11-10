@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 
-class NormativaMarcoproceso extends Model
+class NormativaMacroProceso extends Model
 {
 
     const CREATED_AT = 'fecha_creado';

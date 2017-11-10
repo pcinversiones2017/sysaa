@@ -3,155 +3,64 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\CronogramaGeneral\RegistrarRequest;
+use App\Http\Requests\CronogramaGeneral\RegistroRequest;
 use App\Models\Cronograma;
 use App\Models\Etapa;
 use App\Models\Auditoria;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Historial;
 use Auth;
+use Illuminate\Support\Facades\Log;
+use Mockery\Exception;
 
 
 class CronogramaController extends Controller
 {
     public function crear()
     {
-        $etapasPlanificacion = Etapa::where('tipo','=','PLANIFICACIÓN')
-            ->limit(2)
-            ->get()->toArray();
-        $etapaseEjecucion = Etapa::where('tipo','=','EJECUCIÓN')
-            ->get()->toArray();
-        $etapasReporte = Etapa::where('tipo','=','ELABORACIÓN DEL INFORME')
-            ->get()->toArray();
-        // $planes = Plan::all();
-
-
-        //validar que no se pongan varios cronogramas para la misma auditoria (una auditoria un cronograma)
+        $etapas = Etapa::all();
         $auditorias = Auditoria::all();
-
-        $cronogramas = Cronograma::all();
-
-            if(!empty($cronogramas->codPlanf)){
-
-                foreach ($cronogramas as $cronograma) {
-
-                    $auditorias = Auditoria::find('codPlanf', '!=', $cronograma->codPlanf)->get();
-                }
-            }
-
-        RegistrarActividad(Cronograma::TABLA,Historial::CREAR,'vió el formulario de crear Cronograma');
-        $crearCronograma = 'active';
-        return view('cronograma.crear')
-            ->with(compact('crearCronograma','auditorias'))
-            ->with(compact('etapasPlanificacion'))
-            ->with(compact('etapaseEjecucion'))
-        ->with(compact('etapasReporte'));
+        return view('cronograma.crear', compact('etapas', 'auditorias'));
 
     }
 
 
-    public function guardar(RegistrarRequest $request)
+    public function guardar(RegistroRequest $request)
     {
 
-        $auditoria = Auditoria::find($request->codPlanf[0]);
-        $auditoria->fechaIniPlanF = date('Y-m-d',strtotime($request->fechaIni[0]));
-        $auditoria->fechaFinPlanF = date('Y-m-d',strtotime($request->fechaFin[4]));
+        $auditoria = Auditoria::find($request->codPlanF);
+        $fechaIniPlanF = isset($request->fecha_ini[0]) ? Carbon::parse($request->fecha_ini[0])->format('Y-m-d') : null;
+        $fechaFinPlanF = isset($request->fecha_fin[5]) ? Carbon::parse($request->fecha_fin[5])->format('Y-m-d') : null;
+
+
+        if(isset($fechaIniPlanF)){
+            $auditoria->fechaIniPlanF = $fechaIniPlanF;
+        }
+        if(isset($fechaFinPlanF)){
+            $auditoria->fechaFinPlanF = $fechaFinPlanF;
+        }
+
         $auditoria->save();
 
-       $i=0;
-       for($i=0;$i<=1;$i++){
-        $cronograma = new Cronograma();
-        $cronograma->codPlanf = $request->codPlanf[0];
-        $cronograma->codEtp = $request->etapa[$i];
-        $cronograma->fechaIni = date('Y-m-d',strtotime($request->fechaIni[$i]));
-        $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[$i]));
-        $cronograma->dias_habiles = $request->dias_habiles[$i];
-        $cronograma->save();
-       }
-       $j=2;
-        for($j=2;$j<=3;$j++){
+        for ($i = 0 ; $i < count($request->codEtp); $i++){
             $cronograma = new Cronograma();
-            $cronograma->codPlanf = $request->codPlanf[0];
-            $cronograma->codEtp = $request->etapa[$j];
-            $cronograma->fechaIni = date('Y-m-d',strtotime($request->fechaIni[2]));;
-            $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[2]));
-            $cronograma->dias_habiles = $request->dias_habiles[2];
+            $cronograma->codEtp = $request->codEtp[$i];
+            $cronograma->fecha_ini = isset($request->fecha_ini[$i]) ? Carbon::parse($request->fecha_ini[$i])->format('Y-m-d') : null;
+            $cronograma->fecha_fin = isset($request->fecha_fin[$i]) ? Carbon::parse($request->fecha_iin[$i])->format('Y-m-d') : null;
+            $cronograma->dias_habiles = $request->dias_habiles[$i] ?? null;
+            $cronograma->codPlanF = $request->codPlanF;
             $cronograma->save();
         }
-        $k=4;
-        for($k=4;$k<=9;$k++){
-            $cronograma = new Cronograma();
-            $cronograma->codPlanf = $request->codPlanf[0];
-            $cronograma->codEtp = $request->etapa[$k];
-            $cronograma->fechaIni = date('Y-m-d',strtotime($request->fechaIni[3]));
-            $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[3]));
-            $cronograma->dias_habiles = $request->dias_habiles[3];
-            $cronograma->save();
-        }
-        $l=10;
-        for($l=10;$l<=12;$l++){
-            $cronograma = new Cronograma();
-            $cronograma->codPlanf = $request->codPlanf[0];
-            $cronograma->codEtp = $request->etapa[$l];
-            $cronograma->fechaIni = date('Y-m-d',strtotime($request->fechaIni[4]));
-            $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[4]));
-            $cronograma->dias_habiles = $request->dias_habiles[4];
-            $cronograma->save();
-        }
-        RegistrarActividad(Cronograma::TABLA,Historial::REGISTRAR,'registró el Cronograma '.$request->nombre);
 
 
-        return redirect()->route('cronograma.listar')->with('success','Cronograma Creado');
+        RegistrarActividad(Cronograma::TABLA,Historial::REGISTRAR,'registró el Cronograma '. $request->nombre);
+
+
+        return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success','Cronograma Creado');
 
     }
 
-
-    public function listar()
-    {
-        $cronogramas = Cronograma::all();
-        $auditorias = Auditoria::all();
-        $listarCronograma = 'active';
-        RegistrarActividad(Cronograma::TABLA,Historial::LEER,'vió el listado de Cronogramas');
-        return view('cronograma.listar')
-            ->with(compact('auditorias', 'listarCronograma'))
-        ->with(compact('cronogramas'));
-    }
-
-    public function mostrar(Request $request)
-    {
-        $etapasPlanificacion = Etapa::where('tipo','=','PLANIFICACIÓN')
-            ->limit(2)
-            ->get()->toArray();
-        $etapaseEjecucion = Etapa::where('tipo','=','EJECUCIÓN')
-            ->get()->toArray();
-        $etapasReporte = Etapa::where('tipo','=','ELABORACIÓN DEL INFORME')
-            ->get()->toArray();
-
-
-        $codPlanF=$request->codPlanF;
-        $cronogramas = Cronograma::where('codPlanf','=',$codPlanF)->get()->toArray();;
-
-        foreach ($cronogramas as $cronograma){
-            $fechasIni[] = $cronograma['fechaIni'];
-            $fechaFin[]= $cronograma['fechaFin'];
-            $dias_habiles[] = $cronograma['dias_habiles'];
-
-        }
-        $dias_total = $dias_habiles[0]+$dias_habiles[1]+ $dias_habiles[2]+ $dias_habiles[3]+ $dias_habiles[4];
-        $auditoria = Auditoria::find($request->codPlanF);
-
-        return view('cronograma.mostrar')
-            ->with(compact('cronogramas'))
-            ->with(compact('auditoria'))
-            ->with(compact('dias_total'))
-            ->with(compact('fechasIni'))
-            ->with(compact('fechaFin'))
-            ->with(compact('dias_habiles'))
-            ->with(compact('etapasPlanificacion'))
-            ->with(compact('etapaseEjecucion'))
-            ->with(compact('etapasReporte'));
-
-    }
 
     public function eliminar(Request $request){
 
@@ -180,101 +89,48 @@ class CronogramaController extends Controller
 
     public function editar(Request $request)
     {
+        $codPlanF = $request->codPlanF;
         $auditorias = Auditoria::all();
-        $etapasPlanificacion = Etapa::where('tipo','=','PLANIFICACIÓN')
-            ->limit(2)
-            ->get()->toArray();
-        $etapaseEjecucion = Etapa::where('tipo','=','EJECUCIÓN')
-            ->get()->toArray();
-        $etapasReporte = Etapa::where('tipo','=','ELABORACIÓN DEL INFORME')
-            ->get()->toArray();
+        $cronograma = Cronograma::where('codPlanF', $codPlanF)->get();
 
-
-        $codPlanF=$request->codPlanF;
-        $cronogramas = Cronograma::where('codPlanf','=',$codPlanF)->get()->toArray();;
-
-        foreach ($cronogramas as $cronograma){
-            $codCroGen[] = $cronograma['codCroGen'];
-            $fechasIni[] = $cronograma['fechaIni'];
-            $fechaFin[]= $cronograma['fechaFin'];
-            $dias_habiles[] = $cronograma['dias_habiles'];
-
-        }
-
-        RegistrarActividad(Cronograma::TABLA,Historial::EDITAR,'vió el formulario de editar Cronograma '.$actividad->nombre);
-
-        $auditoria = Auditoria::find($request->codPlanF);
-
-        return view('cronograma.editar')
-            ->with(compact('auditorias'))
-            ->with(compact('cronogramas'))
-            ->with(compact('auditoria'))
-            ->with(compact('dias_total'))
-            ->with(compact('fechasIni'))
-            ->with(compact('fechaFin'))
-            ->with(compact('dias_habiles'))
-            ->with(compact('etapasPlanificacion'))
-            ->with(compact('etapaseEjecucion'))
-            ->with(compact('etapasReporte'))
-         ->with(compact('codCroGen'));
+        return view('cronograma.editar', compact('auditorias', 'cronograma', 'codPlanF'));
     }
 
 
     public function actualizar(Request $request)
     {
 
-        $auditoria = Auditoria::find($request->codPlanf[0]);
-        $auditoria->fechaIniPlanF = date('Y-m-d',strtotime($request->fechaIni[0]));
-        $auditoria->fechaFinPlanF = date('Y-m-d',strtotime($request->fechaFin[4]));
-        $auditoria->save();
+        try{
+            $auditoria = Auditoria::find($request->codPlanF);
+            $fechaIniPlanF = isset($request->fecha_ini[0]) ? Carbon::parse($request->fecha_ini[0])->format('Y-m-d') : null;
+            $fechaFinPlanF = isset($request->fecha_fin[5]) ? Carbon::parse($request->fecha_fin[5])->format('Y-m-d') : null;
 
-        $i=0;
-        for($i=0;$i<=1;$i++){
-            $cronograma = Cronograma::find($request->codCroGen[$i]);
-            $cronograma->codPlanf = $request->codPlanf[0];
-            $cronograma->codEtp = $request->etapa[$i];
-            $cronograma->fechaIni = date('Y-m-d',strtotime($request->fechaIni[$i]));
-            $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[$i]));
-            $cronograma->dias_habiles = $request->dias_habiles[$i];
-            $cronograma->save();
+            if(isset($fechaIniPlanF)){
+                $auditoria->fechaIniPlanF = $fechaIniPlanF;
+            }
+            if(isset($fechaFinPlanF)){
+                $auditoria->fechaFinPlanF = $fechaFinPlanF;
+            }
+            $auditoria->save();
+
+            Cronograma::where('codPlanF', $request->codPlanF)->delete();
+            for ($i = 0 ; $i < count($request->codEtp); $i++){
+                $cronograma = new Cronograma();
+                $cronograma->codEtp = $request->codEtp[$i];
+                $cronograma->fecha_ini = isset($request->fecha_ini[$i]) ? Carbon::parse($request->fecha_ini[$i])->format('Y-m-d') : null;
+                $cronograma->fecha_fin = isset($request->fecha_fin[$i]) ? Carbon::parse($request->fecha_iin[$i])->format('Y-m-d') : null;
+                $cronograma->dias_habiles = $request->dias_habiles[$i] ?? null;
+                $cronograma->codPlanF = $request->codPlanF;
+                $cronograma->save();
+            }
+
+        }catch (\Exception $e){
+            Log::error($e->getMessage());
+
         }
-        $j=2;
-        for($j=2;$j<=3;$j++){
-            $cronograma = Cronograma::find($request->codCroGen[$i]);
 
-            $cronograma->codPlanf = $request->codPlanf[0];
-            $cronograma->codEtp = $request->etapa[$j];
-            $cronograma->fechaIni =  date('Y-m-d',strtotime($request->fechaIni[2]));
-            $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[2]));
-            $cronograma->dias_habiles = $request->dias_habiles[2];
-            $cronograma->save();
-        }
-        $k=4;
-        for($k=4;$k<=9;$k++){
-            $cronograma = Cronograma::find($request->codCroGen[$i]);
-            $cronograma->codPlanf = $request->codPlanf[0];
-            $cronograma->codEtp = $request->etapa[$k];
-            $cronograma->fechaIni = date('Y-m-d',strtotime($request->fechaIni[3]));
-            $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[3]));
-            $cronograma->dias_habiles = $request->dias_habiles[3];
-            $cronograma->save();
-        }
-        $l=10;
-        for($l=10;$l<=12;$l++){
-            $cronograma = Cronograma::find($request->codCroGen[$i]);
-
-            $cronograma->codPlanf = $request->codPlanf[0];
-            $cronograma->codEtp = $request->etapa[$l];
-            $cronograma->fechaIni = date('Y-m-d',strtotime($request->fechaFin[4]));
-            $cronograma->fechaFin = date('Y-m-d',strtotime($request->fechaFin[4]));
-            $cronograma->dias_habiles = $request->dias_habiles[4];
-            $cronograma->save();
-        }
-        RegistrarActividad(Cronograma::TABLA,Historial::ACTUALIZAR,'actualizó el Cronograma '.$request->nombre);
-
-
-
-        return redirect()->route('cronograma.listar')->with('success','Cronograma actualizado');
+        RegistrarActividad(Cronograma::TABLA,Historial::ACTUALIZAR,'actualizó el Cronograma de la auditoria ' . $auditoria->nombrePlanF );
+        return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success','Cronograma actualizado');
 
     }
 
