@@ -6,27 +6,41 @@
             DATOS DE LA INSTITUCIÓN
         </div>
         <div class="panel-body">
+            <div>
+                <a href="{{ url('institucion/editar/1') }}" class="btn btn-outline btn-success"><i class="fa fa-edit"></i> EDITAR</a>
+            </div>
 
+            <br>
             <table class="table table-bordered">
                 <thead>
-                <tr>
-                    <th>NOMBRE</th>
-                    <th>RUC</th>
-                    <th>TELEFONO</th>
-                    <th>DIRECCIÓN</th>
-                    <th>Acciones</th>
-                </tr>
+
                 </thead>
                 <tbody>
                     <tr>
+                        <td>NOMBRE DE LA INSTITUCIÓN</td>
                         <td>{{$institucionn->nombre}}</td>
-                        <td>{{$institucionn->ruc}}</td>
-                        <td>{{$institucionn->telefono}}</td>
-                        <td>{{$institucionn->direccion}}</td>
-                        <td>
-                            <a href="{{URL::to('institucion/editar')}}/{{$institucionn->codInstitucion}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                        </td>
                     </tr>
+                    <tr>
+                        <td>RUC</td>
+                        <td>{{$institucionn->ruc}}</td>
+                    </tr>
+                    <tr>
+                        <td>TELÉFONO</td>
+                        <td>{{$institucionn->telefono}}</td>
+                    </tr>
+                    <tr>
+                        <td>DIRECCIÓN</td>
+                        <td>{{$institucionn->direccion}}</td>
+                    </tr>
+                    <tr>
+                        <td>ORGANO DE CONTROL INSITUCIONAL</td>
+                        <td>{{$institucionn->organo_control}}</td>
+                    </tr>
+                    <tr>
+                        <td>DENOMINACIÓN DEL AÑO ACTUAL</td>
+                        <td>{{$institucionn->denominacion_anio}}</td>
+                    </tr>
+
                 </tbody>
             </table>
 
