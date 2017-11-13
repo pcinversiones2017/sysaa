@@ -4,7 +4,7 @@
             <div class="ibox-content">
                 <div class="row">
                     <div class="col-sm-3">
-                        <a type="button" href="{!! route('objetivo-general.crear', $auditoria->codPlanF) !!}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-pencil"></i> CREAR OBJETIVO GENERAL</a>
+                        <a type="button" href="{!! url('procedimiento-general/crear/'.$auditoria->codPlanF) !!}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-pencil"></i> CREAR PROCEDIMIENTO</a>
                     </div>
                 </div>
 
@@ -21,11 +21,10 @@
                     @foreach($objetivoGeneral as $row)
                         <tr>
                             <td>{{$i}}</td>
-                            <td>{{$row->nombre}}</td>
+                            <td>{{$row->justificacion}}</td>
                             <td class="tooltip-demo" style="text-align: center">
-                                <a href="{{url('objetivo-general/mostrar')}}/{{$auditoria->codPlanF}}/{{$row->codObjGen}}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Ver"><i class="fa fa-eye"></i></a>
-                                <a href="{!! url('objetivo-general/editar/'.$auditoria->codPlanF.'/'.$row->codObjGen) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
-                                <a href="{{route('objetivo-general.eliminar', $row->codObjGen )}}" class="btn btn-danger btn-outline eliminar-objetivo-general" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
+                                <a href="{!! url('procedimiento-general/editar/'.$auditoria->codPlanF.'/'.$row->codProc) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
+                                <a href="{{route('procedimiento-general.eliminar', $row->codProc )}}" class="btn btn-danger btn-outline eliminar-objetivo-general" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <?php $i++ ?>

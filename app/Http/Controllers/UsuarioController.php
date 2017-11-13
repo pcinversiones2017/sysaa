@@ -15,8 +15,9 @@ class UsuarioController extends Controller
     public function listar()
     {
     	$usuarios = User::all();
+        $usuario = 'active';
         RegistrarActividad(User::TABLA,Historial::LEER,'vió el listado de Usuarios');
-    	return view('usuario.listar', compact('usuarios'));
+    	return view('usuario.listar', compact('usuarios', 'usuario'));
     }
 
     public function crear()
@@ -74,6 +75,7 @@ class UsuarioController extends Controller
     public function cambiar(ValidarRequest $request)
     {
         User::existe($request->codUsu)->update(['password' => bcrypt($request->password)]);
-        return back()->with('success','Se cambio la contraseña');
+        Auth::logout();
+        return redirect('login');
     }
 }

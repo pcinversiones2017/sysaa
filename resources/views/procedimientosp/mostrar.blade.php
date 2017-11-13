@@ -51,7 +51,7 @@
                                     {!! Field::textarea('nombre', ['label' => 'ACTIVIDAD', 'rows' => 3]) !!}
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success btn-outline" value=""><i class="fa fa-save"></i> REGISTRAR</button>
-                                        <a href="{{URL::to('macroproceso/listar')}}" class="btn btn-danger btn-outline">CANCELAR</a>
+                                        <a href="{{URL::to('macroproceso/listar')}}" class="btn btn-danger btn-outline">ATRAS</a>
                                     </div>
                                 </div>
                                 {!! Form::close() !!}
@@ -81,7 +81,6 @@
                                             <td>{{$actividad->responsable}}</td>
                                             <td>{{$actividad->nombre}}</td>
                                             <td>
-                                                <a href="{!!  route('actividad.mostrar', $actividad->codAct) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
                                                 <a href="{!!  route('actividad.editar', $actividad->codAct) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
                                                 <a href="{!!  route('actividad.eliminar', $actividad->codAct)!!}" class="btn btn-danger btn-outline eliminar-actividad"><i class="fa fa-trash"></i></a>
                                             </td>

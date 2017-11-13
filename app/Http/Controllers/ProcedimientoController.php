@@ -13,12 +13,13 @@ class ProcedimientoController extends Controller
 {
     public function listar()
     {
+        $listarProcedimiento = 'active';
     	$procedimiento = Procedimiento::all();
         RegistrarActividad(Procedimiento::TABLA,Historial::LEER,'vió el listado de Procedimientos');
-    	return view('procedimiento.listar', compact('procedimiento'));
+    	return view('procedimiento.listar', compact('procedimiento', 'listarProcedimiento'));
     }
 
-    public function crear($codPlanF, $codObjEsp)
+    public function crear($codPlanF)
     {
     	$usuariorol = Usuariorol::where('codPlanF', $codPlanF)->with('usuario')->get()->except(1);
         RegistrarActividad(Procedimiento::TABLA,Historial::CREAR,'vió el formulario de crear Procedimiento');
@@ -59,5 +60,13 @@ class ProcedimientoController extends Controller
     	$usuariorol = Usuariorol::with('usuario')->get();
         RegistrarActividad(Procedimiento::TABLA,Historial::EDITAR,'vió el formulario de editar el Procedimiento ');
     	return view('procedimiento.editar', compact(['codPlanF', 'codObjEsp', 'codProc','procedimiento', 'usuariorol']));
+    }
+
+    public function eliminar($codProc)
+    {
+        $procedimiento = Procedimiento::find($codProc);
+        $procedimiento->delete();
+        RegistrarActividad(Procedimiento::TABLA,Historial::ELIMINAR,'eliminó el Procedimiento '. $procedimiento->justificacion);
+        return back()->with('danger', 'Se elimino el procedimiento');
     }
 }

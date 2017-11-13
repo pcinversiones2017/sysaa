@@ -33,7 +33,6 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>OBJETIVO ESPECIFICO</th>
                         <th>JUSTIFICACION</th>
                         <th>DETALLE</th>
                         <th>F. TERMINADO</th>
@@ -48,7 +47,6 @@
                     @foreach($procedimiento as $row)
                     <tr>
                         <td>{{$i}}</td>
-                        <td>{!! $row->objetivoespecifico->nombre !!}</td>
                         <td>{!! substr($row->justificacion,0,10) !!}</td>
                         <td>{!! substr($row->detalle,0,10) !!}</td>
                         <td>{!! $row->fecha_terminado !!}</td>
@@ -99,7 +97,6 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>OBJETIVO ESPECIFICO</th>
                         <th>JUSTIFICACION</th>
                         <th>DETALLE</th>
                         <th>F. TERMINADO</th>
@@ -115,7 +112,6 @@
                     @foreach($procedimiento_general as $row)
                     <tr>
                         <td>{{$i}}</td>
-                        <td>{!! $row->nombre !!}</td>
                         <td>{!! substr($row->justificacion,0,10) !!}</td>
                         <td>{!! substr($row->detalle,0,10) !!}</td>
                         <td>{!! $row->fecha_terminado !!}</td>

@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Normativa\RegistrarRequest;
 use App\Models\Macroproceso;
 use App\Models\Normativa;
-use App\Models\NormativaMacroProceso;
-use App\Models\NormativaMarcoProceso;
 use App\Models\TipoNormativa;
 use Illuminate\Http\Request;
 use App\Models\Historial;
@@ -23,17 +21,17 @@ class NormaAuditoriaController extends Controller
     }
     public function listarAplica()
     {
-        $normativaMacroproceso = NormativaMacroProceso::all();
+        $normativas = Normativa::all();
 
-        return view('norma_auditoria.listar-aplica')->with(compact('normativaMacroproceso'));
+        return view('norma_auditoria.listar-aplica')->with(compact('normativas'));
     }
 
-    public function crear(){
+    public function crear($codPlanF){
 
         $macroProcesos = Macroproceso::pluck('nombre', 'codMacroP');
 
         RegistrarActividad(Normativa::TABLA,Historial::CREAR,'vió el formulario de crear Norma');
-        return view('norma_auditoria.crear')->with(compact('macroProcesos'));
+        return view('norma_auditoria.crear')->with(compact('macroProcesos', 'codPlanF'));
     }
 
     public function  guardar(RegistrarRequest $request){
@@ -45,45 +43,46 @@ class NormaAuditoriaController extends Controller
         $normativa->numero = $request->numero;
         $normativa->codTipNorm = TipoNormativa::APLICABLE;
         $normativa->codMacroP  = $request->codMacroP;
+        $normativa->codPlanF = $request->codPlanF;
         $normativa->save();
+
+        $animate = '#normativa';
         
         RegistrarActividad(Normativa::TABLA,Historial::REGISTRAR,'registró la Norma ' . $request->nombre);
-        return redirect()->route('norma-auditoria.listar-aplica')->with('success','Normativa Creada');
+        return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success','Normativa Creada')->with('animate', $animate);
     }
 
     public function editar(Request $request){
-        $macroProcesos = Macroproceso::pluck('nombre', 'codMacroP');
-        $normativaMacroproceso = NormativaMarcoproceso::find($request->codNormMacro);
-        RegistrarActividad(Normativa::TABLA,Historial::EDITAR,'vió el formulario de editar la Actividad '.$normativaMacroproceso->nombre);
 
-        return view('norma_auditoria.editar')->with(compact('normativaMacroproceso'))
-            ->with(compact('macroProcesos'));
+        $macroProcesos = Macroproceso::pluck('nombre', 'codMacroP');
+        $normativa = Normativa::find($request->codNorm);
+        RegistrarActividad(Normativa::TABLA,Historial::EDITAR,'vió el formulario de editar la Actividad '. $normativa->nombre);
+
+        return view('norma_auditoria.editar')->with(compact('normativa', 'macroProcesos'));
     }
 
     public function eliminar(Request $request){
-        $normativaMacroproceso = NormativaMarcoproceso::find($request->codNormMacro);
-        $normativaMacroproceso->delete();
-        RegistrarActividad(Normativa::TABLA,Historial::ELIMINAR,'eliminó la Actividad '.$normativaMacroproceso->nombre);
-        return redirect()->route('norma_auditoria.listarAplica')->with('success','Normativa ELIMNADA');
+
+        $normativa = Normativa::find($request->codNorm);
+        $normativa->delete();
+        RegistrarActividad(Normativa::TABLA,Historial::ELIMINAR,'eliminó la Actividad ' . $normativa->nombre);
+        return redirect()->route('auditoria.mostrar', $normativa->codPlanF)
+            ->with(['success' => 'Normativa eliminada', 'animate' => '#normativa']);
     }
 
     public function actualizar(Request $request){
 
-        $normativaMacroproceso = NormativaMarcoproceso::find($request->codNormMacro);
-        $normativaMacroproceso->codNorm = $request->codNorm;
-        $normativaMacroproceso->codMacroP = $request->codMacroP;
-        $normativaMacroproceso->save();
-
-        $normasCAuditoria = Normativa::find($request->codNorm);
-        $normasCAuditoria->tipoNormativa = $request->tipoNormativa;
-        $normasCAuditoria->nombre = $request->nombre;
-        $normasCAuditoria->numero = $request->numero;
-        $normasCAuditoria->fecha = $request->fecha;
-        $normasCAuditoria->save();
+        $normativa = Normativa::find($request->codNorm);
+        $normativa->tipoNormativa = $request->tipoNormativa;
+        $normativa->codMacroP = $request->codMacroP;
+        $normativa->nombre = $request->nombre;
+        $normativa->numero = $request->numero;
+        $normativa->fecha = $request->fecha;
+        $normativa->save();
 
         RegistrarActividad(Normativa::TABLA,Historial::ACTUALIZAR,'actualizó la Actividad '.$request->nombre);
 
-        return redirect()->route('norma_auditoria.listarAplica');
+        return redirect()->route('auditoria.mostrar', $normativa->codPlanF)->with(['success' => 'Se modificó correctamente', 'animate' => '#normativa']);
 
     }
 

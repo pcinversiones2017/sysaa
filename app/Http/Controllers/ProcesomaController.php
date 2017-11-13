@@ -30,6 +30,8 @@ class ProcesomaController extends Controller
     {
         $procesoma = new Procesoma();
         $procesoma->nombre = $request->nombre;
+        $procesoma->riesgo = $request->riesgo;
+        $procesoma->ponderacion = $request->ponderacion;
         $procesoma->estado = 'activo';
         $procesoma->codMacroP = $request->codMacroP;
         $procesoma->save();
@@ -54,6 +56,8 @@ class ProcesomaController extends Controller
     {
         $procesoma = Procesoma::find($request-> codProMA);
         $procesoma->nombre = $request->nombre;
+        $procesoma->riesgo = $request->riesgo;
+        $procesoma->ponderacion = $request->ponderacion;
         $procesoma->estado = 'activo';
         $procesoma->codMacroP = $request->codMacroP;
         $procesoma->save();

@@ -45,4 +45,9 @@ class Auditoria extends Model
     {
         return $this->hasMany(Macroproceso::class, 'codPlanF');
     }
+
+    public function normativas()
+    {
+        return $this->hasMany(Normativa::class, 'codPlanF');
+    }
 }

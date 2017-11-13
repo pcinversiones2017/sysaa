@@ -15,11 +15,9 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            {!! Form::open(['method' => 'POST', 'route' => 'procedimiento.registrar']) !!}
+                            {!! Form::open(['method' => 'POST', 'route' => 'procedimiento-general.registrar']) !!}
                             <div class="col-md-12 b-r">
                                 {!! Form::hidden('codPlanF',$codPlanF) !!}
-                                {!! Form::hidden('codObjEsp',$codObjEsp) !!}
-                                {!! Form::hidden('codObjEsp',$codObjEsp) !!}
                                 {!! Field::textarea('justificacion', ['rows' => 4]) !!}
                                 <div class="hr-line-dashed"></div>
 
@@ -48,7 +46,7 @@
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> REGISTRAR</button>
-                                    <a href="{!! url('objetivo-especifico/mostrar/'.$codPlanF.'/'.$codObjEsp) !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                                    <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                                 </div>
                                 <div class="hr-line-dashed"></div>
 

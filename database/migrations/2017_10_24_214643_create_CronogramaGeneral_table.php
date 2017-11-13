@@ -17,7 +17,7 @@ class CreateCronogramaGeneralTable extends Migration
             $table->increments('codCroGen');
             $table->integer('codEtp')->unsigned();
             $table->date('fecha_ini')->nullable();
-            $table->date('fecha_Fin')->nullable();
+            $table->date('fecha_fin')->nullable();
             $table->integer('codPlanF')->unsigned();
             $table->integer('dias_habiles')->nullable();
 

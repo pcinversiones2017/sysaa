@@ -5,17 +5,78 @@
     {!! Html::style('css/plugins/dataTables/datatables.min.css') !!}
 @stop
 
-
 @section('js-script')
     @if(session('animate'))
         <script type="application/javascript">
             $("html, body").animate({
-                scrollTop: $("{!! session('animate') !!}").offset().top - 150
+                scrollTop: $("{!! session('animate') !!}").offset().top - 100
             }, 2000);
 
         </script>
     @endif
+    {!! Html::script('js/plugins/alertifyjs/alertify.min.js') !!}
+    {!! Html::script('js/plugins/dataTables/datatables.min.js') !!}
+    <script>
+        $('.eliminar-objetivo-especifico').on('click', function (e) {
+            e.preventDefault();
+            var data = $(this);
+            alertify.confirm('Eliminar Objetivo Especifico', 'Esta seguro que desea eliminar este objetivo especifico, se borraran todo el contenido involucrado!!',
+                function(){
+                    window.location.href = data.attr('href');
+                },
+                function(){
+                    alertify.error('Cancelado');
+                }).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
+        });
+    </script>
+    <script>
+        $('.eliminar-normativa').on('click', function (e) {
+            e.preventDefault();
+            var data = $(this);
+            alertify.confirm('Eliminar Normativa', 'Esta seguro que desea eliminar esta normativa',
+                function(){
+                    window.location.href = data.attr('href');
+                },
+                function(){
+                    alertify.error('Cancelado');
+                }).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('.table-objetivo-especifico').DataTable({
+                language: {
+                    url : '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
+                },
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+
+                    {extend: 'excel', title: 'Lista Objetivos Especificos'},
+                    {extend: 'pdf', title: 'Lista Objetivos Especificos'},
+
+                    {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
+
+    </script>
+
 @stop
+
+
 
 @section('content')
     <div class="row">
@@ -51,7 +112,7 @@
                                                 </div>
 
                                                 <div class="form-group"><label class="col-lg-6 control-label">Creado por:</label>
-                                                    <h5 class="text-left col-lg-6" style="padding-top: 5px">César Herbozo</h5>
+                                                    <h5 class="text-left col-lg-6" style="padding-top: 5px"></h5>
                                                 </div>
                                                 <div class="form-group"><label class="col-lg-6 control-label">Código del servicio de control posterior:</label>
                                                     <h5 class="text-left col-lg-6" style="padding-top: 5px">{{$auditoria->codigoServicioCP}}</h5>
@@ -113,7 +174,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-12" id="objetivo-general">
                                 <div class="panel panel-success">
                                     <div class="panel-heading">
                                         III. OBJETIVO GENERAL
@@ -170,10 +231,34 @@
                                 </div>
                             </div>
 
+                            <div class="col-lg-12"  id="normativa">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        VII. NORMATIVA APLICABLE A LA ENTIDAD Y MATERIA(S) A EXAMINAR
+                                    </div>
+                                    <div class="panel-body">
+                                        @include('norma_auditoria.partials.listar-aplica')
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        VII. NORMATIVA QUE REGULA LA AUDITORÍA DE CUMPLIMIENTO
+                                    </div>
+                                    <div class="panel-body">
+                                        @include('norma_auditoria.partials.listar')
+                                    </div>
+
+                                </div>
+                            </div>
+
                             <div class="col-lg-12" id="cronograma">
                                 <div class="panel panel-success">
                                     <div class="panel-heading">
-                                        VII. CRONOGRAMA Y PLAZOS DE ENTREGA DE DOCUMENTOS
+                                        VIII. CRONOGRAMA Y PLAZOS DE ENTREGA DE DOCUMENTOS
                                     </div>
                                     <div class="panel-body">
                                         @include('cronograma.partials.mostrar')
@@ -193,4 +278,3 @@
 
 
 @stop
-

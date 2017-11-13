@@ -19,15 +19,8 @@
                                 {!! Form::open(['method' => 'POST', 'route' => 'cronograma.guardar']) !!}
 
                                     <div class="col-md-12">
-                                        <label class="control-label">SELECCIONAR AUDITORIA</label>
-                                        <select class="form-control" id="sel1" name="codPlanF" disabled="">
-                                            <option value=""> -- SELECCIONE -- </option>
-                                            @foreach($auditorias as $auditoria)
-                                                @if($auditoria->cronogramaGeneral->isEmpty())
-                                                <option value="{{$auditoria->codPlanF}}" {{$auditoria->codPlanF == $codPlanF ? 'selected' : ''}}>{{$auditoria->nombrePlanF}}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
+                                        {!! Form::hidden('codPlanF', $auditoria->codPlanF) !!}
+                                        {!! Field::text('',  $auditoria->nombrePlanF, ['label' => 'AUDITORIA', 'disabled' => 'disabled']) !!}
                                         @if($errors->has('codPlanF'))
                                         <label class="error has-error">{{$errors->first()}}</label>
                                         @endif
@@ -78,9 +71,8 @@
 
                                         <div class="form-group">
                                             <div class="col-lg-12 col-md-12">
-                                                <button class="btn btn-success btn-outline" type="submit">REGISTRAR</button>
+                                                <button class="btn btn-success btn-outline" type="submit"><i class="fa fa-save"></i> REGISTRAR</button>
                                                 <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
-
                                             </div>
                                         </div>
                                     </div>
@@ -103,9 +95,17 @@
     <script src="{{url('js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
     <script src="{{url('js/plugins/fullcalendar/moment.min.js')}}"></script>
     <script src="{{url('js/plugins/daterangepicker/daterangepicker.js')}}"></script>
-
-
     <script>
+
+        $.fn.datepicker.dates['en'] = {
+            days: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"],
+            daysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+            daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"],
+            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+            today: "Hoy"
+        };
+
         $('#data_5 .input-daterange').datepicker({
             keyboardNavigation: false,
             forceParse: false,

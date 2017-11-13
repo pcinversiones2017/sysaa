@@ -14,6 +14,7 @@ class ProcedimientoController extends Controller
 {
     public function listar()
     {
+        $listarProcedimiento = 'active';
     	$procedimiento = Procedimiento::where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->with(['objetivoespecifico', 'desarrollo'])->get();
 
         $asignado = Procedimiento::asignado()->where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->with(['objetivoespecifico', 'desarrollo'])->get();
@@ -22,7 +23,7 @@ class ProcedimientoController extends Controller
         $aprobado = Procedimiento::aprobado()->where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->with(['objetivoespecifico', 'desarrollo'])->get();
         $rechazado = Procedimiento::rechazado()->where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->with(['objetivoespecifico', 'desarrollo'])->get();
         RegistrarActividad(Procedimiento::TABLA,Historial::LEER,'vió el listado de Procedimientos');
-    	return view('auditor.procedimiento.listar', compact(['procedimiento', 'asignado', 'pendiente', 'finalizado', 'aprobado', 'rechazado']));
+    	return view('auditor.procedimiento.listar', compact(['procedimiento', 'asignado', 'pendiente', 'finalizado', 'aprobado', 'rechazado', 'listarProcedimiento']));
     }
 
     public function mostrar($id)

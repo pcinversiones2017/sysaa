@@ -30,6 +30,6 @@ class CreateTipoNormativaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Tipo_Normativa');
+        Schema::dropIfExists('tipo_normativa');
     }
 }
