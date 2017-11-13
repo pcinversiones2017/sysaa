@@ -11,13 +11,17 @@
                 <div class="row">
                     {!! Form::open(['method' => 'POST', 'route' => 'usuario.registrar']) !!}
                         <div class="col-md-6 b-r">
-                            {!! Field::email('email') !!}
-                            <div class="hr-line-dashed"></div>
 
                             {!! Field::text('nombres') !!}
                             <div class="hr-line-dashed"></div>
 
                             {!! Field::text('materno') !!}
+                            <div class="hr-line-dashed"></div>
+
+                            {!! Field::text('paterno') !!}
+                            <div class="hr-line-dashed"></div>
+                            
+                            {!! Field::email('email') !!}
                             <div class="hr-line-dashed"></div>
 
                         </div>
@@ -30,9 +34,6 @@
                             <div class="hr-line-dashed"></div>
                             
                             {!! Field::password('password_confirmation') !!}
-                            <div class="hr-line-dashed"></div>
-
-                            {!! Field::text('paterno') !!}
                             <div class="hr-line-dashed"></div>
 
                             <div class="form-group">
