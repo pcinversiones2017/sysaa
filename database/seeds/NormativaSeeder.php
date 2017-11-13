@@ -18,6 +18,7 @@ class NormativaSeeder extends Seeder
             ,'fecha'=>'2002-07-24'
             ,'codTipNorm'=>'2'
             ,'codMacroP' => 1
+            ,'codPlanF' => 1
         ]);
         Normativa::create(['tipoNormativa'=>'LEY'
             ,'nombre'=>'LEY DE CONTROL INTERNO DE LAS ENTIDADES DEL ESTADO'
@@ -57,25 +58,28 @@ class NormativaSeeder extends Seeder
 
 
         Normativa::create(['tipoNormativa'=>'Ley'
-            ,'nombre'=>'Creación del Sistema Nacional de los Registros Públicos y la Superintendencia de los Registros Públicos '
-            ,'numero'=>'26366'
-            ,'fecha'=>'1996-12-11'
-            ,'codTipNorm'=>'1'
-            ,'codMacroP' => 1
+            ,'nombre'       =>'Creación del Sistema Nacional de los Registros Públicos y la Superintendencia de los Registros Públicos '
+            ,'numero'       =>'26366'
+            ,'fecha'        =>'1996-12-11'
+            ,'codTipNorm'   =>'1'
+            ,'codMacroP'    => 1
+            ,'codPlanF'     => 1
         ]);
         Normativa::create(['tipoNormativa'=>'Resolución Suprema'
-            ,'nombre'=>'Aprueba el Reglamento de Organización y Funciones de la SUNARP'
-            ,'numero'=>'012-2013-JUS'
-            ,'fecha'=>'2013-10-14'
-            ,'codTipNorm'=>'1'
-            ,'codMacroP' => 1
+            ,'nombre'       =>'Aprueba el Reglamento de Organización y Funciones de la SUNARP'
+            ,'numero'       =>'012-2013-JUS'
+            ,'fecha'        =>'2013-10-14'
+            ,'codTipNorm'   =>'1'
+            ,'codMacroP'    => 1
+            ,'codPlanF'     => 1
         ]);
         Normativa::create(['tipoNormativa'=>'RESOLUCIÓN'
-            ,'nombre'=>'Aprueba el Manual de Organización y Funciones'
-            ,'numero'=>'235-2005-SUNARP/SN'
-            ,'fecha'=>'2005-06-06'
-            ,'codTipNorm'=> 1
-            ,'codMacroP' => 1
+            ,'nombre'       =>'Aprueba el Manual de Organización y Funciones'
+            ,'numero'       =>'235-2005-SUNARP/SN'
+            ,'fecha'        =>'2005-06-06'
+            ,'codTipNorm'   => 1
+            ,'codMacroP'    => 1
+            ,'codPlanF'     => 1
         ]);
 
 

@@ -147,15 +147,15 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
     Route::group(['prefix' => 'norma-auditoria'], function(){
         Route::get('listar', 'NormaAuditoriaController@listar')->name('norma-auditoria.listar');
         Route::get('listar-aplica', 'NormaAuditoriaController@listarAplica')->name('norma-auditoria.listar-aplica');
-        Route::get('crear', 'NormaAuditoriaController@crear')->name('norma-auditoria.crear');
+        Route::get('crear/{codPlanF}', 'NormaAuditoriaController@crear')->name('norma-auditoria.crear');
         Route::post('guardar', 'NormaAuditoriaController@guardar')->name('norma-auditoria.guardar');
-        Route::get('editar/{codNormMacro}', 'NormaAuditoriaController@editar')->name('norma-auditoria.editar');
+        Route::get('editar/{codNorm}', 'NormaAuditoriaController@editar')->name('norma-auditoria.editar');
         Route::post('actualizar', 'NormaAuditoriaController@actualizar')->name('norma-auditoria.actualizar');
         Route::get('archivo-crear/{codNormMacro}', 'NormaAuditoriaController@archivocrear')->name('norma-auditoria.archivocrear');
         Route::post('archivo-registrar', 'NormaAuditoriaController@archivoregistrar')->name('norma-auditoria.archivoregistrar');
         Route::get('archivo-descargar/{codNormMacro}', 'NormaAuditoriaController@archivodescargar')->name('norma-auditoria.archivodescargar');
         Route::get('archivo-eliminar/{codNormMacro}', 'NormaAuditoriaController@archivoeliminar')->name('norma-auditoria.archivoeliminar');
-        Route::get('eliminar/{codNormMacro}', 'NormaAuditoriaController@eliminar')->name('norma-auditoria.eliminar');
+        Route::get('eliminar/{codNorm}', 'NormaAuditoriaController@eliminar')->name('norma-auditoria.eliminar');
 
     });
     //Auditoria
@@ -168,6 +168,7 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
        Route::get('editar/{codPlanF}', 'AuditoriaController@editar')->name('auditoria.editar');
        Route::post('actualizar', 'AuditoriaController@actualizar')->name('auditoria.actualizar');
        Route::get('eliminar/{codPlanF}', 'AuditoriaController@eliminar')->name('auditoria.eliminar');
+       Route::get('informe/{codPlanF}', 'AuditoriaController@informeFinal')->name('auditoria.informe');
 
     });
     //Institucion

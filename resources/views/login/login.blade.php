@@ -17,29 +17,33 @@
 
 <body class="gray-bg">
 
-    <div class="middle-box text-center loginscreen animated fadeInDown">
+    <div class="middle-box text-center loginscreen animated fadeInDown ">
         <div>
             <div>
 
-                <h1 class="logo-name"></h1>
+                <h1 class="logo-name">
+                    <img src="{{url('img/logo.png')}}" width="130px">
+                </h1>
 
             </div>
-            <h3>SYSAA</h3>
-            <p>Sistema de auditoria academica
-            </p>
-            <p>Iniciar Sesion</p>
-            {!! Form::open(['method' => 'POST', 'url' => 'iniciar-sesion']) !!}
+            <div class="login-box well">
+                <h3>SYSAA</h3>
+                <p>Sistema de auditoria academica
+                </p>
+                <p>Iniciar Sesion</p>
+                {!! Form::open(['method' => 'POST', 'url' => 'iniciar-sesion']) !!}
                 {!! Field::text('username') !!}
                 {!! Field::password('password') !!}
-                {!! Form::submit('INGRESAR', ['class' => 'btn btn-primary block full-width m-b']) !!}
-            {!! Form::close() !!}
+                {!! Form::submit('INGRESAR', ['class' => 'btn btn-success block full-width m-b']) !!}
+                {!! Form::close() !!}
 
-            @if (session('danger'))
-            <div class="alert alert-danger" role="alert">
-                {!! session('danger') !!}           
+                @if (session('danger'))
+                    <div class="alert alert-danger" role="alert">
+                        {!! session('danger') !!}
+                    </div>
+                @endif
+                <p class="m-t"> <small>SYSAA <?php echo date("Y"); ?></small> </p>
             </div>
-            @endif
-            <p class="m-t"> <small>SYSAA <?php echo date("Y"); ?></small> </p>
         </div>
     </div>
 
