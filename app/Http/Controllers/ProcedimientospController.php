@@ -45,7 +45,7 @@ class ProcedimientospController extends Controller
     public function editar(Request $request)
     {
         $procedimientosp = Procedimientosp::find($request->codProSP);
-        RegistrarActividad(Procedimientosp::TABLA,Historial::ACTUALIZAR,'actualizó el Procesoma '.$procedimientosp->nombre);
+        RegistrarActividad(Procedimientosp::TABLA,Historial::ACTUALIZAR,'actualizó el Procesoma ' . $procedimientosp->nombre);
         return view('procedimientosp.editar')->with(compact('procedimientosp'));
     }
 

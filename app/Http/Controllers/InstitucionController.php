@@ -29,10 +29,15 @@ class InstitucionController extends Controller
     public function actualizar(Request $request)
     {
 
-        $instituciones = Institucion::find($request->codIns);
-        $instituciones->nombreInstitucion = $request->nombre;
-        $instituciones->save();
-        return redirect()->route('institucion.listar');
+        $institucion = Institucion::find($request->codIns);
+        $institucion->nombre = $request->nombre;
+        $institucion->direccion = $request->direccion;
+        $institucion->ruc = $request->ruc;
+        $institucion->telefono = $request->telefono;
+        $institucion->denominacion_anio = $request->denominacion_anio;
+        $institucion->organo_control = $request->organo_control;
+        $institucion->save();
+        return redirect()->route('institucion.listar')->with('success', 'Se actualizo correctamente');
     }
 
     public function listarSoftware()

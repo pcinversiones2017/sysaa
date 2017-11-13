@@ -7,12 +7,12 @@
         <div class="panel-body">
 
                 {!! Form::open(['method' => 'POST', 'route' => 'institucion.actualizar']) !!}
-                {!! Field::hidden('codIns', $institucion->codInstitucion) !!}
-                {!! Field::text('nombreInstitucion', $institucion->nombreInstitucion, ['label' => 'NOMBRE DE LA INSTITUCIÓN']) !!}
+                {!! Field::hidden('codIns', $institucion->codIns) !!}
+                {!! Field::text('nombre', $institucion->nombre, ['label' => 'NOMBRE DE LA INSTITUCIÓN']) !!}
                 {!! Field::text('direccion', $institucion->direccion, ['label' => 'DIRECCIÓN']) !!}
                 {!! Field::text('ruc', $institucion->ruc, ['label' => 'RUC']) !!}
                 {!! Field::text('telefono', $institucion->telefono, ['label' => 'TELÉFONO']) !!}
-                {!! Field::text('denominacion_anio', $institucion->nombre_anio, ['label' => 'DENOMINACIO DEL AÑO ACTUAL']) !!}
+                {!! Field::text('denominacion_anio', $institucion->denominacion_anio, ['label' => 'DENOMINACIO DEL AÑO ACTUAL']) !!}
                 {!! Field::text('organo_control', $institucion->organo_control, ['label' => 'ORGANO DE CONTROL INSTITUCIONAL']) !!}
 
                 <div class="form-group">
