@@ -17,7 +17,7 @@
                     {!! Form::hidden('codDes',$desarrollo->codDes) !!}
                     {!! Field::textarea('informe', $desarrollo->informe , ['class' => 'summernote']) !!}
                     {!! Form::submit('ACTUALIZAR', ['class' => 'btn btn-primary btn-outline']) !!}
-                    <a href="{!! url('auditor/procedimiento/mostrar/'.$desarrollo->codDes) !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                    <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     {!! Form::close() !!}
                 </div>
             </div>

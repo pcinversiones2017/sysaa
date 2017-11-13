@@ -48,7 +48,7 @@
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> REGISTRAR</button>
-                                    <a href="{!! url('objetivo-especifico/mostrar/'.$codPlanF.'/'.$codObjEsp) !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                                    <a href="{!! route()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                                 </div>
                                 <div class="hr-line-dashed"></div>
 

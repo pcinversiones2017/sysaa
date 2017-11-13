@@ -2,6 +2,7 @@
     {!! Html::style('css/plugins/dataTables/datatables.min.css') !!}
 @stop
 	<div class="ibox-content">
+        @include('inicio.partials.notificacion')
 		<h2> BIENVENIDO <strong>{!! Auth::user()->usuariorol->rol->nombre !!}</strong> : {!! Auth::user()->datos !!}</h2>
         <hr>
         <h3>PROCEDIMIENTOS</h3>
@@ -80,7 +81,7 @@
                             @elseif($row->codEst == App\Models\Estado::APROBADO)
                             <span class="label label-success">APROBADO</span>
                             @elseif($row->codEst == App\Models\Estado::RECHAZADO)
-                            <span class="label label-danger">RECHAZADO</span>
+                            <a href="{!! url('auditor/procedimiento/mostrar/'.$row->codProc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-eye"></i>  </a>
                             @endif
                         </td>
                     </tr>
@@ -132,20 +133,20 @@
                             @endif
                         </td>
                         <td>
-                            @if($row->codEst == 1)
-                            <a href="{!! url('auditor/desarrollo/crear/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-pencil"></i> </a>
-                            @elseif($row->codEst == 2)
+                            @if($row->codEst == App\Models\Estado::NUEVO)
+                            <span class="label label-info">NUEVO</span>
+                            @elseif($row->codEst == App\Models\Estado::PENDIENTE)
                             <span class="label label-warning">PENDIENTE</span>
-                            @elseif($row->codEst == 3)
+                            @elseif($row->codEst == App\Models\Estado::TERMINADO)
                                 @if(Auth::user()->usuariorol->codUsuRol == $row->codUsuRol)
                                     <span class="label label-primary">TERMINADO</span>
                                 @else
                                     <a href="{!! url('jefe-comision/procedimiento/aprobar/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-check"></i></a>
                                     <a href="{!! url('jefe-comision/procedimiento/rechazar/'.$row->codProc) !!}" class="btn btn-danger btn-outline"><i class="fa fa-remove"></i></a>
                                 @endif
-                            @elseif($row->codEst == 4)
+                            @elseif($row->codEst == App\Models\Estado::APROBADO)
                             <span class="label label-success">APROBADO</span>
-                            @elseif($row->codEst == 5)
+                            @elseif($row->codEst == App\Models\Estado::RECHAZADO)
                             <span class="label label-danger">RECHAZADO</span>
                             @endif
                         </td>

@@ -2,6 +2,7 @@
     {!! Html::style('css/plugins/dataTables/datatables.min.css') !!}
 @stop
     <div class="ibox-content">
+        @include('inicio.partials.notificacion')
         <h2> BIENVENIDO <strong>{!! Auth::user()->usuariorol->rol->nombre !!}</strong> : {!! Auth::user()->datos !!}</h2>
         <hr>
         <h3>PROCEDIMIENTOS</h3>
@@ -133,7 +134,7 @@
                         </td>
                         <td>
                             @if($row->codEst == 1)
-                            <a href="{!! url('auditor/desarrollo/crear/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-pencil"></i> </a>
+                            <span class="label label-info">NUEVO</span>
                             @elseif($row->codEst == 2)
                             <span class="label label-warning">PENDIENTE</span>
                             @elseif($row->codEst == 3)

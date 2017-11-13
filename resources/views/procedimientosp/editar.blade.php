@@ -15,7 +15,7 @@
                             {!! Field::text('nombre', $procedimientosp->nombre, ['label' => 'Nombre']) !!}
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-outline" value=""><i class="fa fa-save"></i> ACTUALIZAR</button>
-                                <a href="{{URL::to('subproceso/mostrar')}}/{{$procedimientosp->subProceso->codSubPro}}"  class="btn btn-danger btn-outline">CANCELAR</a>
+                                <a href="{!! route()->previous() !!}"  class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
                             {!! Form::close() !!}
                         </div>

@@ -12,7 +12,7 @@
 		@elseif(Auth::user()->usuariorol->rol->nombre == 'SUPERVISOR')
 			@include('inicio.partials.supervisor')
 		@elseif(Auth::user()->usuariorol->rol->nombre == 'JEFE OCI')
-			@include('inicio.partials.supervisor')
+			@include('inicio.partials.jefe_oci')
 		@endif
 	</div>
 </div>

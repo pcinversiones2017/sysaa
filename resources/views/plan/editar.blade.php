@@ -9,7 +9,7 @@
                     {!! Field::text('nombrePlan', $plan->nombrePlan, ['label' => 'NOMBRE DEL PLAN ANUAL']) !!}
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
-                        <a href="{!! route('plan.listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                        <a href="{!! route()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     </div>
                     {!! Form::close() !!}
 
