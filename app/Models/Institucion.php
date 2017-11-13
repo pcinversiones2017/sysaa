@@ -10,6 +10,6 @@ class Institucion extends Model
     const UPDATED_AT = 'fecha_modificado';
     const TABLA = 'INSTITUCION';
 
-    protected $primaryKey = 'codInstitucion';
+    protected $primaryKey = 'codIns';
     protected $table = 'institucion';
 }

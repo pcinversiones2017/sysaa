@@ -13,23 +13,24 @@ class InstitucionController extends Controller
     public function listar()
     {
         $institucion = 'active';
-        $instituciones = Institucion::all();
+        $institucionn = Institucion::find(1);
         RegistrarActividad(Institucion::TABLA,Historial::LEER,'vió el listado de Instituciones');
-        return view('institucion.listar')->with(compact('instituciones', 'institucion'));
+        return view('institucion.listar')->with(compact('institucionn', 'institucion'));
     }
 
     public function editar(Request $request)
     {
 
-        $instituciones = Institucion::find($request->codInstitucion);
-        RegistrarActividad(Institucion::TABLA,Historial::EDITAR,'vió el formulario de editar Institucion '.$instituciones->nombre);
-        return view('institucion.editar')->with(compact('instituciones'));
+        $institucion = Institucion::find($request->codIns);
+
+        RegistrarActividad(Institucion::TABLA,Historial::EDITAR,'vió el formulario de editar Institucion ' . $institucion->nombre);
+        return view('institucion.editar')->with(compact('institucion'));
     }
     public function actualizar(Request $request)
     {
 
-        $instituciones = Institucion::find($request->codInstitucion);
-        $instituciones->nombreInstitucion = $request->nombreInstitucion;
+        $instituciones = Institucion::find($request->codIns);
+        $instituciones->nombreInstitucion = $request->nombre;
         $instituciones->save();
         return redirect()->route('institucion.listar');
     }

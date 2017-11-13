@@ -19,7 +19,7 @@ class ProcedimientoController extends Controller
     	return view('procedimiento.listar', compact('procedimiento', 'listarProcedimiento'));
     }
 
-    public function crear($codPlanF)
+    public function crear($codPlanF, $codObjEsp)
     {
     	$usuariorol = Usuariorol::where('codPlanF', $codPlanF)->with('usuario')->get()->except(1);
         RegistrarActividad(Procedimiento::TABLA,Historial::CREAR,'vió el formulario de crear Procedimiento');

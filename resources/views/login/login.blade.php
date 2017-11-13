@@ -14,7 +14,20 @@
     {!! Html::style('css/style.css') !!}
 
 </head>
-
+<style>
+    body:after{
+        content : "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: url(img/background2.jpg);
+        width: 100%;
+        height: 100%;
+        opacity : 0.8;
+        z-index: -1;
+    }
+</style>
 <body class="gray-bg">
 
     <div class="middle-box text-center loginscreen animated fadeInDown ">

@@ -43,6 +43,19 @@
         });
     </script>
     <script>
+        $('.eliminar-asignacion').on('click', function (e) {
+            e.preventDefault();
+            var data = $(this);
+            alertify.confirm('Eliminar Asignación', 'Esta seguro que desea eliminar esta asignación',
+                function(){
+                    window.location.href = data.attr('href');
+                },
+                function(){
+                    alertify.error('Cancelado');
+                }).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
+        });
+    </script>
+    <script>
         $(document).ready(function(){
             $('.table-objetivo-especifico').DataTable({
                 language: {

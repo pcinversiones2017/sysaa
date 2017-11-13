@@ -22,11 +22,21 @@ class AsignacionController extends Controller
 
     public function crear(Request $request)
     {
-        $rol = rol::pluck('nombre','codRol')->except(Rol::JEFE_OCI);
 
         $codPlanF = $request->codPlanF;
-        $usuariosRol = UsuarioRol::where('codPlanF', $codPlanF)->pluck('codUsu')->toArray();
-        $usuarios = User::all()->except($usuariosRol);
+        $usuariosRol = UsuarioRol::where('codPlanF', $codPlanF)->pluck('codUsu', 'codRol')->toArray();
+        $usuarios = array_values($usuariosRol);
+        $roles = array_keys($usuariosRol);
+        foreach ($roles as $rol){
+            if($rol == Rol::JEFE_DE_COMISION || $rol == Rol::SUPERVISOR){
+                 $rolesAsignados[] = $rol;
+            }
+        }
+        $rolesAsignados[] = Rol::JEFE_OCI;
+        $rol = rol::pluck('nombre','codRol')->except($rolesAsignados);
+
+
+        $usuarios = User::all()->except($usuarios);
         $usuario = $usuarios->map(function($user){
             $usuarioRol = UsuarioRol::where('codUsu', $user->codUsu)->get();
 
@@ -68,34 +78,46 @@ class AsignacionController extends Controller
     	return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success','Usuario asignado registrado')->with('animate', $animate);
     }
 
-    public function editar($id)
+    public function editar(Request $request)
     {
-        $cargo = Cargofuncional::Activo()->pluck('nombre','codCarFun');
-        $rol = rol::pluck('nombre','codRol');
-        $usuario = User::Activo()->pluck('nombres','codUsu');
-    	$usuariorol = UsuarioRol::Existe($id)->get();
-        RegistrarActividad(UsuarioRol::TABLA,Historial::EDITAR,'vió el formulario de editar la Asignacion de Rol y Cargo '.$actividad->nombre);
-    	return view('asignacion.editar', compact(['usuariorol','cargo','usuario','rol']));
+
+        $usuarioRol = UsuarioRol::find($request->codUsuRol);
+        $codPlanF = $usuarioRol->codPlanF;
+        $usuariosRol = UsuarioRol::where('codPlanF', $codPlanF)->pluck('codUsu', 'codRol')->toArray();
+        $usuarios = array_values($usuariosRol);
+        $roles = array_keys($usuariosRol);
+        foreach ($roles as $rol){
+            if($rol == Rol::JEFE_DE_COMISION || $rol == Rol::SUPERVISOR){
+                $rolesAsignados[] = $rol;
+            }
+        }
+        $rolesAsignados[] = Rol::JEFE_OCI;
+        $rol = rol::pluck('nombre','codRol')->except($rolesAsignados);
+
+        $usuario = User::find($usuarioRol->codUsu);
+
+        //RegistrarActividad(UsuarioRol::TABLA,Historial::EDITAR,'vió el formulario de editar la Asignacion de Rol y Cargo '.$actividad->nombre);
+    	return view('asignacion.editar', compact(['usuarioRol','usuario','rol']));
     }
 
     public function actualizar(Request $request)
     {
-    	$usuarioRol = UsuarioRol::find($request->id);
+    	$usuarioRol = UsuarioRol::find($request->codUsuRol);
 
-        $usuarioRol->codUsu     = $request->usuario;
         $usuarioRol->codRol     = $request->rol;
         $usuarioRol->horasH     = $request->horasH;
         $usuarioRol->sueldo     = $request->sueldo;
         $usuarioRol->save();
-        RegistrarActividad(UsuarioRol::TABLA,Historial::ACTUALIZAR,'actualizó la Asignacion de Rol y Cargo '.$request->nombre);
+        RegistrarActividad(UsuarioRol::TABLA,Historial::ACTUALIZAR,'actualizó la Asignacion de Rol y Cargo de '. $request->nombre);
 
-    	return redirect()->route('auditoria.mostrar', $usuarioRol->codPlanF)->with('success','Usuario asignado actualizado');
+    	return redirect()->route('auditoria.mostrar', $usuarioRol->codPlanF)->with(['success' => 'Usuario asignado actualizado', 'animate' => '#asignacion']);
     }
 
-    public function eliminar($id)
+    public function eliminar($codUsuRol)
     {
-    	UsuarioRol::Existe($id)->update(['estado' => false]);
-        RegistrarActividad(UsuarioRol::TABLA,Historial::ELIMINAR,'eliminó la Asignacion de Rol y Cargo '.$archivo->nombre);
-    	return redirect()->route('asignarr.listar')->with('danger','Usuario asignado eliminado');
+    	$usuarioRol = UsuarioRol::find($codUsuRol);
+    	$usuarioRol->delete();
+    	RegistrarActividad(UsuarioRol::TABLA,Historial::ELIMINAR,'eliminó la Asignacion de Rol y Cargo ' . $usuarioRol->codUsu);
+    	return redirect()->route('auditoria.mostrar', $usuarioRol->codPlanF)->with(['danger' => 'Usuario asignado eliminado', 'animate' => '#asignacion']);
     }
 }

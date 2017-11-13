@@ -127,7 +127,7 @@ class CronogramaController extends Controller
         }
 
         RegistrarActividad(Cronograma::TABLA,Historial::ACTUALIZAR,'actualizó el Cronograma de la auditoria ' . $auditoria->nombrePlanF );
-        return redirect()->route('auditoria.mostrar', $request->codPlanF)->with('success','Cronograma actualizado');
+        return redirect()->route('auditoria.mostrar', $request->codPlanF)->with(['success' => 'Cronograma actualizado', 'animate' => '#cronograma']);
 
     }
 
