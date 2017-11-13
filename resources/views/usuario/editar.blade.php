@@ -9,9 +9,6 @@
                 {!! Form::open(['method' => 'POST', 'route' => 'usuario.actualizar']) !!}
                 {!! Form::hidden('codUsu', $usuario->codUsu) !!}
                 <div class="col-md-6 b-r">
-                    {!! Field::email('email',$usuario->email) !!}
-                    <div class="hr-line-dashed"></div>
-
                     {!! Field::text('nombres',$usuario->nombres) !!}
                     <div class="hr-line-dashed"></div>
 
@@ -19,6 +16,9 @@
                     <div class="hr-line-dashed"></div>
 
                     {!! Field::text('paterno',$usuario->paterno) !!}
+                    <div class="hr-line-dashed"></div>
+
+                    {!! Field::email('email',$usuario->email) !!}
                     <div class="hr-line-dashed"></div>
 
                 </div>

@@ -15,7 +15,7 @@
                             {!! Field::text('nombre', $procedimientosp->nombre, ['label' => 'Nombre']) !!}
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-outline" value=""><i class="fa fa-save"></i> ACTUALIZAR</button>
-                                <a href="{!! route()->previous() !!}"  class="btn btn-danger btn-outline">ATRAS</a>
+                                <a href="{!! url()->previous() !!}"  class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
                             {!! Form::close() !!}
                         </div>
