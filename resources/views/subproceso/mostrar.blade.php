@@ -46,7 +46,7 @@
                                     {!! Field::text('nombre', ['label' => 'PROCEDIMIENTO']) !!}
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success btn-outline" value=""><i class="fa fa-save"></i> REGISTRAR</button>
-                                        <a href="{{URL::to('macroproceso/listar')}}" class="btn btn-danger btn-outline">CANCELAR</a>
+                                        <a href="{{URL::to('macroproceso/listar')}}" class="btn btn-danger btn-outline">ATRAS</a>
                                     </div>
                                 </div>
                                 {!! Form::close() !!}

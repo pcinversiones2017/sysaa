@@ -12,16 +12,16 @@ class MacroprocesoController extends Controller
     public function listar()
     {
         $macroprocesos = Macroproceso::all();
-        $listarmacroprocesos = 'active';
+        $listarMacroprocesos = 'active';
         RegistrarActividad(Macroproceso::TABLA,Historial::LEER,'vió el listado de Macroprocesos');
-        return view('macroproceso.listar', compact(['macroprocesos','listarmacroprocesos']));
+        return view('macroproceso.listar', compact(['macroprocesos','listarMacroprocesos']));
     }
 
     public function crear()
     {
-        $macroprocesos = 'active';
+        $crearMacroproceso = 'active';
         RegistrarActividad(Macroproceso::TABLA,Historial::CREAR,'vió el formulario de crear Macroproceso');
-        return view('macroproceso.crear', compact('macroprocesos'));
+        return view('macroproceso.crear', compact('macroprocesos', 'crearMacroproceso'));
     }
 
     public function guardar(ValidarRequest $request)

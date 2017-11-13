@@ -49,7 +49,8 @@ Route::group(['middleware' => ['auth']], function(){
 	});
 
 	Route::group(['prefix' => 'usuario'], function(){
-		Route::view('cambiar-clave','usuario.recuperar_clave')->name('usuario.recuperar');
+		$activo = 'active';
+		Route::view('cambiar-clave','usuario.recuperar_clave', compact('activo'))->name('usuario.recuperar');
 		Route::post('cambiar-contrasena','UsuarioController@cambiar')->name('usuario.cambiar');
 	});
 });

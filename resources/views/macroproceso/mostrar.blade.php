@@ -36,9 +36,14 @@
                                     <input type="hidden" value="{{$macroproceso->codMacroP}}" name="codMacroP">
                                     <div class="col-md-12">
                                         {!! Field::text('nombre', ['label' => 'PROCESO']) !!}
+                                        {!! Field::textarea('riesgo', ['label' => 'RIESGO']) !!}
+                                        <div class="form-group">
+                                            <label>PONDERACION</label>
+                                        {!! Form::select('ponderacion', ['ALTO' => 'ALTO', 'MEDIO' => 'MEDIO', 'BAJO' => 'BAJO'], null, ['placeholder' => 'SELECCIONAR PONDERACION', 'class' => 'form-control']) !!}
+                                        </div>
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-success btn-outline" value="REGISTRAR">
-                                            <a href="{{URL::to('macroproceso/listar')}}" class="btn btn-danger btn-outline">CANCELAR</a>
+                                            <a href="{{URL::to('macroproceso/listar')}}" class="btn btn-danger btn-outline">ATRAS</a>
                                         </div>
                                     </div>
                                     {!! Form::close() !!}
@@ -57,6 +62,8 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nombre</th>
+                                    <th>Riesgo</th>
+                                    <th>Ponderación</th>
                                     <th width="250px">Acciones</th>
                                 </tr>
                                 </thead>
@@ -65,6 +72,8 @@
                                     <tr>
                                         <td align="middle">{{$n+1}}</td>
                                         <td>{{$procesoma->nombre}}</td>
+                                        <td>{{$procesoma->riesgo}}</td>
+                                        <td>{{$procesoma->ponderacion}}</td>
                                         <td>
                                             <a href="{!!  route('procesoma.mostrar', $procesoma->codProMA) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
                                             <a href="{!!  route('procesoma.editar', $procesoma->codProMA) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>

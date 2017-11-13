@@ -11,11 +11,10 @@ class InicioController extends Controller
 {
     public function index()
     {
-    	$procedimiento = Procedimiento::where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->with(['objetivoespecifico', 'desarrollo'])->get();
-    	$procedimiento_general = Procedimiento::join('objetivo_especifico','objetivo_especifico.codObjEsp', '=', 'procedimiento.codObjEsp')
-    						->leftJoin('usuario_roles', 'usuario_roles.codUsuRol', '=', 'procedimiento.codUsuRol')
+    	$procedimiento = Procedimiento::where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->get();
+    	$procedimiento_general = Procedimiento::leftJoin('usuario_roles', 'usuario_roles.codUsuRol', '=', 'procedimiento.codUsuRol')
     						->leftJoin('users', 'users.codUsu', '=', 'usuario_roles.codUsu')
-                            ->select('nombre','justificacion', 'detalle', 'fecha_terminado', 'fecha_rechazado', 'fecha_fin',
+                            ->select('justificacion', 'detalle', 'fecha_terminado', 'fecha_rechazado', 'fecha_fin',
                                     'nombres', 'paterno', 'materno', 'codEst', 'procedimiento.codProc', 'procedimiento.codUsuRol')
     						->get();
     	$asignado = Procedimiento::asignado()->where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->with(['objetivoespecifico', 'desarrollo'])->get();

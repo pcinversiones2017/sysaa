@@ -99,7 +99,7 @@
                                                 </div>
 
                                                 <div class="form-group"><label class="col-lg-6 control-label">Creado por:</label>
-                                                    <h5 class="text-left col-lg-6" style="padding-top: 5px">César Herbozo</h5>
+                                                    <h5 class="text-left col-lg-6" style="padding-top: 5px"></h5>
                                                 </div>
                                                 <div class="form-group"><label class="col-lg-6 control-label">Código del servicio de control posterior:</label>
                                                     <h5 class="text-left col-lg-6" style="padding-top: 5px">{{$auditoria->codigoServicioCP}}</h5>
@@ -161,7 +161,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-12" id="objetivo-general">
                                 <div class="panel panel-success">
                                     <div class="panel-heading">
                                         III. OBJETIVO GENERAL

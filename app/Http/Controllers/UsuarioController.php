@@ -15,8 +15,9 @@ class UsuarioController extends Controller
     public function listar()
     {
     	$usuarios = User::all();
+        $usuario = 'active';
         RegistrarActividad(User::TABLA,Historial::LEER,'vió el listado de Usuarios');
-    	return view('usuario.listar', compact('usuarios'));
+    	return view('usuario.listar', compact('usuarios', 'usuario'));
     }
 
     public function crear()

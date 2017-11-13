@@ -2,92 +2,42 @@
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="side-menu">
-                <li class="">
-                    <a href=""><i class="fa fa-history"></i> <span class="nav-label">Historial</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                       <li ><a href="{!! route('usuario.listar') !!}"> <i class="fa fa-users"></i> Lista de Usuarios</a></li>
-
-                    </ul>
-                </li>
-                <li class="">
+                <li class="{{$usuario?? ''}} {{$activo?? ''}} {{$institucion?? ''}} {{$software_a?? ''}}">
                     <a href=""><i class="fa fa-cogs"></i> <span class="nav-label">Configuracion</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li class="{{$crearPlan?? ''}}"><a href="{!! route('usuario.listar') !!}"><i class="fa fa-users"></i> Usuarios</a></li>
-                        <li class="{{$crearPlan?? ''}}"><a href="{!! route('usuario.recuperar') !!}"><i class="fa fa-key"></i> Cambiar Contraseña</a></li>
-                       <li ><a href="{!! route('institucion.listar') !!}"> <i class="fa fa-institution"></i> Ver Institucion</a></li>
-                        <li ><a href="{!! route('institucion.listarSoftware') !!}"> <i class="fa fa-rebel"></i> Informacion del Software</a></li>
+                        <li class="{{$usuario?? ''}}"><a href="{!! route('usuario.listar') !!}"><i class="fa fa-users"></i> Usuarios</a></li>
+                        <li class="{{$activo?? ''}}"><a href="{!! route('usuario.recuperar') !!}"><i class="fa fa-key"></i> Cambiar Contraseña</a></li>
+                       <li class="{{$institucion?? ''}}"><a href="{!! route('institucion.listar') !!}"> <i class="fa fa-institution"></i> Ver Institucion</a></li>
+                        <li class="{{$software_a?? ''}}"><a href="{!! route('institucion.listarSoftware') !!}"> <i class="fa fa-rebel"></i> Informacion del Software</a></li>
                     </ul>
                 </li>
                 <li class="header" style="padding: 5px 25px 5px 40px; background: #1d3040; color: #a7b1c2"><span class="nav-label">ETAPAS DE AUDITORIA</span></li>
-                @if(isset($crearPlan) || isset($listarPlan))
-                <li class="active">
-                @else
-                <li class="">
-                @endif
+                <li class="{{$crearPlan?? ''}} {{$listarPlan?? ''}} {{$crearAuditoria?? ''}} {{$listarAuditoria??''}}">
                     <a href=""><i class="fa fa-tasks"></i> <span class="nav-label">Plan</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearPlan?? ''}}"><a href="{{URL::to('plan/crear')}}"><i class="fa fa-pencil"></i> Crear </a></li>
                         <li class="{{$listarPlan?? ''}}"><a href="{{URL::to('plan/listar')}}"><i class="fa fa-list-alt"></i> Listar </a></li>
-                        <li>
+                        <li class="{{$crearAuditoria?? ''}} {{$listarAuditoria??''}}">
                             <a href="#"><i class="fa fa-th-large"></i> Auditoria <span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li class="{{$crearAuditoria?? ''}}">
                                     <a href="{{URL::to('auditoria/crear')}}"><i class="fa fa-pencil"></i> Crear </a>
                                 </li>
-                                <li class="{{$listarCronograma??''}}">
+                                <li class="{{$listarAuditoria??''}}">
                                     <a href="{{URL::to('auditoria/listar')}}"><i class="fa fa-list-alt"></i> Listar </a>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li class="">
+                <li class="{{$crearMacroproceso?? ''}} {{$listarMacroprocesos?? ''}}">
                     <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">Macroproceso</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearMacroproceso?? ''}}"><a href="{{URL::to('macroproceso/crear')}}"><i class="fa fa-pencil"></i> Crear </a></li>
-                        <li class="{{$listarMacroproceso?? ''}}"><a href="{{URL::to('macroproceso/listar')}}"><i class="fa fa-list-alt"></i> Listar </a></li>
+                        <li class="{{$listarMacroprocesos?? ''}}"><a href="{{URL::to('macroproceso/listar')}}"><i class="fa fa-list-alt"></i> Listar </a></li>
                     </ul>
                 </li>
 
-                <li>
-                    <a href=""><i class="fa fa-tags"></i> <span class="nav-label">Cronograma y Plazos
-                        </span>
-                        <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li class="{{$crearCronograma??''}}"><a href="{{URL::to('cronograma/crear')}}"><i class="fa fa-pencil"></i> Crear </a></li>
-                    </ul>
-                </li>
-                    <li>
-                        <a href=""><i class="fa fa-star"></i> <span class="nav-label">Normativas</span>
-                            <span class="fa arrow"></span></a>
-                        <ul class="nav  collapse">
-                            <li>
-                                <a href="{{URL::to('norma-auditoria/listar')}}">
-                                    <i class="fa fa fa-long-arrow-right fa-lg"></i>
-                                    <span class="nav-label">Normativas aplicable a la entidad</span>
-                                    <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li>
-                                        <a href="{{URL::to('norma-auditoria/crear')}}"><i class="fa fa-pencil"></i> 
-                                            Crear norma aplicable </a>
-                                        <a href="{{URL::to('norma-auditoria/listarAplica')}}"><i class="fa fa-list-alt"></i> Listar normas</a>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="{{URL::to('norma-auditoria/listar')}}">
-                                    <i class="fa fa fa-long-arrow-right fa-lg"></i>
-                                    <span class="nav-label">
-                                        Normativas que regulan auditoria (*)</span>
-                                    <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li class="{{$crearCronograma??''}}">
-                                        <a href="{{URL::to('norma-auditoria/listar')}}"><i class="fa fa-list-alt"></i> listar
-                                            (*)
-                                        </a>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
             </ul>
 
         </div>

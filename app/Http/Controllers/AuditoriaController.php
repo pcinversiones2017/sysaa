@@ -13,6 +13,7 @@ use App\Models\Plan;
 use App\Models\Usuariorol;
 use Illuminate\Http\Request;
 use App\Models\Historial;
+use App\Models\Procedimiento;
 use Auth;
 
 class AuditoriaController extends Controller
@@ -20,8 +21,9 @@ class AuditoriaController extends Controller
     public function listar()
     {
         $auditorias = Auditoria::orderBy('codPlanF', 'des')->get();
+        $listarAuditoria = 'active';
         RegistrarActividad(Auditoria::TABLA,Historial::LEER,'vió el listado de Auditorias');
-        return view('auditoria.listar')->with(compact('auditorias'));
+        return view('auditoria.listar')->with(compact(['auditorias', 'listarAuditoria']));
     }
 
     public function crear()
@@ -85,7 +87,8 @@ class AuditoriaController extends Controller
         $macroprocesos = Macroproceso::all();
         $usuariorol = UsuarioRol::where('codPlanF', $request->codPlanF)->with(['usuario','cargofuncional','rol'])->get();
         $codPlanF  = $request->codPlanF;
-        $objetivoGeneral = ObjetivoGeneral::where('codPlanF',$request->codPlanF)->get();
+        $objetivoGeneral = Procedimiento::where('codObjGen',$request->codPlanF)->get();
+
         return view('auditoria.mostrar')->with(compact('auditoria', 'macroprocesos', 'usuariorol', 'codPlanF', 'objetivoGeneral'));
     }
 

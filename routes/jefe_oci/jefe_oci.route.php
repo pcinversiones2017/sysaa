@@ -3,7 +3,7 @@
 Route::group(['middleware' => ['auth','jefe_oci']], function(){
 
     Route::group(['prefix' => 'procedimiento'], function(){
-        Route::get('procedimiento-crear/{codPlanF}/{codObjEsp}','ProcedimientoController@crear')->name('procedimiento.crear');
+        Route::get('procedimiento-crear/{codPlanF}','ProcedimientoController@crear')->name('procedimiento.crear');
         Route::post('procedimiento-registrar','ProcedimientoController@registrar')->name('procedimiento.registrar');
         Route::get('listar','ProcedimientoController@listar')->name('procedimiento.listar');
         Route::get('procedimiento-editar/{codPlanF}/{codObjEsp}/{codProc}','ProcedimientoController@editar')->name('procedimiento.listar');
@@ -12,6 +12,14 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
         Route::get('procedimiento-eliminar/{codProc}','ProcedimientoController@eliminar')->name('procedimiento.eliminar');
         Route::get('procedimiento-descargar/{id}','ProcedimientoController@descargar')->name('procedimiento.descargar');
         Route::get('crear-general/{codObjGen}', 'ProcedimientoController@crear')->name('procedimiento.crear.general');
+    });
+
+    Route::group(['prefix' => 'procedimiento-general', 'namespace' => 'Jefe_OCI'], function(){
+        Route::get('crear/{codPlanF}', 'ProcedimientoController@crear')->name('procedimiento-general.crear');
+        Route::post('registrar', 'ProcedimientoController@registrar')->name('procedimiento-general.registrar');
+        Route::get('editar/{codPlanF}/{codProc}', 'ProcedimientoController@editar')->name('procedimiento-general.editar');
+        Route::post('actualizar', 'ProcedimientoController@actualizar')->name('procedimiento-general.actualizar');
+        Route::get('eliminar/{codProc}', 'ProcedimientoController@eliminar')->name('procedimiento-general.eliminar');
     });
 
     Route::group(['prefix' => 'archivo'], function(){
@@ -182,6 +190,16 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
 
     });
 
+    Route::prefix('objetivo-general')->group(function (){
+
+       Route::get('crear/{codPlanF}', 'ObjetivoGeneralController@crear')->name('objetivo-general.crear');
+       Route::get('editar/{codObjEsp}', 'ObjetivoGeneralController@editar')->name('objetivo-general.editar');
+       Route::post('guardar', 'ObjetivoGeneralController@guardar')->name('objetivo-general.guardar');
+       Route::get('mostrar/{codPlanF}/{codObjEsp}', 'ObjetivoGeneralController@mostrar')->name('objetivo-general.mostrar');
+       Route::post('actualizar', 'ObjetivoGeneralController@actualizar')->name('objetivo-general.actualizar');
+       Route::get('eliminar/{codObjEsp}', 'ObjetivoGeneralController@eliminar')->name('objetivo-general.eliminar');
+    });
+
     //Objetivo Especifico
     Route::prefix('objetivo-especifico')->group(function (){
 
@@ -191,16 +209,6 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
        Route::get('mostrar/{codPlanF}/{codObjEsp}', 'ObjetivoEspecificoController@mostrar')->name('objetivo-especifico.mostrar');
        Route::post('actualizar', 'ObjetivoEspecificoController@actualizar')->name('objetivo-especifico.actualizar');
        Route::get('eliminar/{codObjEsp}', 'ObjetivoEspecificoController@eliminar')->name('objetivo-especifico.eliminar');
-    });
-
-    Route::prefix('objetivo-general')->group(function (){
-
-       Route::get('crear/{codPlanF}', 'ObjetivoGeneralController@crear')->name('objetivo-general.crear');
-       Route::get('editar/{codObjEsp}', 'ObjetivoGeneralController@editar')->name('objetivo-general.editar');
-       Route::post('guardar', 'ObjetivoGeneralController@guardar')->name('objetivo-general.guardar');
-       Route::get('mostrar/{codPlanF}/{codObjEsp}', 'ObjetivoGeneralController@mostrar')->name('objetivo-general.mostrar');
-       Route::post('actualizar', 'ObjetivoGeneralController@actualizar')->name('objetivo-general.actualizar');
-       Route::get('eliminar/{codObjEsp}', 'ObjetivoGeneralController@eliminar')->name('objetivo-general.eliminar');
     });
 
 });

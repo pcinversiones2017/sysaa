@@ -12,9 +12,10 @@ class InstitucionController extends Controller
 {
     public function listar()
     {
+        $institucion = 'active';
         $instituciones = Institucion::all();
         RegistrarActividad(Institucion::TABLA,Historial::LEER,'vió el listado de Instituciones');
-        return view('institucion.listar')->with(compact('instituciones'));
+        return view('institucion.listar')->with(compact('instituciones', 'institucion'));
     }
 
     public function editar(Request $request)
@@ -35,9 +36,9 @@ class InstitucionController extends Controller
 
     public function listarSoftware()
     {
-
+        $software_a = 'active';
         $software = Info_Software::all();
-        return view('institucion.listarSoftware')->with(compact('software'));;
+        return view('institucion.listarSoftware')->with(compact('software', 'software_a'));;
     }
 
 

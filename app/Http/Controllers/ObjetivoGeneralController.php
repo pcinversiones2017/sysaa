@@ -49,11 +49,13 @@ class ObjetivoGeneralController extends Controller
             $objetivoGeneral             = ObjetivoGeneral::find($request->codObjGen);
             $objetivoGeneral->nombre     = $request->nombre;
             $objetivoGeneral->save();
+            $animate = '#objetivo-general';
 
             RegistrarActividad(ObjetivoGeneral::TABLA,Historial::ACTUALIZAR,'actualizó el Objetivo General ' . substr($request->nombre, 0, 50));
 
             return redirect()->route('auditoria.mostrar', $request->codPlanF)
-                ->with('success', 'Objetivo general actualizado');
+                ->with('success', 'Objetivo general actualizado')
+                ->with('animate',$animate);
         }catch (\Exception $e){
             echo $e->getMessage();
         }
