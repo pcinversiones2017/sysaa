@@ -189,12 +189,21 @@
 
                             <div class="col-lg-12" id="objetivo-general">
                                 <div class="panel panel-success">
+
                                     <div class="panel-heading">
                                         III. OBJETIVO GENERAL
                                     </div>
-                                    <div class="panel-body">    
-                                        <p>{{$auditoria->objetivoGeneral->nombre}}</p>
-                                        @include('objetivo_general.partials.listar')
+                                    <div class="panel-body">
+                                        @if(isset($auditoria->objetivoGeneral->nombre))
+                                            <p>{{$auditoria->objetivoGeneral->nombre}}</p>
+                                            @include('objetivo_general.partials.listar')
+                                        @else
+                                            <div class="alert alert-danger  alert-dismissable">
+                                                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                                                Debe registrar su objetivo general para poder crear sus procedimientos.
+                                            </div>
+                                        @endif
+
                                     </div>
 
                                 </div>
@@ -218,7 +227,14 @@
                                         V. OBJETIVO ESPECÍFICO
                                     </div>
                                     <div class="panel-body">
-                                        @include('objetivo_especifico.partials.listar')
+                                        @if(isset($auditoria->objetivoGeneral->nombre))
+                                            @include('objetivo_especifico.partials.listar')
+                                        @else
+                                            <div class="alert alert-danger  alert-dismissable">
+                                                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                                                Debe registrar su objetivo general para poder crear los objetivos especificos.
+                                            </div>
+                                        @endif
                                     </div>
 
                                 </div>

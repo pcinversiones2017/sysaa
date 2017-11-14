@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEstadosTable extends Migration
+class CreateFechaEtapaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,16 @@ class CreateEstadosTable extends Migration
      */
     public function up()
     {
-        Schema::create('estado', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre');
+        Schema::create('fecha_etapa', function (Blueprint $table) {
+            $table->increments('codFecEta');
+            $table->string('etapa');
+            $table->date('fecha_inicio')->nullable();
+            $table->date('fecha_fin')->nullable();
+            $table->integer('codPlanF')->unsigned();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
+
+            $table->foreign('codPlanF')->references('codPlanF')->on('Auditoria');
         });
     }
 
@@ -28,6 +33,6 @@ class CreateEstadosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estado');
+        Schema::dropIfExists('fecha_etapa');
     }
 }

@@ -171,6 +171,11 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
        Route::get('informe/{codPlanF}', 'AuditoriaController@informeFinal')->name('auditoria.informe');
         Route::get('word', 'AuditoriaController@word')->name('auditoria.word');
 
+       //---//
+       Route::get('crear-auditoria-plan-anual/{codPlanA}', 'AuditoriaController@crearAuditoriaPlanAnual')->name('auditoria.crear-auditoria-plan-anual');
+       Route::get('gantt', function (){
+           return view('auditoria.gantt');
+       });
     });
     //Institucion
     Route::group(['prefix' => 'institucion'], function (){

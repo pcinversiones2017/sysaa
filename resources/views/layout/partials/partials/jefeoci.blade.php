@@ -20,9 +20,6 @@
                         <li class="{{$crearAuditoria?? ''}} {{$listarAuditoria??''}}">
                             <a href="#"><i class="fa fa-th-large"></i> Auditoria <span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
-                                <li class="{{$crearAuditoria?? ''}}">
-                                    <a href="{{URL::to('auditoria/crear')}}"><i class="fa fa-pencil"></i> Crear </a>
-                                </li>
                                 <li class="{{$listarAuditoria??''}}">
                                     <a href="{{URL::to('auditoria/listar')}}"><i class="fa fa-list-alt"></i> Listar </a>
                                 </li>

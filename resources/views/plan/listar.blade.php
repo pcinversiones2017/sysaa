@@ -39,15 +39,16 @@
                                             <h5><strong>AUDITORIAS</strong></h5>
                                             <ul>
                                                 @foreach($plan->auditorias as $auditoria)
-                                                    <li>{{$auditoria->nombrePlanF}}</li>
+                                                    <li>{{$auditoria->nombrePlanF}} <a class="pull-right" href="{{route('auditoria.editar', $auditoria->codPlanF)}}"><i class="fa fa-edit"></i></a></li>
                                                 @endforeach
                                             </ul>
                                             @endif
                                         </td>
                                         <td>{{$plan->fecha_creado}}</td>
-                                        <td width="15%">
-                                            <a href="{{URL::to('plan/editar')}}/{{$plan->codPlanA}}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
-                                            <a href="{!!  route('plan.eliminar', $plan->codPlanA)!!}" class="btn btn-danger btn-outline eliminar-plan"><i class="fa fa-trash"></i></a>
+                                        <td width="15%" class="tooltip-demo">
+                                            <a href="{!! route('auditoria.crear-auditoria-plan-anual', $plan->codPlanA) !!}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Agregar Auditorias"><i class="fa fa-pencil"></i></a>
+                                            <a href="{{URL::to('plan/editar')}}/{{$plan->codPlanA}}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
+                                            <a href="{!!  route('plan.eliminar', $plan->codPlanA)!!}" class="btn btn-danger btn-outline eliminar-plan" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
