@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Desarrollo\ValidarRequest;
 use App\Models\Desarrollo;
 use App\Models\Procedimiento;
 use App\Models\Historial;
@@ -26,7 +27,7 @@ class DesarrolloController extends Controller
     	return view('desarrollo.crear', compact(['codProc']));
     }
 
-    public function registrar(Request $request)
+    public function registrar(ValidarRequest $request)
     {
     	Desarrollo::create(['informe' => $request->informe, 'elaborado' => date("Y-m-d"), 'codProc' => $request->codProc]);
         Procedimiento::existe($request->codProc)->update(['codEst' => 2]);

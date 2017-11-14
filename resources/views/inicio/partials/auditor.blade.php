@@ -1,5 +1,7 @@
 
 	<div class="ibox-content">
+        @include('inicio.partials.notificacion')
+
 		<h2> BIENVENIDO <strong>{!! Auth::user()->usuariorol->rol->nombre !!}</strong> : {!! Auth::user()->datos !!}</h2>
         <hr>
 		<h3>PROCEDIMIENTOS</h3>
@@ -20,13 +22,18 @@
                 <div>
                     <small>{!! $row->fecha_creado !!}</small>
                     <h4>{!! substr($row->justificacion,0,10) !!}...</h4>
-                    <p>{!! substr($row->detalle,0,30) !!}...</p>
+                    <p>{!! substr($row->detalle,0,30) !!}... 
+                    @if($row->codEst == App\Models\Estado::RECHAZADO)
+                    <span class="btn btn-danger btn-outline">RECHAZADO</span>
+                    @endif</p>
                     @if($row->codEst == App\Models\Estado::PENDIENTE)
                     <h3><a href="{!! url('auditor/procedimiento/mostrar/'.$row->codProc) !!}" data-toggle="tooltip" data-placement="top" title="Ver desarrollo de procedimiento creado"><i class="fa fa-eye "></i></a></h3>
                     @elseif($row->codEst == App\Models\Estado::NUEVO)
                     <h3><a href="{!! url('auditor/desarrollo/crear/'.$row->codProc) !!}" data-toggle="tooltip" data-placement="top" title="Crear desarrollo de procedimiento"><i class="fa fa-pencil "></i></a></h3>
                     @elseif($row->codEst == App\Models\Estado::APROBADO)
                     <a href="" class="btn btn-success btn-outline">APROBADO</a>
+                    @elseif($row->codEst == App\Models\Estado::RECHAZADO)
+                    <h3><a href="{!! url('auditor/procedimiento/mostrar/'.$row->codProc) !!}" data-toggle="tooltip" data-placement="top" title="Ver desarrollo de procedimiento creado"><i class="fa fa-eye "></i></a></h3>
                     @else
                     <a href="" class="btn btn-danger btn-outline">FINALIZADO</a>
                     @endif

@@ -39,6 +39,11 @@
                                     <input type="hidden" value="{{$procesoma->codProMA}}" name="codProMA">
                                     <div class="col-md-12">
                                         {!! Field::text('nombre', ['label' => 'SUBPROCESO']) !!}
+                                        {!! Field::textarea('riesgo', ['label' => 'RIESGO']) !!}
+                                        <div class="form-group">
+                                            <label>PONDERACION</label>
+                                        {!! Form::select('ponderacion', ['ALTO' => 'ALTO', 'MEDIO' => 'MEDIO', 'BAJO' => 'BAJO'], null, ['placeholder' => 'SELECCIONAR PONDERACION', 'class' => 'form-control']) !!}
+                                        </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> REGISTRAR</button>
                                             <a href="{{URL::to('macroproceso/listar')}}" class="btn btn-danger btn-outline">ATRAS</a>
@@ -60,6 +65,8 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Nombre</th>
+                                                <th>Riesgo</th>
+                                                <th>Ponderado</th>
                                                 <th width="250px">Acciones</th>
                                             </tr>
                                             </thead>
@@ -68,6 +75,8 @@
                                                 <tr>
                                                     <td align="middle">{{$n+1}}</td>
                                                     <td>{{$subproceso->nombre}}</td>
+                                                    <td>{{$subproceso->riesgo}}</td>
+                                                    <td>{{$subproceso->ponderacion}}</td>
                                                     <td>
                                                         <a href="{!!  route('subproceso.mostrar', $subproceso->codSubPro) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
                                                         <a href="{!!  route('subproceso.editar', $subproceso->codSubPro) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>

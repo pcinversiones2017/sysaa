@@ -18,6 +18,7 @@ use App\Models\Historial;
 use App\Models\Procedimiento;
 use Auth;
 use Illuminate\Support\Facades\App;
+use PhpWord;
 
 class AuditoriaController extends Controller
 {
@@ -47,28 +48,33 @@ class AuditoriaController extends Controller
         return view('auditoria.crear')->with(compact('planes', 'crearAuditoria', 'periodo', 'codigoServicio'));
     }
 
+    public function crearAuditoriaPlanAnual(Request $request)
+    {
+            $plan = Plan::find($request->codPlanA);
+
+            return view('auditoria.crear-auditoria-plan-anual', compact('plan'));
+    }
+
+
     public function guardar(RegistroRequest $request)
     {
+
+
         $auditoria = new Auditoria();
         $auditoria->nombrePlanF = $request->nombrePlanF;
-        $auditoria->codigoServicioCP = $request->codigoServicioCP;
-        $auditoria->tipoServicioCP = $request->tipoServicioCP;
-        $auditoria->organoCI = $request->organoCI;
-        $auditoria->origen = $request->origen;
-        $auditoria->entidadAuditada = $request->entidadAuditada;
-        $auditoria->tipoDemanda = $request->tipoDemanda;
-        $auditoria->fechaIniPlanF = $request->fechaIniPlanF;
-        $auditoria->fechaFinPlanF = $request->fechaFinPlanF;
+
+        $codigoServicio = Auditoria::orderBy('codPlanF', 'des')->first();
+        if(isset($codigoServicio)){
+            $codigoServicio = str_pad($codigoServicio->codPlanF + 1, 3, '0', STR_PAD_LEFT) .
+                '-UNH-PA-' . date('dmY');
+        }else{
+            $codigoServicio = str_pad(1, 3, '0', STR_PAD_LEFT) . '-UNH-PA-' . date('dmY');
+        }
+
+        $auditoria->codigoServicioCP = $codigoServicio;
+
         $auditoria->codPlanA = $request->codPlanA;
         $auditoria->estadoAuditoria = 'pendiente';
-
-        if(!empty($request->periodoIniPlanF)){
-            $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($request->periodoIniPlanF));
-        }
-
-        if(!empty($request->periodoFinPlanF)){
-            $auditoria->periodoFinPlanF = date('Y-m-d', strtotime($request->periodoFinPlanF));
-        }
 
         RegistrarActividad(Auditoria::TABLA,Historial::REGISTRAR,'registró la Auditoria '.$request->nombrePlanF);
 
@@ -81,7 +87,7 @@ class AuditoriaController extends Controller
             $objetivoGeneral->save();
         }
 
-        return redirect()->route('auditoria.listar')->with('success', 'Auditoria registrada');
+        return redirect()->route('auditoria.crear-auditoria-plan-anual', $request->codPlanA)->with('success', 'Auditoria registrada correctamente');
     }
 
     public function mostrar(Request $request)
@@ -128,22 +134,34 @@ class AuditoriaController extends Controller
         $auditoria->tipoDemanda = $request->tipoDemanda;
         $auditoria->fechaIniPlanF = $request->fechaIniPlanF;
         $auditoria->fechaFinPlanF = $request->fechaFinPlanF;
-        $auditoria->periodoIniPlanF = $request->periodoIniPlanF;
-        $auditoria->periodoFinPlanF = $request->periodoFinPlanF;
-        $auditoria->codPlanA = $request->codPlanA;
+
         $auditoria->estadoAuditoria = 'pendiente';
 
-        $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($request->periodoIniPlanF));
-        $auditoria->periodoFinPlanF = date('Y-m-d', strtotime($request->periodoFinPlanF));
+        if(!empty($request->periodoIniPlanF)){
+            $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($request->periodoIniPlanF));
+        }
+        if(!empty($request->periodoFinPlanF)){
+            $auditoria->periodoFinPlanF = date('Y-m-d', strtotime($request->periodoFinPlanF));
+        }
 
-        RegistrarActividad(Auditoria::TABLA,Historial::ACTUALIZAR,'actualizó la Auditoria '.$request->nombrePlanF);
         $auditoria->save();
 
+        RegistrarActividad(Auditoria::TABLA,Historial::ACTUALIZAR,'actualizó la Auditoria '.$request->nombrePlanF);
+
         if(!empty($request->nombreObjetivoGeneral)){
-            $objetivoGeneral = ObjetivoGeneral::find($auditoria->objetivoGeneral->codObjGen);
-            $objetivoGeneral->nombre = $request->nombreObjetivoGeneral;
-            $objetivoGeneral->save();
+            if(isset($auditoria->objetivoGeneral->codObjGen)){
+                $objetivoGeneral = ObjetivoGeneral::find($auditoria->objetivoGeneral->codObjGen);
+                $objetivoGeneral->nombre = $request->nombreObjetivoGeneral;
+                $objetivoGeneral->save();
+            } else {
+                $objetivoGeneral = new ObjetivoGeneral();
+                $objetivoGeneral->nombre = $request->nombreObjetivoGeneral;
+                $objetivoGeneral->codPlanF = $auditoria->codPlanF;
+                $objetivoGeneral->save();
+            }
+
         }
+
 
         return redirect()->route('auditoria.listar')->with('success', 'Auditoria actualizada correctamente');
     }
@@ -159,5 +177,18 @@ class AuditoriaController extends Controller
         }catch (\Exception $e){
             echo  $e->getMessage();
         }
+    }
+
+    public function word()
+    {
+        $phpWord = new PhpWord();
+        $section = $phpWord->addSection();
+        $section->addText(
+                        '"Learn from yesterday, live for today, hope for tomorrow. '
+                            . 'The important thing is not to stop questioning." '
+                            . '(Albert Einstein)'
+                    );
+        
+        return response()->download($objWriter);
     }
 }

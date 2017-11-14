@@ -27,7 +27,7 @@ Route::group(['middleware' => ['auth']], function(){
 	    Route::post('registrar','ObservacionController@registrar')->name('auditor.observacion.registrar');
 	    Route::get('editar/{codProc}/{codDes}/{codObs}','ObservacionController@editar')->name('auditor.observacion.editar');
 	    Route::post('actualizar','ObservacionController@actualizar')->name('auditor.observacion.actualizar');
-	    Route::get('eliminar/{codDes}/{codObs}','ObservacionController@eliminar')->name('auditor.observacion.eliminar');
+	    Route::get('eliminar/{codProc}/{codDes}/{codObs}','ObservacionController@eliminar')->name('auditor.observacion.eliminar');
 	});
 
 	Route::group(['prefix' => 'auditor/archivo'], function(){
@@ -52,5 +52,10 @@ Route::group(['middleware' => ['auth']], function(){
 		$activo = 'active';
 		Route::view('cambiar-clave','usuario.recuperar_clave', compact('activo'))->name('usuario.recuperar');
 		Route::post('cambiar-contrasena','UsuarioController@cambiar')->name('usuario.cambiar');
+	});
+
+	Route::group(['prefix' => 'riesgos'], function(){
+		Route::get('listar', 'RiesgoController@listar')->name('riesgos.listar');
+		Route::post('buscar-auditoria', 'RiesgoController@buscar')->name('riesgos.buscar');
 	});
 });

@@ -29,7 +29,7 @@
 
                             <div class="form-group">
                                 {!! Form::submit('CARGAR', ['class' => 'btn btn-primary btn-outline']) !!}
-                                <a href="{!! url('auditor/observacion/archivo/listar/'.$codProc.'/'.$codDes.'/'.$codObs) !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                                <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
                             <div class="hr-line-dashed"></div>
 

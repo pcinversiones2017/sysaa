@@ -44,6 +44,11 @@
                                 <input type="hidden" value="{{$subproceso->codSubPro}}" name="codSubPro">
                                 <div class="col-md-12">
                                     {!! Field::text('nombre', ['label' => 'PROCEDIMIENTO']) !!}
+                                        {!! Field::textarea('riesgo', ['label' => 'RIESGO']) !!}
+                                        <div class="form-group">
+                                            <label>PONDERACION</label>
+                                        {!! Form::select('ponderacion', ['ALTO' => 'ALTO', 'MEDIO' => 'MEDIO', 'BAJO' => 'BAJO'], null, ['placeholder' => 'SELECCIONAR PONDERACION', 'class' => 'form-control']) !!}
+                                        </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success btn-outline" value=""><i class="fa fa-save"></i> REGISTRAR</button>
                                         <a href="{{URL::to('macroproceso/listar')}}" class="btn btn-danger btn-outline">ATRAS</a>
@@ -65,6 +70,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Nombre</th>
+                                        <th>Riesgo</th>
+                                        <th>Ponderacion</th>
                                         <th width="250px">Acciones</th>
                                     </tr>
                                     </thead>
@@ -73,6 +80,8 @@
                                         <tr>
                                             <td align="middle">{{$n+1}}</td>
                                             <td>{{$procedimientosp->nombre}}</td>
+                                            <td>{{$procedimientosp->riesgo}}</td>
+                                            <td>{{$procedimientosp->ponderacion}}</td>
                                             <td>
                                                 <a href="{!!  route('procedimientosp.mostrar', $procedimientosp->codProSP) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
                                                 <a href="{!!  route('procedimientosp.editar', $procedimientosp->codProSP) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>

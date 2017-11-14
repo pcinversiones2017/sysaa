@@ -32,7 +32,6 @@
                             <th>Justificacion</th>
                             <th>detalle</th>
                             <th>fecha fin</th>
-                            <th>Objetivo Especifico</th>
                             <th>ACCION</th>
                         </tr>
                         </thead>
@@ -44,7 +43,6 @@
                                 <td>{!! $row->justificacion !!}</td>
                                 <td>{!! $row->detalle !!}</td>
                                 <td>{!! $row->fecha_fin !!}</td>
-                                <td>{!! $row->objetivoespecifico->nombre !!}
                                     </td>
                                 <td>
                                     @if($row->codEst == 2)
@@ -55,6 +53,9 @@
                                     <a href="" class="btn btn-success btn-outline">APROBADO</a>
                                     @elseif($row->codEst == 3)
                                     <a href="" class="btn btn-danger btn-outline">FINALIZADO</a>
+                                    @elseif($row->codEst == 5)
+                                    <a href="" class="btn btn-danger btn-outline">RECHAZADO</a>
+                                    <a href="{!! url('auditor/procedimiento/mostrar/'.$row->codProc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-eye"></i>  </a>
                                     @else
                                     <a href="" class="btn btn-primary btn-outline">CONCLUIDO</a>
                                     @endif
@@ -99,9 +100,7 @@
                         }
                     }
                 ]
-
             });
-
         });
 
     </script>

@@ -59,10 +59,10 @@
                                                         <div class="col-md-12 form-group" id="data_5" style="margin-top: 15px">
                                                             <div class="input-group input-daterange" id="datepicker">
                                                                 <input placeholder="Fecha de inicio" type="text" class="form-control"
-                                                                value="{{ $row->fecha_ini }}" name="fecha_ini[]" />
+                                                                value="{{ isset($row->fecha_ini) ? date('d-m-Y', strtotime($row->fecha_ini)) : null }}" name="fecha_ini[]" />
                                                                 <span class="input-group-addon">AL</span>
                                                                 <input placeholder="Fecha de fin" type="text" class="form-control"
-                                                                value="{{ $row->fecha_fin }}" name="fecha_fin[]" />
+                                                                value="{{ isset($row->fecha_fin) ? date('d-m-Y', strtotime($row->fecha_fin)) : null }}" name="fecha_fin[]" />
                                                             </div>
                                                         </div>
                                                     </td>
@@ -108,7 +108,7 @@
             forceParse: false,
             autoclose: true,
             daysOfWeekDisabled : [0,6],
-            format: 'd-m-yyyy'
+            format: 'dd-mm-yyyy'
         });
 
 

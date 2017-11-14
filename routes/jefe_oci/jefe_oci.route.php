@@ -3,7 +3,7 @@
 Route::group(['middleware' => ['auth','jefe_oci']], function(){
 
     Route::group(['prefix' => 'procedimiento'], function(){
-        Route::get('procedimiento-crear/{codPlanF}','ProcedimientoController@crear')->name('procedimiento.crear');
+        Route::get('procedimiento-crear/{codPlanF}/{codObjEsp}','ProcedimientoController@crear')->name('procedimiento.crear');
         Route::post('procedimiento-registrar','ProcedimientoController@registrar')->name('procedimiento.registrar');
         Route::get('listar','ProcedimientoController@listar')->name('procedimiento.listar');
         Route::get('procedimiento-editar/{codPlanF}/{codObjEsp}/{codProc}','ProcedimientoController@editar')->name('procedimiento.listar');
@@ -57,9 +57,9 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
         Route::get('listar','AsignacionController@listar')->name('asignarr.listar');
         Route::get('crear/{codPlanF}','AsignacionController@crear')->name('asignarr.crear');
         Route::post('asignar-rol-registrar','AsignacionController@registrar')->name('asignarr.registrar');
-        Route::get('editar/{id}','AsignacionController@editar')->name('asignarr.editar');
+        Route::get('editar/{codUsuRol}','AsignacionController@editar')->name('asignarr.editar');
         Route::post('asignar-rol-actualizar','AsignacionController@actualizar')->name('asignarr.actualizar');
-        Route::get('asignar-rol-eliminar/{id}','AsignacionController@eliminar')->name('asignarr.eliminar');
+        Route::get('asignar-rol-eliminar/{codUsuRol}','AsignacionController@eliminar')->name('asignarr.eliminar');
     });
 
     //Plan
@@ -169,13 +169,19 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
        Route::post('actualizar', 'AuditoriaController@actualizar')->name('auditoria.actualizar');
        Route::get('eliminar/{codPlanF}', 'AuditoriaController@eliminar')->name('auditoria.eliminar');
        Route::get('informe/{codPlanF}', 'AuditoriaController@informeFinal')->name('auditoria.informe');
+        Route::get('word', 'AuditoriaController@word')->name('auditoria.word');
 
+       //---//
+       Route::get('crear-auditoria-plan-anual/{codPlanA}', 'AuditoriaController@crearAuditoriaPlanAnual')->name('auditoria.crear-auditoria-plan-anual');
+       Route::get('gantt', function (){
+           return view('auditoria.gantt');
+       });
     });
     //Institucion
     Route::group(['prefix' => 'institucion'], function (){
 
         Route::get('listar', 'InstitucionController@listar')->name('institucion.listar');
-        Route::get('editar/{codInstitucion}', 'InstitucionController@editar')->name('institucion.editar');
+        Route::get('editar/{codIns}', 'InstitucionController@editar')->name('institucion.editar');
         Route::post('actualizar', 'InstitucionController@actualizar')->name('institucion.actualizar');
         Route::get('listarSoftware', 'InstitucionController@listarSoftware')->name('institucion.listarSoftware');
 
@@ -210,6 +216,11 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
        Route::get('mostrar/{codPlanF}/{codObjEsp}', 'ObjetivoEspecificoController@mostrar')->name('objetivo-especifico.mostrar');
        Route::post('actualizar', 'ObjetivoEspecificoController@actualizar')->name('objetivo-especifico.actualizar');
        Route::get('eliminar/{codObjEsp}', 'ObjetivoEspecificoController@eliminar')->name('objetivo-especifico.eliminar');
+    });
+
+    Route::group(['prefix' => 'avance'], function(){
+        Route::get('linea-de-tiempo', 'AvanceController@avance')->name('avance.linea');
+        Route::post('buscar', 'AvanceController@buscar')->name('avance.buscar');
     });
 
 });

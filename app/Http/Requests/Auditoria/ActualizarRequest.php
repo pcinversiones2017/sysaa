@@ -25,7 +25,6 @@ class ActualizarRequest extends FormRequest
     {
         return [
             'nombrePlanF'               => 'required| min:5',
-            'codPlanA'                  => 'required',
         ];
     }
 }

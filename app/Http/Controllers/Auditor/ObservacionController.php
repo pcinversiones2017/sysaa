@@ -45,7 +45,7 @@ class ObservacionController extends Controller
     	return redirect('auditor/procedimiento/mostrar/'. $request->codProc)->with('success','Observacion actualizado');	
     }
 
-    public function eliminar($codDes, $codObs)
+    public function eliminar( $codProc ,$codDes, $codObs)
     {
     	$observacion = Observacion::find($codObs);
         $observacion->delete();

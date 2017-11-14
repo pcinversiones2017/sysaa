@@ -24,11 +24,7 @@ class RegistroRequest extends FormRequest
     public function rules()
     {
         return [
-
         'nombrePlanF'               => 'required| min:5',
-        'codigoServicioCP'          => 'required',
-        'codPlanA'                  => 'required',
-        'nombreObjetivoGeneral'     => 'required'
         ];
     }
 }

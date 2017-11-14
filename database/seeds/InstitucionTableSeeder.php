@@ -13,7 +13,7 @@ class InstitucionTableSeeder extends Seeder
      */
     public function run()
     {
-        Institucion::create(['nombreInstitucion'=>'Universidad Nacional de Huancavelica','estado'=>'1']);
+        Institucion::create(['nombre'=>'UNIVERSIDAD NACIONAL DE HUANCAVELICA','estado'=>'1']);
 
     }
 }

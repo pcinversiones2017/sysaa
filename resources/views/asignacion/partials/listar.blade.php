@@ -28,7 +28,7 @@
                             <td>{!! $row->rol->nombre !!}</td>
                             <td class="tooltip-demo">
                                 <a href="{!! url('asignar-rol/editar/' . $row->codUsuRol) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
-                                <a href="{!! url('asignarrol/asignar-rol-eliminar/' . $row->codUsuRol) !!}" class="btn btn-danger btn-outline" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
+                                <a href="{!! url('asignar-rol/asignar-rol-eliminar/' . $row->codUsuRol) !!}" class="btn btn-danger btn-outline eliminar-asignacion" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php $i++ ?>

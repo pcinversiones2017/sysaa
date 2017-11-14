@@ -14,7 +14,7 @@
                             {!! Field::text('nombrePlan', ['label' => 'NOMBRE DEL PLAN ANUAL']) !!}
                             <div class="form-group">
                                 <input type="submit" class="btn btn-success btn-outline" value="REGISTRAR">
-                                <a href="{!! route('plan.listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                                <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
                             {!! Form::close() !!}
                         </div>

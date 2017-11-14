@@ -14,8 +14,13 @@ class CreateInstitucionTable extends Migration
     public function up()
     {
         Schema::create('institucion', function (Blueprint $table) {
-            $table->increments('codInstitucion');
-            $table->string('nombreInstitucion');
+            $table->increments('codIns');
+            $table->string('nombre');
+            $table->string('direccion')->nullable();
+            $table->string('ruc')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('denominacion_anio')->nullable();
+            $table->string('organo_control')->nullable();
             $table->integer('estado');
 
             $table->timestamp('fecha_creado')->nullable();

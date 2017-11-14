@@ -13,25 +13,31 @@ class InstitucionController extends Controller
     public function listar()
     {
         $institucion = 'active';
-        $instituciones = Institucion::all();
+        $institucionn = Institucion::find(1);
         RegistrarActividad(Institucion::TABLA,Historial::LEER,'vió el listado de Instituciones');
-        return view('institucion.listar')->with(compact('instituciones', 'institucion'));
+        return view('institucion.listar')->with(compact('institucionn', 'institucion'));
     }
 
     public function editar(Request $request)
     {
 
-        $instituciones = Institucion::find($request->codInstitucion);
-        RegistrarActividad(Institucion::TABLA,Historial::EDITAR,'vió el formulario de editar Institucion '.$instituciones->nombre);
-        return view('institucion.editar')->with(compact('instituciones'));
+        $institucion = Institucion::find($request->codIns);
+
+        RegistrarActividad(Institucion::TABLA,Historial::EDITAR,'vió el formulario de editar Institucion ' . $institucion->nombre);
+        return view('institucion.editar')->with(compact('institucion'));
     }
     public function actualizar(Request $request)
     {
 
-        $instituciones = Institucion::find($request->codInstitucion);
-        $instituciones->nombreInstitucion = $request->nombreInstitucion;
-        $instituciones->save();
-        return redirect()->route('institucion.listar');
+        $institucion = Institucion::find($request->codIns);
+        $institucion->nombre = $request->nombre;
+        $institucion->direccion = $request->direccion;
+        $institucion->ruc = $request->ruc;
+        $institucion->telefono = $request->telefono;
+        $institucion->denominacion_anio = $request->denominacion_anio;
+        $institucion->organo_control = $request->organo_control;
+        $institucion->save();
+        return redirect()->route('institucion.listar')->with('success', 'Se actualizo correctamente');
     }
 
     public function listarSoftware()
