@@ -29,6 +29,8 @@ class ProcedimientospController extends Controller
     {
         $procedimientoSP = new Procedimientosp();
         $procedimientoSP->nombre = $request->nombre;
+        $procedimientoSP->riesgo = $request->riesgo;
+        $procedimientoSP->ponderacion = $request->ponderacion;
         $procedimientoSP->codSubPro = $request->codSubPro;
         $procedimientoSP->save();
         RegistrarActividad(Procedimientosp::TABLA,Historial::REGISTRAR,'registró el Procesoma '.$request->nombre);
@@ -53,6 +55,8 @@ class ProcedimientospController extends Controller
     {
         $procedimientosp = Procedimientosp::find($request->codProSP);
         $procedimientosp->nombre = $request->nombre;
+        $procedimientoSP->riesgo = $request->riesgo;
+        $procedimientoSP->ponderacion = $request->ponderacion;
         $procedimientosp->codSubPro = $request-> codSubPro;
         $procedimientosp->save();
         RegistrarActividad(Procedimientosp::TABLA,Historial::ACTUALIZAR,'actualizó el Procesoma '.$request->nombre);

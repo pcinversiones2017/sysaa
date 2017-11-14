@@ -30,5 +30,8 @@ class ObjetivoEspecifico extends Model
     {
         return $this->belongsTo(ObjetivoGeneral::class, 'codObjGen');
     }
-
+    public function procedimientos()
+    {
+        return $this->hasMany(procedimiento::class, 'codObjEsp');
+    }
 }

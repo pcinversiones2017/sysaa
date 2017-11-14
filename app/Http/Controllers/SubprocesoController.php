@@ -29,9 +29,11 @@ class SubprocesoController extends Controller
     public function guardar(RegistroRequest $request)
     {
         $subProceso = new Subproceso();
-        $subProceso-> nombre = $request->nombre;
-        $subProceso-> estado = 'active';
-        $subProceso-> codProMA = $request->codProMA;
+        $subProceso->nombre = $request->nombre;
+        $subProceso->riesgo = $request->riesgo;
+        $subProceso->ponderacion = $request->ponderacion;
+        $subProceso->estado = 'active';
+        $subProceso->codProMA = $request->codProMA;
         $subProceso->save();
         RegistrarActividad(Subproceso::TABLA,Historial::REGISTRAR,'registró el SubProceso '.$request->nombre);
         return redirect()->route('procesoma.mostrar', [$request->codProMA])->with('success','Se grabo correctamente');
@@ -55,8 +57,10 @@ class SubprocesoController extends Controller
     {
         $subproceso = Subproceso::find($request->codSubPro);
         $subproceso->nombre = $request->nombre;
+        $subProceso->riesgo = $request->riesgo;
+        $subProceso->ponderacion = $request->ponderacion;
         $subproceso->estado = 'activo';
-        $subproceso-> codProMA = $request->codProMA;
+        $subproceso->codProMA = $request->codProMA;
         $subproceso->save();
         RegistrarActividad(Subproceso::TABLA,Historial::ACTUALIZAR,'actualizó el SubProceso '.$request->nombre);
         return redirect()->route('procesoma.mostrar', [$request->codProMA])->with('update','Se actualizo correctamente');

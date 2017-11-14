@@ -37,6 +37,18 @@
                         <li class="{{$listarMacroprocesos?? ''}}"><a href="{{URL::to('macroproceso/listar')}}"><i class="fa fa-list-alt"></i> Listar </a></li>
                     </ul>
                 </li>
+                <li class="{{$listarRiesgos?? ''}}">
+                    <a href=""><i class="fa fa-free-code-camp"></i> <span class="nav-label">Riesgos</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="{{$listarRiesgos?? ''}}"><a href="{{ route('riesgos.listar') }}"><i class="fa fa-list-alt"></i> Listar </a></li>
+                    </ul>
+                </li>
+                <li class="{{$avance?? ''}}">
+                    <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Avance de Auditoria</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="{{$avance?? ''}}"><a href="{{ route('avance.linea') }}"><i class="fa fa-list-alt"></i> Listar </a></li>
+                    </ul>
+                </li>
 
             </ul>
 

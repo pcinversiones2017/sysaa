@@ -18,6 +18,7 @@ use App\Models\Historial;
 use App\Models\Procedimiento;
 use Auth;
 use Illuminate\Support\Facades\App;
+use PhpWord;
 
 class AuditoriaController extends Controller
 {
@@ -159,5 +160,18 @@ class AuditoriaController extends Controller
         }catch (\Exception $e){
             echo  $e->getMessage();
         }
+    }
+
+    public function word()
+    {
+        $phpWord = new PhpWord();
+        $section = $phpWord->addSection();
+        $section->addText(
+                        '"Learn from yesterday, live for today, hope for tomorrow. '
+                            . 'The important thing is not to stop questioning." '
+                            . '(Albert Einstein)'
+                    );
+        
+        return response()->download($objWriter);
     }
 }

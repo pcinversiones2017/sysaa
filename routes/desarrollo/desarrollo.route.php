@@ -53,4 +53,9 @@ Route::group(['middleware' => ['auth']], function(){
 		Route::view('cambiar-clave','usuario.recuperar_clave', compact('activo'))->name('usuario.recuperar');
 		Route::post('cambiar-contrasena','UsuarioController@cambiar')->name('usuario.cambiar');
 	});
+
+	Route::group(['prefix' => 'riesgos'], function(){
+		Route::get('listar', 'RiesgoController@listar')->name('riesgos.listar');
+		Route::post('buscar-auditoria', 'RiesgoController@buscar')->name('riesgos.buscar');
+	});
 });
