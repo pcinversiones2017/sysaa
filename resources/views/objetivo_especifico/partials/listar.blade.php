@@ -7,6 +7,7 @@
                         <a type="button" href="{!! route('objetivo-especifico.crear', $auditoria->codPlanF) !!}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-pencil"></i> CREAR OBJETIVO ESPECÍFICO</a>
                     </div>
                 </div>
+                <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
 
                 <table class="table table-striped table-bordered table-hover table-objetivo-especifico" style="margin-top: 10px">
                     <thead>

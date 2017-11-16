@@ -57,6 +57,7 @@
                             PROCESOS
                         </div>
                         <div class="panel-body">
+                            <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                             <table class="table table-bordered table-procesos" style="margin-top: 10px">
                                 <thead>
                                 <tr>

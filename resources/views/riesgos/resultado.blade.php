@@ -51,6 +51,7 @@
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane active">
                                 <div class="panel-body">
+                                    <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                                     <table class="table table-bordered table-procesos" style="margin-top: 10px">
 	                                    <thead>
 	                                    <tr>
@@ -83,6 +84,7 @@
                             </div>
                             <div id="tab-2" class="tab-pane">
                                 <div class="panel-body">
+                                    <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                                     <table class="table table-bordered table-subprocesos" style="margin-top: 10px">
 	                                    <thead>
 	                                    <tr>
@@ -115,6 +117,7 @@
                             </div>
                             <div id="tab-3" class="tab-pane">
                                 <div class="panel-body">
+                                    <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                                     <table class="table table-bordered table-procedimientos" style="margin-top: 10px">
 	                                    <thead>
 	                                    <tr>

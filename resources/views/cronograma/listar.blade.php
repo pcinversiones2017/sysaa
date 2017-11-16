@@ -18,6 +18,7 @@
                             <a type="button" href="{{URL::to('cronograma/crear')}}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i> Crear Cronograma</a>
                         </div>
                     </div>
+                    <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
 
                     <table class="table table-bordered">
                         <thead>

@@ -19,6 +19,7 @@
                                     <a type="button" href="{{URL::to('auditoria/crear')}}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-pencil"></i> CREAR AUDITORIA</a>
                                 </div>
                             </div>
+                            <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
