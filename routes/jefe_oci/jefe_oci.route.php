@@ -169,6 +169,7 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
        Route::post('actualizar', 'AuditoriaController@actualizar')->name('auditoria.actualizar');
        Route::get('eliminar/{codPlanF}', 'AuditoriaController@eliminar')->name('auditoria.eliminar');
        Route::get('informe/{codPlanF}', 'AuditoriaController@informeFinal')->name('auditoria.informe');
+       Route::get('culminar/{codPlanF}', 'AuditoriaController@culminarAuditoria')->name('auditoria.culminar');
         Route::get('word', 'AuditoriaController@word')->name('auditoria.word');
 
        //---//
@@ -223,4 +224,11 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
         Route::post('buscar', 'AvanceController@buscar')->name('avance.buscar');
     });
 
+    Route::prefix('persona')->group(function (){
+        Route::get('editar/{codPer}', 'PersonaController@editar')->name('persona.editar');
+        Route::get('listar', 'PersonaController@listar')->name('persona.listar');
+        Route::get('crear', 'PersonaController@crear')->name('persona.crear');
+        Route::post('guardar', 'PersonaController@guardar')->name('persona.guardar');
+        Route::post('actualizar', 'PersonaController@actualizar')->name('persona.actualizar');
+    });
 });

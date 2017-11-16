@@ -14,6 +14,7 @@ class InicioController extends Controller
     	$procedimiento = Procedimiento::where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->get();
     	$procedimiento_general = Procedimiento::leftJoin('usuario_roles', 'usuario_roles.codUsuRol', '=', 'procedimiento.codUsuRol')
     						->leftJoin('users', 'users.codUsu', '=', 'usuario_roles.codUsu')
+                            ->join('personas', 'personas.codPer', '=', 'users.codPer')
                             ->select('justificacion', 'detalle', 'fecha_terminado', 'fecha_rechazado', 'fecha_fin',
                                     'nombres', 'paterno', 'materno', 'codEst', 'procedimiento.codProc', 'procedimiento.codUsuRol')
     						->get();

@@ -2,27 +2,27 @@
 @section('content')
     <div class="panel panel-success">
         <div class="panel-heading">
-            CREAR USUARIO
+            EDITAR PERSONA
         </div>
         <div class="panel-body">
             <div class="row">
-                {!! Form::open(['method' => 'POST', 'route' => 'usuario.registrar']) !!}
+                {!! Form::open(['method' => 'POST', 'route' => 'persona.actualizar']) !!}
                 <div class="col-md-6 b-r">
-
-                    {!! Field::text('nombres') !!}
+                    {!! Field::hidden('codPer', $persona->codPer) !!}
+                    {!! Field::text('nombres', $persona->nombres) !!}
                     <div class="hr-line-dashed"></div>
 
-                    {!! Field::text('paterno') !!}
+                    {!! Field::text('paterno', $persona->paterno) !!}
                     <div class="hr-line-dashed"></div>
 
-                    {!! Field::text('materno') !!}
+                    {!! Field::text('materno', $persona->materno) !!}
                     <div class="hr-line-dashed"></div>
-                    
-                    {!! Field::email('email') !!}
+
+                    {!! Field::email('email', $persona->email) !!}
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> REGISTRAR</button>
-                        <a href="{!! route('usuario.listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                        <a href="{!! route('persona.listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     </div>
 
                 </div>

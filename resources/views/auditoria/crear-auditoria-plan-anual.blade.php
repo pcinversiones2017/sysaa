@@ -12,7 +12,7 @@
 
             <div class="form-group">
                 <label>TIPO DE ACTIVIDAD</label>
-                <select name="programacion" class="form-control">
+                <select name="tipoActividad" class="form-control">
                     <option value="PROGRAMADA">PROGRAMADA</option>
                     <option value="NO PROGRAMADA">NO PROGRAMADA</option>
                 </select>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Plan\RegistroRequest;
+use App\Models\Persona;
 use Illuminate\Http\Request;
 use App\Models\UsuarioRol;
 use App\Models\Cargofuncional;
@@ -24,6 +25,7 @@ class AsignacionController extends Controller
     {
 
         $codPlanF = $request->codPlanF;
+
         $usuariosRol = UsuarioRol::where('codPlanF', $codPlanF)->pluck('codUsu', 'codRol')->toArray();
         $usuarios = array_values($usuariosRol);
         $roles = array_keys($usuariosRol);
@@ -35,41 +37,44 @@ class AsignacionController extends Controller
         $rolesAsignados[] = Rol::JEFE_OCI;
         $rol = rol::pluck('nombre','codRol')->except($rolesAsignados);
 
+        $personasAsignadas = [];
+        foreach ($usuarios as $codUsu){
+            $usuario = User::find($codUsu);
+            $personasAsignadas[] = $usuario->persona->codPer;
+        }
 
-        $usuarios = User::all()->except($usuarios);
-        $usuario = $usuarios->map(function($user){
-            $usuarioRol = UsuarioRol::where('codUsu', $user->codUsu)->get();
-
-            if($usuarioRol->isNotEmpty()){
-                $user->activo = true;
-                return $user;
-            }
-            return $user;
+        $personas = Persona::all()->except($personasAsignadas);
+        $personas = $personas->map(function($person){
+            $person->usuario = $person->nombres[0] . $person->paterno . date('hi');
+            return $person;
         });
+
+
 
         RegistrarActividad(UsuarioRol::TABLA,Historial::CREAR,'vió el formulario de cargar Asignacion de Rol y Cargo');
 
-    	return view('asignacion.crear', compact(['rol', 'usuario', 'codPlanF']));
+    	return view('asignacion.crear', compact(['rol', 'usuario', 'codPlanF', 'personas']));
     }
 
     public function registrar(Request $request)
     {
-    	$usuarioRol = UsuarioRol::where('codUsu', $request->usuario)->get();
+
+    	list($codPer, $usuario) = explode('-', $request->codPer);
+
+    	$user = new User();
+    	$user->username = $usuario;
+    	$user->password = bcrypt('123456');
+    	$user->codPer = $codPer;
+    	$user->save();
+
     	$animate = '#asignacion';
 
-    	if($usuarioRol->isEmpty()){
-    	    $activo = 1;
-        }else{
-    	    $activo = 0;
-        }
-
         $usuarioRol  = new UsuarioRol();
-        $usuarioRol->codUsu     = $request->codUsu;
+        $usuarioRol->codUsu     = $user->codUsu;
         $usuarioRol->codRol     = $request->rol;
         $usuarioRol->codCarFun  = 2;
         $usuarioRol->codPlanF   = $request->codPlanF;
         $usuarioRol->horasH     = $request->horasH;
-        $usuarioRol->activo     = $activo;
         $usuarioRol->sueldo     = $request->sueldo;
         $usuarioRol->save();
 

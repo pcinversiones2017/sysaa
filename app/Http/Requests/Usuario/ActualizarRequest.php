@@ -24,11 +24,7 @@ class ActualizarRequest extends FormRequest
     public function rules()
     {
         return [
-            'username'  => 'required|min:3',
-            'email'     => 'required|email',
-            'nombres'   => 'required|min:3',
-            'paterno'   => 'required|min:3',
-            'materno'   => 'required|min:3'
+            'password'  => 'required|min:5'
         ];
     }
 }

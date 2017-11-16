@@ -14,16 +14,16 @@ class CreateUsuariosTable extends Migration
     public function up()
     {
         Schema::create('Usuarios', function (Blueprint $table) {
-            $table->increments('codUsu');
-            $table->string('nombres');
-            $table->string('paterno');
-            $table->string('materno');
-            $table->string('email')->unique();
+
+            $table->string('usuario')->unique();
             $table->string('password');
             $table->boolean('eliminado')->default(false);
+            $table->integer('codPer')->unsigned();
             $table->rememberToken();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
+            $table->timestamp('fecha_eliminado')->nullable();
+            $table->foreign('codPer')->references('codPer')->on('personas');
         });
     }
 

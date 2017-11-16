@@ -20,7 +20,7 @@
         $('.eliminar-objetivo-especifico').on('click', function (e) {
             e.preventDefault();
             var data = $(this);
-            alertify.confirm('Eliminar Objetivo Especifico', 'Esta seguro que desea eliminar este objetivo especifico, se borraran todo el contenido involucrado!!',
+            alertify.confirm('Eliminar Objetivo Especifico', '¿Esta seguro que desea eliminar este objetivo especifico.?, se borrarán todo el contenido involucrado!!',
                 function(){
                     window.location.href = data.attr('href');
                 },
@@ -33,7 +33,7 @@
         $('.eliminar-normativa').on('click', function (e) {
             e.preventDefault();
             var data = $(this);
-            alertify.confirm('Eliminar Normativa', 'Esta seguro que desea eliminar esta normativa',
+            alertify.confirm('Eliminar Normativa', '¿Esta seguro que desea eliminar esta normativa.?',
                 function(){
                     window.location.href = data.attr('href');
                 },
@@ -42,6 +42,20 @@
                 }).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
         });
     </script>
+    <script>
+        $('#culminar-planificacion').on('click', function (e) {
+            e.preventDefault();
+            var data = $(this);
+            alertify.confirm('Culminar planificación', '¿Esta seguro que desea culminar esta planificación.? luego de ello pasara a estado en pendiente de aprobación por el jefe de comisión',
+                function(){
+                    window.location.href = data.attr('href');
+                },
+                function(){
+                    alertify.error('Cancelado');
+                }).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
+        });
+    </script>
+
     <script>
         $('.eliminar-asignacion').on('click', function (e) {
             e.preventDefault();
@@ -121,7 +135,7 @@
                                                 </div>
 
                                                 <div class="form-group"><label class="col-lg-6 control-label">Estado:</label>
-                                                    <h5 class="text-left col-lg-6" style="padding-top: 5px"><span class="label label-primary">Activo</span></h5>
+                                                    <h5 class="text-left col-lg-6" style="padding-top: 5px"><span class="label label-{{$auditoria->estado->label}}">{{$auditoria->estado->nombre}}</span></h5>
                                                 </div>
 
                                                 <div class="form-group"><label class="col-lg-6 control-label">Creado por:</label>
@@ -297,6 +311,16 @@
                             </div>
                         </div>
 
+
+                    </div>
+                    <div class="ibox-footer">
+                            <div class="form-group" style="margin-left: 5px">
+                                @if($auditoria->estado->codEstAud == \App\Models\EstadoAuditoria::PENDIENTE )
+                                    <a id="culminar-planificacion" href="{!! route('auditoria.culminar', $auditoria->codPlanF) !!}" class="btn btn-success">CULMINAR PLANIFICACIÓN</a>
+                                @elseif($auditoria->estado->codEstAud == \App\Models\EstadoAuditoria::EN_PROCESO)
+                                    <a id="finalizar-planificacion" href="{!! route('auditoria.culminar', $auditoria->codPlanF) !!}" class="btn btn-success">FINALIZAR PLANIFICACIÓN</a>
+                                @endif
+                            </div>
 
                     </div>
                 </div>

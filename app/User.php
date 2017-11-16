@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Persona;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -65,11 +66,16 @@ class User extends Authenticatable
 
     public function getDatosAttribute()
     {
-        return $this->attributes['nombres'].' '.$this->attributes['paterno'].' '.$this->attributes['materno'];
+        return $this->persona->nombres . ' ' . $this->persona->paterno . ' ' . $this->persona->materno;
     }
 
     public function usuariorol()
     {
         return $this->hasOne(Models\UsuarioRol::class,'codUsu','codUsu');
+    }
+
+    public function persona(){
+
+        return $this->belongsTo(Persona::class, 'codPer');
     }
 }

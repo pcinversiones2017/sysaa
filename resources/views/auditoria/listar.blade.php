@@ -25,10 +25,10 @@
                                     <th>NOMBRE</th>
                                     <th>CODIGO DEL SERVICIO DE CONTROL</th>
                                     <th>TIPO DE CODIGO DEL SC SUPERIOR</th>
-                                    <th>ORGANO DEL CONTROL INSTITUCIONAL</th>
                                     <th>ENTIDAD AUDITADA</th>
                                     <th>TIPO DE DEMANDA DE CONTROL</th>
                                     <th>PLAN ANUAL</th>
+                                    <th>ESTADO</th>
                                     <th>ACCIONES</th>
                                 </tr>
                                 </thead>

@@ -38,11 +38,16 @@ class Usuariorol extends Model
 
     public function usuario()
     {
-    	return $this->hasOne(\App\User::class,'codUsu','codUsu');
+    	return $this->belongsTo(\App\User::class,'codUsu','codUsu');
     }
 
     public function cargofuncional($value='')
     {
     	return  $this->hasOne(Cargofuncional::class,'codCarFun','codCarFun');
+    }
+
+    public function auditoria()
+    {
+        return $this->belongsTo(Auditoria::class, 'codPlanF');
     }
 }

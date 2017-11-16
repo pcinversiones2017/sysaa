@@ -5,10 +5,11 @@
                 <li class="{{$usuario?? ''}} {{$activo?? ''}} {{$institucion?? ''}} {{$software_a?? ''}}">
                     <a href=""><i class="fa fa-cogs"></i> <span class="nav-label">Configuracion</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li class="{{$usuario?? ''}}"><a href="{!! route('usuario.listar') !!}"><i class="fa fa-users"></i> Usuarios</a></li>
-                        <li class="{{$activo?? ''}}"><a href="{!! route('usuario.recuperar') !!}"><i class="fa fa-key"></i> Cambiar Contraseña</a></li>
-                       <li class="{{$institucion?? ''}}"><a href="{!! route('institucion.listar') !!}"> <i class="fa fa-institution"></i> Ver Institucion</a></li>
-                        <li class="{{$software_a?? ''}}"><a href="{!! route('institucion.listarSoftware') !!}"> <i class="fa fa-rebel"></i> Informacion del Software</a></li>
+                        <li class="{{$persona ?? ''}}"><a href="{!! route('persona.listar') !!}"><i class="fa fa-user-circle"></i> Personas</a></li>
+                        <li class="{{$usuario ?? ''}}"><a href="{!! route('usuario.listar') !!}"><i class="fa fa-users"></i> Usuarios</a></li>
+                        <li class="{{$activo ?? ''}}"><a href="{!! route('usuario.recuperar') !!}"><i class="fa fa-key"></i> Cambiar Contraseña</a></li>
+                        <li class="{{$institucion ?? ''}}"><a href="{!! route('institucion.listar') !!}"> <i class="fa fa-institution"></i> Ver Institucion</a></li>
+                        <li class="{{$software_a ?? ''}}"><a href="{!! route('institucion.listarSoftware') !!}"> <i class="fa fa-rebel"></i> Informacion del Software</a></li>
                     </ul>
                 </li>
                 <li class="header" style="padding: 5px 25px 5px 40px; background: #1d3040; color: #a7b1c2"><span class="nav-label">ETAPAS DE AUDITORIA</span></li>
