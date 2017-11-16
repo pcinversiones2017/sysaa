@@ -14,11 +14,6 @@
                             LISTA DE PLANES ANUALES
                         </div>
                         <div class="panel-body">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <a type="button" href="{{URL::to('auditoria/crear')}}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-pencil"></i> CREAR AUDITORIA</a>
-                                </div>
-                            </div>
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
@@ -39,7 +34,10 @@
                                             <h5><strong>AUDITORIAS</strong></h5>
                                             <ul>
                                                 @foreach($plan->auditorias as $auditoria)
-                                                    <li>{{$auditoria->nombrePlanF}} <a class="pull-right" href="{{route('auditoria.editar', $auditoria->codPlanF)}}"><i class="fa fa-edit"></i></a></li>
+                                                    <li>{{$auditoria->nombrePlanF}}
+                                                            {{--<a class="pull-right" href="{{route('auditoria.mostrar', $auditoria->codPlanF)}}"><i class="fa fa-eye"></i></a> --}}
+                                                            <a class="pull-right" href="{{route('auditoria.editar', $auditoria->codPlanF)}}"><i class="fa fa-edit"></i></a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                             @endif

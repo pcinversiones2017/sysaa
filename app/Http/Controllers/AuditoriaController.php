@@ -7,6 +7,7 @@ use App\Http\Requests\Auditoria\ActualizarRequest;
 use App\Http\Requests\Auditoria\RegistroRequest;
 use App\Models\Auditoria;
 
+use App\Models\EstadoAuditoria;
 use App\Models\Macroproceso;
 use App\Models\Normativa;
 use App\Models\ObjetivoGeneral;
@@ -62,6 +63,7 @@ class AuditoriaController extends Controller
 
         $auditoria = new Auditoria();
         $auditoria->nombrePlanF = $request->nombrePlanF;
+        $auditoria->tipoActividad = $request->tipoActividad;
 
         $codigoServicio = Auditoria::orderBy('codPlanF', 'des')->first();
         if(isset($codigoServicio)){
@@ -94,7 +96,8 @@ class AuditoriaController extends Controller
     {
         $auditoria = Auditoria::find($request->codPlanF);
         $macroprocesos = Macroproceso::all();
-        $usuariorol = UsuarioRol::where('codPlanF', $request->codPlanF)->with(['usuario','cargofuncional','rol'])->get();
+        $usuariorol = UsuarioRol::where('codPlanF', $request->codPlanF)->get();
+
         $codPlanF  = $request->codPlanF;
 
         $objetivoGeneral = Procedimiento::where('codObjGen',$request->codPlanF)->get();
@@ -190,5 +193,14 @@ class AuditoriaController extends Controller
                     );
         
         return response()->download($objWriter);
+    }
+
+    public function culminarAuditoria(Request $request)
+    {
+        $auditoria = Auditoria::find($request->codPlanF);
+        $auditoria->codEstAud = EstadoAuditoria::PENDIENTE_APROBACION;
+        $auditoria->save();
+        return redirect()->route('auditoria.mostrar', $request->codPlanF)
+            ->with('Se Culminó la planificación, queda pendiente la aprobacion por parte del Jefe de comisión');
     }
 }

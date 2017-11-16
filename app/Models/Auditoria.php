@@ -50,4 +50,9 @@ class Auditoria extends Model
     {
         return $this->hasMany(Normativa::class, 'codPlanF');
     }
+
+    public function estado()
+    {
+        return $this->hasOne(EstadoAuditoria::class, 'codEstAud', 'codEstAud');
+    }
 }

@@ -11,9 +11,9 @@
                 <div class="col-md-6 b-r">
                     <input type="hidden" value="{{$codPlanF}}" name="codPlanF">
                     <label>USUARIO</label>
-                    <select class="form-control" name="codUsu" >
-                        @foreach($usuario as $usu)
-                            <option value="{{$usu->codUsu}}">{{$usu->nombres}} {{ $usu->activo ? ' - activo' : ''}}</option>
+                    <select class="form-control" name="codPer" >
+                        @foreach($personas as $persona)
+                            <option value="{{ $persona->codPer . '-' . $persona->usuario }}">{{$persona->nombres . ' ' . $persona->paterno}} - Usuario: {{$persona->usuario}}</option>
                         @endforeach
                     </select>
                     {{--{!! Form::select('usuario', $usuario, null, ['class' => 'form-control', 'placeholder' => 'SELECCIONE']) !!}--}}

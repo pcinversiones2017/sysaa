@@ -68,6 +68,7 @@
                                 <div class="tab-content">
                                     <div id="tab-10" class="tab-pane active">
                                         <div class="panel-body">
+                                    <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                                             <table class="table table-bordered table-actividades" style="margin-top: 10px">
                                                 <thead>
                                                 <tr>

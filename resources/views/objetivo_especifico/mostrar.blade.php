@@ -38,6 +38,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="m-b-md">
+                                    <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                                         <table class="table table-bordered table-responsive table-procedimientos">
                                             <thead>
                                             <tr>

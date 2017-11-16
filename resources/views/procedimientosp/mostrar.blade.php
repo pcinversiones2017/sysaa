@@ -65,6 +65,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="col-lg-12">
+                                <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                                 <table class="table table-actividades" style="margin-top: 10px">
                                     <thead>
                                     <tr>

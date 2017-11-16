@@ -17,6 +17,7 @@
                             LISTADO DE AUDITORIAS
                         </div>
                         <div class="panel-body">
+                            <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                             <table class="table table-bordered table-auditoria">
                                 <thead>
                                 <tr>
@@ -24,10 +25,10 @@
                                     <th>NOMBRE</th>
                                     <th>CODIGO DEL SERVICIO DE CONTROL</th>
                                     <th>TIPO DE CODIGO DEL SC SUPERIOR</th>
-                                    <th>ORGANO DEL CONTROL INSTITUCIONAL</th>
                                     <th>ENTIDAD AUDITADA</th>
                                     <th>TIPO DE DEMANDA DE CONTROL</th>
                                     <th>PLAN ANUAL</th>
+                                    <th>ESTADO</th>
                                     <th>ACCIONES</th>
                                 </tr>
                                 </thead>

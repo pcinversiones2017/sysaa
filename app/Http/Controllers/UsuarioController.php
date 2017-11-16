@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Persona;
 use Illuminate\Http\Request;
 use App\Http\Requests\Usuario\ValidarRequest;
 use App\Http\Requests\Usuario\RegistroRequest;
@@ -28,15 +29,15 @@ class UsuarioController extends Controller
 
     public function registrar(RegistroRequest $request)
     {
-    	User::create([	
-    					'nombres' => $request->nombres, 
-    					'paterno' => $request->paterno, 
-    					'materno' => $request->materno,
-    					'email' => $request->email, 
-                        'username' => $request->username, 
-    					'password' => bcrypt($request->password)
-    				]);
-        RegistrarActividad(User::TABLA,Historial::REGISTRAR,'registró el Usuario '.$request->nombre);
+
+    	$persona = new Persona();
+    	$persona->nombres = $request->nombres;
+        $persona->paterno = $request->paterno;
+        $persona->materno = $request->materno;
+        $persona->email = $request->email;
+        $persona->save();
+
+        RegistrarActividad(User::TABLA,Historial::REGISTRAR,'registró el Usuario ' . $request->nombre);
     	return redirect()->route('usuario.listar')->with('success','Usuario registrado');
     }
 
@@ -52,12 +53,7 @@ class UsuarioController extends Controller
 
     	if($request->has('password'))
     	{
-    		User::Existe($request->codUsu)->update(['nombres' => $request->nombres, 'paterno' => $request->paterno, 'materno' => $request->materno,'email' => $request->email, 'password' => bcrypt($request->password), 'username' => $request->username]);
-            RegistrarActividad(User::TABLA,Historial::ACTUALIZAR,'actualizó el Usuario '.$request->nombre);
-    		return redirect()->route('usuario.listar')->with('success','Usuario actualizado');	
-    	}else 
-    	{
-    		User::Existe($request->codUsu)->update(['nombres' => $request->nombres, 'paterno' => $request->paterno, 'materno' => $request->materno,'email' => $request->email, 'username' => $request->username]);
+    		User::Existe($request->codUsu)->update(['password' => bcrypt($request->password)]);
             RegistrarActividad(User::TABLA,Historial::ACTUALIZAR,'actualizó el Usuario '.$request->nombre);
     		return redirect()->route('usuario.listar')->with('success','Usuario actualizado');	
     	}

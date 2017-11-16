@@ -15,16 +15,14 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('codUsu');
-            $table->string('paterno');
-            $table->string('materno');
-            $table->string('nombres');
-            $table->string('email');
             $table->string('username');
             $table->string('password');
+            $table->integer('codPer')->unsigned();
             $table->string('remember_token')->nullable();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
             $table->timestamp('fecha_eliminado')->nullable();
+            $table->foreign('codPer')->references('codPer')->on('personas');
         });
     }
 

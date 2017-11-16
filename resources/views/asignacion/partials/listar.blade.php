@@ -8,6 +8,7 @@
                     </div>
                 </div>
 
+                <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                 <table class="table table-bordered">
                     <thead>
                     <tr>
@@ -15,7 +16,8 @@
                         <th>DATOS</th>
                         <th>CARGO FUNCIONAL</th>
                         <th>ROL</th>
-                        <th>Accion</th>
+                        <th>USUARIO</th>
+                        <th>ACCIONES</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -26,6 +28,7 @@
                             <td>{!! $row->usuario->datos !!}</td>
                             <td>{!! $row->cargofuncional->nombre !!}</td>
                             <td>{!! $row->rol->nombre !!}</td>
+                            <td>{!! $row->usuario->username !!}</td>
                             <td class="tooltip-demo">
                                 <a href="{!! url('asignar-rol/editar/' . $row->codUsuRol) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
                                 <a href="{!! url('asignar-rol/asignar-rol-eliminar/' . $row->codUsuRol) !!}" class="btn btn-danger btn-outline eliminar-asignacion" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>

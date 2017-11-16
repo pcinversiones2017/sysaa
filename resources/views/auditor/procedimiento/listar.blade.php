@@ -25,6 +25,7 @@
                 </div>
                 <div class="ibox-content">
 
+                    <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                     <table class="table table-bordered table-procedimientos">
                         <thead>
                         <tr>

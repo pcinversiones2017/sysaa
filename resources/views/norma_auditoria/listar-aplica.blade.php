@@ -15,6 +15,7 @@
                                     <a type="button" href="{!! url('norma-auditoria/crear') !!}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-pencil"></i> CREAR NORMATIVA</a>
                                 </div>
                             </div>
+                            <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>

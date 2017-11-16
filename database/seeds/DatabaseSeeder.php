@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
 
             EtapaTableSeeder::class,
             RolTableSeeder::class,
+            PersonaTableSeeder::class,
             UsuarioTableSeeder::class,
             CargoFuncionalTableSeeder::class,
             AsignacionTableSeeder::class,
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
             InstitucionTableSeeder::class,
             InfoSoftwareSeeder::class,
             EstadoTableSeeder::class,
+            EstadoAuditoriaTableSeed::class
            // MacroprocesoSeeder::class,
             //ProcesomaSeeder::class,
             //SubprocesoSeeder::class,
