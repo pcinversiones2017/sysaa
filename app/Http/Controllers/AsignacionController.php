@@ -26,9 +26,11 @@ class AsignacionController extends Controller
 
         $codPlanF = $request->codPlanF;
 
-        $usuariosRol = UsuarioRol::where('codPlanF', $codPlanF)->pluck('codUsu', 'codRol')->toArray();
-        $usuarios = array_values($usuariosRol);
-        $roles = array_keys($usuariosRol);
+        $usuariosRol = UsuarioRol::where('codPlanF', $codPlanF)->get();
+
+        $usuarios = $usuariosRol->pluck('codUsu');
+        $roles = $usuariosRol->pluck('codRol');
+
         foreach ($roles as $rol){
             if($rol == Rol::JEFE_DE_COMISION || $rol == Rol::SUPERVISOR){
                  $rolesAsignados[] = $rol;

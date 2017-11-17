@@ -13,7 +13,7 @@ class PlanController extends Controller
 {
     public function listar()
     {
-        $planes = Plan::all();
+        $planes = Plan::orderBy('codPlanA', 'desc')->get();
         $listarPlan = 'active';
         RegistrarActividad(Plan::TABLA,Historial::LEER,'vió el listado de Planes');
         return view('plan.listar')->with(compact('planes', 'listarPlan'));

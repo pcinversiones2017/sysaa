@@ -264,9 +264,9 @@
                                             <table class="table table-bordered">
                                                 <tr>
                                                     <td>DESDE</td>
-                                                    <td>{{ date('d-m-Y', strtotime($auditoria->periodoIniPlanF))}}</td>
+                                                    <td>{{ isset($auditoria->periodoIniPlanF) ? date('d-m-Y', strtotime($auditoria->periodoIniPlanF)) : ''}}</td>
                                                     <td>HASTA</td>
-                                                    <td>{{ date('d-m-Y', strtotime($auditoria->periodoFinPlanF)) }}</td>
+                                                    <td>{{ isset($auditoria->periodoFinPlanF) ? date('d-m-Y', strtotime($auditoria->periodoFinPlanF)) : ''}}</td>
                                                 </tr>
                                             </table>
                                         </div>

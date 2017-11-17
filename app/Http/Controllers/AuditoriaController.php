@@ -25,10 +25,18 @@ class AuditoriaController extends Controller
 {
     public function listar()
     {
-        $auditorias = Auditoria::orderBy('codPlanF', 'des')->get();
+        $auditorias = Auditoria::orderBy('codPlanF', 'des')->where('tipoActividad', 'PROGRAMADA')->get();
         $listarAuditoria = 'active';
         RegistrarActividad(Auditoria::TABLA,Historial::LEER,'vió el listado de Auditorias');
         return view('auditoria.listar')->with(compact(['auditorias', 'listarAuditoria']));
+    }
+
+    public function listarNoProgramadas()
+    {
+        $auditorias = Auditoria::orderBy('codPlanF', 'des')->where('tipoActividad', 'NO PROGRAMADA')->get();
+        $listarAuditoriaNoProgramadas = 'active';
+        RegistrarActividad(Auditoria::TABLA,Historial::LEER,'vió el listado de Auditorias');
+        return view('auditoria.listar')->with(compact(['auditorias', 'listarAuditoriaNoProgramadas']));
     }
 
     public function crear()
@@ -51,11 +59,18 @@ class AuditoriaController extends Controller
 
     public function crearAuditoriaPlanAnual(Request $request)
     {
-            $plan = Plan::find($request->codPlanA);
-
-            return view('auditoria.crear-auditoria-plan-anual', compact('plan'));
+        $plan = Plan::find($request->codPlanA);
+        return view('auditoria.crear-auditoria-plan-anual', compact('plan'));
     }
 
+    public function actualizarAuditoriaPlanAnual(Request $request)
+    {
+        $plan = Plan::find($request->codPlanA);
+        $plan->tipoActividad = $request->tipoActividad;
+        $plan->save();
+
+        return redirect()->route('plan.listar')->with('success', 'Se actualizo la auditoria');
+    }
 
     public function guardar(RegistroRequest $request)
     {
@@ -76,7 +91,7 @@ class AuditoriaController extends Controller
         $auditoria->codigoServicioCP = $codigoServicio;
 
         $auditoria->codPlanA = $request->codPlanA;
-        $auditoria->estadoAuditoria = 'pendiente';
+        $auditoria->codEstAud = EstadoAuditoria::PENDIENTE;
 
         RegistrarActividad(Auditoria::TABLA,Historial::REGISTRAR,'registró la Auditoria '.$request->nombrePlanF);
 
@@ -120,7 +135,7 @@ class AuditoriaController extends Controller
     {
         $planes = Plan::pluck('nombrePlan', 'codPlanA');
         $auditoria = Auditoria::find($request->codPlanF);
-        RegistrarActividad(Auditoria::TABLA,Historial::EDITAR,'vió el formulario de editar la Auditoria '.$auditoria->nombrePlanF);
+        RegistrarActividad(Auditoria::TABLA,Historial::EDITAR,'vió el formulario de editar la Auditoria ' . $auditoria->nombrePlanF);
         return view('auditoria.editar')->with(compact('planes', 'auditoria', 'periodo'));
     }
 
@@ -137,8 +152,6 @@ class AuditoriaController extends Controller
         $auditoria->tipoDemanda = $request->tipoDemanda;
         $auditoria->fechaIniPlanF = $request->fechaIniPlanF;
         $auditoria->fechaFinPlanF = $request->fechaFinPlanF;
-
-        $auditoria->estadoAuditoria = 'pendiente';
 
         if(!empty($request->periodoIniPlanF)){
             $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($request->periodoIniPlanF));

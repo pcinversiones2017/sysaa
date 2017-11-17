@@ -19,8 +19,8 @@ class PersonaController extends Controller
     public function listar()
     {
         $personas = Persona::all();
-        $persona = 'active';
-        return view('persona.listar', compact('personas', 'persona'));
+        $people = 'active';
+        return view('persona.listar', compact('personas', 'people'));
     }
 
     public function crear()
@@ -57,7 +57,27 @@ class PersonaController extends Controller
         $persona->email = $request->email;
         $persona->save();
 
-        RegistrarActividad(Persona::TABLA,Historial::REGISTRAR,'Actualizó el Usuario ' . $request->nombres);
+        RegistrarActividad(Persona::TABLA,Historial::REGISTRAR,'Actualizó la Persona '
+            . $request->nombres . ' ' . $request->paterno);
         return redirect()->route('persona.listar')->with('success','Persona actualizada');
+    }
+
+    public function eliminar(Request $request)
+    {
+        try{
+            $persona = Persona::find($request->codPer);
+            $persona->delete();
+
+            RegistrarActividad(Persona::TABLA,Historial::REGISTRAR,'Actualizó la persona '
+                . $request->nombres . '' . $request->personas);
+
+            return redirect()->route('persona.listar')->with('success','Persona eliminada');
+
+        }catch (\Exception $e){
+
+            return redirect()->route('persona.listar')->with('danger', 'No puede eliminar esta persona porque 
+            ya tiene asignada una auditoria');
+        }
+
     }
 }

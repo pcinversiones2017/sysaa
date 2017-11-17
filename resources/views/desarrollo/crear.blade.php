@@ -14,7 +14,7 @@
                 <div class="ibox-content">
                     {!! Form::open(['method' => 'POST', 'route' => 'auditor.desarrollo.registrar']) !!}
                     {!! Form::hidden('codProc',$codProc) !!}
-                    {!! Field::textarea('informe', ['class' => 'summernote']) !!}
+                    {!! Field::textarea('informe', ['class' => 'summernote', 'label' => 'Desarrollo de Procedimiento']) !!}
                     {!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-outline']) !!}
                     <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     <a href="{!! url('auditor/desarrollo/listar') !!}" class="btn btn-success btn-outline">LISTAR</a>
