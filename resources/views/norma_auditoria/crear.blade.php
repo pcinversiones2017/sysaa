@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    {!! Field::text('numero') !!}
+                    {!! Field::number('numero') !!}
                 </div>
 
 

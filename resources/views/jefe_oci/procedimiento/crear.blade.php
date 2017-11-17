@@ -5,6 +5,12 @@
 @stop
 
 @section('content')
+@if($usuariorol->isEmpty())
+    <div class="alert alert-danger  alert-dismissable">
+        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+        DEBE <a class="alert-link" href="{{ url('asignar-rol/crear')}}/{{$codPlanF}}">CREAR </a> COMISIÓN AUDITORA PARA QUE PUEDA CONTINUAR
+    </div>
+@endif
 <div class="row">
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
@@ -45,7 +51,9 @@
 
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">
+                                    @if($usuariorol->isNotEmpty())
                                     <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> REGISTRAR</button>
+                                    @endif
                                     <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                                 </div>
                                 <div class="hr-line-dashed"></div>

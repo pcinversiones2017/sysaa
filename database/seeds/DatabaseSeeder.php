@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             UsuarioTableSeeder::class,
             CargoFuncionalTableSeeder::class,
             AsignacionTableSeeder::class,
+            tipoNormativaSeeder::class,
            // NormativaSeeder::class,
             InstitucionTableSeeder::class,
             InfoSoftwareSeeder::class,
