@@ -14,7 +14,7 @@
 
                     <div class="panel panel-success">
                         <div class="panel-heading">
-                            LISTADO DE AUDITORIAS PROGRAMADAS
+                            LISTADO DE AUDITORIAS NO PROGRAMADAS
                         </div>
                         <div class="panel-body">
                             <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>

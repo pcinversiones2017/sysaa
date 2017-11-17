@@ -165,12 +165,13 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
        Route::get('mostrar/{codPlanF}', 'AuditoriaController@mostrar')->name('auditoria.mostrar');
        Route::post('guardar', 'AuditoriaController@guardar')->name('auditoria.guardar');
        Route::get('listar', 'AuditoriaController@listar')->name('auditoria.listar');
+       Route::get('listar-no-programadas', 'AuditoriaController@listarNoProgramadas')->name('auditoria.listar-no-programadas');
        Route::get('editar/{codPlanF}', 'AuditoriaController@editar')->name('auditoria.editar');
        Route::post('actualizar', 'AuditoriaController@actualizar')->name('auditoria.actualizar');
        Route::get('eliminar/{codPlanF}', 'AuditoriaController@eliminar')->name('auditoria.eliminar');
        Route::get('informe/{codPlanF}', 'AuditoriaController@informeFinal')->name('auditoria.informe');
        Route::get('culminar/{codPlanF}', 'AuditoriaController@culminarAuditoria')->name('auditoria.culminar');
-        Route::get('word', 'AuditoriaController@word')->name('auditoria.word');
+       Route::get('word', 'AuditoriaController@word')->name('auditoria.word');
 
        //---//
        Route::get('crear-auditoria-plan-anual/{codPlanA}', 'AuditoriaController@crearAuditoriaPlanAnual')->name('auditoria.crear-auditoria-plan-anual');
@@ -230,5 +231,6 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
         Route::get('crear', 'PersonaController@crear')->name('persona.crear');
         Route::post('guardar', 'PersonaController@guardar')->name('persona.guardar');
         Route::post('actualizar', 'PersonaController@actualizar')->name('persona.actualizar');
+        Route::get('eliminar/{codPer}', 'PersonaController@eliminar')->name('persona.eliminar');
     });
 });
