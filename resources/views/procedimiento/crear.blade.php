@@ -3,8 +3,13 @@
 @section('css-style')
 {!! Html::style('css/plugins/datapicker/datepicker3.css') !!}
 @stop
-
 @section('content')
+@if($usuariorol->isEmpty())
+    <div class="alert alert-danger  alert-dismissable">
+        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+        DEBE <a class="alert-link" href="{{ url('asignar-rol/crear')}}/{{$codPlanF}}">CREAR </a> COMISIÓN AUDITORA PARA QUE PUEDA CONTINUAR
+    </div>
+@endif
 <div class="row">
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
@@ -34,8 +39,6 @@
                                 </div>
                                 <div class="hr-line-dashed"></div>
                                 <label>Usuario</label>
-                                {!! $usuariorol->isEmpty() ? Form::label('comision-usuario', '(Debe asignar usuarios de comisión)') : '' !!}
-
                                 <select name="codUsuRol" class="form-control">
                                     @foreach($usuariorol as $row)
                                         <option value="{!! $row->codUsuRol !!}">{!! $row->usuario->datos !!}</option>
@@ -47,8 +50,10 @@
 
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">
+                                    @if($usuariorol->isNotEmpty())
                                     <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> REGISTRAR</button>
-                                    <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                                    @endif
+                                    <a href="{!! url('objetivo-especifico/mostrar')!!}/{{$codPlanF}}/{{$codObjEsp}}" class="btn btn-danger btn-outline">ATRAS</a>
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
