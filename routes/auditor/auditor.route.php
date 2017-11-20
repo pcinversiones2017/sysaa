@@ -6,5 +6,4 @@ Route::group(['middleware' => ['auth','auditor']], function(){
         Route::get('mostrar/{id}', 'ProcedimientoController@mostrar')->name('auditor.procedimiento.mostrar');
         Route::get('finalizar/{id}','ProcedimientoController@finalizar')->name('auditor.procedimiento.finalizar');
     });
-
 });

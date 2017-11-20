@@ -42,6 +42,7 @@
                                 <td>{!! substr($row->descripcion,0,20) !!}</td>
                                 <td>{!! substr($row->recomendacion,0,20) !!}</td>
                                 <td>
+                                    <a href="{!! url('seguimiento/listar/'. $procedimiento->codProc .'/'. $procedimiento->desarrollo->codDes .'/'. $row->codObs) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i>  </a>
                                 	<a href="{!! url('auditor/observacion/editar/'. $procedimiento->codProc .'/'. $procedimiento->desarrollo->codDes .'/'. $row->codObs) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
                                     <a href="{!! url('auditor/observacion/eliminar/'. $procedimiento->codProc .'/'. $procedimiento->desarrollo->codDes .'/'. $row->codObs) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
                                     <a href="{!! url('auditor/observacion/archivo/crear/'. $procedimiento->codProc .'/'. $procedimiento->desarrollo->codDes .'/'. $row->codObs) !!}" class="btn btn-warning btn-outline"><i class="fa fa-upload"></i>  </a>
