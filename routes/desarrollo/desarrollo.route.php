@@ -58,4 +58,22 @@ Route::group(['middleware' => ['auth']], function(){
 		Route::get('listar', 'RiesgoController@listar')->name('riesgos.listar');
 		Route::post('buscar-auditoria', 'RiesgoController@buscar')->name('riesgos.buscar');
 	});
+
+    Route::group(['prefix' => 'seguimiento'], function(){
+    	Route::get('listar/{codProc}/{codDes}/{codObs}', 'SeguimientoController@listar')->name('seguimiento.listar');
+    	Route::get('crear/{codProc}/{codDes}/{codObs}', 'SeguimientoController@crear')->name('seguimiento.crear');
+    	Route::post('registrar', 'SeguimientoController@registrar')->name('seguimiento.registrar');
+    	Route::get('editar/{codProc}/{codDes}/{codObs}/{codSeg}', 'SeguimientoController@editar')->name('seguimiento.editar');
+    	Route::post('actualizar', 'SeguimientoController@actualizar')->name('seguimiento.actualizar');
+    	Route::get('eliminar/{codSeg}', 'SeguimientoController@eliminar')->name('seguimiento.eliminar');
+    });
+
+	Route::group(['prefix' => 'seguimiento/archivo'], function(){
+	    Route::get('crear/{codProc}/{codDes}/{codObs}/{codSeg}','SeguimientoArchivoController@crear')->name('seguimiento.archivo.crear');
+	    Route::post('registrar','SeguimientoArchivoController@registrar')->name('seguimiento.archivo.registrar');
+	    Route::get('listar/{codProc}/{codDes}/{codObs}/{codSeg}','SeguimientoArchivoController@listar')->name('seguimiento.archivo.listar');
+	    Route::get('crear','SeguimientoArchivoController@crear')->name('seguimiento.archivo.crear');
+	    Route::get('eliminar/{id}','SeguimientoArchivoController@eliminar')->name('seguimiento.archivo.eliminar');
+	    Route::get('descargar/{id}','SeguimientoArchivoController@descargar')->name('seguimiento.archivo.descargar');
+	});
 });
