@@ -38,7 +38,7 @@ class ObjetivoGeneral extends Model
 
     public function procedimientos()
     {
-        return $this->hasMany(procedimiento::class, 'codObjGen');
+        return $this->hasMany(Procedimiento::class, 'codObjGen');
     }
 
     public function auditoria()

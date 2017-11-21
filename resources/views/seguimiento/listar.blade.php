@@ -30,7 +30,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>ACCIONES REALIZADOS POR EL AUDITOR</th>
+                            <th>ACCIONES REALIZADOS POR EL AUDITADO</th>
                             <th>EVALUACION DEL AUDITOR</th>
                             <th>ESTADO</th>                            
                             <th>ACCION</th>

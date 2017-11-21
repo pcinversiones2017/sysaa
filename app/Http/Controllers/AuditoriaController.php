@@ -8,6 +8,7 @@ use App\Http\Requests\Auditoria\RegistroRequest;
 use App\Models\Auditoria;
 
 use App\Models\EstadoAuditoria;
+use App\Models\FechaEtapa;
 use App\Models\Macroproceso;
 use App\Models\Normativa;
 use App\Models\ObjetivoGeneral;
@@ -215,5 +216,91 @@ class AuditoriaController extends Controller
         $auditoria->save();
         return redirect()->route('auditoria.mostrar', $request->codPlanF)
             ->with('Se Culminó la planificación, queda pendiente la aprobacion por parte del Jefe de comisión');
+    }
+
+    public function gantt()
+    {
+        $auditorias = Auditoria::all();
+        return view('auditoria.gantt', compact('auditorias'));
+    }
+
+    public function diagramaGantt(Request $request)
+    {
+        $codPlanF = $request->codPlanF;
+        $auditoria = Auditoria::find($codPlanF);
+        $fecha_etapa = FechaEtapa::where('codPlanF', $codPlanF)->where('etapa', 'EJECUCION')->first();
+        if(!isset($fecha_etapa)){
+            return response()->json(['data' => [], 'message' =>'No se le ha creado un cronograma para esta auditoria', 'success' => false]);
+        }
+        if(!isset($auditoria->objetivoGeneral)){
+            return response()->json(['data' => [], 'message' => 'No se ha creado un objetivo general para esta auditoria', 'success' => false]);
+        }
+
+        if(isset($auditoria->objetivoGeneral) && $auditoria->objetivoGeneral->procedimientos->isEmpty()){
+            return response()->json(['data' => [], 'message' => 'No tiene procedimientos creados', 'success' => false]);
+        }
+
+        $procedimientos = $auditoria->objetivoGeneral->procedimientos;
+
+        $data = [];
+        $i = 1;
+        $colors = ['Orange', 'Blue', 'Green', 'Red'];
+
+        foreach ($procedimientos as $procedmiento){
+            $row['name'] = 'Procedimiento ' . $i;
+            $row['desc'] = $procedmiento->detalle;
+            $from = strtotime(date('Y-m-d')) . '000';
+            $to = strtotime($procedmiento->fecha_fin) . '000';
+            $row['values'] = [
+                [
+                    'from' => "/Date($from)/",
+                    'to' => "/Date($to)/",
+                    'label' => "Procedimiento $i",
+                    'customClass' => 'gantt' . $colors[array_rand($colors)],
+                    'dataObj' => $procedmiento->detalle
+                ]
+            ];
+
+            $data[] = $row;
+            $i++;
+        }
+
+        $objetivosEspecificos = $auditoria->objetivoGeneral->objetivosEspecificos;
+        if($objetivosEspecificos->isNotEmpty()){
+            foreach ($objetivosEspecificos as $objetivoEspecifico){
+                foreach ($objetivoEspecifico->procedimientos as $procedmiento){
+                    $row['name'] = 'Procedimiento ' . $i;
+                    $row['desc'] = $procedmiento->detalle;
+                    $from = strtotime(date('Y-m-d')) . '000';
+                    $to = strtotime($procedmiento->fecha_fin) . '000';
+                    $row['values'] = [
+                        [
+                            'from' => "/Date($from)/",
+                            'to' => "/Date($to)/",
+                            'label' => "Procedimiento $i",
+                            'customClass' => 'gantt' . $colors[array_rand($colors)],
+                            'dataObj' => $procedmiento->detalle
+                        ]
+                    ];
+
+                    $data[] = $row;
+                    $i++;
+                }
+            }
+        }
+
+
+
+        return response()->json(['data' => $data, 'message' => '', 'success' => true]);
+
+//        name: "Sprint 0",
+//        desc: "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur aliquet quam id dui posuere blandit. Donec sollicitudin molestie malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.",
+//        values: [{
+//        from: "/Date(1320192000000)/",
+//            to: "/Date(1322401600000)/",
+//            label: "Requirement Gathering",
+//            customClass: "ganttRed",
+//            dataObj: 'auris blandit aliquet elit, eget tincidunt nibh pulvinar a. Mauris blandit aliquet elit, eget tincidunt nibh pulv'
+//        }]
     }
 }
