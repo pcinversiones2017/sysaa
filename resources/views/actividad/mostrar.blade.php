@@ -32,7 +32,7 @@
                                         <a href="{{URL::to('procesoma/mostrar')}}/{{$procedimientosp->subProceso->codProMA}}">SUBPROCESO</a>
                                     </li>
                                     <li>
-                                        <a href="{{URL::to('subproceso/mostrar')}}/{{$procedimientosp->codProSP}}">PROCEDIMIENTO</a>
+                                        <a href="{{URL::to('subproceso/mostrar')}}/{{$procedimientosp->subProceso->codSubPro}}">PROCEDIMIENTO</a>
                                     </li>
                                     <li class="active">
                                         <strong>CREAR ACTIVIDADES</strong>

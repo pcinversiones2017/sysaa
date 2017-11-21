@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Cronograma extends Model
@@ -15,5 +16,15 @@ class Cronograma extends Model
     public function etapa()
     {
         return $this->belongsTo(Etapa::class, 'codEtp');
+    }
+
+    public function getFechaIniAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getFechaFinAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
     }
 }
