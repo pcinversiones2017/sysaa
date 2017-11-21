@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>SYSAA</title>
+    <link rel="shortcut icon" href="{{URL::to('img/favicon.ico')}}"  type="image/vnd.microsoft.icon" />
 
     {!! Html::style('css/bootstrap.min.css') !!}
     {!! Html::style('font-awesome/css/font-awesome.css') !!}
