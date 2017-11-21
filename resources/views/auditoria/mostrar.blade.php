@@ -124,6 +124,9 @@
                                 <div class="panel panel-success">
                                     <div class="panel-heading">
                                         I. DATOS DE LA AUDITORIA
+
+                                            <a class="pull-right" style="color: white" href="{!! route('auditoria.editar', $auditoria->codPlanF) !!}"><i class="fa fa-edit"></i> EDITAR</a>
+
                                     </div>
                                     <div class="panel-body">
                                         <div class="col-lg-5">
