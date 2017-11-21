@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Jefe_OCI;
 
+use App\Models\Auditoria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Procedimiento\ValidarRequest;
@@ -20,12 +21,14 @@ class ProcedimientoController extends Controller
 
     public function registrar(Request $request)
     {
+        $auditoria = Auditoria::find($request->codPlanF);
+
     	Procedimiento::create([	
     					'justificacion' => $request->justificacion, 
     					'detalle' 		=> $request->detalle, 
     					'fecha_fin' 	=> date('Y-m-d', strtotime($request->fechafin)),
     					'codUsuRol'		=> $request->codUsuRol,
-    					'codObjGen' 	=> $request->codPlanF,
+    					'codObjGen' 	=> $auditoria->objetivoGeneral->codObjGen,
                         'codEst'         => 1
     				]);
     	RegistrarActividad(Procedimiento::TABLA,Historial::REGISTRAR,'registró el Procedimiento '.$request->justificacion);

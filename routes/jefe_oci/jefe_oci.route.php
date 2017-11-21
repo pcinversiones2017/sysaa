@@ -175,9 +175,8 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
 
        //---//
        Route::get('crear-auditoria-plan-anual/{codPlanA}', 'AuditoriaController@crearAuditoriaPlanAnual')->name('auditoria.crear-auditoria-plan-anual');
-       Route::get('gantt', function (){
-           return view('auditoria.gantt');
-       });
+       Route::get('gantt','AuditoriaController@gantt');
+       Route::get('diagrama-gantt/{codPlanF}', 'AuditoriaController@diagramaGantt');
     });
     //Institucion
     Route::group(['prefix' => 'institucion'], function (){

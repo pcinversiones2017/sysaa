@@ -30,7 +30,7 @@
                             </select>
                             <br>
                             <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
+                                <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> ACTUALIZAR</button>
                                 <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
                             <div class="hr-line-dashed"></div>

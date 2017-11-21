@@ -83,11 +83,6 @@ class ObjetivoEspecificoController extends Controller
         try{
 
             $objetivoEspecifico = ObjetivoEspecifico::find($request->codObjEsp);
-
-            $procedimiento = Procedimiento::join('usuario_roles','usuario_roles.codUsuRol','=','procedimiento.codUsuRol')
-                                            ->join('users','users.codUsu','=','usuario_roles.codUsu')
-                                            ->where('codObjEsp',$request->codObjEsp)
-                                            ->get();
             $codPlanF = $request->codPlanF;
             $codObjEsp = $request->codObjEsp;
             return view('objetivo_especifico.mostrar', compact(['objetivoEspecifico','procedimiento','codPlanF','codObjEsp']));
