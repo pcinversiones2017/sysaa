@@ -1,131 +1,89 @@
 @extends('layout.admin')
 @section('css-style')
     {!! Html::style('css/gantt.css') !!}
+    {!! Html::style('css/plugins/alertifyjs/alertify.min.css') !!}
 @stop
 @section('content')
-    <div class="contain">
-        <div class="gantt"></div>
-    </div>
+
+
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                DIAGRAMA DE GANTT POR AUDITORIA
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-10">
+                        <select id="select-auditoria" class="form-control" name="codPlanF" style="height: 21px;">
+                            <option value="">--- Seleccione Auditoria ---</option>
+                            @foreach($auditorias as $auditoria)
+                            <option value="{{$auditoria->codPlanF}}">{{$auditoria->nombrePlanF}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+
+        <div class="contain">
+            <div class="gantt"></div>
+        </div>
+
+
+
 
 @stop
 
 @section('js-script')
-
+    {!! Html::script('js/plugins/alertifyjs/alertify.min.js') !!}
     {!! Html::script('js/jquery.fn.gantt.js') !!}
 
 <script>
-    $(function() {
 
-        $(".gantt").gantt({
-            source: [{
-                name: "Sprint 0",
-                desc: "Analysis",
-                values: [{
-                    from: "/Date(1320192000000)/",
-                    to: "/Date(1322401600000)/",
-                    label: "Requirement Gathering",
-                    customClass: "ganttRed"
-                }]
-            },{
-                name: " ",
-                desc: "Scoping",
-                values: [{
-                    from: "/Date(1322611200000)/",
-                    to: "/Date(1323302400000)/",
-                    label: "Scoping",
-                    customClass: "ganttRed"
-                }]
-            },{
-                name: "Sprint 1",
-                desc: "Development",
-                values: [{
-                    from: "/Date(1323802400000)/",
-                    to: "/Date(1325685200000)/",
-                    label: "Development",
-                    customClass: "ganttGreen"
-                }]
-            },{
-                name: " ",
-                desc: "Showcasing",
-                values: [{
-                    from: "/Date(1325685200000)/",
-                    to: "/Date(1325695200000)/",
-                    label: "Showcasing",
-                    customClass: "ganttBlue"
-                }]
-            },{
-                name: "Sprint 2",
-                desc: "Development",
-                values: [{
-                    from: "/Date(1326785200000)/",
-                    to: "/Date(1325785200000)/",
-                    label: "Development",
-                    customClass: "ganttGreen"
-                }]
-            },{
-                name: " ",
-                desc: "Showcasing",
-                values: [{
-                    from: "/Date(1328785200000)/",
-                    to: "/Date(1328905200000)/",
-                    label: "Showcasing",
-                    customClass: "ganttBlue"
-                }]
-            },{
-                name: "Release Stage",
-                desc: "Training",
-                values: [{
-                    from: "/Date(1330011200000)/",
-                    to: "/Date(1336611200000)/",
-                    label: "Training",
-                    customClass: "ganttOrange"
-                }]
-            },{
-                name: " ",
-                desc: "Deployment",
-                values: [{
-                    from: "/Date(1336611200000)/",
-                    to: "/Date(1338711200000)/",
-                    label: "Deployment",
-                    customClass: "ganttOrange"
-                }]
-            },{
-                name: " ",
-                desc: "Warranty Period",
-                values: [{
-                    from: "/Date(1336611200000)/",
-                    to: "/Date(1349711200000)/",
-                    label: "Warranty Period",
-                    customClass: "ganttOrange"
-                }]
-            }],
-            navigate: "scroll",
-            scale: "weeks",
-            maxScale: "months",
-            minScale: "days",
-            itemsPerPage: 10,
-            onItemClick: function(data) {
-                alert("Item clicked - show some details");
-            },
-            onAddClick: function(dt, rowId) {
-                alert("Empty space clicked - add an item!");
-            },
-            onRender: function() {
-                if (window.console && typeof console.log === "function") {
-                    console.log("chart rendered");
-                }
-            }
-        });
+$('#select-auditoria').on('change', function () {
+    $.get(server + 'auditoria/diagrama-gantt/' + $(this).val()).done(function (data) {
+        console.log(data);
+        if(data.success){
+            $(".gantt").gantt({
+                source : data.data,
+                navigate: "scroll",
+                scale: "days",
+                maxScale: "months",
+                minScale: "days",
+                itemsPerPage: 10,
+                months	: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"],
+                dow : ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                onItemClick: function(data) {
+                    alertify.alert('Detalle Procedimiento', data);
+                },
+                onAddClick: function(dt, rowId) {
+                    alert("Empty space clicked - add an item!");
+                },
+//                onRender: function() {
+//                    if (window.console && typeof console.log === "function") {
+//                        console.log("chart rendered");
+//                    }
+//                }
+            });
 
-        $(".gantt").popover({
-            selector: ".bar",
-            title: "I'm a popover",
-            content: "And I'm the content of said popover.",
-            trigger: "hover"
-        });
+        }else{
+            alertify.alert('Mensaje', data.message)
+                .set('labels', {ok:'Aceptar', cancel:'Cancelar'});
 
-        prettyPrint();
+        }
 
+//        $(".gantt").popover({
+//            selector: ".bar",
+//            title: "I'm a popover",
+//            content: "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Mauris blandit aliquet elit, eget tincidunt nibh",
+//            trigger: "hover"
+//        });
+//
+//        prettyPrint();
     });
+});
+
+
+
 </script>
 @stop

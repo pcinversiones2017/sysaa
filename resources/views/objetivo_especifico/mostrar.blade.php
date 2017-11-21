@@ -53,16 +53,16 @@
 
                                             <tbody>
                                             <?php $i=1 ?>
-                                            @foreach($procedimiento as $row)
+                                            @foreach($objetivoEspecifico->procedimientos as $row)
                                                 <tr>
                                                     <td>{!! $i !!}</td>
-                                                    <td width="10%">{!! $row->paterno !!} {!! $row->materno !!} {!! $row->nombres !!}</td>
+                                                    <td width="10%">{!! $row->codusurol->usuario->datos !!}</td>
                                                     <td>{!! $row->justificacion !!}</td>
                                                     <td>{!! $row->detalle !!}</td>
-                                                    <td width="10%">{!! $row->fechafin !!}</td>
+                                                    <td width="10%">{!! date('d-m-Y', strtotime($row->fecha_fin)) !!}</td>
                                                     <td width="15%" style="text-align: center">
-                                                        <a href="{!! url('procedimiento/procedimiento-eliminar/'.$row->codProc) !!}" class="btn btn-danger btn-outline eliminar-procedimiento"><i class="fa fa-trash"></i>  </a>
-                                                        <a href="{!! url('procedimiento/procedimiento-editar/'.$codPlanF.'/'.$objetivoEspecifico->codObjEsp.'/'.$row->codProc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i>  </a>
+                                                        <a href="{!! url('procedimiento/procedimiento-eliminar/' . $row->codProc) !!}" class="btn btn-danger btn-outline eliminar-procedimiento"><i class="fa fa-trash"></i>  </a>
+                                                        <a href="{!! url('procedimiento/procedimiento-editar/' . $codPlanF . '/' . $objetivoEspecifico->codObjEsp.'/'.$row->codProc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i>  </a>
                                                     </td>
                                                 </tr>
                                                 <?php $i++ ?>

@@ -32,6 +32,6 @@ class ObjetivoEspecifico extends Model
     }
     public function procedimientos()
     {
-        return $this->hasMany(procedimiento::class, 'codObjEsp');
+        return $this->hasMany(Procedimiento::class, 'codObjEsp');
     }
 }

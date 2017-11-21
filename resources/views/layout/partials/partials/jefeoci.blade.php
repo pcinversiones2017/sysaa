@@ -27,6 +27,9 @@
                                 <li class="{{$listarAuditoriaNoProgramadas??''}}">
                                     <a href="{{URL::to('auditoria/listar-no-programadas')}}"><i class="fa fa-list-alt"></i> No Programadas </a>
                                 </li>
+                                <li class="{{$gantt??''}}">
+                                    <a href="{{URL::to('auditoria/gantt')}}"><i class="fa fa-bar-chart"></i> Diagrama de Gantt </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
