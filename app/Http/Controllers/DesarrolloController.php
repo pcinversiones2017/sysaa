@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Policies\DesarrolloPolicy;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\Desarrollo\ValidarRequest;
 use App\Models\Desarrollo;
@@ -11,6 +13,12 @@ use Auth;
 
 class DesarrolloController extends Controller
 {
+
+    public function __construct()
+    {
+        //$this->middleware('can:create,App\Models\Procedimiento')->only('crear');
+    }
+
     public function listar()
     {
     	$desarrollo = Desarrollo::join('procedimiento', 'procedimiento.codProc', '=', 'desarrollo.codProc')
@@ -20,11 +28,12 @@ class DesarrolloController extends Controller
     	return view('desarrollo.listar', compact(['desarrollo']));
     }
 
-    public function crear($codProc)
+    public function crear(Procedimiento $procedimiento)
     {
-        $codProc = $codProc;
+
+        $this->authorize('crearDesarrollo', $procedimiento);
         RegistrarActividad(Desarrollo::TABLA,Historial::CREAR,'vió el formulario de crear Desarrollo');
-    	return view('desarrollo.crear', compact(['codProc']));
+    	return view('desarrollo.crear')->with('codProc', $procedimiento->codProc);
     }
 
     public function registrar(ValidarRequest $request)

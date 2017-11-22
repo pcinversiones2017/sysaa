@@ -26,7 +26,7 @@ class Desarrollo extends Model
 
     public function procedimiento()
     {
-        return $this->hasOne(Procedimiento::class,'codProc','codProc');
+        return $this->belongsTo(Procedimiento::class,'codProc','codProc');
     }
 
     public function observacion()

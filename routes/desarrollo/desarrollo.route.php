@@ -14,7 +14,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     Route::group(['prefix' => 'auditor/desarrollo'], function(){
 	    Route::get('listar','DesarrolloController@listar')->name('auditor.desarrollo.listar');
-	    Route::get('crear/{codProc}','DesarrolloController@crear')->name('auditor.desarrollo.crear');
+	    Route::get('crear/{procedimiento}','DesarrolloController@crear')->name('auditor.desarrollo.crear');
 	    Route::post('registrar','DesarrolloController@registrar')->name('auditor.desarrollo.registrar');
 	    Route::get('editar/{codProc}/{codDes}','DesarrolloController@editar')->name('auditor.desarrollo.editar');
 	    Route::post('actualizar','DesarrolloController@actualizar')->name('auditor.desarrollo.actualizar');

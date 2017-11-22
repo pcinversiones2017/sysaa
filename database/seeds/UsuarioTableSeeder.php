@@ -12,6 +12,6 @@ class UsuarioTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create(['username' => 'gmoreno',  'password' => bcrypt(123456), 'CodPer' => 1]);
+        User::create(['username' => 'admin',  'password' => bcrypt(123456), 'CodPer' => 1]);
     }
 }
