@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Rol;
 use Closure;
 use Auth;
 use App\User;
@@ -20,7 +21,7 @@ class Auditor
 
         $total = User::join('usuario_roles','usuario_roles.codUsu','=','users.codUsu')
             ->join('roles','roles.codRol','=','usuario_roles.codRol')
-            ->where('roles.nombre','AUDITOR')
+            ->where('roles.codRol', Rol::INTEGRANTE)
             ->where('users.codUsu', Auth::user()->codUsu)
             ->count();
 

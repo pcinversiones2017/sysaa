@@ -17,17 +17,28 @@ class AvanceController extends Controller
 
     public function buscar(Request $request)
     {
+        $auditorias = Auditoria::pluck('nombrePlanF', 'codPlanF');
     	$auditoria = Auditoria::find($request->auditoria);
-    	foreach ($auditoria->objetivoGeneral->objetivosEspecificos  as  $value):
-    		$totalobjespaprobado = 	$value->procedimientos->where('fecha_aprobado', '<>', null)->count();
-    		$totalobjesp = 	$value->procedimientos->where('fecha_aprobado',null)->count();
-    	endforeach;
-    	$totalobjgen = $auditoria->objetivoGeneral->procedimientos->where('fecha_aprobado',null)->count();
-    	$totalobjgenaprobado = $auditoria->objetivoGeneral->procedimientos->where('fecha_aprobado', '<>', null)->count();
+        if(empty($auditoria->objetivoGeneral->objetivosEspecificos))
+        {
+            $totalobjesp = 0;
+            $totalobjgen = 0;
+            $totalobjespaprobado = 0;
+            $totalobjgenaprobado = 0;
+            return view('avance.resultado', compact(['totalobjesp', 'totalobjgen', 'totalobjespaprobado', 'totalobjgenaprobado', 'auditorias', 'auditoria']));
+        }else 
+        {
+            foreach ($auditoria->objetivoGeneral->objetivosEspecificos  as  $value):
+                $totalobjespaprobado =  $value->procedimientos->where('fecha_aprobado', '<>', null)->count();
+                $totalobjesp =  $value->procedimientos->where('fecha_aprobado',null)->count();
+            endforeach;
+            $totalobjgen = $auditoria->objetivoGeneral->procedimientos->where('fecha_aprobado',null)->count();
+            $totalobjgenaprobado = $auditoria->objetivoGeneral->procedimientos->where('fecha_aprobado', '<>', null)->count();
 
-    	$auditorias = Auditoria::pluck('nombrePlanF', 'codPlanF');
 
-    	$avance = 'active';
-    	return view('avance.resultado', compact(['totalobjesp', 'totalobjgen', 'totalobjespaprobado', 'totalobjgenaprobado', 'auditorias', 'auditoria']));
+            $avance = 'active';
+            return view('avance.resultado', compact(['totalobjesp', 'totalobjgen', 'totalobjespaprobado', 'totalobjgenaprobado', 'auditorias', 'auditoria']));
+        }
+    	
     }
 }

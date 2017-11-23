@@ -1,4 +1,5 @@
 @extends('layout.admin')
+
 @section('css-style')
     {!! Html::style('css/plugins/alertifyjs/themes/default.css') !!}
     {!! Html::style('css/plugins/alertifyjs/alertify.min.css') !!}
