@@ -15,17 +15,14 @@ class CreateInformeTable extends Migration
     {
         Schema::create('Informe', function (Blueprint $table) {
             $table->increments('codInf');
-            $table->text('informe');
+            $table->longText('informe');
+            $table->integer('codPlanF');
             $table->date('elaborado');
-            $table->date('revisado')->nullable();
-            $table->date('supervisado')->nullable();
-            $table->integer('codProc')->unsigned();
 
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
             $table->timestamp('fecha_eliminado')->nullable();
 
-            $table->foreign('codProc')->references('codProc')->on('Procedimiento');
         });
     }
 

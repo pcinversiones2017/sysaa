@@ -321,7 +321,7 @@
                                 @if($auditoria->estado->codEstAud == \App\Models\EstadoAuditoria::PENDIENTE )
                                     <a id="culminar-planificacion" href="{!! route('auditoria.culminar', $auditoria->codPlanF) !!}" class="btn btn-success">CULMINAR PLANIFICACIÓN</a>
                                 @elseif($auditoria->estado->codEstAud == \App\Models\EstadoAuditoria::EN_PROCESO)
-                                    <a id="finalizar-planificacion" href="{!! route('auditoria.culminar', $auditoria->codPlanF) !!}" class="btn btn-success">FINALIZAR PLANIFICACIÓN</a>
+                                    <a id="finalizar-planificacion" href="{!! route('auditoria.finalizar', $auditoria->codPlanF) !!}" class="btn btn-success">FINALIZAR PLANIFICACIÓN</a>
                                 @endif
                             </div>
 

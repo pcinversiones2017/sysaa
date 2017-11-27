@@ -218,6 +218,15 @@ class AuditoriaController extends Controller
             ->with('Se Culminó la planificación, queda pendiente la aprobacion por parte del Jefe de comisión');
     }
 
+    public function finalizarAuditoria(Request $request)
+    {
+        $auditoria = Auditoria::find($request->codPlanF);
+        $auditoria->codEstAud = EstadoAuditoria::FINALIZADO;
+        $auditoria->save();
+        return redirect()->route('auditoria.mostrar', $request->codPlanF)
+            ->with('Se Finalizó la planificación, queda pendiente la aprobacion por parte del Jefe de comisión');
+    }
+
     public function gantt()
     {
         $auditorias = Auditoria::all();

@@ -15,8 +15,8 @@ class CreateArchivosTable extends Migration
     {
         Schema::create('Archivos', function (Blueprint $table) {
             $table->increments('codArc');
-            $table->string('nombre');
-            $table->string('ruta');
+            $table->longText('nombre');
+            $table->longText('ruta');
             $table->integer('codDes')->unsigned()->nullable();
             $table->integer('codObs')->unsigned()->nullable();
             $table->integer('codSeg')->unsigned()->nullable();

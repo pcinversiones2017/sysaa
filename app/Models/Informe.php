@@ -32,4 +32,9 @@ class Informe extends Model
     {
         return $this->hasOne(Procedimiento::class,'codProc','codProc');
     }
+
+    public function auditoria()
+    {
+        return $this->hasOne(Auditoria::class, 'codPlanF', 'codPlanF');
+    }
 }

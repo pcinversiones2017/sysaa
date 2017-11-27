@@ -76,4 +76,9 @@ Route::group(['middleware' => ['auth']], function(){
 	    Route::get('eliminar/{id}','SeguimientoArchivoController@eliminar')->name('seguimiento.archivo.eliminar');
 	    Route::get('descargar/{id}','SeguimientoArchivoController@descargar')->name('seguimiento.archivo.descargar');
 	});
+
+	Route::group(['prefix' => 'auditoria', 'namespace' => 'Jefe_Comision'], function(){
+		Route::get('listado', 'AuditoriaController@listar')->name('auditoria.listar');
+		Route::get('aprobar/{codPlanF}', 'AuditoriaController@aprobar')->name('auditoria.aprobar');
+	});
 });

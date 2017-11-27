@@ -15,7 +15,7 @@ class CreateDesarrollosTable extends Migration
     {
         Schema::create('desarrollo', function (Blueprint $table) {
             $table->increments('codDes');
-            $table->text('informe');
+            $table->longText('informe');
             $table->date('elaborado');
             $table->date('revisado')->nullable();
             $table->date('supervisado')->nullable();

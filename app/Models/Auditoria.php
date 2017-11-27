@@ -55,4 +55,9 @@ class Auditoria extends Model
     {
         return $this->hasOne(EstadoAuditoria::class, 'codEstAud', 'codEstAud');
     }
+
+    public function informe()
+    {
+        return $this->hasOne(Informe::class, 'codPlanF', 'codPlanF');
+    }
 }
