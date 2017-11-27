@@ -234,8 +234,13 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
         Route::get('eliminar/{codPer}', 'PersonaController@eliminar')->name('persona.eliminar');
     });
 
-    Route::group(['prefix' => 'informe'], function(){
+
+    Route::group(['prefix' => 'informe'], function() {
         Route::get('listar', 'InformeController@listar')->name('informe.listar');
         Route::get('crear', 'InformeController@crear')->name('informe.crear');
+    });
+
+    Route::prefix('reporte')->group(function (){
+       Route::get('planificacion/{codPlanF}', 'ReporteController@planificacion');
     });
 });

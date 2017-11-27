@@ -60,4 +60,9 @@ class Auditoria extends Model
     {
         return $this->hasOne(Informe::class, 'codPlanF', 'codPlanF');
     }
+
+    public function comision()
+    {
+        return $this->hasMany(Usuariorol::class, 'codPlanF');
+    }
 }

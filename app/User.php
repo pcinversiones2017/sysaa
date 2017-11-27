@@ -69,6 +69,11 @@ class User extends Authenticatable
         return $this->persona->nombres . ' ' . $this->persona->paterno . ' ' . $this->persona->materno;
     }
 
+    public function getInicialesAttribute()
+    {
+        return Str::ucfirst($this->persona->nombres)[0] . Str::ucfirst($this->persona->paterno)[0] . Str::ucfirst($this->persona->materno)[0];
+    }
+
     public function usuariorol()
     {
         return $this->hasOne(Models\UsuarioRol::class,'codUsu','codUsu');
