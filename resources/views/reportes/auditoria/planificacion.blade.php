@@ -2,7 +2,7 @@
 <head>
 <style>
     @page {
-        margin: 100px 85px;
+        margin: 100px 80px;
         font-size: 12px;
     }
     header {
@@ -15,7 +15,7 @@
     }
     footer {
         position: fixed;
-        bottom: -60px; left: 0px; right: 0px; height: 40px;
+        bottom: -60px; left: 0px; right: 0px; height: 60px;
         font-size: 10px;
         line-height: 50%;
         font-weight:bold;
@@ -41,7 +41,7 @@
     }
 
     .th-center {
-        background-color: #b90000;
+        background-color: #3e596e;
         color: white;
     }
     td {
@@ -50,7 +50,47 @@
     }
     hr {
         height: 2px;
-        background-color: red;
+        background-color: #3e596e;
+    }
+
+    .p-break{
+        height: 25px;
+    }
+    /*ul li {*/
+        /*list-style-type: square;*/
+        /*!*margin: 0 0 5px 25px;*!*/
+        /*!*margin-bottom: 15px;*!*/
+        /*font-size: 15px;*/
+    /*}*/
+
+    .Table
+    {
+        display: table;
+    }
+    .Title
+    {
+        display: table-caption;
+        text-align: center;
+        font-weight: bold;
+        font-size: larger;
+    }
+    .Heading
+    {
+        display: table-row;
+        font-weight: bold;
+        text-align: center;
+    }
+    .Row
+    {
+        display: table-row;
+    }
+    .Cell
+    {
+        display: table-cell;
+        border: solid;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
     thead:before, thead:after { display: none; }
@@ -74,21 +114,27 @@
 </footer>
 
 {{-- DATOS DE LA AUDITORIA--}}
-<div>
-    <p>PLAN DE AUDITORÍA DEFINITIVO</p>
+<div style="text-align: center;">
+    <p style="font-size: 20px">{{ $auditoria->organoCI }}</p>
+    <p style="font-size: 25px"><u>PLAN DE AUDITORÍA DEFINITIVO</u></p><br><br>
 
-    <p>AUDITORIA DE CUMPLIMIENTO</p>
-    <p>{{$auditoria->entidadAuditada}}</p>
-    <p>"{{$auditoria->nombrePlanF}}"</p>
-    <p>PERIODO: {{$auditoria->periodoIniPlanF}} AL {{$auditoria->periodoFinPlanF}}</p>
+    <p style="font-size: 20px">AUDITORIA DE CUMPLIMIENTO</p>
+    <p style="font-size: 20px">{{$auditoria->entidadAuditada}}</p><br><br>
+    <p style="font-size: 20px">"{{$auditoria->nombrePlanF}}"</p><br><br>
+    <p style="font-size: 18px">PERIODO: {{$auditoria->periodoIniPlanF}} AL {{$auditoria->periodoFinPlanF}}</p>
 </div>
 
 <span></span>
 {{-- INDICE --}}
 <div>
 
+    <div  style="text-align: center;">
+        <p style="font-size: 25px"><u>PLAN DE AUDITORÍA DEFINITIVO</u></p><br>
+        <p style="font-size: 20px">"{{$auditoria->nombrePlanF}}"</p><br><br>
+        <p style="font-size: 20px">ÍNDICE</p><br>
+    </div>
     <div>
-        <ul style="list-style-type: none">
+        <ul>
             <li>I.    DATOS DE LA AUDITORÍA</li>
             <li>II.   ORIGEN</li>
             <li>III.  OBJETIVO GENERAL</li>
@@ -112,8 +158,8 @@
 
 {{-- DATOS DE LA AUDITORIA--}}
 <div>
-    <p style="text-align: center">PLAN DE AUDITORÍA DEFINITIVO</p>
-    <p style="text-align: center">{{$auditoria->nombrePlanF}}</p>
+    <p style="text-align: center; font-size: 15px">PLAN DE AUDITORÍA DEFINITIVO</p>
+    <p style="text-align: center; font-size: 15px">{{$auditoria->nombrePlanF}}</p>
     <table>
         <thead>
             <tr>
@@ -156,8 +202,7 @@
         </tbody>
     </table>
 </div>
-<br>
-<br>
+<div class="p-break"></div>
 
 {{-- ORIGEN --}}
 <div>
@@ -176,8 +221,7 @@
         </tbody>
     </table>
 </div>
-<br>
-<br>
+<div class="p-break"></div>
 {{-- OBJETIVO GENERAL --}}
 
 <div>
@@ -196,8 +240,7 @@
         </tbody>
     </table>
 </div>
-<br>
-<br>
+<div class="p-break"></div>
 
 {{-- OBJETIVO(S) ESPECÍFICO(S) Y LA(S) MATERIA(S) A EXAMINAR --}}
 {{--<div>--}}
@@ -217,6 +260,52 @@
         {{--MATERIA(S) A EXAMINAR--}}
     {{--</div>--}}
 {{--</div>--}}
+
+    <div class="">
+        IV. OBJETIVO(S) ESPECÍFICO(S) Y LA(S) MATERIA(S) A EXAMINAR
+    </div>
+
+<div class="Table">
+    <div class="Heading">
+        <div class="Cell">
+            <p>OBJETIVO ESPECÍFICO</p>
+        </div>
+        <div class="Cell">
+            <p>MACROPROCESO</p>
+        </div>
+        <div class="Cell">
+            <p>PROCESO</p>
+        </div>
+        <div class="Cell">
+            <p>MATERIA(S) A EXAMINAR</p>
+        </div>
+    </div>
+    @foreach($auditoria->objetivoGeneral->objetivosEspecificos as $objetivoEspecifico)
+        <div class="Row">
+            <div class="Cell">
+                <p>{{$objetivoEspecifico->nombre}}</p>
+            </div>
+            <div class="Cell">
+                <p>{{$objetivoEspecifico->macroproceso->nombre}}</p>
+            </div>
+            <div class="Cell">
+                <p>
+                <ul style="margin-top: 20px">
+                    @foreach($objetivoEspecifico->macroproceso->procesoMA as $proceso)
+                        <li>
+                            {{$proceso->nombre}}
+                        </li>
+                    @endforeach
+                </ul>
+                </p>
+            </div>
+            <div class="Cell">
+                <p>{{$objetivoEspecifico->materia}}</p>
+            </div>
+        </div>
+    @endforeach
+</div>
+
 
     <table>
         <thead>
@@ -266,8 +355,7 @@
         </tbody>
     </table>
 
-<br>
-<br>
+<div class="p-break"></div>
 
 {{-- ORIGEN --}}
 
@@ -295,8 +383,7 @@
         </tbody>
     </table>
 
-<br>
-<br>
+<div class="p-break"></div>
 
 {{-- NORMATIVA APLICABLE A LA ENTIDAD Y MATERIA(S) A EXAMINAR--}}
 
@@ -348,8 +435,7 @@
         </tbody>
     </table>
 
-<br>
-<br>
+<div class="p-break"></div>
 {{-- VII. NORMATIVA QUE REGULA LA AUDITORÍA DE CUMPLIMIENTO--}}
 
     <table>
@@ -394,8 +480,7 @@
         </tbody>
     </table>
 
-
-<br>
+<div class="p-break"></div>
 
 {{-- VIII. COMISIÓN AUDITORA --}}
 
@@ -433,8 +518,7 @@
         </tbody>
     </table>
 
-<br>
-<br>
+<div class="p-break"></div>
 
 {{--IX. CRONOGRAMA Y PLAZOS DE ENTREGA DE DOCUMENTOS (*)--}}
 <table>
@@ -482,36 +566,89 @@
     </tbody>
 </table>
 
+<div class="p-break"></div>
+
+
 {{--X. PROGRAMA DE AUDITORÍA--}}
 <table>
     <thead>
     <tr>
-        <th colspan="3">
+        <th colspan="8" class="th-center">
             X. PROGRAMA DE AUDITORÍA
         </th>
     </tr>
     <tr>
-        <td>INICIALES DEL AUDITOR</td>
-        <td>PROCEDIMIENTOS DE AUDITORIA</td>
-        <td>TERMINADO</td>
+        <th>INICIALES DEL AUDITOR</th>
+        <th colspan="4">PROCEDIMIENTOS DE AUDITORIA</th>
+        <th>FECHA CONCLUSIÓN</th>
+        <th>HECHO POR</th>
+        <th>REF. DOC.</th>
     </tr>
 
     </thead>
     <tbody>
+    <tr>
+        <td>
+        </td>
+        <td>OBJETIVO GENERAL</td>
+        <td>{{ \Illuminate\Support\Str::ucfirst(\Illuminate\Support\Str::lower($auditoria->objetivoGeneral->nombre))}}</td>
+        <td>MATERIA(S) A EXAMINAR</td>
+        <td>-</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
     <?php $i=1 ; ?>
     @foreach($auditoria->objetivoGeneral->procedimientos as $row)
         <tr>
-            <td>{{$row->codusurol->usuario->iniciales}}</td>
-            <td>{{$row->justificacion}}</td>
-            <td>{{$row->detalle}}</td>
-            <td class="tooltip-demo" style="text-align: center">
-                <a href="{!! url('procedimiento-general/editar/'.$auditoria->codPlanF.'/'.$row->codProc) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
-                <a href="{{route('procedimiento-general.eliminar', $row->codProc )}}" class="btn btn-danger btn-outline eliminar-objetivo-general" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
+            <td>
+                {{$row->codusurol->usuario->iniciales}}
             </td>
+            <td colspan="4">
+                <strong>PROCEDIMIENTO N°{{$i}}</strong><br>
+                <strong>JUSTIFICACIÓN</strong><br>
+                {{$row->justificacion}}<br>
+                <strong>DETALLE</strong><br>
+                {{$row->detalle}}
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
-        <?php $i++ ?>
+    <?php $i++ ?>
     @endforeach
-    </tbody>
+
+    @foreach($auditoria->objetivoGeneral->objetivosEspecificos as $objetivoEspecifico)
+       <tr>
+            <td></td>
+            <td>OBJETIVO ESPECÍFICO</td>
+            <td>{{ \Illuminate\Support\Str::ucfirst(\Illuminate\Support\Str::lower($objetivoEspecifico->nombre))}}</td>
+            <td>MATERIA(S) A EXAMINAR</td>
+            <td>{{$objetivoEspecifico->materia}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+       </tr>
+        @foreach($objetivoEspecifico->procedimientos as $procedimiento)
+            <tr>
+                <td>
+                    {{$procedimiento->codusurol->usuario->iniciales}}
+                </td>
+                <td colspan="4">
+                    <strong>PROCEDIMIENTO N°{{$i}}</strong><br>
+                    <strong>JUSTIFICACIÓN</strong><br>
+                    {{$procedimiento->justificacion}}<br>
+                    <strong>DETALLE</strong><br>
+                    {{$procedimiento->detalle}}
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        <?php $i++ ?>
+        @endforeach
+    @endforeach
+</tbody>
 </table>
 
 
