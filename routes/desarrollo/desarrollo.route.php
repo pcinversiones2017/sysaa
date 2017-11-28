@@ -81,4 +81,8 @@ Route::group(['middleware' => ['auth']], function(){
 		Route::get('listado', 'AuditoriaController@listar')->name('auditoria.listar');
 		Route::get('aprobar/{codPlanF}', 'AuditoriaController@aprobar')->name('auditoria.aprobar');
 	});
+
+	Route::group(['prefix' => 'procedimiento'], function(){
+		Route::get('detalle/{codProc}', 'ProcedimientoController@detalle')->name('procedimiento.detalle');
+	});
 });

@@ -9,13 +9,15 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Crear Informe </h5>
+                    <h5>Actualizar Informe </h5>
                 </div>
                 <div class="ibox-content">
-                    {!! Form::open(['method' => 'POST', 'route' => 'informe.registrar']) !!}
-                    {!! Form::hidden('codPlanF',$codPlanF) !!}
-                    {!! Field::textarea('informe', ['class' => 'summernote']) !!}
-                    {!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-outline']) !!}
+                    {!! Form::open(['method' => 'POST', 'route' => 'informe.actualizar']) !!}
+                    @foreach($informe as $row)
+                    {!! Form::hidden('codInf',$row->codInf) !!}
+                    {!! Field::textarea('informe', $row->informe, ['class' => 'summernote']) !!}
+                    @endforeach
+                    {!! Form::button("<i class='fa fa-save'></i> ACTUALIZAR", ['class' => 'btn btn-success btn-outline', 'type' => 'submit']) !!}
                     <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     {!! Form::close() !!}
                 </div>

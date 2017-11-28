@@ -237,10 +237,21 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
 
     Route::group(['prefix' => 'informe'], function() {
         Route::get('listar', 'InformeController@listar')->name('informe.listar');
-        Route::get('crear', 'InformeController@crear')->name('informe.crear');
+        Route::get('crear/{codPlanF}', 'InformeController@crear')->name('informe.crear');
+        Route::get('editar/{codPlanF}', 'InformeController@editar')->name('informe.editar');
+        Route::post('registrar', 'InformeController@registrar')->name('informe.registrar');
+        Route::post('actualizar', 'InformeController@actualizar')->name('informe.actualizar');
     });
 
     Route::prefix('reporte')->group(function (){
        Route::get('planificacion/{codPlanF}', 'ReporteController@planificacion');
+    });
+
+    Route::group(['prefix' => 'informe/archivo'], function(){
+        Route::get('listar/{codInf}', 'ArchivoInformeController@listar')->name('informe.archivo.listar');
+        Route::get('crear/{codInf}', 'ArchivoInformeController@crear')->name('informe.archivo.crear');
+        Route::post('registrar', 'ArchivoInformeController@registrar')->name('informe.archivo.registrar');
+        Route::get('eliminar/{codInf}', 'ArchivoInformeController@eliminar')->name('informe.archivo.eliminar');
+        Route::get('descargar/{codInf}', 'ArchivoInformeController@descargar')->name('informe.archivo.descargar');
     });
 });

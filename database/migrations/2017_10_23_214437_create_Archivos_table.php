@@ -20,6 +20,7 @@ class CreateArchivosTable extends Migration
             $table->integer('codDes')->unsigned()->nullable();
             $table->integer('codObs')->unsigned()->nullable();
             $table->integer('codSeg')->unsigned()->nullable();
+            $table->integer('codInf')->unsigned()->nullable();
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
             $table->timestamp('fecha_eliminado')->nullable();

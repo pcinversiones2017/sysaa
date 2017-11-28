@@ -7,32 +7,39 @@
         </div>
         <div class="panel-body">
 
-            <div class="row">
-                <div class="col-sm-3">
-                    <a type="button" href="{!! route('informe.crear') !!}" class="btn btn-outline btn-success"><i class="fa fa-pencil"></i> CREAR INFORME</a>
-                    <p>
-                </div>
-            </div>
-
             <table class="table table-bordered table-personas">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>INFORME</th>
                     <th>AUDITORIA</th>
+                    <th>CODIGO SERVICIO CP</th>
+                    <th>FECHA DE INFORME</th>
                     <th>ACCIONES</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php $i=1 ?>
-                @foreach($informes as $informe)
+                @foreach($auditorias as $auditoria)
                     <tr>
                         <td>{{$i}}</td>
-                        <td>{!! $informe->informe !!}</td>
-                        <td>{!! $informe->auditoria->nombrePlanF !!}</td>
+                        <td>{!! $auditoria->nombrePlanF !!}</td>
+                        <td>{!! $auditoria->codigoServicioCP !!}</td>
+                        @if(empty($auditoria->informe->elaborado))
+                        <td></td>
+                        @else
+                        <td>{!! $auditoria->informe->elaborado !!}</td>
+                        @endif
+                        @if(empty($auditoria->informe->informe))
                         <td style="text-align: center">
-                            <a href="{!! url('informe/editar/' . $informe->codInf) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i>  </a>
+                            <a href="{!! url('informe/crear/' . $auditoria->codPlanF) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
                         </td>
+                        @else
+                        <td style="text-align: center">
+                            <a href="{!! url('informe/editar/' . $auditoria->codPlanF) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i>  </a>
+                            <a href="{!! url('informe/archivo/crear/'. $auditoria->informe->codInf) !!}" class="btn btn-warning btn-outline"><i class="fa fa-upload"></i>  </a>
+                            <a href="{!! url('informe/archivo/listar/'. $auditoria->informe->codInf) !!}" class="btn btn-info btn-outline"><i class="fa fa-paperclip"></i>  </a>
+                        </td>
+                        @endif
                     </tr>
                     <?php $i++ ?>
                 @endforeach
