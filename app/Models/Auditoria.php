@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -54,5 +55,25 @@ class Auditoria extends Model
     public function estado()
     {
         return $this->hasOne(EstadoAuditoria::class, 'codEstAud', 'codEstAud');
+    }
+
+    public function informe()
+    {
+        return $this->hasOne(Informe::class, 'codPlanF', 'codPlanF');
+    }
+
+    public function comision()
+    {
+        return $this->hasMany(Usuariorol::class, 'codPlanF');
+    }
+
+    public function getPeriodoIniPlanFAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getPeriodoFinPlanFAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
     }
 }

@@ -19,7 +19,7 @@ class CreateAuditoriaTable extends Migration
             $table->string('codigoServicioCP')->comment('codigo del servicio de control posterior');
             $table->string('tipoServicioCP')->comment('tipo de servicio de control posterior')->nullable();
             $table->string('organoCI')->comment('organo de control interno')->nullable();
-            $table->text('origen')->nullable();
+            $table->longText('origen')->nullable();
             $table->string('entidadAuditada')->nullable();
             $table->string('tipoDemanda')->nullable();
             $table->date('fechaIniPlanF')->nullable();

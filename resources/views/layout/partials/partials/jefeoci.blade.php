@@ -53,6 +53,12 @@
                         <li class="{{$avance?? ''}}"><a href="{{ route('avance.linea') }}"><i class="fa fa-list-alt"></i> Listar </a></li>
                     </ul>
                 </li>
+                <li class="{{$listarInforme ?? ''}}">
+                    <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Informe Final</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="{{$listarInforme ?? ''}}"><a href="{{ route('informe.listar') }}"><i class="fa fa-list-alt"></i> Listar </a></li>
+                    </ul>
+                </li>
 
             </ul>
 

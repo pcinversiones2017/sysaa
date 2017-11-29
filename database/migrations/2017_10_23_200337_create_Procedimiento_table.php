@@ -15,8 +15,8 @@ class CreateProcedimientoTable extends Migration
     {
         Schema::create('Procedimiento', function (Blueprint $table) {
             $table->increments('codProc');
-            $table->text('justificacion');
-            $table->text('detalle');
+            $table->longText('justificacion');
+            $table->longText('detalle');
             $table->date('fecha_fin');
             $table->date('fecha_terminado')->nullable();
             $table->date('fecha_aprobado')->nullable();

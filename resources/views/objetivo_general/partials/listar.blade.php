@@ -4,7 +4,7 @@
             <div class="ibox-content">
                 <div class="row">
                     <div class="col-sm-3">
-                        <a type="button" href="{!! url('procedimiento-general/crear/'.$auditoria->codPlanF) !!}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-pencil"></i> CREAR PROCEDIMIENTO</a>
+                        <a type="button" href="{!! url('procedimiento-general/crear/' . $auditoria->codPlanF) !!}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-pencil"></i> CREAR PROCEDIMIENTO</a>
                     </div>
                 </div>
                 <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
@@ -13,7 +13,9 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>NOMBRE</th>
+                        <th>INICIALES DEL AUDITOR</th>
+                        <th>JUSTIFICACION</th>
+                        <th>DETALLE</th>
                         <th>ACCIONES</th>
                     </tr>
                     </thead>
@@ -22,7 +24,9 @@
                     @foreach($objetivoGeneral as $row)
                         <tr>
                             <td>{{$i}}</td>
+                            <td>{{$row->codusurol->usuario->iniciales}}</td>
                             <td>{{$row->justificacion}}</td>
+                            <td>{{$row->detalle}}</td>
                             <td class="tooltip-demo" style="text-align: center">
                                 <a href="{!! url('procedimiento-general/editar/'.$auditoria->codPlanF.'/'.$row->codProc) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
                                 <a href="{{route('procedimiento-general.eliminar', $row->codProc )}}" class="btn btn-danger btn-outline eliminar-objetivo-general" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>

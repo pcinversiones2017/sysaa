@@ -171,6 +171,7 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
        Route::get('eliminar/{codPlanF}', 'AuditoriaController@eliminar')->name('auditoria.eliminar');
        Route::get('informe/{codPlanF}', 'AuditoriaController@informeFinal')->name('auditoria.informe');
        Route::get('culminar/{codPlanF}', 'AuditoriaController@culminarAuditoria')->name('auditoria.culminar');
+       Route::get('finalizar/{codPlanF}', 'AuditoriaController@finalizarAuditoria')->name('auditoria.finalizar');
        Route::get('word', 'AuditoriaController@word')->name('auditoria.word');
 
        //---//
@@ -231,5 +232,27 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
         Route::post('guardar', 'PersonaController@guardar')->name('persona.guardar');
         Route::post('actualizar', 'PersonaController@actualizar')->name('persona.actualizar');
         Route::get('eliminar/{codPer}', 'PersonaController@eliminar')->name('persona.eliminar');
+    });
+
+
+    Route::group(['prefix' => 'informe'], function() {
+        Route::get('listar', 'InformeController@listar')->name('informe.listar');
+        Route::get('crear/{codPlanF}', 'InformeController@crear')->name('informe.crear');
+        Route::get('editar/{codPlanF}', 'InformeController@editar')->name('informe.editar');
+        Route::post('registrar', 'InformeController@registrar')->name('informe.registrar');
+        Route::post('actualizar', 'InformeController@actualizar')->name('informe.actualizar');
+        Route::get('mostrar/{codInf}', 'InformeController@mostrar')->name('informe.mostrar');
+    });
+
+    Route::prefix('reporte')->group(function (){
+       Route::get('planificacion/{codPlanF}', 'ReporteController@planificacion');
+    });
+
+    Route::group(['prefix' => 'informe/archivo'], function(){
+        Route::get('listar/{codInf}', 'ArchivoInformeController@listar')->name('informe.archivo.listar');
+        Route::get('crear/{codInf}', 'ArchivoInformeController@crear')->name('informe.archivo.crear');
+        Route::post('registrar', 'ArchivoInformeController@registrar')->name('informe.archivo.registrar');
+        Route::get('eliminar/{codInf}', 'ArchivoInformeController@eliminar')->name('informe.archivo.eliminar');
+        Route::get('descargar/{codInf}', 'ArchivoInformeController@descargar')->name('informe.archivo.descargar');
     });
 });

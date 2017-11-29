@@ -15,7 +15,7 @@ class CreateMacroprocesoTable extends Migration
     {
         Schema::create('Macroproceso', function (Blueprint $table) {
             $table->increments('codMacroP');
-            $table->text('nombre');
+            $table->longText('nombre');
             $table->string('estado');
 
             $table->timestamp('fecha_creado')->nullable();
