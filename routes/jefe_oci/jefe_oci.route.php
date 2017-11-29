@@ -243,10 +243,6 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
         Route::get('mostrar/{codInf}', 'InformeController@mostrar')->name('informe.mostrar');
     });
 
-    Route::prefix('reporte')->group(function (){
-       Route::get('planificacion/{codPlanF}', 'ReporteController@planificacion');
-    });
-
     Route::group(['prefix' => 'informe/archivo'], function(){
         Route::get('listar/{codInf}', 'ArchivoInformeController@listar')->name('informe.archivo.listar');
         Route::get('crear/{codInf}', 'ArchivoInformeController@crear')->name('informe.archivo.crear');

@@ -10,14 +10,13 @@
     @include('partials.alert')
 
     <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Lista de Auditorias </h5>
-                </div>
-                <div class="ibox-content">
-
-
+    <div class="col-lg-12">
+        <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4> <strong> LISTA DE AUDITORIA </strong></h4>
+        </div>
+        <div class="panel-body">
+d
                     <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                     <table class="table table-bordered table-auditorias">
                         <thead>
@@ -36,7 +35,8 @@
                                 <td>{!! $row->nombrePlanF !!}</td>
                                 <td>{!! $row->tipoServicioCP !!}</td>
                                 <td>
-                                    <a href="{!! url('auditoria/aprobar/'.$row->codPlanF) !!}" class="btn btn-success btn-sm"> Aprobar </a>
+                                    <a href="{!! url('reporte/planificacion/'.$row->codPlanF) !!}" target="_lblank" class="btn btn-success btn-outline btn-sm"> <i class="fa fa-file-pdf-o"></i> VER AUDITORIA </a>
+                                    <a href="{!! url('auditoria/aprobar/'.$row->codPlanF) !!}" class="btn btn-success btn-sm"> APROBAR </a>
                             </tr>
                         <?php $i++ ?>
                         @endforeach
@@ -46,6 +46,7 @@
                 </div>
             </div>
         </div>
+    </td>
 
     </div>
 @endsection
@@ -56,6 +57,7 @@
     <script>
         $(document).ready(function(){
             $('.table-auditorias').DataTable({
+                "ordering": false,
                 language: {
                     url : '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
                 },
