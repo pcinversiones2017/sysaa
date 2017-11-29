@@ -29,7 +29,7 @@ class ProcedimientoController extends Controller
     public function mostrar($id)
     {
         $procedimiento = Procedimiento::existe($id)->with('desarrollo')->first();
-		$observacion = Observacion::desarrollo($procedimiento->desarrollo->codDes)->get();       
+		$observacion = Observacion::where('codDes',$procedimiento->desarrollo->codDes)->get();       
         return view('auditor.procedimiento.mostrar', compact(['procedimiento', 'observacion', 'id']));
     }
 

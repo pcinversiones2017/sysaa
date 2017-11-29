@@ -31,6 +31,6 @@ class Desarrollo extends Model
 
     public function observacion()
     {
-        return $this->hasOne(Observacion::class, 'codObs', 'codObs');
+        return $this->hasMany(Observacion::class, 'codDes', 'codDes');
     }
 }

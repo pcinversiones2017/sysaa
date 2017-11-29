@@ -47,4 +47,11 @@ class InformeController extends Controller
         $data->save();
         return redirect()->route('informe.listar')->with('success', 'Se actualizo el informe');
     }
+
+    public function mostrar($codInf)
+    {
+        $informe = Informe::find($codInf);
+        $listarInforme = 'active';        
+        return view('informe.mostrar', compact(['informe', 'listarInforme']));
+    }
 }

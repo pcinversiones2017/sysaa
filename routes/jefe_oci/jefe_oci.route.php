@@ -241,6 +241,7 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
         Route::get('editar/{codPlanF}', 'InformeController@editar')->name('informe.editar');
         Route::post('registrar', 'InformeController@registrar')->name('informe.registrar');
         Route::post('actualizar', 'InformeController@actualizar')->name('informe.actualizar');
+        Route::get('mostrar/{codInf}', 'InformeController@mostrar')->name('informe.mostrar');
     });
 
     Route::prefix('reporte')->group(function (){

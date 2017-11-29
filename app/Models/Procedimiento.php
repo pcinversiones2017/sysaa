@@ -68,7 +68,7 @@ class Procedimiento extends Model
 
     public function desarrollo()
     {
-        return $this->belongsTo(Desarrollo::class,'codProc','codProc');
+        return $this->hasOne(Desarrollo::class,'codProc','codProc');
     }
 
 }

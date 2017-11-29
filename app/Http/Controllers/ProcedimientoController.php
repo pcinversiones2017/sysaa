@@ -73,13 +73,6 @@ class ProcedimientoController extends Controller
     public function detalle($codProc)
     {
         $procedimiento = Procedimiento::find($codProc);
-        if(!empty($procedimiento->objetivogeneral->codObjGen))
-        {
-            return view('procedimiento.detalle_general', compact(['procedimiento']));
-        }else if(!empty($procedimiento->objetivoespecifico->codObjEsp))
-        {
-            return view('procedimiento.detalle_especifico', compact(['procedimiento']));
-        }
-        
+        return view('procedimiento.detalle_general', compact(['procedimiento']));
     }
 }

@@ -28,4 +28,15 @@ class Observacion extends Model
         return $cadenaSQL->where('codDes', $id);
     }
 
+    public function desarrollo()
+    {
+        return $this->hasOne(Desarrollo::class, 'codDes', 'codDes');
+    }
+
+    public function seguimiento()
+    {
+        return $this->hasMany(Seguimiento::class, 'codObs', 'codObs');
+    }
+
+
 }

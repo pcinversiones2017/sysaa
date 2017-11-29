@@ -1,19 +1,24 @@
 @extends('layout.admin')
-@section('css-style')
-    {!! Html::style('css/plugins/alertifyjs/themes/default.css') !!}
-    {!! Html::style('css/plugins/alertifyjs/alertify.min.css') !!}
-    {!! Html::style('css/plugins/dataTables/datatables.min.css') !!}
-    {!! Html::style('css/plugins/datapicker/datepicker3.css') !!}
-@stop
+
 @section('content')
 
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5> OBJETIVO GENERAL: {!! $procedimiento->objetivogeneral->nombre !!}</h5>
+                	<div align="right">
+                	<a href="javascript:imprSelec('historial')" class="btn btn-primary btn-outline">Imprimir</a>
+                	<a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>	
+                	</div>
+                	
                 </div>
-                <div class="ibox-content">
+                <div class="ibox-content" id="historial">
+                	@if(empty($procedimiento->objetivogeneral))
+                    <h5> OBJETIVO ESPECIFICO : {!! $procedimiento->objetivoespecifico->nombre !!}</h5>
+                	@else
+                    <h5> OBJETIVO GENERAL: {!! $procedimiento->objetivogeneral->nombre !!}</h5>
+                	@endif 
+                	<hr>
                 	<div class="row">
                 		<div class="col-md-12">
                 			<label>Justificacion</label><br>
@@ -25,21 +30,45 @@
                 		</div>
                 	</div>
                 	<hr>
-                    <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
-                    <table class="table table-bordered table-procedimientos">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Datos</th>
-                            <th>Email</th>
-                            <th>Accion</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        	@foreach($procedimiento->objetivogeneral as $row)
-                        	@endforeach
-                        </tbody>
-                    </table>
+                	<div class="row">
+                		<div class="col-md-12">
+                			<label>Desarrollo</label><br>
+                			{!! $procedimiento->desarrollo->informe !!}
+                		</div>
+                	</div>
+                	<hr>
+                	<div class="row">
+                		<div class="col-md-12">
+                			<label>Observaciones</label><br>
+                			@if(empty($procedimiento->desarrollo->observacion))
+                			No hay observaciones
+                			@else
+	                			@foreach($procedimiento->desarrollo->observacion  as $row)
+	                			<strong>Titulo: </strong>{!! $row->titulo !!}<br>
+	                			<strong>Descripcion: </strong>{!! $row->descripcion !!}<br>
+	                			<strong>Recomendacion: </strong>{!! $row->recomendacion !!}<br><br>
+	                			@endforeach
+	                		@endif
+                		</div>
+                	</div>
+                	<hr>
+                	<div class="row">
+                		<div class="col-md-12">
+                			<label>Seguimiento</label><br>
+                			@if(empty($procedimiento->desarrollo->observacion))
+                			No hay seguimiento
+                			@else
+                			@foreach($procedimiento->desarrollo->observacion  as $row)
+                				@foreach($row->seguimiento as $seg)
+                					<strong>Acciones: </strong>{!! $seg->acciones !!}<br>
+                					<strong>Evaluacion: </strong>{!! $seg->evaluacion !!}<br>
+                					<strong>Estado: </strong>{!! $seg->estado !!}<br><br>
+                				@endforeach
+                			@endforeach
+	                		@endif
+                		</div>
+                	</div>
+                	<div id="editor"></div>
 
                 </div>
             </div>
@@ -49,37 +78,17 @@
 @endsection
 
 @section('js-script')
-    {!! Html::script('js/plugins/alertifyjs/alertify.min.js') !!}
-    {!! Html::script('js/plugins/dataTables/datatables.min.js') !!}
+    {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js') !!}
     <script>
-        $(document).ready(function(){
-            $('.table-procedimientos').DataTable({
-                language: {
-                    url : '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
-                },
-                pageLength: 25,
-                responsive: true,
-                dom: '<"html5buttons"B>lTfgitp',
-                buttons: [
 
-                    {extend: 'excel', title: 'Lista Auditorias'},
-                    {extend: 'pdf', title: 'Lista Auditorias'},
-
-                    {extend: 'print',
-                        customize: function (win){
-                            $(win.document.body).addClass('white-bg');
-                            $(win.document.body).css('font-size', '10px');
-
-                            $(win.document.body).find('table')
-                                .addClass('compact')
-                                .css('font-size', 'inherit');
-                        }
-                    }
-                ]
-
-            });
-
-        });
+        function imprSelec(historial){
+		  var ficha=document.getElementById(historial);
+		  var ventimp=window.open(' ','popimpr');
+		  ventimp.document.write(ficha.innerHTML);
+		  ventimp.document.close();
+		  ventimp.print();
+		  ventimp.close();
+		}
 
     </script>
 @stop
