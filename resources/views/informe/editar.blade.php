@@ -7,21 +7,21 @@
 @section('content')
 	<div class="row">
         <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Actualizar Informe </h5>
-                </div>
-                <div class="ibox-content">
-                    {!! Form::open(['method' => 'POST', 'route' => 'informe.actualizar']) !!}
-                    @foreach($informe as $row)
-                    {!! Form::hidden('codInf',$row->codInf) !!}
-                    {!! Field::textarea('informe', $row->informe, ['class' => 'summernote']) !!}
-                    @endforeach
-                    {!! Form::button("<i class='fa fa-save'></i> ACTUALIZAR", ['class' => 'btn btn-success btn-outline', 'type' => 'submit']) !!}
-                    <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
-                    {!! Form::close() !!}
-                </div>
+            <div class="panel panel-success">
+            <div class="panel-heading">
+                <strong> EDITAR INFORME </strong>
             </div>
+            <div class="panel-body">
+                {!! Form::open(['method' => 'POST', 'route' => 'informe.actualizar']) !!}
+                @foreach($informe as $row)
+                {!! Form::hidden('codInf',$row->codInf) !!}
+                {!! Field::textarea('informe', $row->informe, ['class' => 'summernote']) !!}
+                @endforeach
+                {!! Form::button("<i class='fa fa-save'></i> ACTUALIZAR", ['class' => 'btn btn-success btn-outline', 'type' => 'submit']) !!}
+                <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                {!! Form::close() !!}
+            </div>
+        </div>
         </div>
     </div>
 @stop

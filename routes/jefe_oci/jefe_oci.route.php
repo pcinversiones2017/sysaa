@@ -234,7 +234,6 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
         Route::get('eliminar/{codPer}', 'PersonaController@eliminar')->name('persona.eliminar');
     });
 
-
     Route::group(['prefix' => 'informe'], function() {
         Route::get('listar', 'InformeController@listar')->name('informe.listar');
         Route::get('crear/{codPlanF}', 'InformeController@crear')->name('informe.crear');
@@ -242,10 +241,6 @@ Route::group(['middleware' => ['auth','jefe_oci']], function(){
         Route::post('registrar', 'InformeController@registrar')->name('informe.registrar');
         Route::post('actualizar', 'InformeController@actualizar')->name('informe.actualizar');
         Route::get('mostrar/{codInf}', 'InformeController@mostrar')->name('informe.mostrar');
-    });
-
-    Route::prefix('reporte')->group(function (){
-       Route::get('planificacion/{codPlanF}', 'ReporteController@planificacion');
     });
 
     Route::group(['prefix' => 'informe/archivo'], function(){

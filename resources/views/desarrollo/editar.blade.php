@@ -6,11 +6,11 @@
 
 @section('content')
 	<div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Actualizar Desarrollo de Procedimiento </h5>
-                </div>
+    <div class="col-lg-12">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                ACTUALIZAR DESARROLLO
+            </div>
                 <div class="ibox-content">
                     {!! Form::open(['method' => 'POST', 'route' => 'auditor.desarrollo.actualizar']) !!}
                     {!! Form::hidden('codProc',$codProc) !!}
@@ -22,6 +22,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @stop
 

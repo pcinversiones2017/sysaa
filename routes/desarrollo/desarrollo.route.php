@@ -85,4 +85,8 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::group(['prefix' => 'procedimiento'], function(){
 		Route::get('detalle/{codProc}', 'ProcedimientoController@detalle')->name('procedimiento.detalle');
 	});
+
+    Route::prefix('reporte')->group(function (){
+       Route::get('planificacion/{codPlanF}', 'ReporteController@planificacion');
+    });
 });

@@ -14,6 +14,7 @@
                 </div>
             </div>
 
+                    <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
             <table class="table table-bordered table-personas">
                 <thead>
                 <tr>
@@ -75,6 +76,7 @@
     <script>
         $(document).ready(function(){
             $('.table-personas').DataTable({
+                "ordering": false,
                 language: {
                     url : '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
                 },
