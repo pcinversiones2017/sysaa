@@ -7,7 +7,6 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                 	<div align="right">
-                	<a href="javascript:imprSelec('historial')" class="btn btn-primary btn-outline">Imprimir</a>
                 	<a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>	
                 	</div>
                 	
@@ -76,19 +75,3 @@
 
     </div>
 @endsection
-
-@section('js-script')
-    {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js') !!}
-    <script>
-
-        function imprSelec(historial){
-		  var ficha=document.getElementById(historial);
-		  var ventimp=window.open(' ','popimpr');
-		  ventimp.document.write(ficha.innerHTML);
-		  ventimp.document.close();
-		  ventimp.print();
-		  ventimp.close();
-		}
-
-    </script>
-@stop
