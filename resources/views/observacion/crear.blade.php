@@ -7,11 +7,11 @@
 @section('content')
 	<div class="row">
         <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Crear Observacion del Desarrollo de procedimiento </h5>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    CREAR OBSERVACION DEL DESARROLLO DE PROCEDIMIENTO
                 </div>
-                <div class="ibox-content">
+                <div class="panel-body">
                     {!! Form::open(['method' => 'POST', 'route' => 'auditor.observacion.registrar']) !!}
                     {!! Form::hidden('codDes',$codDes) !!}
                     {!! Form::hidden('codProc',$codProc) !!}
