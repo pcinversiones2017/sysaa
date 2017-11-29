@@ -26,10 +26,14 @@
     table {
         border-collapse: collapse;
         width: 100%;
+
     }
 
     table, th, td {
         border: 1px solid black;
+    }
+    .p-void{
+        page-break-inside: auto;
     }
 
     th {
@@ -56,12 +60,12 @@
     .p-break{
         height: 25px;
     }
-    /*ul li {*/
-        /*list-style-type: square;*/
-        /*!*margin: 0 0 5px 25px;*!*/
-        /*!*margin-bottom: 15px;*!*/
-        /*font-size: 15px;*/
-    /*}*/
+    .indice > li {
+        list-style-type: square;
+        /*margin: 0 0 5px 25px;*/
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
 
     .Table
     {
@@ -114,7 +118,7 @@
 </footer>
 
 {{-- DATOS DE LA AUDITORIA--}}
-<div style="text-align: center;">
+<div style="text-align: center; margin-top: 200px">
     <p style="font-size: 20px">{{ $auditoria->organoCI }}</p>
     <p style="font-size: 25px"><u>PLAN DE AUDITORÍA DEFINITIVO</u></p><br><br>
 
@@ -123,18 +127,16 @@
     <p style="font-size: 20px">"{{$auditoria->nombrePlanF}}"</p><br><br>
     <p style="font-size: 18px">PERIODO: {{$auditoria->periodoIniPlanF}} AL {{$auditoria->periodoFinPlanF}}</p>
 </div>
-
 <span></span>
 {{-- INDICE --}}
-<div>
-
+<div style="margin-top: 100px">
     <div  style="text-align: center;">
         <p style="font-size: 25px"><u>PLAN DE AUDITORÍA DEFINITIVO</u></p><br>
         <p style="font-size: 20px">"{{$auditoria->nombrePlanF}}"</p><br><br>
         <p style="font-size: 20px">ÍNDICE</p><br>
     </div>
     <div>
-        <ul>
+        <ul class="indice">
             <li>I.    DATOS DE LA AUDITORÍA</li>
             <li>II.   ORIGEN</li>
             <li>III.  OBJETIVO GENERAL</li>
@@ -261,7 +263,7 @@
     {{--</div>--}}
 {{--</div>--}}
 
-    <div class="">
+   {{-- <div class="">
         IV. OBJETIVO(S) ESPECÍFICO(S) Y LA(S) MATERIA(S) A EXAMINAR
     </div>
 
@@ -304,9 +306,9 @@
             </div>
         </div>
     @endforeach
-</div>
+</div>--}}
 
-
+<div class="p-void">
     <table>
         <thead>
         <tr>
@@ -318,7 +320,7 @@
                 OBJETIVO ESPECÍFICO
             </th>
             <th>
-               MACROPROCESO
+                MACROPROCESO
             </th>
             <th>
                 PROCESO
@@ -331,34 +333,36 @@
         </thead>
         <tbody>
         @foreach($auditoria->objetivoGeneral->objetivosEspecificos as $objetivoEspecifico)
-        <tr>
-            <td>
-                {{$objetivoEspecifico->nombre}}
-            </td>
-            <td>
-                {{$objetivoEspecifico->macroproceso->nombre}}
-            </td>
-            <td>
-                <ul>
-                @foreach($objetivoEspecifico->macroproceso->procesoMA as $proceso)
-                <li>
-                    {{$proceso->nombre}}
-                </li>
-                @endforeach
-                </ul>
-            </td>
-            <td>
-                {{$objetivoEspecifico->materia}}
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    {{$objetivoEspecifico->nombre}}
+                </td>
+                <td>
+                    {{$objetivoEspecifico->macroproceso->nombre}}
+                </td>
+                <td>
+                    <ul>
+                        @foreach($objetivoEspecifico->macroproceso->procesoMA as $proceso)
+                            <li>
+                                {{$proceso->nombre}}
+                            </li>
+                        @endforeach
+                    </ul>
+                </td>
+                <td>
+                    {{$objetivoEspecifico->materia}}
+                </td>
+            </tr>
         @endforeach
         </tbody>
     </table>
+</div>
+
 
 <div class="p-break"></div>
 
 {{-- ORIGEN --}}
-
+<div class="p-void">
     <table>
         <thead>
         <tr>
@@ -382,11 +386,13 @@
         </tr>
         </tbody>
     </table>
+</div>
+
 
 <div class="p-break"></div>
 
 {{-- NORMATIVA APLICABLE A LA ENTIDAD Y MATERIA(S) A EXAMINAR--}}
-
+<div class="p-void">
     <table>
         <thead>
         <tr>
@@ -434,10 +440,12 @@
         @endforeach
         </tbody>
     </table>
+</div>
+
 
 <div class="p-break"></div>
 {{-- VII. NORMATIVA QUE REGULA LA AUDITORÍA DE CUMPLIMIENTO--}}
-
+<div class="p-void">
     <table>
         <thead>
         <tr>
@@ -479,11 +487,13 @@
         @endforeach
         </tbody>
     </table>
+</div>
+
 
 <div class="p-break"></div>
 
 {{-- VIII. COMISIÓN AUDITORA --}}
-
+<div class="p-void">
     <table>
         <thead>
         <tr>
@@ -517,139 +527,147 @@
         @endforeach
         </tbody>
     </table>
+</div>
+
 
 <div class="p-break"></div>
 
 {{--IX. CRONOGRAMA Y PLAZOS DE ENTREGA DE DOCUMENTOS (*)--}}
-<table>
-    <thead>
-    <tr>
-        <th colspan="4" class="th-center">
-            IX. CRONOGRAMA Y PLAZOS DE ENTREGA DE DOCUMENTOS
-        </th>
-    </tr>
-    <tr>
-        <th>ACTIVIDADES</th>
-        <th>FECHA INICIO</th>
-        <th>FECHA FIN</th>
-        <th>DÍAS HÁBILES</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php $aux = '' ?>
-    @foreach($auditoria->cronogramaGeneral as $cronograma)
-        @if($cronograma->etapa->tipo != $aux)
-            <tr><td>
-                    <label class="has-success">{{$cronograma->etapa->tipo}}</label>
-                </td>
-                @if($cronograma->etapa->tipo == \App\Models\Etapa::PLANIFICACION)
-                    <td style="text-align: center"><label class="has-success">{!! $auditoria->cronogramaGeneral[0]->fecha_ini ?? '' !!}</label></td>
-                    <td style="text-align: center"><label class="has-success">{!! $auditoria->cronogramaGeneral[3]->fecha_fin ?? '' !!}</label></td>
-                @elseif($cronograma->etapa->tipo == \App\Models\Etapa::EJECUCION)
-                    <td style="text-align: center"><label class="has-success">{!! $auditoria->cronogramaGeneral[4]->fecha_ini ?? '' !!}</label></td>
-                    <td style="text-align: center"><label class="has-success">{!! $auditoria->cronogramaGeneral[4]->fecha_fin ?? '' !!}</label></td>
-                @else
-                    <td style="text-align: center"><label class="has-success">{!! $auditoria->cronogramaGeneral[5]->fecha_ini ?? '' !!}</label></td>
-                    <td style="text-align: center"><label class="has-success">{!! $auditoria->cronogramaGeneral[5]->fecha_fin ?? '' !!}</label></td>
-                @endif
-                <td></td>
-            </tr>
-            <?php $aux = $cronograma->etapa->tipo?>
-        @endif
+<div class="p-void">
+    <table>
+        <thead>
         <tr>
-            <td>{!! nl2br($cronograma->etapa->nombre) !!}</td>
-            <td width="15%" style="vertical-align: middle; text-align: center;">{!! $cronograma->fecha_ini !!}</td>
-            <td width="15%" style="vertical-align: middle; text-align: center">{!! $cronograma->fecha_fin !!}</td>
-            <td style="vertical-align: middle; text-align: center">{!! $cronograma->dias_habiles !!}</td>
+            <th colspan="4" class="th-center">
+                IX. CRONOGRAMA Y PLAZOS DE ENTREGA DE DOCUMENTOS
+            </th>
         </tr>
-    @endforeach
-    </tbody>
-</table>
+        <tr>
+            <th>ACTIVIDADES</th>
+            <th>FECHA INICIO</th>
+            <th>FECHA FIN</th>
+            <th>DÍAS HÁBILES</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php $aux = '' ?>
+        @foreach($auditoria->cronogramaGeneral as $cronograma)
+            @if($cronograma->etapa->tipo != $aux)
+                <tr><td>
+                        <label class="has-success">{{$cronograma->etapa->tipo}}</label>
+                    </td>
+                    @if($cronograma->etapa->tipo == \App\Models\Etapa::PLANIFICACION)
+                        <td style="text-align: center"><label class="has-success">{!! $auditoria->cronogramaGeneral[0]->fecha_ini ?? '' !!}</label></td>
+                        <td style="text-align: center"><label class="has-success">{!! $auditoria->cronogramaGeneral[3]->fecha_fin ?? '' !!}</label></td>
+                    @elseif($cronograma->etapa->tipo == \App\Models\Etapa::EJECUCION)
+                        <td style="text-align: center"><label class="has-success">{!! $auditoria->cronogramaGeneral[4]->fecha_ini ?? '' !!}</label></td>
+                        <td style="text-align: center"><label class="has-success">{!! $auditoria->cronogramaGeneral[4]->fecha_fin ?? '' !!}</label></td>
+                    @else
+                        <td style="text-align: center"><label class="has-success">{!! $auditoria->cronogramaGeneral[5]->fecha_ini ?? '' !!}</label></td>
+                        <td style="text-align: center"><label class="has-success">{!! $auditoria->cronogramaGeneral[5]->fecha_fin ?? '' !!}</label></td>
+                    @endif
+                    <td></td>
+                </tr>
+                <?php $aux = $cronograma->etapa->tipo?>
+            @endif
+            <tr>
+                <td>{!! nl2br($cronograma->etapa->nombre) !!}</td>
+                <td width="15%" style="vertical-align: middle; text-align: center;">{!! $cronograma->fecha_ini !!}</td>
+                <td width="15%" style="vertical-align: middle; text-align: center">{!! $cronograma->fecha_fin !!}</td>
+                <td style="vertical-align: middle; text-align: center">{!! $cronograma->dias_habiles !!}</td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+</div>
+
 
 <div class="p-break"></div>
 
 
 {{--X. PROGRAMA DE AUDITORÍA--}}
-<table>
-    <thead>
-    <tr>
-        <th colspan="8" class="th-center">
-            X. PROGRAMA DE AUDITORÍA
-        </th>
-    </tr>
-    <tr>
-        <th>INICIALES DEL AUDITOR</th>
-        <th colspan="4">PROCEDIMIENTOS DE AUDITORIA</th>
-        <th>FECHA CONCLUSIÓN</th>
-        <th>HECHO POR</th>
-        <th>REF. DOC.</th>
-    </tr>
+<div class="p-void">
+    <table>
+        <thead>
+        <tr>
+            <th colspan="8" class="th-center">
+                X. PROGRAMA DE AUDITORÍA
+            </th>
+        </tr>
+        <tr>
+            <th>INICIALES DEL AUDITOR</th>
+            <th colspan="4">PROCEDIMIENTOS DE AUDITORIA</th>
+            <th>FECHA CONCLUSIÓN</th>
+            <th>HECHO POR</th>
+            <th>REF. DOC.</th>
+        </tr>
 
-    </thead>
-    <tbody>
-    <tr>
-        <td>
-        </td>
-        <td>OBJETIVO GENERAL</td>
-        <td>{{ \Illuminate\Support\Str::ucfirst(\Illuminate\Support\Str::lower($auditoria->objetivoGeneral->nombre))}}</td>
-        <td>MATERIA(S) A EXAMINAR</td>
-        <td>-</td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <?php $i=1 ; ?>
-    @foreach($auditoria->objetivoGeneral->procedimientos as $row)
+        </thead>
+        <tbody>
         <tr>
             <td>
-                {{$row->codusurol->usuario->iniciales}}
             </td>
-            <td colspan="4">
-                <strong>PROCEDIMIENTO N°{{$i}}</strong><br>
-                <strong>JUSTIFICACIÓN</strong><br>
-                {{$row->justificacion}}<br>
-                <strong>DETALLE</strong><br>
-                {{$row->detalle}}
-            </td>
+            <td>OBJETIVO GENERAL</td>
+            <td>{{ \Illuminate\Support\Str::ucfirst(\Illuminate\Support\Str::lower($auditoria->objetivoGeneral->nombre))}}</td>
+            <td>MATERIA(S) A EXAMINAR</td>
+            <td>-</td>
             <td></td>
             <td></td>
             <td></td>
         </tr>
-    <?php $i++ ?>
-    @endforeach
-
-    @foreach($auditoria->objetivoGeneral->objetivosEspecificos as $objetivoEspecifico)
-       <tr>
-            <td></td>
-            <td>OBJETIVO ESPECÍFICO</td>
-            <td>{{ \Illuminate\Support\Str::ucfirst(\Illuminate\Support\Str::lower($objetivoEspecifico->nombre))}}</td>
-            <td>MATERIA(S) A EXAMINAR</td>
-            <td>{{$objetivoEspecifico->materia}}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-       </tr>
-        @foreach($objetivoEspecifico->procedimientos as $procedimiento)
+        <?php $i=1 ; ?>
+        @foreach($auditoria->objetivoGeneral->procedimientos as $row)
             <tr>
                 <td>
-                    {{$procedimiento->codusurol->usuario->iniciales}}
+                    {{$row->codusurol->usuario->iniciales}}
                 </td>
                 <td colspan="4">
                     <strong>PROCEDIMIENTO N°{{$i}}</strong><br>
                     <strong>JUSTIFICACIÓN</strong><br>
-                    {{$procedimiento->justificacion}}<br>
+                    {{$row->justificacion}}<br>
                     <strong>DETALLE</strong><br>
-                    {{$procedimiento->detalle}}
+                    {{$row->detalle}}
                 </td>
                 <td></td>
                 <td></td>
                 <td></td>
             </tr>
-        <?php $i++ ?>
+            <?php $i++ ?>
         @endforeach
-    @endforeach
-</tbody>
-</table>
+
+        @foreach($auditoria->objetivoGeneral->objetivosEspecificos as $objetivoEspecifico)
+            <tr>
+                <td></td>
+                <td>OBJETIVO ESPECÍFICO</td>
+                <td>{{ \Illuminate\Support\Str::ucfirst(\Illuminate\Support\Str::lower($objetivoEspecifico->nombre))}}</td>
+                <td>MATERIA(S) A EXAMINAR</td>
+                <td>{{$objetivoEspecifico->materia}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            @foreach($objetivoEspecifico->procedimientos as $procedimiento)
+                <tr>
+                    <td>
+                        {{$procedimiento->codusurol->usuario->iniciales}}
+                    </td>
+                    <td colspan="4">
+                        <strong>PROCEDIMIENTO N°{{$i}}</strong><br>
+                        <strong>JUSTIFICACIÓN</strong><br>
+                        {{$procedimiento->justificacion}}<br>
+                        <strong>DETALLE</strong><br>
+                        {{$procedimiento->detalle}}
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <?php $i++ ?>
+            @endforeach
+        @endforeach
+        </tbody>
+    </table>
+</div>
+
 
 
 </body>
