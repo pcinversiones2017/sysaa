@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cesar
- * Date: 15/11/17
- * Time: 03:10 PM
- */
 
 namespace App\Http\Controllers\Jefe_Comision;
-
 
 use App\Http\Controllers\Controller;
 use App\Models\Auditoria;
@@ -25,6 +18,16 @@ class AuditoriaController extends Controller
 
     public function listar()
     {
+    	$auditorias = Auditoria::where('codEstAud',2)->get();
+    	return view('jefe_comision.auditoria.listar', compact(['auditorias']));
+    }
 
+    public function aprobar($codPlanF)
+    {
+    	$auditoria = Auditoria::find($codPlanF);
+    	$auditoria->codEstAud = 3;
+    	$auditoria->save();
+    	
+    	return back()->with('success', 'Auditoria Aprobada');
     }
 }

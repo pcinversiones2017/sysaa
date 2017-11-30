@@ -69,4 +69,10 @@ class ProcedimientoController extends Controller
         RegistrarActividad(Procedimiento::TABLA,Historial::ELIMINAR,'eliminó el Procedimiento '. $procedimiento->justificacion);
         return back()->with('danger', 'Se elimino el procedimiento');
     }
+
+    public function detalle($codProc)
+    {
+        $procedimiento = Procedimiento::find($codProc);
+        return view('procedimiento.detalle_general', compact(['procedimiento']));
+    }
 }

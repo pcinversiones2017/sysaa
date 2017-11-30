@@ -5,16 +5,12 @@
 @stop
 
 @section('content')
-	<div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Crear Observacion del Desarrollo de procedimiento </h5>
-                </div>
-                <div class="ibox-content">
+	<div class="panel panel-success">
+        <div class="panel-heading">
+            CREAR SEGUIMIENTO
+        </div>
+        <div class="panel-body">
                     {!! Form::open(['method' => 'POST', 'route' => 'seguimiento.registrar']) !!}
-                    {!! Form::hidden('codDes',$codDes) !!}
-                    {!! Form::hidden('codProc',$codProc) !!}
                     {!! Form::hidden('codObs',$codObs) !!}
                     {!! Field::textarea('acciones', ['class' => 'summernote', 'label' => 'Acciones realizadas por el auditado']) !!}
                     {!! Field::textarea('evaluacion', ['class' => 'summernote', 'label' => 'Evaluacion del Auditor']) !!}
@@ -22,8 +18,8 @@
                     {!! Form::label('Estado') !!}
                     {!! Form::select('estado', ['PENDIENTE' => 'PENDIENTE', 'PROCESO' => 'PROCESO', 'IMPLEMENTADO' => 'IMPLEMENTADO'], null, ['class' => 'form-control']) !!}
                     </div>
-                    {!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-outline']) !!}
-                    <a href="{!! url('auditor/procedimiento/mostrar/'. $codProc) !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                    {!! Form::submit('REGISTRAR', ['class' => 'btn btn-success btn-outline']) !!}
+                    <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     {!! Form::close() !!}
                 </div>
             </div>

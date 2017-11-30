@@ -12,7 +12,7 @@ class PersonaTableSeeder extends Seeder
      */
     public function run()
     {
-        Persona::create(['email' => 'gilmarmoreno1993@gmail.com', 'nombres' => 'GILMAR', 'paterno' => 'GILMAR', 'materno' => 'GILMAR']);
+        Persona::create(['email' => 'admin@email.com', 'nombres' => 'ADMIN', 'paterno' => 'ADMIN', 'materno' => 'ADMIN']);
 //        Persona::create(['email' => 'cesarhm1687@gmail.com', 'nombres' => 'CESAR', 'paterno' => 'CESAR', 'materno' => 'CESAR']);
 //        Persona::create(['email' => 'roberth1136@gmail.com', 'nombres' => 'ROBERTH', 'paterno' => 'ROBERTH', 'materno' => 'ROBERTH']);
 //        Persona::create(['email' => 'jose@gmail.com', 'nombres' => 'JOSE', 'paterno' => 'JOSE', 'materno' => 'JOSE']);

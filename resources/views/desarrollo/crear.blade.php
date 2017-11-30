@@ -5,20 +5,30 @@
 @stop
 
 @section('content')
+    <div class="well"> 
+        @if(!empty($proc->objetivogeneral->nombre))
+        <strong> AUDITORIA </strong> : {!! $proc->objetivogeneral->auditoria->nombrePlanF !!} <br>
+        <strong> OBJETIVO GENERAL </strong>: {!! $proc->objetivogeneral->nombre !!}
+        @else
+        <strong> AUDITORIA </strong> : {!! $proc->objetivoespecifico->objetivogeneral->auditoria->nombrePlanF !!} <br>
+        <strong> OBJETIVO GENERAL </strong> : {!! $proc->objetivoespecifico->objetivogeneral->nombre !!} <br>
+        <strong> OBJETIVO ESPECIFICO  </strong>: {!! $proc->objetivoespecifico->nombre !!}
+        @endif
+    </div>
 	<div class="row">
         <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Crear Desarrollo de procedimiento </h5>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    CREAR DESARROLLO
                 </div>
-                <div class="ibox-content">
-                    {!! Form::open(['method' => 'POST', 'route' => 'auditor.desarrollo.registrar']) !!}
-                    {!! Form::hidden('codProc',$codProc) !!}
-                    {!! Field::textarea('informe', ['class' => 'summernote', 'label' => 'Desarrollo de Procedimiento']) !!}
-                    {!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-outline']) !!}
-                    <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
-                    <a href="{!! url('auditor/desarrollo/listar') !!}" class="btn btn-success btn-outline">LISTAR</a>
-                    {!! Form::close() !!}
+                <div class="panel-body">
+                        {!! Form::open(['method' => 'POST', 'route' => 'auditor.desarrollo.registrar']) !!}
+                        {!! Form::hidden('codProc', $proc->codProc) !!}
+                        {!! Field::text('detalle de procedimiento', $proc->detalle, ['class' => 'form-control', 'disabled']) !!}
+                        {!! Field::textarea('informe', ['class' => 'summernote', 'label' => 'Desarrollo de Procedimiento']) !!}
+                        {!! Form::submit('REGISTRAR', ['class' => 'btn btn-success btn-outline']) !!}
+                        <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                        {!! Form::close() !!}
                 </div>
             </div>
         </div>

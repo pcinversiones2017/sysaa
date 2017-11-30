@@ -19,5 +19,9 @@ class Seguimiento extends Model
 
     protected $primaryKey = 'codSeg';
     
+    public function observacion()
+    {
+    	return $this->belongsTo(Observacion::class, 'codObs', 'codObs');
+    }
 
 }

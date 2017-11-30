@@ -2,8 +2,6 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-content">
                     <div class="panel panel-success">
                         <div class="panel-heading">
                             CREAR MACROPROCESO
@@ -24,8 +22,6 @@
 
                     </div>
 
-                </div>
-            </div>
         </div>
     </div>
 @stop

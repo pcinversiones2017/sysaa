@@ -15,7 +15,7 @@ class CreateEtapaTable extends Migration
     {
         Schema::create('Etapa', function (Blueprint $table) {
             $table->increments('codEtp');
-            $table->text('nombre');
+            $table->longText('nombre');
             $table->string('tipo');
 
             $table->timestamp('fecha_creado')->nullable();

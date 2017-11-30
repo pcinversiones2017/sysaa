@@ -16,8 +16,8 @@ class CreateSeguimientosTable extends Migration
         Schema::create('seguimiento', function (Blueprint $table) {
             $table->increments('codSeg');
             $table->integer('codObs');
-            $table->text('acciones');
-            $table->text('evaluacion');
+            $table->longText('acciones');
+            $table->longText('evaluacion');
             $table->string('estado');
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();

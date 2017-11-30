@@ -14,7 +14,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     Route::group(['prefix' => 'auditor/desarrollo'], function(){
 	    Route::get('listar','DesarrolloController@listar')->name('auditor.desarrollo.listar');
-	    Route::get('crear/{codProc}','DesarrolloController@crear')->name('auditor.desarrollo.crear');
+	    Route::get('crear/{procedimiento}','DesarrolloController@crear')->name('auditor.desarrollo.crear');
 	    Route::post('registrar','DesarrolloController@registrar')->name('auditor.desarrollo.registrar');
 	    Route::get('editar/{codProc}/{codDes}','DesarrolloController@editar')->name('auditor.desarrollo.editar');
 	    Route::post('actualizar','DesarrolloController@actualizar')->name('auditor.desarrollo.actualizar');
@@ -60,20 +60,38 @@ Route::group(['middleware' => ['auth']], function(){
 	});
 
     Route::group(['prefix' => 'seguimiento'], function(){
-    	Route::get('listar/{codProc}/{codDes}/{codObs}', 'SeguimientoController@listar')->name('seguimiento.listar');
-    	Route::get('crear/{codProc}/{codDes}/{codObs}', 'SeguimientoController@crear')->name('seguimiento.crear');
+    	Route::get('listar/{codObs}', 'SeguimientoController@listar')->name('seguimiento.listar');
+    	Route::get('crear/{codObs}', 'SeguimientoController@crear')->name('seguimiento.crear');
     	Route::post('registrar', 'SeguimientoController@registrar')->name('seguimiento.registrar');
-    	Route::get('editar/{codProc}/{codDes}/{codObs}/{codSeg}', 'SeguimientoController@editar')->name('seguimiento.editar');
+    	Route::get('editar/{codObs}/{codSeg}', 'SeguimientoController@editar')->name('seguimiento.editar');
     	Route::post('actualizar', 'SeguimientoController@actualizar')->name('seguimiento.actualizar');
     	Route::get('eliminar/{codSeg}', 'SeguimientoController@eliminar')->name('seguimiento.eliminar');
     });
 
 	Route::group(['prefix' => 'seguimiento/archivo'], function(){
-	    Route::get('crear/{codProc}/{codDes}/{codObs}/{codSeg}','SeguimientoArchivoController@crear')->name('seguimiento.archivo.crear');
+	    Route::get('crear/{codObs}/{codSeg}','SeguimientoArchivoController@crear')->name('seguimiento.archivo.crear');
 	    Route::post('registrar','SeguimientoArchivoController@registrar')->name('seguimiento.archivo.registrar');
-	    Route::get('listar/{codProc}/{codDes}/{codObs}/{codSeg}','SeguimientoArchivoController@listar')->name('seguimiento.archivo.listar');
+	    Route::get('listar/{codObs}/{codSeg}','SeguimientoArchivoController@listar')->name('seguimiento.archivo.listar');
 	    Route::get('crear','SeguimientoArchivoController@crear')->name('seguimiento.archivo.crear');
 	    Route::get('eliminar/{id}','SeguimientoArchivoController@eliminar')->name('seguimiento.archivo.eliminar');
 	    Route::get('descargar/{id}','SeguimientoArchivoController@descargar')->name('seguimiento.archivo.descargar');
 	});
+
+	Route::group(['prefix' => 'auditoria', 'namespace' => 'Jefe_Comision'], function(){
+		Route::get('listado', 'AuditoriaController@listar')->name('auditoria.listar');
+		Route::get('aprobar/{codPlanF}', 'AuditoriaController@aprobar')->name('auditoria.aprobar');
+	});
+
+	Route::group(['prefix' => 'procedimiento'], function(){
+		Route::get('detalle/{codProc}', 'ProcedimientoController@detalle')->name('procedimiento.detalle');
+	});
+
+    Route::prefix('reporte')->group(function (){
+       Route::get('planificacion/{codPlanF}', 'ReporteController@planificacion');
+       Route::get('informe-final/{codPlanF}', 'ReporteController@informeFinal');
+    });
+
+    Route::group(['prefix' => 'observacion'], function(){
+    	Route::get('listar', 'ObservacionController@listar')->name('observacion.listar');
+    });
 });

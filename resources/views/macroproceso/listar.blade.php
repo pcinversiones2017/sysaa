@@ -8,8 +8,6 @@
     @include('partials.alert')
     <div class="row">
         <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-content">
                     <div class="panel panel-success">
                         <div class="panel-heading">
                             LISTA DE MACROPROCESOS
@@ -51,8 +49,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
     </div>
 @endsection
 
@@ -78,10 +74,11 @@
     <script>
         $(document).ready(function(){
             $('.table-macroprocesos').DataTable({
+                "ordering": false,
                 language: {
                     url : '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
                 },
-                pageLength: 25,
+                pageLength: 10,
                 responsive: true,
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [

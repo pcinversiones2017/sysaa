@@ -20,7 +20,7 @@
                 @foreach($software as $software)
                     <tr>
                         <td>{{$i}}</td>
-                        <td>{{$software->nombre_software}}</td>
+                        <td>{{strtoupper($software->nombre_software)}}</td>
                         <td>{{$software->version_software}}</td>
                         <td>{{$software->fecha_creado}}</td>
                     </tr>

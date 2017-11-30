@@ -1,20 +1,28 @@
 
+    @include('inicio.partials.notificacion')
 	<div class="ibox-content">
-        @include('inicio.partials.notificacion')
-
 		<h2> BIENVENIDO <strong>{!! Auth::user()->usuariorol->rol->nombre !!}</strong> : {!! Auth::user()->datos !!}</h2>
-        <hr>
-		<h3>PROCEDIMIENTOS</h3>
-        <hr>
-        <h3>
-         TOTAL: <a class="btn btn-success m-r-sm">{!! $procedimiento->count() !!}</a>
-		 ASIGNADOS: <a class="btn btn-danger m-r-sm">{!! $asignado->count() !!}</a> 
-		 PENDIENTES: <a class="btn btn-warning m-r-sm">{!! $pendiente->count() !!}</a>
-         APROBADOS: <a class="btn btn-primary m-r-sm">{!! $aprobado->count() !!}</a>
-         RECHAZADOS: <a class="btn btn-danger m-r-sm">{!! $rechazado->count() !!}</a>
-         FINALIZADOS: <a class="btn btn-primary m-r-sm">{!! $finalizado->count() !!}</a>
-		</h3>
-	</div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    PROCEDIMIENTOS
+                </div>
+                <div class="panel-body">
+                    <h3 align="center">
+                     TOTAL: <a class="btn btn-success m-r-sm">{!! $procedimiento->count() !!}</a>
+            		 ASIGNADOS: <a class="btn btn-danger m-r-sm">{!! $asignado->count() !!}</a> 
+            		 PENDIENTES: <a class="btn btn-warning m-r-sm">{!! $pendiente->count() !!}</a>
+                     APROBADOS: <a class="btn btn-primary m-r-sm">{!! $aprobado->count() !!}</a>
+                     RECHAZADOS: <a class="btn btn-danger m-r-sm">{!! $rechazado->count() !!}</a>
+                     FINALIZADOS: <a class="btn btn-primary m-r-sm">{!! $finalizado->count() !!}</a>
+            		</h3>
+            	</div>
+            </div>
+        </div>
+    </div>
 	<div class="wrapper wrapper-content animated fadeInUp">
         <ul class="notes">
         	@foreach($procedimiento as $row)

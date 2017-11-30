@@ -8,12 +8,13 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h5>Cargar archivo</h5>
-            </div>
-            <div class="ibox-content">
+        <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4> <strong> CARGAR ARCHIVO </strong></h4>
+        </div>
+        <div class="panel-body">
                 <div class="row">
+                    <div class="col-md-12">
                     <div class="alert alert-danger" role="alert">
                         <strong>NOTA: PESO MAXIMO 5 MB</strong>
                     </div>
@@ -33,7 +34,7 @@
                             <div class="hr-line-dashed"></div>
 
                         </div>
-
+                    </div>
                     {!! Form::close() !!}
                 </div>
             </div>

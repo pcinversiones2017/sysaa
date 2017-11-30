@@ -86,8 +86,8 @@
                                                             <td>{{$actividades->nombre}}</td>
                                                             <td>
                                                                 <a href="{!!  route('actividades.mostrar', $actividades->codAct) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
-                                                                <a href="{!!  route('actividades.editar', $actividades->codAct) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
-                                                                <a href="{!!  route('actividades.eliminar', $actividades->codAct)!!}" class="btn btn-danger btn-outline eliminar-actividad"><i class="fa fa-trash"></i></a>
+                                                                <a href="{!!  route('actividades.editar', $actividades->codAct) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
+                                                                <a href="{!!  route('actividades.eliminar', $actividades->codAct)!!}" class="btn btn-danger btn-outline eliminar-actividad" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach

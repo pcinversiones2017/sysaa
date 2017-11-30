@@ -21,3 +21,5 @@ require __DIR__.'/desarrollo/desarrollo.route.php';
 Route::get('/', 'InicioController@index')->middleware('auth');
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
+Route::get('word', 'WordController@index');

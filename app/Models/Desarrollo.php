@@ -26,11 +26,11 @@ class Desarrollo extends Model
 
     public function procedimiento()
     {
-        return $this->hasOne(Procedimiento::class,'codProc','codProc');
+        return $this->belongsTo(Procedimiento::class,'codProc','codProc');
     }
 
     public function observacion()
     {
-        return $this->hasOne(Observacion::class, 'codObs', 'codObs');
+        return $this->hasMany(Observacion::class, 'codDes', 'codDes');
     }
 }

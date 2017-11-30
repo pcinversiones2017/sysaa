@@ -18,7 +18,7 @@ class CreateNotificacionsTable extends Migration
             $table->integer('remitente');
             $table->integer('destinatario');
             $table->integer('codProc');
-            $table->text('mensaje');
+            $table->longText('mensaje');
             $table->timestamp('fecha_creado')->nullable();
             $table->timestamp('fecha_modificado')->nullable();
         });
