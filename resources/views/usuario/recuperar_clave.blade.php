@@ -4,7 +4,7 @@
 @include('partials.alert')
 <div class="panel panel-success">
     <div class="panel-heading">
-        CAMBIAR CONTRASEÑA ADMINISTRADOR
+        CAMBIAR CONTRASEÑA DE {!! Auth::user()->persona->paterno !!} {!! Auth::user()->persona->materno !!} {!! Auth::user()->persona->nombres !!}
     </div>
     <div class="panel-body">
         <div class="row">

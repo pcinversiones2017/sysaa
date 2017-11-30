@@ -4,7 +4,9 @@
         @include('inicio.partials.notificacion')
     <div class="ibox-content">
         <h2> BIENVENIDO <strong>{!! Auth::user()->usuariorol->rol->nombre !!}</strong> : {!! Auth::user()->datos !!}</h2>
-    </div><hr>
+    </div>
+    @if($procedimiento->count() > 0)
+    <hr>
     <div class="panel panel-success">
         <div class="panel-heading">
             <h4> <strong> LISTADO DE PROCEDIMIENTOS ASIGNADOS AL {!! Auth::user()->usuariorol->rol->nombre !!}</strong></h4>
@@ -79,6 +81,7 @@
             </table>
         </div>
     </div>
+    @endif
     <hr>
     <div class="panel panel-success">
         <div class="panel-heading">

@@ -31,15 +31,15 @@ class SeguimientoController extends Controller
     	return view('seguimiento.listar', compact(['listarSeguimiento', 'seguimiento']));
     }
 
-    public function listar($codProc, $codDes, $codObs)
+    public function listar($codObs)
     {
     	$seguimientos = Seguimiento::where('codObs', $codObs)->get();
-    	return view('seguimiento.listar', compact(['seguimientos', 'codProc', 'codDes', 'codObs']));
+    	return view('seguimiento.listar', compact(['seguimientos', 'codObs']));
     }
 
-    public function crear($codProc, $codDes, $codObs)
+    public function crear($codObs)
     {
-    	return view('seguimiento.crear', compact(['codProc', 'codDes', 'codObs']));
+    	return view('seguimiento.crear', compact(['codObs']));
     }
 
     public function registrar(Request $request)
@@ -51,19 +51,19 @@ class SeguimientoController extends Controller
     	$seguimiento->codObs = $request->codObs;
     	$seguimiento->save();
 
-    	return redirect('seguimiento/listar/'.$request->codProc.'/'. $request->codDes.'/'.$request->codObs)->with('success', 'Se registro seguimiento');
+    	return redirect('seguimiento/listar/'.$request->codObs)->with('success', 'Se registro seguimiento');
     }
 
-    public function editar($codProc, $codDes, $codObs, $codSeg)
+    public function editar($codObs, $codSeg)
     {
         $seguimiento = Seguimiento::find($codSeg);
-    	return view('seguimiento.editar', compact(['seguimiento', 'codDes', 'codProc', 'codSeg', 'codObs']));
+    	return view('seguimiento.editar', compact(['seguimiento', 'codSeg', 'codObs']));
     }
 
     public function actualizar(Request $request)
     {
     	Seguimiento::where('codSeg',$request->codSeg)->update(['acciones' => $request->acciones, 'evaluacion' => $request->evaluacion,'estado' => $request->estado]);
-    	return redirect('seguimiento/listar/'.$request->codProc.'/'. $request->codDes.'/'.$request->codObs)->with('success','Observacion actualizado');	
+    	return redirect('seguimiento/listar/'.$request->codObs)->with('success','Observacion actualizado');	
     }
 
     public function eliminar($codSeg)

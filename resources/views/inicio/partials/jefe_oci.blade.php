@@ -4,7 +4,9 @@
     <div class="ibox-content">
         @include('inicio.partials.notificacion')
         <h2> BIENVENIDO <strong>{!! Auth::user()->usuariorol->rol->nombre !!}</strong> : {!! Auth::user()->datos !!}</h2>
-    </div><hr>
+    </div>
+    @if($procedimiento->count() > 0)
+    <hr>
     <div class="panel panel-success">
         <div class="panel-heading">
             <h4> <strong> LISTADO DE PROCEDIMIENTOS ASIGNADOS AL {!! Auth::user()->usuariorol->rol->nombre !!}</strong></h4>
@@ -79,6 +81,7 @@
             </table>
         </div>
     </div>
+    @endif
     <hr>
     <div class="panel panel-success">
         <div class="panel-heading">
@@ -103,6 +106,7 @@
                         <th>F. RECHAZADO</th>
                         <th>FECHA FIN</th>
                         <th>PERSONA</th>
+                        <th>AUDITORIA</th>
                         <th>ESTADO</th>
                         <th>ACCION</th>
                     </tr>
@@ -118,6 +122,7 @@
                         <td>{!! $row->fecha_rechazado !!}</td>
                         <td>{!! $row->fecha_fin !!}</td>
                         <td>{!! $row->nombres !!} {!! $row->paterno !!} {!! $row->materno !!}</td>
+                        <td>{!! $row->nombrePlanF !!}</td>
                         <td>
                             @if($row->codEst == 1)
                             <span class="label label-info">NUEVO</span>

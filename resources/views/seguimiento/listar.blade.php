@@ -10,18 +10,16 @@
     
     @include('partials.alert')
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Lista de Seguimientos </h5>
-                </div>
-                <div class="ibox-content">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            LISTA DE SEGUIMIENTOS
+        </div>
+        <div class="panel-body">
 
                     <div class="row">
                         <div class="col-sm-3">
                             <a type="button" href="{!! url()->previous() !!}" class="btn btn-outline btn-danger"> ATRAS</a>
-                            <a type="button" href="{!! url('seguimiento/crear/'.$codProc.'/'.$codDes.'/'.$codObs) !!}" class="btn btn-outline btn-primary"> REGISTRAR</a>
+                            <a type="button" href="{!! url('seguimiento/crear/'.$codObs) !!}" class="btn btn-outline btn-success"> REGISTRAR</a>
                             <p>
                             
                         </div>
@@ -46,10 +44,10 @@
                                 <td>{!! $row->evaluacion !!}</td>
                                 <td>{!! $row->estado !!}</td>
                                 <td>
-                                    <a href="{!! url('seguimiento/editar/'.$codProc.'/'.$codDes.'/'.$codObs.'/'.$row->codSeg) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
-                                    <a href="{!! url('seguimiento/eliminar/'.$row->codSeg) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
-                                    <a href="{!! url('seguimiento/archivo/crear/'.$codProc.'/'.$codDes.'/'.$codObs.'/'.$row->codSeg) !!}" class="btn btn-warning btn-outline"><i class="fa fa-upload"></i>  </a>
-                                    <a href="{!! url('seguimiento/archivo/listar/'.$codProc.'/'.$codDes.'/'.$codObs.'/'.$row->codSeg) !!}" class="btn btn-info btn-outline"><i class="fa fa-paperclip"></i>  </a>
+                                    <a href="{!! url('seguimiento/editar/'.$codObs.'/'.$row->codSeg) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i>  </a>
+                                    <a href="{!! url('seguimiento/eliminar/'.$row->codSeg) !!}" class="btn btn-danger btn-outline" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i>  </a>
+                                    <a href="{!! url('seguimiento/archivo/crear/'.$codObs.'/'.$row->codSeg) !!}" class="btn btn-warning btn-outline" data-toggle="tooltip" data-placement="bottom" title="Adjuntar Documentos"><i class="fa fa-upload"></i>  </a>
+                                    <a href="{!! url('seguimiento/archivo/listar/'.$codObs.'/'.$row->codSeg) !!}" class="btn btn-info btn-outline" data-toggle="tooltip" data-placement="bottom" title="Listar documentos adjuntados"><i class="fa fa-paperclip"></i>  </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>
@@ -59,6 +57,7 @@
 
                 </div>
             </div>
+
             <a href="{!! url('Manual_de_Encuesta_ONLINE-SurveyMonkey.pdf') !!}" class="btn btn-primary" target="_lblank">MANUAL DE ENCUESTA ONLINE</a>
         </div>
 
@@ -92,7 +91,7 @@
                 language: {
                     url : '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
                 },
-                pageLength: 25,
+                pageLength: 10,
                 responsive: true,
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [

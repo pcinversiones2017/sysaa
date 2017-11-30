@@ -32,8 +32,9 @@ class DesarrolloController extends Controller
     {
 
         $this->authorize('crearDesarrollo', $procedimiento);
+        $proc = Procedimiento::find($procedimiento->codProc);
         RegistrarActividad(Desarrollo::TABLA,Historial::CREAR,'vió el formulario de crear Desarrollo');
-    	return view('desarrollo.crear')->with('codProc', $procedimiento->codProc);
+    	return view('desarrollo.crear', compact(['proc']));
     }
 
     public function registrar(ValidarRequest $request)

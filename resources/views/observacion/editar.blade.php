@@ -7,11 +7,11 @@
 @section('content')
 	<div class="row">
         <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Actualizar Observacion</h5>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    ACTUALIZAR OBSERVACIÓN
                 </div>
-                <div class="ibox-content">
+                <div class="panel-body">
                     {!! Form::open(['method' => 'POST', 'route' => 'auditor.observacion.actualizar']) !!}
                     {!! Form::hidden('codProc',$codProc) !!}
                     {!! Form::hidden('codDes',$codDes) !!}
@@ -19,7 +19,7 @@
                     {!! Field::text('titulo', $observacion->titulo ) !!}
                     {!! Field::textarea('informe', $observacion->descripcion , ['class' => 'summernote']) !!}
                     {!! Field::textarea('recomendacion', $observacion->recomendacion , ['class' => 'summernote']) !!}
-                    {!! Form::submit('ACTUALIZAR', ['class' => 'btn btn-primary btn-outline']) !!}
+                    {!! Form::submit('ACTUALIZAR', ['class' => 'btn btn-success btn-outline']) !!}
                     <a href="{!! url('auditor/procedimiento/mostrar/'. $codDes) !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     {!! Form::close() !!}
                 </div>

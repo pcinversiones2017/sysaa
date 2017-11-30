@@ -44,8 +44,9 @@ class UsuarioController extends Controller
     public function editar($id)
     {
     	$usuario = User::find($id);
+        $activoEditar = 'active';
         RegistrarActividad(User::TABLA,Historial::EDITAR,'vió el formulario de editar el Usuario '.$usuario->nombres);
-    	return view('usuario.editar', compact('usuario'));
+    	return view('usuario.editar', compact(['usuario', 'activoEditar']));
     }
 
     public function actualizar(ActualizarRequest $request)

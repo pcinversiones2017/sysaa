@@ -8,6 +8,12 @@
                         <li class="{{$activo?? ''}}"><a href="{!! route('auditoria.listar') !!}"><i class="fa fa-key"></i> Aprobar Auditorias</a></li>
                     </ul>
                 </li>
+                <li class="{{$listarObservaciones ?? ''}}">
+                    <a href=""><i class="fa fa-history"></i> <span class="nav-label">Seguimiento</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                       <li class="{{$listarObservaciones ?? ''}}"><a href="{!! route('observacion.listar') !!}"> <i class="fa fa-list"></i> Lista</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>

@@ -1,54 +1,49 @@
 @extends('layout.admin')
+
 @section('content')
     @include('partials.alert')
+
     <div class="panel panel-success">
         <div class="panel-heading">
-            LISTA DE PERSONAS
+            LISTA DE OBSERVACIONES
         </div>
         <div class="panel-body">
 
-            <div class="row">
-                <div class="col-sm-3">
-                    <a type="button" href="{!! route('persona.crear') !!}" class="btn btn-outline btn-success"><i class="fa fa-pencil"></i> CREAR PERSONA</a>
-                    <p>
+            <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
+                    <table class="table table-bordered table-personas">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>TITULO</th>
+                            <th>DESCRIPCION</th>
+                            <th>RECOMENDACION</th>
+                            <th>Accion</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php $i=1 ?>
+                        @foreach($observaciones as $row)
+                            <tr>
+                                <td>{{$i}}</td>
+                                <td>{!! $row->titulo !!}</td>
+                                <td>{!! $row->descripcion !!}</td>
+                                <td>{!! $row->recomendacion !!}</td>
+                                <td>
+                                    <a href="{!! url('seguimiento/listar/'.$row->codObs) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i>  </a>
+                                </td>
+                            </tr>
+                        <?php $i++ ?>
+                        @endforeach
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
-
-            <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
-            <table class="table table-bordered table-personas">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>NOMBRES</th>
-                    <th>AP. PATERNO</th>
-                    <th>AP. MATERNO</th>
-                    <th>EMAIL</th>
-                    <th>ACCIONES</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php $i=1 ?>
-                @foreach($personas as $persona)
-                    <tr>
-                        <td>{{$i}}</td>
-                        <td>{!! $persona->nombres !!}</td>
-                        <td>{!! $persona->paterno !!}</td>
-                        <td>{!! $persona->materno !!}</td>
-                        <td>{!! $persona->email !!}</td>
-                        <td style="text-align: center">
-                            <a href="{!! url('persona/editar/' . $persona->codPer) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i>  </a>
-                            <a href="{!! url('persona/eliminar/' . $persona->codPer) !!}" class="btn btn-danger btn-outline eliminar-persona"><i class="fa fa-trash"></i>  </a>
-                        </td>
-                    </tr>
-                    <?php $i++ ?>
-                @endforeach
-                </tbody>
-            </table>
         </div>
+
     </div>
 
-
-@endsection
+@stop
 
 @section('css-style')
     {!! Html::style('css/plugins/alertifyjs/themes/default.css') !!}

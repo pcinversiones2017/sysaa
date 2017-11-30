@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Procedimiento;
+use App\Models\Auditoria;
 use Auth;
 
 
@@ -12,11 +13,12 @@ class InicioController extends Controller
     public function index()
     {
     	$procedimiento = Procedimiento::where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->get();
-    	$procedimiento_general = Procedimiento::leftJoin('usuario_roles', 'usuario_roles.codUsuRol', '=', 'procedimiento.codUsuRol')
-    						->leftJoin('users', 'users.codUsu', '=', 'usuario_roles.codUsu')
+    	$procedimiento_general = Procedimiento::leftJoin('objetivo_especifico', 'objetivo_especifico.codObjEsp', '=', 'procedimiento.codObjEsp')
+                            ->leftJoin('objetivo_general', 'objetivo_general.codObjGen', '=', 'procedimiento.codObjGen')
+                            ->leftJoin('usuario_roles', 'usuario_roles.codUsuRol', '=', 'procedimiento.codUsuRol')
+                            ->join('users', 'users.codUsu', '=', 'usuario_roles.codUsu')
+                            ->join('auditoria', 'auditoria.codPlanF', '=', 'objetivo_general.codPlanF')
                             ->join('personas', 'personas.codPer', '=', 'users.codPer')
-                            ->select('justificacion', 'detalle', 'fecha_terminado', 'fecha_rechazado', 'fecha_fin',
-                                    'nombres', 'paterno', 'materno', 'codEst', 'procedimiento.codProc', 'procedimiento.codUsuRol')
     						->get();
     	$asignado = Procedimiento::asignado()->where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->with(['objetivoespecifico', 'desarrollo'])->get();
     	$pendiente = Procedimiento::pendiente()->where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->with(['objetivoespecifico', 'desarrollo'])->get();

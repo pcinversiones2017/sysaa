@@ -9,17 +9,17 @@ use Auth;
 
 class SeguimientoArchivoController extends Controller
 {
-    public function listar($codProc, $codDes, $codObs, $codSeg)
+    public function listar($codObs, $codSeg)
     {
     	$archivos = Archivo::Seguimiento($codSeg)->get();
         RegistrarActividad(Archivo::TABLA,Historial::LEER,'vió el listado de Archivos');
-    	return view('archivo_s.listar', compact(['codProc', 'codDes', 'codObs', 'codSeg', 'archivos']));
+    	return view('archivo_s.listar', compact(['codObs', 'codSeg', 'archivos']));
     }
 
-    public function crear($codProc, $codDes, $codObs, $codSeg)
+    public function crear($codObs, $codSeg)
     {
         RegistrarActividad(Archivo::TABLA,Historial::CREAR,'vió el formulario de cargar Archivo');
-    	return view('archivo_s.crear', compact(['codProc', 'codDes', 'codObs', 'codSeg']));
+    	return view('archivo_s.crear', compact(['codObs', 'codSeg']));
     }
 
     public function registrar(Request $request)
@@ -29,7 +29,7 @@ class SeguimientoArchivoController extends Controller
             $archivo = $request->file('archivo')->store('archivo','public');
             Archivo::create(['nombre' => $request->file('archivo')->getClientOriginalName(),'ruta' => $archivo, 'codSeg' => $request->codSeg ]);
             RegistrarActividad(Archivo::TABLA,Historial::ACTUALIZAR,'actualizó la Actividad '.$request->nombre);
-            return redirect('seguimiento/archivo/listar/'.$request->codProc. '/'. $request->codDes. '/'. $request->codObs. '/'. $request->codSeg)->with('success','Archivo cargado');
+            return redirect('seguimiento/archivo/listar/'.$request->codObs. '/'. $request->codSeg)->with('success','Archivo cargado');
         }else
         {
             return back()->with('danger','Debe cargar un archivo');

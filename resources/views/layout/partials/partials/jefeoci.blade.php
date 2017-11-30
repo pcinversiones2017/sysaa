@@ -2,13 +2,13 @@
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="side-menu">
-                <li class="{{$usuario?? ''}} {{$activo?? ''}} {{$institucion?? ''}} {{$software_a?? ''}} {{$people ?? ''}}">
+                <li class="{{$usuario?? ''}} {{$activo?? ''}} {{$activoEditar?? ''}} {{$institucion?? ''}} {{$software_a?? ''}} {{$people ?? ''}}">
                     <a href=""><i class="fa fa-cogs"></i> <span class="nav-label">Configuracion</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li class="{{$people ?? ''}}"><a href="{!! route('persona.listar') !!}"><i class="fa fa-user-circle"></i> Personas</a></li>
-                        <li class="{{$usuario ?? ''}}"><a href="{!! route('usuario.listar') !!}"><i class="fa fa-users"></i> Usuarios</a></li>
-                        <li class="{{$activo ?? ''}}"><a href="{!! route('usuario.recuperar') !!}"><i class="fa fa-key"></i> Cambiar Contraseña</a></li>
+                        <li class="{{$people ?? ''}}"><a href="{!! route('persona.listar') !!}"><i class="fa fa-user-circle"></i> Datos Personales   </a></li>
+                        <li class="{{$usuario ?? ''}} {{$activoEditar?? ''}}"><a href="{!! route('usuario.listar') !!}"><i class="fa fa-users"></i> Usuarios</a></li>
                         <li class="{{$institucion ?? ''}}"><a href="{!! route('institucion.listar') !!}"> <i class="fa fa-institution"></i> Ver Institucion</a></li>
+                        <li class="{{$activo ?? ''}}"><a href="{!! route('usuario.recuperar') !!}"><i class="fa fa-key"></i> Cambiar Contraseña</a></li>
                         <li class="{{$software_a ?? ''}}"><a href="{!! route('institucion.listarSoftware') !!}"> <i class="fa fa-rebel"></i> Informacion del Software</a></li>
                     </ul>
                 </li>
@@ -57,6 +57,12 @@
                     <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Informe Final</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$listarInforme ?? ''}}"><a href="{{ route('informe.listar') }}"><i class="fa fa-list-alt"></i> Listar </a></li>
+                    </ul>
+                </li>
+                <li class="{{$listarObservaciones ?? ''}}">
+                    <a href=""><i class="fa fa-history"></i> <span class="nav-label">Seguimiento</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                       <li class="{{$listarObservaciones ?? ''}}"><a href="{!! route('observacion.listar') !!}"> <i class="fa fa-list"></i> Lista</a></li>
                     </ul>
                 </li>
 

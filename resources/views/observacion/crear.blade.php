@@ -18,7 +18,7 @@
                     {!! Field::text('titulo') !!}
                     {!! Field::textarea('informe', ['class' => 'summernote', 'label' => 'Descripcion de la Observación']) !!}
                     {!! Field::textarea('recomendacion', ['class' => 'summernote']) !!}
-                    {!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-outline']) !!}
+                    {!! Form::submit('REGISTRAR', ['class' => 'btn btn-success btn-outline']) !!}
                     <a href="{!! url('auditor/procedimiento/mostrar/'. $codProc) !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     {!! Form::close() !!}
                 </div>
