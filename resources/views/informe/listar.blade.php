@@ -35,10 +35,10 @@
                         </td>
                         @else
                         <td style="text-align: center">
-                            <a href="{!! url('informe/mostrar/' . $auditoria->informe->codInf) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i>  </a>
                             <a href="{!! url('informe/editar/' . $auditoria->codPlanF) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i>  </a>
                             <a href="{!! url('informe/archivo/crear/'. $auditoria->informe->codInf) !!}" class="btn btn-warning btn-outline"><i class="fa fa-upload"></i>  </a>
                             <a href="{!! url('informe/archivo/listar/'. $auditoria->informe->codInf) !!}" class="btn btn-info btn-outline"><i class="fa fa-paperclip"></i>  </a>
+                            <a target="_blank" href="{!! url('reporte/informe-final/' . $auditoria->codPlanF)!!}" class="btn btn-info btn-outline"><i class="fa fa-download"> </i></a>
                         </td>
                         @endif
                     </tr>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Institucion;
 use Illuminate\Http\Request;
 use App\Models\Auditoria;
 use App\Models\Informe;
+use Jenssegers\Date\Date;
 
 class InformeController extends Controller
 {
@@ -19,8 +21,15 @@ class InformeController extends Controller
     public function crear($codPlanF)
     {
     	$informe = Informe::find($codPlanF);
+    	$auditoria = Auditoria::find($codPlanF);
+        $institucion = Institucion::find(1);
+        Date::setLocale('es');
+        $periodo = Date::parse($auditoria->periodoIniPlanF)->format('d \d\e F \d\e\l Y') . ' AL '
+            . Date::parse($auditoria->periodoFinPlanF)->format('d \d\e F \d\e\l Y') ;
+
+    	$view = view('reportes.auditoria.informe-final', compact('auditoria', 'institucion', 'periodo'));
     	$listarInforme = 'active';
-    	return view('informe.crear', compact(['informe', 'listarInforme', 'codPlanF']));
+    	return view('informe.crear', compact(['informe', 'listarInforme', 'codPlanF', 'view']));
     }
 
     public function registrar(Request $request)

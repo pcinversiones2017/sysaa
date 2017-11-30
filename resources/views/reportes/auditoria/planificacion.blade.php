@@ -112,9 +112,8 @@
 <footer>
     <hr>
     <p>{{strtoupper($auditoria->nombrePlanF)}}</p>
-        <p>PERÍODO: 1 DE ENERO DE 2015 AL 31 DE DICIEMBRE DE 2015</p>
-    <p style="text-align: center">“Decenio de las Personas con Discapacidad en el Perú”</p>
-    <p style="text-align: center">“AÑO DE LA CONSOLIDACIÓN DEL MAR DE GRAU”</p>
+        <p>PERÍODO: DEL {{ strtoupper($periodo) }}</p>
+    <p style="text-align: center">"{{$institucion->denominacion_anio}}”</p>
 </footer>
 
 {{-- DATOS DE LA AUDITORIA--}}
@@ -125,7 +124,7 @@
     <p style="font-size: 20px">AUDITORIA DE CUMPLIMIENTO</p>
     <p style="font-size: 20px">{{$auditoria->entidadAuditada}}</p><br><br>
     <p style="font-size: 20px">"{{$auditoria->nombrePlanF}}"</p><br><br>
-    <p style="font-size: 18px">PERIODO: {{$auditoria->periodoIniPlanF}} AL {{$auditoria->periodoFinPlanF}}</p>
+    <p style="font-size: 18px">PERIODO: {{ strtoupper($periodo) }}</p>
 </div>
 <span></span>
 {{-- INDICE --}}
@@ -151,7 +150,6 @@
             <li>XII.  RELACIÓN DE APÉNDICES</li>
         </ul>
     </div>
-
 </div>
 <span></span>
 

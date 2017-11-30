@@ -14,7 +14,7 @@
                 <div class="ibox-content">
                     {!! Form::open(['method' => 'POST', 'route' => 'informe.registrar']) !!}
                     {!! Form::hidden('codPlanF',$codPlanF) !!}
-                    {!! Field::textarea('informe', ['class' => 'summernote']) !!}
+                    {!! Field::textarea('informe', $view, ['class' => 'summernote']) !!}
                     {!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-outline']) !!}
                     <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     {!! Form::close() !!}

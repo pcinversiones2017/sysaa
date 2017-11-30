@@ -88,6 +88,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     Route::prefix('reporte')->group(function (){
        Route::get('planificacion/{codPlanF}', 'ReporteController@planificacion');
+       Route::get('informe-final/{codPlanF}', 'ReporteController@informeFinal');
     });
 
     Route::group(['prefix' => 'observacion'], function(){

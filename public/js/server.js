@@ -1,1 +1,1 @@
-var server = 'http://localhost/sysaa/public/';
+var server = 'http://local.sysaa.com/';
