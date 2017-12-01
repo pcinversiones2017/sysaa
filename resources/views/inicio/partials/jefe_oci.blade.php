@@ -1,7 +1,4 @@
-@section('css-style')
-    {!! Html::style('css/plugins/dataTables/datatables.min.css') !!}
-@stop
-    <div class="ibox-content">
+ <div class="ibox-content">
         @include('inicio.partials.notificacion')
         <h2> BIENVENIDO <strong>{!! Auth::user()->usuariorol->rol->nombre !!}</strong> : {!! Auth::user()->datos !!}</h2>
     </div>
@@ -9,7 +6,7 @@
     <hr>
     <div class="panel panel-success">
         <div class="panel-heading">
-            <h4> <strong> LISTADO DE PROCEDIMIENTOS ASIGNADOS AL {!! Auth::user()->usuariorol->rol->nombre !!}</strong></h4>
+            LISTADO DE PROCEDIMIENTOS ASIGNADOS AL {!! Auth::user()->usuariorol->rol->nombre !!}
         </div>
         <div class="panel-body">
             <h3 align="center">
@@ -85,7 +82,7 @@
     <hr>
     <div class="panel panel-success">
         <div class="panel-heading">
-            <h4> <strong> LISTADO DE PROCEDIMIENTOS GENERALES</strong></h4>
+           LISTADO DE PROCEDIMIENTOS GENERALES
         </div>
         <div class="panel-body">
             <h3 align="center">
@@ -121,8 +118,8 @@
                         <td>{!! $row->fecha_terminado !!}</td>
                         <td>{!! $row->fecha_rechazado !!}</td>
                         <td>{!! $row->fecha_fin !!}</td>
-                        <td>{!! $row->nombres !!} {!! $row->paterno !!} {!! $row->materno !!}</td>
-                        <td>{!! $row->nombrePlanF !!}</td>
+                        <td>{!! $row->codusurol->usuario->datos!!}</td>
+                        <td>{!! $row->codusurol->auditoria->nombrePlanF !!}</td>
                         <td>
                             @if($row->codEst == 1)
                             <span class="label label-info">NUEVO</span>

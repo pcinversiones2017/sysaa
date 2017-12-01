@@ -172,7 +172,13 @@ class AuditoriaController extends Controller
         }
 
 
-        return redirect()->route('auditoria.listar')->with('success', 'Auditoria actualizada correctamente');
+        if($auditoria->tipoActividad ==  'PROGRAMADA'){
+            return redirect('auditoria/listar')->with('success', 'Auditoria actualizada correctamente');
+        }else{
+            return redirect('auditoria/listar-no-programadas')->with('success', 'Auditoria actualizada correctamente');
+        }
+
+
     }
 
     public function eliminar(Request $request)

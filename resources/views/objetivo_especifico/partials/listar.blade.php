@@ -27,7 +27,7 @@
                             <td>{{$i}}</td>
                             <td>{{$objetivoEsp->nombre}}</td>
                             <td>{{$objetivoEsp->macroproceso->nombre}}</td>
-                            <td style="text-align: center"><a href="{{route('macroproceso.mostrar', $objetivoEsp->macroproceso->codMacroP)}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a></td>
+                            <td class="tooltip-demo" style="text-align: center"><a href="{{route('macroproceso.mostrar', $objetivoEsp->macroproceso->codMacroP)}}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Ver"><i class="fa fa-eye"></i></a></td>
                             <td>{{$objetivoEsp->materia}}</td>
                             <td class="tooltip-demo" style="text-align: center">
                                 <a href="{{url('objetivo-especifico/mostrar')}}/{{$auditoria->codPlanF}}/{{$objetivoEsp->codObjEsp}}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Ver"><i class="fa fa-eye"></i></a>

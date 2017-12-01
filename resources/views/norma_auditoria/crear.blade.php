@@ -42,7 +42,7 @@
                     @if($macroProcesos->isNotEmpty())
                     <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> REGISTRAR</button>
                     @endif
-                    <a href="{!! route('norma-auditoria.listar-aplica') !!}" class="btn btn-danger btn-outline">ATRAS</a>
+                    <a href="{!! route('auditoria.mostrar', $codPlanF) !!}" class="btn btn-danger btn-outline">ATRAS</a>
                 </div>
             </div>
 

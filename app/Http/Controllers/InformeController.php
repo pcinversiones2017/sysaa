@@ -34,7 +34,7 @@ class InformeController extends Controller
 
     public function registrar(Request $request)
     {
-    	$informe = new Informe();
+        $informe = new Informe();
     	$informe->informe = $request->informe;
     	$informe->codPlanF = $request->codPlanF;
         $informe->elaborado = date("Y-m-d H:i:s");

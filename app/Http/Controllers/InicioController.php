@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rol;
+use App\Models\Usuariorol;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Models\Procedimiento;
 use App\Models\Auditoria;
@@ -12,14 +15,34 @@ class InicioController extends Controller
 {
     public function index()
     {
-    	$procedimiento = Procedimiento::where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->get();
-    	$procedimiento_general = Procedimiento::leftJoin('objetivo_especifico', 'objetivo_especifico.codObjEsp', '=', 'procedimiento.codObjEsp')
-                            ->leftJoin('objetivo_general', 'objetivo_general.codObjGen', '=', 'procedimiento.codObjGen')
-                            ->leftJoin('usuario_roles', 'usuario_roles.codUsuRol', '=', 'procedimiento.codUsuRol')
-                            ->join('users', 'users.codUsu', '=', 'usuario_roles.codUsu')
-                            ->join('auditoria', 'auditoria.codPlanF', '=', 'objetivo_general.codPlanF')
-                            ->join('personas', 'personas.codPer', '=', 'users.codPer')
-    						->get();
+        $user = Auth::user();
+
+        $procedimiento = new Collection();
+        if($user->usuariorol->codUsuRol != Rol::JEFE_OCI){
+            $procedimiento = Procedimiento::where('codUsuRol',$user->usuariorol->codUsuRol)->get();
+        }
+
+
+
+//    	$procedimiento_general = Procedimiento::leftJoin('objetivo_especifico', 'objetivo_especifico.codObjEsp', '=', 'procedimiento.codObjEsp')
+//                            ->leftJoin('objetivo_general', 'objetivo_general.codObjGen', '=', 'procedimiento.codObjGen')
+//                            ->leftJoin('usuario_roles', 'usuario_roles.codUsuRol', '=', 'procedimiento.codUsuRol')
+//                            ->join('users', 'users.codUsu', '=', 'usuario_roles.codUsu')
+//                            ->join('auditoria', 'auditoria.codPlanF', '=', 'objetivo_general.codPlanF')
+//                            ->join('personas', 'personas.codPer', '=', 'users.codPer')
+//    						->get();
+
+
+        if($user->usuariorol->codUsuRol != Rol::JEFE_OCI){
+            $comision = Usuariorol::where('codPlanF', $user->usuariorol->auditoria->codPlanF)->pluck('codUsuRol')->except($user->usuariorol->codUsuRol)->toArray();
+
+            $procedimiento_general = Procedimiento::whereIn('codUsuRol', $comision)->get();
+        }else{
+            $procedimiento_general = Procedimiento::all();
+        }
+
+
+
     	$asignado = Procedimiento::asignado()->where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->with(['objetivoespecifico', 'desarrollo'])->get();
     	$pendiente = Procedimiento::pendiente()->where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->with(['objetivoespecifico', 'desarrollo'])->get();
     	$finalizado = Procedimiento::finalizado()->where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->with(['objetivoespecifico', 'desarrollo'])->get();
