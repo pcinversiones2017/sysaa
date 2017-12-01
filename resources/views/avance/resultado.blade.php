@@ -29,11 +29,11 @@
                         	<table class="table table-bordered">
                         		<tbody>
                         			<tr>
-                        				<td><strong>PROCEDIMIENTOS GENERALES <span class="label label-danger"> NO APROBADOS </span></strong> </td>
+                        				<td><strong>PROCEDIMIENTOS GENERALES <span class="label label-danger pull-right"> NO APROBADOS </span></strong> </td>
                         				<td>{!! $totalobjesp !!}</td>
                         			</tr>
                         			<tr>
-                        				<td><strong>PROCEDIMIENTOS ESPECIFICOS <span class="label label-danger"> NO APROBADOS</span></strong> </td>
+                        				<td><strong>PROCEDIMIENTOS ESPECIFICOS <span class="label label-danger pull-right"> NO APROBADOS</span></strong> </td>
                         				<td>{!! $totalobjgen !!}</td>
                         			</tr>
                         		</tbody>
@@ -41,11 +41,11 @@
                         	<table class="table table-bordered">
                         		<tbody>
                         			<tr>
-                        				<td><strong>PROCEDIMIENTOS GENERALES <span class="label label-primary">  APROBADOS </span></strong> </td>
+                        				<td><strong>PROCEDIMIENTOS GENERALES <span class="label label-primary pull-right">  APROBADOS </span></strong> </td>
                         				<td>{!! $totalobjespaprobado !!}</td>
                         			</tr>
                         			<tr>
-                        				<td><strong>PROCEDIMIENTOS ESPECIFICOS <span class="label label-primary">  APROBADOS</span></strong> </td>
+                        				<td><strong>PROCEDIMIENTOS ESPECIFICOS <span class="label label-primary pull-right">  APROBADOS</span></strong> </td>
                         				<td>{!! $totalobjgenaprobado !!}</td>
                         			</tr>
                         		</tbody>

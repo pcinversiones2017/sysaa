@@ -99,7 +99,7 @@
         $('.eliminar-subproceso').on('click', function (e) {
             e.preventDefault();
             var data = $(this);
-            alertify.confirm('Eliminar Subproceso', 'Esta seguro que desea eliminar este subproceso, se borraran todo el contenido involucrado!!',
+            alertify.confirm('ELIMINAR SUBPROCESO', 'ESTA SEGURO QUE DESEA ELIMINAR ESTE SUBPROCESO, SE BORRARÁ TODO EL CONTENIDO INVOLUCRADO!!',
                 function(){
                     window.location.href = data.attr('href');
                 },

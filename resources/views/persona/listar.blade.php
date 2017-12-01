@@ -1,9 +1,12 @@
 @extends('layout.admin')
+@section('css-style')
+    {!! Html::style('css/plugins/dataTables/datatables.min.css') !!}
+@stop
 @section('content')
     @include('partials.alert')
     <div class="panel panel-success">
         <div class="panel-heading">
-            LISTA DE PERSONAS
+            LISTA DE DATOS PERSONALES
         </div>
         <div class="panel-body">
 
@@ -64,7 +67,7 @@
         $('.eliminar-persona').on('click', function (e) {
             e.preventDefault();
             var data = $(this);
-            alertify.confirm('Eliminar Persona', '¿Esta seguro que desea eliminar esta persona?',
+            alertify.confirm('ELIMINAR PERSONA', '¿ESTA SEGURO QUE DESEA ELIMINAR ESTA PERSONA?',
                 function(){
                     window.location.href = data.attr('href');
                 },

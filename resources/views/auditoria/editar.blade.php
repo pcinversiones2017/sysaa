@@ -6,7 +6,7 @@
 
     <div class="panel panel-success">
         <div class="panel-heading">
-            EDITAR AUDITORIA
+            EDITAR AUDITORIA <strong>{{$auditoria->tipoActividad}}</strong>
         </div>
         <div class="panel-body">
             {!! Form::open(['method' => 'POST', 'route' => 'auditoria.actualizar']) !!}

@@ -49,7 +49,8 @@
         $('.eliminar-objetivo-especifico').on('click', function (e) {
             e.preventDefault();
             var data = $(this);
-            alertify.confirm('Eliminar Objetivo Especifico', 'Esta seguro que desea eliminar este objetivo especifico, se borraran todo el contenido involucrado!!',
+            alertify.confirm('ELIMINAR OBJETIVO ESPECIFICO',
+                '¿ESTA SEGURO QUE DESEA ELIMINAR ESTE OBJETIVO ESPECIFICO?, SE BORRARÁ TODO EL CONTENIDO INVOLUCRADO!!',
                 function(){
                     window.location.href = data.attr('href');
                 },

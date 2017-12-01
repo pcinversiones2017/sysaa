@@ -92,7 +92,7 @@
         $('.eliminar-procedimiento').on('click', function (e) {
             e.preventDefault();
             var data = $(this);
-            alertify.confirm('Eliminar Procedimiento', 'Esta seguro que desea eliminar este procedimiento, se borraran todo el contenido involucrado!!',
+            alertify.confirm('ELIMINAR PROCEDIMIENTO', '¿ESTA SEGURO QUE DESEA ELIMINAR ESTE PROCEDIMIENTO?, SE BORRARÁ TODO EL CONTENIDO INVOLUCRADO!!',
                 function(){
                     window.location.href = data.attr('href');
                 },
