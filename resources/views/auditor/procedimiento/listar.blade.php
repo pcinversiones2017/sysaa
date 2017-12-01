@@ -52,7 +52,7 @@
                                     <a href="" class="btn btn-danger btn-outline">FINALIZADO</a>
                                     @elseif($row->codEst == 5)
                                     <a href="" class="btn btn-danger btn-outline">RECHAZADO</a>
-                                    <a href="{!! url('auditor/procedimiento/mostrar/'.$row->codProc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-eye"></i>  </a>
+                                    <a href="{!! url('auditor/procedimiento/mostrar/'.$row->codProc) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Visualizar procedimiento"><i class="fa fa-eye"></i>  </a>
                                     @else
                                     <a href="" class="btn btn-primary btn-outline">CONCLUIDO</a>
                                     @endif

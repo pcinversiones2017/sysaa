@@ -13,7 +13,7 @@ class InformeController extends Controller
     public function listar()
     {
     	$informes = Informe::all();
-    	$auditorias = Auditoria::where('codEstAud', 3)->get();
+    	$auditorias = Auditoria::where('codEstAud', 4)->get();
     	$listarInforme = 'active';
     	return view('informe.listar', compact(['informes', 'auditorias', 'listarInforme']));
     }

@@ -65,8 +65,8 @@
                                 @if(Auth::user()->usuariorol->codUsuRol == $row->codUsuRol)
                                     <span class="label label-primary">TERMINADO</span>
                                 @else
-                                    <a href="{!! url('jefe-comision/procedimiento/aprobar/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-check"></i></a>
-                                    <a href="{!! url('jefe-comision/procedimiento/rechazar/'.$row->codProc) !!}" class="btn btn-danger btn-outline"><i class="fa fa-remove"></i></a>
+                                    <a href="{!! url('jefe-comision/procedimiento/aprobar/'.$row->codProc) !!}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Aprobar"><i class="fa fa-check"></i></a>
+                                    <a href="{!! url('jefe-comision/procedimiento/rechazar/'.$row->codProc) !!}" class="btn btn-danger btn-outline" data-toggle="tooltip" data-placement="bottom" title="Rechazar"><i class="fa fa-remove"></i></a>
                                 @endif
                             @elseif($row->codEst == App\Models\Estado::APROBADO)
                             <span class="label label-success">APROBADO</span>
@@ -143,9 +143,9 @@
                                 @if(Auth::user()->usuariorol->codUsuRol == $row->codUsuRol)
                                     <span class="label label-primary">TERMINADO</span>
                                 @else
-                                    <a href="{!! url('procedimiento/detalle/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
-                                    <a href="{!! url('jefe-comision/procedimiento/aprobar/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-check"></i></a>
-                                    <a href="{!! url('jefe-comision/procedimiento/rechazar/'.$row->codProc) !!}" class="btn btn-danger btn-outline"><i class="fa fa-remove"></i></a>
+                                    <a href="{!! url('procedimiento/detalle/'.$row->codProc) !!}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Visualizar procedimiento"><i class="fa fa-eye"></i></a>
+                                    <a href="{!! url('jefe-comision/procedimiento/aprobar/'.$row->codProc) !!}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Aprobar"><i class="fa fa-check"></i></a>
+                                    <a href="{!! url('jefe-comision/procedimiento/rechazar/'.$row->codProc) !!}" class="btn btn-danger btn-outline" data-toggle="tooltip" data-placement="bottom" title="Rechazar"><i class="fa fa-remove"></i></a>
                                 @endif
                             @elseif($row->codEst == 4)
                             <span class="label label-success">APROBADO</span>

@@ -15,7 +15,7 @@
                     {!! Form::open(['method' => 'POST', 'route' => 'informe.registrar']) !!}
                     {!! Form::hidden('codPlanF',$codPlanF) !!}
                     {!! Field::textarea('INFORME', $view, ['class' => 'summernote']) !!}
-                    {!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-outline']) !!}
+                    {!! Form::submit('REGISTRAR', ['class' => 'btn btn-success btn-outline']) !!}
                     <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     {!! Form::close() !!}
                 </div>

@@ -15,7 +15,7 @@
                                     {!! Form::select('auditoria', $auditorias, null, ['class' => 'form-control', 'placeholder' => 'SELECCIONE AUDITORIA']) !!}
                                 </div>
                                 <div class="col-sm-1">
-                                    {!! Form::submit('BUSCAR', ['class' => 'btn btn-primary btn-outline']) !!}
+                                    {!! Form::submit('BUSCAR', ['class' => 'btn btn-success btn-outline']) !!}
                                 </div>
                                 {!! Form::close() !!}
                             </div>

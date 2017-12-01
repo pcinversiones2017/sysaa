@@ -31,7 +31,7 @@
                                 <td>{!! $row->descripcion !!}</td>
                                 <td>{!! $row->recomendacion !!}</td>
                                 <td>
-                                    <a href="{!! url('seguimiento/listar/'.$row->codObs) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i>  </a>
+                                    <a href="{!! url('seguimiento/listar/'.$row->codObs) !!}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Visualizar seguimiento"><i class="fa fa-eye"></i>  </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

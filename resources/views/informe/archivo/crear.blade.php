@@ -27,7 +27,7 @@
                             <div class="hr-line-dashed"></div>
 
                             <div class="form-group">
-                                {!! Form::submit('CARGAR', ['class' => 'btn btn-primary btn-outline']) !!}
+                                {!! Form::submit('CARGAR', ['class' => 'btn btn-success btn-outline']) !!}
                                 <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
                             <div class="hr-line-dashed"></div>
