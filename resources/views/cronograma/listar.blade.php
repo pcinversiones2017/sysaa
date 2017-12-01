@@ -43,9 +43,9 @@
                                 <td>{{$auditoria->fechaFinPlanF}}</td>
                                 <td>{{$auditoria->planAnual->nombrePlan}}</td>
                                 <td>
-                                    <a href="{{URL::to('cronograma/mostrar')}}/{{$auditoria->codPlanF}}" class="btn btn-success btn-outline btn-outline"><i class="fa fa-eye"></i></a>
-                                    <a href="{{URL::to('cronograma/editar')}}/{{$auditoria->codPlanF}}" class="btn btn-primary btn-outline btn-outline"><i class="fa fa-edit"></i></a>
-                                    <a href="{{URL::to('cronograma/eliminar')}}/{{$auditoria->codPlanF}}" class="btn btn-danger btn-outline btn-outline"><i class="fa fa-trash"></i></a>
+                                    <a href="{{URL::to('cronograma/mostrar')}}/{{$auditoria->codPlanF}}" class="btn btn-success btn-outline btn-outline" data-toggle="tooltip" data-placement="bottom" title="Ver Cronograma"><i class="fa fa-eye"></i></a>
+                                    <a href="{{URL::to('cronograma/editar')}}/{{$auditoria->codPlanF}}" class="btn btn-primary btn-outline btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
+                                    <a href="{{URL::to('cronograma/eliminar')}}/{{$auditoria->codPlanF}}" class="btn btn-danger btn-outline btn-outline" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
 

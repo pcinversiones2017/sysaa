@@ -32,7 +32,7 @@
                                             <h5><strong>AUDITORIAS</strong></h5>
                                             <ul>
                                                 @foreach($plan->auditorias as $auditoria)
-                                                    <li>{{$auditoria->nombrePlanF}}  <label class="label label-default">{{$auditoria->tipoActividad}}</label>
+                                                    <li style="padding-bottom: 10px">{{$auditoria->nombrePlanF}}  <label class="label label-default">{{$auditoria->tipoActividad}}</label>
                                                             <a class="pull-right" href="{{route('auditoria.editar', $auditoria->codPlanF)}}"><i class="fa fa-edit"></i></a>
                                                     </li>
                                                 @endforeach

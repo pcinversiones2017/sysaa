@@ -33,12 +33,12 @@
                 {{--<a href="{{URL::to('norma-auditoria/archivo-descargar')}}/{{$normativa->codNormMacro}}"><i class="fa fa-file-text fa-2x" aria-hidden="true"></i></a>--}}
                 {{--@endif--}}
                 {{--</td>--}}
-                <td width="15%" style="text-align: center">
-                <a href="{{URL::to('norma-auditoria/editar')}}/{{$normativa->codNorm}}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
-                {{--@if(empty($normativa->nombre_archivo))--}}
-                {{--<a href="{{URL::to('norma-auditoria/archivo-crear')}}/{{$normativa->codNormMacro}}" class="btn btn-info btn-outline" data-toggle="tooltip" data-placement="bottom" title="Adjuntar"><i class="fa fa-file"></i> </a>--}}
-                {{--@endif--}}
-                <a href="{{URL::to('norma-auditoria/eliminar')}}/{{$normativa->codNorm}}"  class="btn btn-danger btn-outline eliminar-normativa" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
+                <td width="15%" style="text-align: center" class="tooltip-demo">
+                    <a href="{{URL::to('norma-auditoria/editar')}}/{{$normativa->codNorm}}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
+                    {{--@if(empty($normativa->nombre_archivo))--}}
+                    {{--<a href="{{URL::to('norma-auditoria/archivo-crear')}}/{{$normativa->codNormMacro}}" class="btn btn-info btn-outline" data-toggle="tooltip" data-placement="bottom" title="Adjuntar"><i class="fa fa-file"></i> </a>--}}
+                    {{--@endif--}}
+                    <a href="{{URL::to('norma-auditoria/eliminar')}}/{{$normativa->codNorm}}"  class="btn btn-danger btn-outline eliminar-normativa" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
             <?php $i++ ?>

@@ -1,5 +1,7 @@
 @extends('layout.admin')
-
+@section('css-style')
+	{!! Html::style('css/plugins/dataTables/datatables.min.css') !!}
+@stop
 @section('content')
 <div class="row">
     <div class="col-lg-12">

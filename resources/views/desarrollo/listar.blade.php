@@ -43,10 +43,10 @@
                                 <td>{!! $row->revisado !!}</td>
                                 <td>{!! $row->supervisado !!}</td>
                                 <td>
-                                    <a href="{!! url('auditor/observacion/crear/'.$row->codDes) !!}" class="btn btn-success  btn-outline"><i class="fa fa-eye"></i>  </a>
-                                    <a href="{!! url('auditor/desarrollo/editar/'.$row->codDes) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
-                                    <a href="{!! url('auditor/desarrollo/eliminar/'.$row->codDes) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
-                                    <a href="{!! url('auditor/archivo/crear/'.$row->codDes) !!}" class="btn btn-warning btn-outline"><i class="fa fa-upload"></i>  </a>
+                                    <a href="{!! url('auditor/observacion/crear/'.$row->codDes) !!}" class="btn btn-success  btn-outline" data-toggle="tooltip" data-placement="bottom" title="Crear Observacion"><i class="fa fa-eye"></i>  </a>
+                                    <a href="{!! url('auditor/desarrollo/editar/'.$row->codDes) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-pencil"></i>  </a>
+                                    <a href="{!! url('auditor/desarrollo/eliminar/'.$row->codDes) !!}" class="btn btn-danger btn-outline" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i>  </a>
+                                    <a href="{!! url('auditor/archivo/crear/'.$row->codDes) !!}" class="btn btn-warning btn-outline" data-toggle="tooltip" data-placement="bottom" title="Adjuntar Documento"><i class="fa fa-upload"></i>  </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

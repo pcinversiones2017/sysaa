@@ -34,14 +34,14 @@
                         @endif
                         @if(empty($auditoria->informe->informe))
                         <td style="text-align: center">
-                            <a href="{!! url('informe/crear/' . $auditoria->codPlanF) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
+                            <a href="{!! url('informe/crear/' . $auditoria->codPlanF) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Crear Informe"><i class="fa fa-pencil"></i>  </a>
                         </td>
                         @else
                         <td style="text-align: center">
-                            <a href="{!! url('informe/editar/' . $auditoria->codPlanF) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i>  </a>
-                            <a href="{!! url('informe/archivo/crear/'. $auditoria->informe->codInf) !!}" class="btn btn-warning btn-outline"><i class="fa fa-upload"></i>  </a>
-                            <a href="{!! url('informe/archivo/listar/'. $auditoria->informe->codInf) !!}" class="btn btn-info btn-outline"><i class="fa fa-paperclip"></i>  </a>
-                            <a target="_blank" href="{!! url('reporte/informe-final/' . $auditoria->codPlanF)!!}" class="btn btn-info btn-outline"><i class="fa fa-download"> </i></a>
+                            <a href="{!! url('informe/editar/' . $auditoria->codPlanF) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i>  </a>
+                            <a href="{!! url('informe/archivo/crear/'. $auditoria->informe->codInf) !!}" class="btn btn-warning btn-outline" data-toggle="tooltip" data-placement="bottom" title="Adjuntar Documentos"><i class="fa fa-upload"></i>  </a>
+                            <a href="{!! url('informe/archivo/listar/'. $auditoria->informe->codInf) !!}" class="btn btn-info btn-outline" data-toggle="tooltip" data-placement="bottom" title="Visualizar documentos adjuntados"><i class="fa fa-paperclip"></i>  </a>
+                            <a target="_blank" href="{!! url('reporte/informe-final/' . $auditoria->codPlanF)!!}" class="btn btn-info btn-outline" data-toggle="tooltip" data-placement="bottom" title="Descargar"><i class="fa fa-download"> </i></a>
                         </td>
                         @endif
                     </tr>

@@ -80,9 +80,9 @@
                                             <td>{{$procedimientosp->riesgo}}</td>
                                             <td>{{$procedimientosp->ponderacion}}</td>
                                             <td>
-                                                <a href="{!!  route('procedimientosp.mostrar', $procedimientosp->codProSP) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
-                                                <a href="{!!  route('procedimientosp.editar', $procedimientosp->codProSP) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
-                                                <a href="{!!  route('procedimientosp.eliminar', $procedimientosp->codProSP)!!}" class="btn btn-danger btn-outline eliminar-procedimiento"><i class="fa fa-trash"></i></a>
+                                                <a href="{!!  route('procedimientosp.mostrar', $procedimientosp->codProSP) !!}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Visualizar procedimientos"><i class="fa fa-eye"></i></a>
+                                                <a href="{!!  route('procedimientosp.editar', $procedimientosp->codProSP) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
+                                                <a href="{!!  route('procedimientosp.eliminar', $procedimientosp->codProSP)!!}" class="btn btn-danger btn-outline eliminar-procedimiento"  data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

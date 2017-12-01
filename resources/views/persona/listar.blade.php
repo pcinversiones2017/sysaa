@@ -38,9 +38,9 @@
                         <td>{!! $persona->paterno !!}</td>
                         <td>{!! $persona->materno !!}</td>
                         <td>{!! $persona->email !!}</td>
-                        <td style="text-align: center">
-                            <a href="{!! url('persona/editar/' . $persona->codPer) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i>  </a>
-                            <a href="{!! url('persona/eliminar/' . $persona->codPer) !!}" class="btn btn-danger btn-outline eliminar-persona"><i class="fa fa-trash"></i>  </a>
+                        <td style="text-align: center" class="tooltip-demo">
+                            <a href="{!! url('persona/editar/' . $persona->codPer) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i>  </a>
+                            <a href="{!! url('persona/eliminar/' . $persona->codPer) !!}" class="btn btn-danger btn-outline eliminar-persona" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i>  </a>
                         </td>
                     </tr>
                     <?php $i++ ?>

@@ -26,10 +26,11 @@
                         <th>#</th>
                         <th>JUSTIFICACION</th>
                         <th>DETALLE</th>
+                        <th>OBSERVACIONES</th>
+                        <th>ESTADO</th>
+                        <th>FECHA FIN</th>
                         <th>F. TERMINADO</th>
                         <th>F. RECHAZADO</th>
-                        <th>FECHA FIN</th>
-                        <th>ESTADO</th>
                         <th>ACCION</th>
                     </tr>
                 </thead>
@@ -40,9 +41,7 @@
                         <td>{{$i}}</td>
                         <td>{!! substr($row->justificacion,0,10) !!}</td>
                         <td>{!! substr($row->detalle,0,10) !!}</td>
-                        <td>{!! $row->fecha_terminado !!}</td>
-                        <td>{!! $row->fecha_rechazado !!}</td>
-                        <td>{!! $row->fecha_fin !!}</td>
+                        <td>{{ isset($row->desarrollo->observacion) ? $row->desarrollo->observacion->count() : 0}}</td>
                         <td>
                             @if($row->codEst == App\Models\Estado::NUEVO)
                             <span class="label label-info">NUEVO</span>
@@ -56,22 +55,26 @@
                             <span class="label label-danger">RECHAZADO</span>
                             @endif
                         </td>
+
+                        <td>{!! $row->fecha_fin !!}</td>
+                        <td>{!! $row->fecha_terminado !!}</td>
+                        <td>{!! $row->fecha_rechazado !!}</td>
                         <td>
                             @if($row->codEst == App\Models\Estado::NUEVO)
-                            <a href="{!! url('auditor/desarrollo/crear/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-pencil"></i> </a>
+                                <a href="{!! url('auditor/desarrollo/crear/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-pencil"></i> </a>
                             @elseif($row->codEst == App\Models\Estado::PENDIENTE)
-                            <a href="{!! url('auditor/procedimiento/mostrar/'.$row->codProc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-eye"></i>  </a>
+                                <a href="{!! url('auditor/procedimiento/mostrar/'.$row->codProc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-eye"></i>  </a>
                             @elseif($row->codEst == App\Models\Estado::TERMINADO)
                                 @if(Auth::user()->usuariorol->codUsuRol == $row->codUsuRol)
                                     <span class="label label-primary">TERMINADO</span>
                                 @else
-                                    <a href="{!! url('jefe-comision/procedimiento/aprobar/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-check"></i></a>
-                                    <a href="{!! url('jefe-comision/procedimiento/rechazar/'.$row->codProc) !!}" class="btn btn-danger btn-outline"><i class="fa fa-remove"></i></a>
+                                    <a href="{!! url('jefe-comision/procedimiento/aprobar/'.$row->codProc) !!}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Aprobar"><i class="fa fa-check"></i></a>
+                                    <a href="{!! url('jefe-comision/procedimiento/rechazar/'.$row->codProc) !!}" class="btn btn-danger btn-outline" data-toggle="tooltip" data-placement="bottom" title="Rechazar"><i class="fa fa-remove"></i></a>
                                 @endif
                             @elseif($row->codEst == App\Models\Estado::APROBADO)
-                            <span class="label label-success">APROBADO</span>
+                                <span class="label label-success">APROBADO</span>
                             @elseif($row->codEst == App\Models\Estado::RECHAZADO)
-                            <span class="label label-danger">RECHAZADO</span>
+                                <span class="label label-danger">RECHAZADO</span>
                             @endif
                         </td>
                     </tr>
@@ -102,11 +105,12 @@
                         <th>#</th>
                         <th>JUSTIFICACION</th>
                         <th>DETALLE</th>
-                        <th>F. TERMINADO</th>
-                        <th>F. RECHAZADO</th>
-                        <th>FECHA FIN</th>
+                        <th>OBSERVACIONES</th>
                         <th>PERSONA</th>
                         <th>ESTADO</th>
+                        <th>FECHA FIN</th>
+                        <th>F. TERMINADO</th>
+                        <th>F. RECHAZADO</th>
                         <th>ACCION</th>
                     </tr>
                 </thead>
@@ -117,10 +121,9 @@
                         <td>{{$i}}</td>
                         <td>{!! substr($row->justificacion,0,10) !!}</td>
                         <td>{!! substr($row->detalle,0,10) !!}</td>
-                        <td>{!! $row->fecha_terminado !!}</td>
-                        <td>{!! $row->fecha_rechazado !!}</td>
-                        <td>{!! $row->fecha_fin !!}</td>
-                        <td>{!! $row->nombres !!} {!! $row->paterno !!} {!! $row->materno !!}</td>
+
+                        <td>{{ isset($row->desarrollo->observacion) ? $row->desarrollo->observacion->count() : 0 }}</td>
+                        <td>{!! $row->codusurol->usuario->datos !!}</td>
                         <td>
                             @if($row->codEst == 1)
                             <span class="label label-info">NUEVO</span>
@@ -134,23 +137,26 @@
                             <span class="label label-danger">RECHAZADO</span>
                             @endif
                         </td>
+                        <td>{!! $row->fecha_fin !!}</td>
+                        <td>{!! $row->fecha_terminado !!}</td>
+                        <td>{!! $row->fecha_rechazado !!}</td>
                         <td>
                             @if($row->codEst == 1)
-                            <span class="label label-info">NUEVO</span>
+                                <span class="label label-info">NUEVO</span>
                             @elseif($row->codEst == 2)
-                            <span class="label label-warning">PENDIENTE</span>
+                                <span class="label label-warning">PENDIENTE</span>
                             @elseif($row->codEst == 3)
                                 @if(Auth::user()->usuariorol->codUsuRol == $row->codUsuRol)
                                     <span class="label label-primary">TERMINADO</span>
                                 @else
-                                    <a href="{!! url('procedimiento/detalle/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
-                                    <a href="{!! url('jefe-comision/procedimiento/aprobar/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-check"></i></a>
-                                    <a href="{!! url('jefe-comision/procedimiento/rechazar/'.$row->codProc) !!}" class="btn btn-danger btn-outline"><i class="fa fa-remove"></i></a>
+                                    <a href="{!! url('procedimiento/detalle/'.$row->codProc) !!}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Visualizar procedimiento"><i class="fa fa-eye"></i></a>
+                                    <a href="{!! url('jefe-comision/procedimiento/aprobar/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-check" data-toggle="tooltip" data-placement="bottom" title="Aprobar"></i></a>
+                                    <a href="{!! url('jefe-comision/procedimiento/rechazar/'.$row->codProc) !!}" class="btn btn-danger btn-outline" data-toggle="tooltip" data-placement="bottom" title="Rechazar"><i class="fa fa-remove"></i></a>
                                 @endif
                             @elseif($row->codEst == 4)
-                            <span class="label label-success">APROBADO</span>
+                                <span class="label label-success">APROBADO</span>
                             @elseif($row->codEst == 5)
-                            <span class="label label-danger">RECHAZADO</span>
+                                <span class="label label-danger">RECHAZADO</span>
                             @endif
                         </td>
                     </tr>
