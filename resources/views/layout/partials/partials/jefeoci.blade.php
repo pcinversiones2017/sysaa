@@ -13,12 +13,12 @@
                     </ul>
                 </li>
                 <li class="header" style="padding: 5px 25px 5px 40px; background: #1d3040; color: #a7b1c2"><span class="nav-label">ETAPAS DE AUDITORIA</span></li>
-                <li class="{{$crearPlan?? ''}} {{$listarPlan?? ''}} {{$crearAuditoria?? ''}} {{$listarAuditoria??''}} {{$listarAuditoriaNoProgramadas ?? ''}}">
+                <li class="{{$crearPlan?? ''}} {{$listarPlan?? ''}} {{$crearAuditoria?? ''}} {{$listarAuditoria??''}} {{$listarAuditoriaNoProgramadas ?? ''}} {{$gantt ?? ''}}">
                     <a href=""><i class="fa fa-tasks"></i> <span class="nav-label">Plan</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearPlan?? ''}}"><a href="{{URL::to('plan/crear')}}"><i class="fa fa-pencil"></i> Crear </a></li>
                         <li class="{{$listarPlan?? ''}}"><a href="{{URL::to('plan/listar')}}"><i class="fa fa-list-alt"></i> Listar </a></li>
-                        <li class="{{$crearAuditoria?? ''}} {{$listarAuditoria??''}} {{$listarAuditoriaNoProgramadas ?? ''}}">
+                        <li class="{{$crearAuditoria?? ''}} {{$listarAuditoria??''}} {{$listarAuditoriaNoProgramadas ?? ''}} {{$gantt ?? ''}}">
                             <a href="#"><i class="fa fa-th-large"></i> Auditoria <span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li class="{{$listarAuditoria??''}}">

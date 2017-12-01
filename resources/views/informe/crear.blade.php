@@ -7,18 +7,19 @@
 @section('content')
 	<div class="row">
         <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Crear Informe </h5>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    CREAR INFORME
                 </div>
-                <div class="ibox-content">
+                <div class="panel-body">
                     {!! Form::open(['method' => 'POST', 'route' => 'informe.registrar']) !!}
                     {!! Form::hidden('codPlanF',$codPlanF) !!}
-                    {!! Field::textarea('informe', $view, ['class' => 'summernote']) !!}
+                    {!! Field::textarea('INFORME', $view, ['class' => 'summernote']) !!}
                     {!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-outline']) !!}
                     <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     {!! Form::close() !!}
                 </div>
+
             </div>
         </div>
     </div>

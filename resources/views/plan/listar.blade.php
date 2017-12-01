@@ -32,8 +32,7 @@
                                             <h5><strong>AUDITORIAS</strong></h5>
                                             <ul>
                                                 @foreach($plan->auditorias as $auditoria)
-                                                    <li>{{$auditoria->nombrePlanF}}
-                                                            {{--<a class="pull-right" href="{{route('auditoria.mostrar', $auditoria->codPlanF)}}"><i class="fa fa-eye"></i></a> --}}
+                                                    <li>{{$auditoria->nombrePlanF}}  <label class="label label-default">{{$auditoria->tipoActividad}}</label>
                                                             <a class="pull-right" href="{{route('auditoria.editar', $auditoria->codPlanF)}}"><i class="fa fa-edit"></i></a>
                                                     </li>
                                                 @endforeach
@@ -47,6 +46,7 @@
                                             <a href="{!!  route('plan.eliminar', $plan->codPlanA)!!}" class="btn btn-danger btn-outline eliminar-plan" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
+                                    <?php $i++ ?>
                                 @endforeach
                                 </tbody>
                             </table>
@@ -62,7 +62,7 @@
     $('.eliminar-plan').on('click', function (e) {
         e.preventDefault();
         var data = $(this);
-        alertify.confirm('Eliminar Plan', 'Esta seguro que desea eliminar este plan, se borraran todas las Auditorias involucradas!',
+        alertify.confirm('ELIMINAR PLAN', '¿ESTA SEGURO QUE DESEA ELIMINAR ESTE PLAN?, SE BORRARAN TODAS LAS AUDITORIAS INVOLUCRADAS!',
             function(){
                 window.location.href = data.attr('href');
             },

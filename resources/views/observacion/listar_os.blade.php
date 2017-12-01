@@ -1,5 +1,7 @@
 @extends('layout.admin')
-
+@section('css-style')
+    {!! Html::style('css/plugins/dataTables/datatables.min.css') !!}
+@stop
 @section('content')
     @include('partials.alert')
 
@@ -55,19 +57,6 @@
     {!! Html::script('js/plugins/alertifyjs/alertify.min.js') !!}
     {!! Html::script('js/plugins/dataTables/datatables.min.js') !!}
 
-    <script>
-        $('.eliminar-persona').on('click', function (e) {
-            e.preventDefault();
-            var data = $(this);
-            alertify.confirm('Eliminar Persona', '¿Esta seguro que desea eliminar esta persona?',
-                function(){
-                    window.location.href = data.attr('href');
-                },
-                function(){
-                    alertify.error('Cancelado');
-                }).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
-        });
-    </script>
     <script>
         $(document).ready(function(){
             $('.table-personas').DataTable({

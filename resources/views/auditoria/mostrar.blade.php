@@ -20,7 +20,7 @@
         $('.eliminar-objetivo-especifico').on('click', function (e) {
             e.preventDefault();
             var data = $(this);
-            alertify.confirm('Eliminar Objetivo Especifico', '¿Esta seguro que desea eliminar este objetivo especifico.?, se borrarán todo el contenido involucrado!!',
+            alertify.confirm('ELIMINAR OBJETIVO ESPECÍFICO', '¿ESTA SEGURO QUE DESEA ELIMINAR ESTE OBJETIVO ESPECÍFICO?, SE BORRARÁ TODO EL CONTENIDO INVOLUCRADO!!',
                 function(){
                     window.location.href = data.attr('href');
                 },
@@ -33,7 +33,7 @@
         $('.eliminar-normativa').on('click', function (e) {
             e.preventDefault();
             var data = $(this);
-            alertify.confirm('Eliminar Normativa', '¿Esta seguro que desea eliminar esta normativa.?',
+            alertify.confirm('ELIMINAR NORMATIVA', '¿ESTA SEGURO QUE DESEA ELIMINAR ESTA NORMATIVA?',
                 function(){
                     window.location.href = data.attr('href');
                 },
@@ -46,7 +46,8 @@
         $('#culminar-planificacion').on('click', function (e) {
             e.preventDefault();
             var data = $(this);
-            alertify.confirm('Culminar planificación', '¿Esta seguro que desea culminar esta planificación.? luego de ello pasara a estado en pendiente de aprobación por el jefe de comisión',
+            alertify.confirm('CULMINAR PLANIFICACIÓN', '¿ESTA SEGURO QUE DESEA CULMINAR ESTA PLANIFICACIÓN? ' +
+                'LUEGO DE ELLO PASARÁ A ESTADO PENDIENTE DE APROBACIÓN POR EL JEFE DE COMISIÓN',
                 function(){
                     window.location.href = data.attr('href');
                 },
@@ -60,7 +61,7 @@
         $('.eliminar-asignacion').on('click', function (e) {
             e.preventDefault();
             var data = $(this);
-            alertify.confirm('Eliminar Asignación', 'Esta seguro que desea eliminar esta asignación',
+            alertify.confirm('ELIMINAR ASIGNACIÓN', '¿ESTA SEGURO QUE DESEA ELIMINAR ESTA ASIGNACIÓN?',
                 function(){
                     window.location.href = data.attr('href');
                 },

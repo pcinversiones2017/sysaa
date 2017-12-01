@@ -69,7 +69,7 @@
         $('.eliminar-auditoria').on('click', function (e) {
             e.preventDefault();
             var data = $(this);
-            alertify.confirm('Eliminar Auditoria', 'Esta seguro que desea eliminar este auditoria, se borraran todo el contenido involucrado!!',
+            alertify.confirm('ELIMINAR AUDITORIA', '¿ESTA SEGURO QUE DESEA ELIMINAR ESTA AUDITORIA?, SE BORRARAN TODO EL CONTENIDO INVOLUCRADO!!',
                 function(){
                     window.location.href = data.attr('href');
                 },

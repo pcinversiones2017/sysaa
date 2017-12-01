@@ -61,7 +61,7 @@
         $('.eliminar-macroproceso').on('click', function (e) {
             e.preventDefault();
             var data = $(this);
-            alertify.confirm('Eliminar Macroproceso', 'Esta seguro que desea eliminar este macroproceso, se borraran todo el contenido involucrado!!',
+            alertify.confirm('ELIMINAR MACROPROCESO', '¿ESTA SEGURO QUE DESEA ELIMINAR ESTE MACROPROCESO?, SE BORRARÁ TODO EL CONTENIDO INVOLUCRADO!!',
                 function(){
                     window.location.href = data.attr('href');
                 },

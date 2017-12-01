@@ -102,7 +102,7 @@
         $('.eliminar-actividad').on('click', function (e) {
             e.preventDefault();
             var data = $(this);
-            alertify.confirm('Eliminar Actividad', 'Esta seguro que desea eliminar este procedimiento, se borraran todo el contenido involucrado!!',
+            alertify.confirm('ELIMINAR ACTIVIDAD', '¿ESTA SEGURO QUE DESEA ELIMINAR ESTA ACTIVIDAD?',
                 function(){
                     window.location.href = data.attr('href');
                 },

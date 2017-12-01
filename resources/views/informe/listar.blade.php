@@ -1,4 +1,7 @@
 @extends('layout.admin')
+@section('css-style')
+    {!! Html::style('css/plugins/dataTables/datatables.min.css') !!}
+@stop
 @section('content')
     @include('partials.alert')
     <div class="panel panel-success">
@@ -7,7 +10,7 @@
         </div>
         <div class="panel-body">
 
-            <table class="table table-bordered table-personas">
+            <table class="table table-bordered table-informes">
                 <thead>
                 <tr>
                     <th>#</th>
@@ -63,21 +66,8 @@
     {!! Html::script('js/plugins/dataTables/datatables.min.js') !!}
 
     <script>
-        $('.eliminar-persona').on('click', function (e) {
-            e.preventDefault();
-            var data = $(this);
-            alertify.confirm('Eliminar Persona', '¿Esta seguro que desea eliminar esta persona?',
-                function(){
-                    window.location.href = data.attr('href');
-                },
-                function(){
-                    alertify.error('Cancelado');
-                }).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
-        });
-    </script>
-    <script>
         $(document).ready(function(){
-            $('.table-personas').DataTable({
+            $('.table-informes').DataTable({
                 "ordering": false,
                 language: {
                     url : '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'

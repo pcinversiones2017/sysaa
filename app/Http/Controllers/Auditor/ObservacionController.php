@@ -28,7 +28,7 @@ class ObservacionController extends Controller
     {
     	Observacion::create(['titulo' => $request->titulo,'descripcion' => $request->informe, 'recomendacion' => $request->recomendacion, 'elaborado' => date("Y-m-d"), 'codDes' => $request->codDes]);
         RegistrarActividad(Observacion::TABLA,Historial::REGISTRAR,'registró la Observacion '.$request->nombre);
-    	return redirect('auditor/procedimiento/mostrar/'.$request->codProc)->with('success','Observacion registrado');
+    	return redirect('auditor/procedimiento/mostrar/'.$request->codProc)->with('success','La observacion se ha registrado satisfactoriamente');
     }
 
     public function editar($codProc, $codDes, $codObs)

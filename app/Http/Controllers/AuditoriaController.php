@@ -123,14 +123,6 @@ class AuditoriaController extends Controller
             'codPlanF', 'objetivoGeneral', 'normativas'));
     }
 
-    public function informeFinal(Request $request)
-    {
-        $auditoria = Auditoria::find($request->codPlanF);
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML('<h1>Test</h1>');
-        return $pdf->stream();
-
-    }
 
     public function editar(Request $request)
     {
@@ -196,18 +188,6 @@ class AuditoriaController extends Controller
         }
     }
 
-    public function word()
-    {
-        $phpWord = new PhpWord();
-        $section = $phpWord->addSection();
-        $section->addText(
-                        '"Learn from yesterday, live for today, hope for tomorrow. '
-                            . 'The important thing is not to stop questioning." '
-                            . '(Albert Einstein)'
-                    );
-        
-        return response()->download($objWriter);
-    }
 
     public function culminarAuditoria(Request $request)
     {
@@ -230,7 +210,8 @@ class AuditoriaController extends Controller
     public function gantt()
     {
         $auditorias = Auditoria::all();
-        return view('auditoria.gantt', compact('auditorias'));
+        $gantt = 'active';
+        return view('auditoria.gantt', compact('auditorias', 'gantt'));
     }
 
     public function diagramaGantt(Request $request)
