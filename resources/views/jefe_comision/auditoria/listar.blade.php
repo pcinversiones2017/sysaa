@@ -16,7 +16,6 @@
             <h4> <strong> LISTA DE AUDITORIA </strong></h4>
         </div>
         <div class="panel-body">
-d
                     <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                     <table class="table table-bordered table-auditorias">
                         <thead>
