@@ -25,7 +25,7 @@
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-outline" value=""><i class="fa fa-save"></i> ACTUALIZAR</button>
-                                <a href="{{URL::to('macroproceso/mostrar')}}/{{$procesoma->codProMA}}"  class="btn btn-danger btn-outline">CANCELAR</a>
+                                <a href="{{URL::to('macroproceso/mostrar')}}/{{$procesoma->macroproceso->codMacroP}}"  class="btn btn-danger btn-outline">CANCELAR</a>
                             </div>
                             {!! Form::close() !!}
                         </div>

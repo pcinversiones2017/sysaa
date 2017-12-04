@@ -9,7 +9,7 @@
         <div class="col-lg-12">
             <div class="panel panel-success">
             <div class="panel-heading">
-                <strong> EDITAR INFORME </strong>
+                EDITAR INFORME
             </div>
             <div class="panel-body">
                 {!! Form::open(['method' => 'POST', 'route' => 'informe.actualizar']) !!}

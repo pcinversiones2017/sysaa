@@ -1,10 +1,15 @@
 <html>
+
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Pragati+Narrow" rel="stylesheet">
 <style>
+
     @page {
         margin: 100px 80px;
         font-size: 12px;
+        font-family: 'Pragati Narrow', sans-serif;
     }
+
     header {
         position: fixed;
         top: -60px;
@@ -12,6 +17,7 @@
         height: 60px;
         font-size: 10px;
         font-weight:bold;
+        font-family: 'Pragati Narrow', sans-serif;
     }
     footer {
         position: fixed;
@@ -19,6 +25,7 @@
         font-size: 10px;
         line-height: 50%;
         font-weight:bold;
+        font-family: 'Pragati Narrow', sans-serif;
     }
     span { page-break-after: always; }
     /*p:last-child { page-break-after: never; }*/
@@ -53,8 +60,8 @@
         /*height: 20px;*/
     }
     hr {
-        height: 2px;
-        background-color: #3e596e;
+        /*height: 2px;*/
+        /*background-color: #3e596e;*/
     }
 
     .p-break{
@@ -63,38 +70,8 @@
     .indice > li {
         list-style-type: square;
         /*margin: 0 0 5px 25px;*/
-        margin-bottom: 15px;
+        margin-bottom: 5px;
         font-size: 15px;
-    }
-
-    .Table
-    {
-        display: table;
-    }
-    .Title
-    {
-        display: table-caption;
-        text-align: center;
-        font-weight: bold;
-        font-size: larger;
-    }
-    .Heading
-    {
-        display: table-row;
-        font-weight: bold;
-        text-align: center;
-    }
-    .Row
-    {
-        display: table-row;
-    }
-    .Cell
-    {
-        display: table-cell;
-        border: solid;
-        border-width: thin;
-        padding-left: 5px;
-        padding-right: 5px;
     }
 
     thead:before, thead:after { display: none; }
@@ -119,7 +96,8 @@
 {{-- DATOS DE LA AUDITORIA--}}
 <div style="text-align: center; margin-top: 200px">
     <p style="font-size: 20px">{{ $auditoria->organoCI }}</p>
-    <p style="font-size: 25px"><u>PLAN DE AUDITORÍA DEFINITIVO</u></p><br><br>
+    <p style="font-size: 25px">PLAN DE AUDITORÍA DEFINITIVO</p><hr style="margin-top: -28px; width: 50%">
+    <br><br>
 
     <p style="font-size: 20px">AUDITORIA DE CUMPLIMIENTO</p>
     <p style="font-size: 20px">{{$auditoria->entidadAuditada}}</p><br><br>
@@ -130,8 +108,8 @@
 {{-- INDICE --}}
 <div style="margin-top: 100px">
     <div  style="text-align: center;">
-        <p style="font-size: 25px"><u>PLAN DE AUDITORÍA DEFINITIVO</u></p><br>
-        <p style="font-size: 20px">"{{$auditoria->nombrePlanF}}"</p><br><br>
+        <p style="font-size: 25px">PLAN DE AUDITORÍA DEFINITIVO</p><hr style="margin-top: -28px; width: 50%">
+        <p style="font-size: 20px">"{{$auditoria->nombrePlanF}}"</p><br>
         <p style="font-size: 20px">ÍNDICE</p><br>
     </div>
     <div>
@@ -146,8 +124,6 @@
             <li>VIII. COMISIÓN AUDITORA</li>
             <li>IX.   CRONOGRAMA Y PLAZOS DE ENTREGA DE LOS DOCUMENTOS</li>
             <li>X.    PROGRAMA DE AUDITORÍA</li>
-            <li>XI.   FLUJO DE REVISIONES</li>
-            <li>XII.  RELACIÓN DE APÉNDICES</li>
         </ul>
     </div>
 </div>
