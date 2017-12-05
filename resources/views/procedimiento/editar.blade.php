@@ -7,8 +7,7 @@
                         ACTUALIZAR PROCEDIMIENTO
                     </div>
                     <div class="panel-body">
-                        <div class="row">
-                <div class="row">
+
                     {!! Form::open(['method' => 'POST', 'route' => 'procedimiento.actualizar']) !!}
                         {!! Form::hidden('codProc', $procedimiento->codProc) !!}
                         <div class="col-md-12 b-r">
@@ -31,15 +30,13 @@
                             </select>
                             <br>
                             <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-outline" value="ACTUALIZAR">
+                                <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> ACTUALIZAR</button>
                                 <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
                             <div class="hr-line-dashed"></div>
                         </div>
 
                     {!! Form::close() !!}
-                </div>
-            </div>
         </div>
     </div>
 </div>
