@@ -17,7 +17,6 @@ class NormativaSeeder extends Seeder
             ,'numero'=>'27785'
             ,'fecha'=>'2002-07-24'
             ,'codTipNorm'=>'2'
-            ,'codPlanF' => 1
         ]);
         Normativa::create(['tipoNormativa'=>'LEY'
             ,'nombre'=>'LEY DE CONTROL INTERNO DE LAS ENTIDADES DEL ESTADO'
