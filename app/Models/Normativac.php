@@ -23,7 +23,7 @@ class Normativa extends Model
 
     public function macroproceso()
     {
-        return $this->hasOne(Macroproceso::class, 'codMacroP');
+        return $this->belongsTo(Macroproceso::class, 'codMacroP');
     }
 
 }
