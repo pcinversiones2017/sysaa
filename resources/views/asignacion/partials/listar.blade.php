@@ -8,7 +8,6 @@
                     </div>
                 </div>
 
-                <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                 <table class="table table-bordered">
                     <thead>
                     <tr>

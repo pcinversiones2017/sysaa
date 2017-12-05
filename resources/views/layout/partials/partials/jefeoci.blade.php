@@ -54,13 +54,13 @@
                     </ul>
                 </li>
                 <li class="{{$listarInforme ?? ''}}">
-                    <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Informe Final</span><span class="fa arrow"></span></a>
+                    <a href=""><i class="fa fa-tasks"></i> <span class="nav-label">Informe Final</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$listarInforme ?? ''}}"><a href="{{ route('informe.listar') }}"><i class="fa fa-list-alt"></i> Listar </a></li>
                     </ul>
                 </li>
                 <li class="{{$listarObservaciones ?? ''}}">
-                    <a href=""><i class="fa fa-history"></i> <span class="nav-label">Seguimiento</span> <span class="fa arrow"></span></a>
+                    <a href=""><i class="fa fa-eercast"></i> <span class="nav-label">Seguimiento</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                        <li class="{{$listarObservaciones ?? ''}}"><a href="{!! route('observacion.listar') !!}"> <i class="fa fa-list"></i> Lista</a></li>
                     </ul>
