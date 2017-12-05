@@ -10,30 +10,35 @@
                         <li class="{{$institucion ?? ''}}"><a href="{!! route('institucion.listar') !!}"> <i class="fa fa-institution"></i> Ver Institucion</a></li>
                         <li class="{{$activo ?? ''}}"><a href="{!! route('usuario.recuperar') !!}"><i class="fa fa-key"></i> Cambiar Contraseña</a></li>
                         <li class="{{$software_a ?? ''}}"><a href="{!! route('institucion.listarSoftware') !!}"> <i class="fa fa-rebel"></i> Informacion del Software</a></li>
+                        <li><a target="_blank" href="{!! url('manual-usuario.pdf') !!}"><i class="fa fa-file-pdf-o"></i>Manual de usuario</a></li>
+                        <li><a target="_blank" href="{!! url('manual-sistema.pdf') !!}"><i class="fa fa-file-pdf-o"></i>Manual de sistema</a></li>
                     </ul>
                 </li>
-                <li class="header" style="padding: 5px 25px 5px 40px; background: #1d3040; color: #a7b1c2"><span class="nav-label">ETAPAS DE AUDITORIA</span></li>
+                <li class="header" style="text-align: center; padding: 10px; background: #1d3040; color: #ffffff"><span class="nav-label">ETAPAS DE AUDITORIA</span></li>
                 <li class="{{$crearPlan?? ''}} {{$listarPlan?? ''}} {{$crearAuditoria?? ''}} {{$listarAuditoria??''}} {{$listarAuditoriaNoProgramadas ?? ''}} {{$gantt ?? ''}}">
-                    <a href=""><i class="fa fa-tasks"></i> <span class="nav-label">Plan</span> <span class="fa arrow"></span></a>
+                    <a href=""><i class="fa fa-tasks"></i> <span class="nav-label">Plan Anual</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearPlan?? ''}}"><a href="{{URL::to('plan/crear')}}"><i class="fa fa-pencil"></i> Crear </a></li>
                         <li class="{{$listarPlan?? ''}}"><a href="{{URL::to('plan/listar')}}"><i class="fa fa-list-alt"></i> Listar </a></li>
-                        <li class="{{$crearAuditoria?? ''}} {{$listarAuditoria??''}} {{$listarAuditoriaNoProgramadas ?? ''}} {{$gantt ?? ''}}">
-                            <a href="#"><i class="fa fa-th-large"></i> Auditoria <span class="fa arrow"></span></a>
-                            <ul class="nav nav-third-level">
-                                <li class="{{$listarAuditoria??''}}">
-                                    <a href="{{URL::to('auditoria/listar')}}"><i class="fa fa-list-alt"></i> Programadas </a>
-                                </li>
-                                <li class="{{$listarAuditoriaNoProgramadas??''}}">
-                                    <a href="{{URL::to('auditoria/listar-no-programadas')}}"><i class="fa fa-list-alt"></i> No Programadas </a>
-                                </li>
-                                <li class="{{$gantt??''}}">
-                                    <a href="{{URL::to('auditoria/gantt')}}"><i class="fa fa-bar-chart"></i> Diagrama de Gantt </a>
-                                </li>
-                            </ul>
+                    </ul>
+                </li>
+
+                <li class="header" style="text-align: center; padding : 10px; background: #1d3040; color: #ffffff"><span class="nav-label">PLANIFICACIÓN</span></li>
+                <li class="{{$crearAuditoria?? ''}} {{$listarAuditoria??''}} {{$listarAuditoriaNoProgramadas ?? ''}} {{$gantt ?? ''}}">
+                    <a href="#"><i class="fa fa-th-large"></i> Auditoria <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="{{$listarAuditoria??''}}">
+                            <a href="{{URL::to('auditoria/listar')}}"><i class="fa fa-list-alt"></i> Programadas </a>
+                        </li>
+                        <li class="{{$listarAuditoriaNoProgramadas??''}}">
+                            <a href="{{URL::to('auditoria/listar-no-programadas')}}"><i class="fa fa-list-alt"></i> No Programadas </a>
+                        </li>
+                        <li class="{{$gantt??''}}">
+                            <a href="{{URL::to('auditoria/gantt')}}"><i class="fa fa-bar-chart"></i> Diagrama de Gantt </a>
                         </li>
                     </ul>
                 </li>
+
                 <li class="{{$crearMacroproceso?? ''}} {{$listarMacroprocesos?? ''}}">
                     <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">Macroproceso</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
@@ -47,18 +52,29 @@
                         <li class="{{$listarRiesgos?? ''}}"><a href="{{ route('riesgos.listar') }}"><i class="fa fa-list-alt"></i> Listar </a></li>
                     </ul>
                 </li>
+
+                <li class="header" style="text-align: center; padding : 10px; background: #1d3040; color: #ffffff"><span class="nav-label">EJECUCIÓN</span></li>
+
+
                 <li class="{{$avance?? ''}}">
                     <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Avance de Auditoria</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$avance?? ''}}"><a href="{{ route('avance.linea') }}"><i class="fa fa-list-alt"></i> Listar </a></li>
                     </ul>
                 </li>
+
+                <li class="header" style="text-align: center; padding : 10px; background: #1d3040; color: #ffffff"><span class="nav-label">ELABORACIÓN DE INFORME</span></li>
+
+
                 <li class="{{$listarInforme ?? ''}}">
                     <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Informe Final</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$listarInforme ?? ''}}"><a href="{{ route('informe.listar') }}"><i class="fa fa-list-alt"></i> Listar </a></li>
                     </ul>
                 </li>
+
+                <li class="header" style="text-align: center; padding : 10px; background: #1d3040; color: #ffffff"><span class="nav-label">SEGUIMIENTO Y RECOMENDACIONES</span></li>
+
                 <li class="{{$listarObservaciones ?? ''}}">
                     <a href=""><i class="fa fa-history"></i> <span class="nav-label">Seguimiento</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
