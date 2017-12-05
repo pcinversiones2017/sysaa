@@ -12,10 +12,18 @@ class InformeController extends Controller
 {
     public function listar()
     {
-    	$informes = Informe::all();
-    	$auditorias = Auditoria::where('codEstAud', 4)->get();
+
+    	$auditorias = Auditoria::where('codEstAud', 4)->whereNull('entidadAuditora')->get();
     	$listarInforme = 'active';
-    	return view('informe.listar', compact(['informes', 'auditorias', 'listarInforme']));
+    	return view('informe.listar', compact('auditorias', 'listarInforme'));
+    }
+
+    public function corto()
+    {
+        $terceros = 'DE TERCEROS';
+        $auditorias = Auditoria::where('codEstAud', 4)->whereNotNull('entidadAuditora')->get();
+        $listarInformeCorto = 'active';
+        return view('informe.listar', compact( 'auditorias', 'listarInformeCorto', 'terceros'));
     }
 
     public function crear($codPlanF)
@@ -39,7 +47,13 @@ class InformeController extends Controller
     	$informe->codPlanF = $request->codPlanF;
         $informe->elaborado = date("Y-m-d H:i:s");
     	$informe->save();
-        return redirect()->route('informe.listar')->with('success', 'Se registro informe');
+    	if(!empty($informe->auditoria->entidadAuditada)){
+    	    $route = 'informe.corto';
+        }else{
+    	    $route = 'informe.listar';
+        }
+
+        return redirect()->route($route)->with('success', 'Se registro informe');
     }
 
     public function editar($codPlanF)

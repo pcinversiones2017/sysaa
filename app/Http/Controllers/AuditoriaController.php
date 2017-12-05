@@ -142,6 +142,7 @@ class AuditoriaController extends Controller
         $auditoria->organoCI = $request->organoCI;
         $auditoria->origen = $request->origen;
         $auditoria->entidadAuditada = $request->entidadAuditada;
+        $auditoria->entidadAuditora = $request->entidadAuditora;
         $auditoria->tipoDemanda = $request->tipoDemanda;
         $auditoria->fechaIniPlanF = $request->fechaIniPlanF;
         $auditoria->fechaFinPlanF = $request->fechaFinPlanF;

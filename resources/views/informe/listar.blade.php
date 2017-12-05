@@ -6,7 +6,7 @@
     @include('partials.alert')
     <div class="panel panel-success">
         <div class="panel-heading">
-            LISTA DE INFORMES
+            LISTA DE INFORMES {{ $terceros ?? '' }}
         </div>
         <div class="panel-body">
 

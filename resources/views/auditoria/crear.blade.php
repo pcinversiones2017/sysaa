@@ -40,6 +40,9 @@
                                 {!! Field::text('entidadAuditada', ['label' => 'ENTIDAD AUDITADA']) !!}
                                 <div class="hr-line-dashed"></div>
 
+                                {!! Field::text('entidadAuditora', ['label' => 'ENTIDAD AUDITORA']) !!}
+                                <div class="hr-line-dashed"></div>
+
                                 {!! Field::text('tipoDemanda', ['label' => 'TIPO DE DEMANDA DE CONTROL (demanda autogenerada / demanda imprevisible)']) !!}
                                 <div class="hr-line-dashed"></div>
 

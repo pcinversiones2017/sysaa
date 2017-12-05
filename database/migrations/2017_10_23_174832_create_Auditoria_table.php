@@ -21,6 +21,7 @@ class CreateAuditoriaTable extends Migration
             $table->string('organoCI')->comment('organo de control interno')->nullable();
             $table->longText('origen')->nullable();
             $table->string('entidadAuditada')->nullable();
+            $table->string('entidadAuditora')->nullable();
             $table->string('tipoDemanda')->nullable();
             $table->date('fechaIniPlanF')->nullable();
             $table->date('fechaFinPlanF')->nullable();

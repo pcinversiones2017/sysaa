@@ -4,7 +4,7 @@ namespace App\Http\Requests\Normativa;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegistrarRequest extends FormRequest
+class ActualizarRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
