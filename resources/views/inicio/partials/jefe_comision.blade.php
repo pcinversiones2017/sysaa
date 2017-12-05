@@ -59,11 +59,11 @@
                         <td>{!! $row->fecha_fin !!}</td>
                         <td>{!! $row->fecha_terminado !!}</td>
                         <td>{!! $row->fecha_rechazado !!}</td>
-                        <td>
+                        <td class="tooltip-demo">
                             @if($row->codEst == App\Models\Estado::NUEVO)
-                                <a href="{!! url('auditor/desarrollo/crear/'.$row->codProc) !!}" class="btn btn-success btn-outline"><i class="fa fa-pencil"></i> </a>
+                                <a href="{!! url('auditor/desarrollo/crear/'.$row->codProc) !!}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Crear desarrollo de procedimiento"><i class="fa fa-pencil"></i> </a>
                             @elseif($row->codEst == App\Models\Estado::PENDIENTE)
-                                <a href="{!! url('auditor/procedimiento/mostrar/'.$row->codProc) !!}" class="btn btn-primary btn-outline"><i class="fa fa-eye"></i>  </a>
+                                <a href="{!! url('auditor/procedimiento/mostrar/'.$row->codProc) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar Desarrollo de procedimiento"><i class="fa fa-eye"></i>  </a>
                             @elseif($row->codEst == App\Models\Estado::TERMINADO)
                                 @if(Auth::user()->usuariorol->codUsuRol == $row->codUsuRol)
                                     <span class="label label-primary">TERMINADO</span>
@@ -140,7 +140,7 @@
                         <td>{!! $row->fecha_fin !!}</td>
                         <td>{!! $row->fecha_terminado !!}</td>
                         <td>{!! $row->fecha_rechazado !!}</td>
-                        <td>
+                        <td class="tooltip-demo">
                             @if($row->codEst == 1)
                                 <span class="label label-info">NUEVO</span>
                             @elseif($row->codEst == 2)

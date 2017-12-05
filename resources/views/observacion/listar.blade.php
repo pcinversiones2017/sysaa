@@ -33,7 +33,7 @@
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{!! $row->descripcion !!}</td>
-                                <td>
+                                <td class="tooltip-demo">
                                     <a href="{!! url('auditor/observacion/editar/'.$row->codObs) !!}" class="btn btn-primary btn-outline"><i class="fa fa-pencil"></i>  </a>
                                     <a href="{!! url('auditor/observacion/eliminar/'.$row->codObs) !!}" class="btn btn-danger btn-outline"><i class="fa fa-trash"></i>  </a>
                                     <a href="{!! url('auditor/observacion/archivo/crear/'.$row->codObs) !!}" class="btn btn-warning btn-outline"><i class="fa fa-upload"></i>  </a>

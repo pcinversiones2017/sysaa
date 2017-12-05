@@ -74,10 +74,10 @@
                                                     <td>{{$subproceso->nombre}}</td>
                                                     <td>{{$subproceso->riesgo}}</td>
                                                     <td>{{$subproceso->ponderacion}}</td>
-                                                    <td>
-                                                        <a href="{!!  route('subproceso.mostrar', $subproceso->codSubPro) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
-                                                        <a href="{!!  route('subproceso.editar', $subproceso->codSubPro) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
-                                                        <a href="{!!  route('subproceso.eliminar', $subproceso->codSubPro)!!}" class="btn btn-danger btn-outline eliminar-subproceso"><i class="fa fa-trash"></i></a>
+                                                    <td class="tooltip-demo">
+                                                        <a href="{!!  route('subproceso.mostrar', $subproceso->codSubPro) !!}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Ver"><i class="fa fa-eye"></i></a>
+                                                        <a href="{!!  route('subproceso.editar', $subproceso->codSubPro) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
+                                                        <a href="{!!  route('subproceso.eliminar', $subproceso->codSubPro)!!}" class="btn btn-danger btn-outline eliminar-subproceso" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             @endforeach

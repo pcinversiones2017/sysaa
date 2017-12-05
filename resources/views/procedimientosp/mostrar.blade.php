@@ -76,9 +76,9 @@
                                             <td align="middle">{{$n+1}}</td>
                                             <td>{{$actividad->responsable}}</td>
                                             <td>{{$actividad->nombre}}</td>
-                                            <td>
-                                                <a href="{!!  route('actividad.editar', $actividad->codAct) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
-                                                <a href="{!!  route('actividad.eliminar', $actividad->codAct)!!}" class="btn btn-danger btn-outline eliminar-actividad"><i class="fa fa-trash"></i></a>
+                                            <td class="tooltip-demo">
+                                                <a href="{!!  route('actividad.editar', $actividad->codAct) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
+                                                <a href="{!!  route('actividad.eliminar', $actividad->codAct)!!}" class="btn btn-danger btn-outline eliminar-actividad" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

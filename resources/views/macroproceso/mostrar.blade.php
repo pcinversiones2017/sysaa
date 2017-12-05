@@ -71,10 +71,10 @@
                                         <td>{{$procesoma->nombre}}</td>
                                         <td>{{$procesoma->riesgo}}</td>
                                         <td>{{$procesoma->ponderacion}}</td>
-                                        <td>
-                                            <a href="{!!  route('procesoma.mostrar', $procesoma->codProMA) !!}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i></a>
-                                            <a href="{!!  route('procesoma.editar', $procesoma->codProMA) !!}" class="btn btn-primary btn-outline"><i class="fa fa-edit"></i></a>
-                                            <a href="{!!  url('procesoma/eliminar/'.$macroproceso->codMacroP.'/'.$procesoma->codProMA)!!}" class="btn btn-danger btn-outline eliminar-proceso"><i class="fa fa-trash"></i></a>
+                                        <td class="tooltip-demo">
+                                            <a href="{!!  route('procesoma.mostrar', $procesoma->codProMA) !!}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Ver"><i class="fa fa-eye"></i></a>
+                                            <a href="{!!  route('procesoma.editar', $procesoma->codProMA) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
+                                            <a href="{!!  url('procesoma/eliminar/'.$macroproceso->codMacroP.'/'.$procesoma->codProMA)!!}" class="btn btn-danger btn-outline eliminar-proceso" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
 
                                         </td>
                                     </tr>

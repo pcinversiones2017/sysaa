@@ -33,7 +33,7 @@
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{!! $row->nombre !!}</td>
-                                <td>
+                                <td class="tooltip-demo">
                                     <a href="{!! url('auditor/observacion/archivo/eliminar/'.$row->codArc) !!}" class="btn btn-danger btn-outline" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i>  </a>
                                     <a href="{!! url('auditor/observacion/archivo/descargar/'.$row->codArc) !!}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Descargar"><i class="fa fa-cloud-download"></i>  </a>
                                 </td>
