@@ -66,17 +66,21 @@
                 <li class="header" style="text-align: center; padding : 10px; background: #1d3040; color: #ffffff"><span class="nav-label">ELABORACIÓN DE INFORME</span></li>
 
 
-                <li class="{{$listarInforme ?? ''}}">
-                    <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Informe Final</span><span class="fa arrow"></span></a>
+
+                <li class="{{$listarInforme ?? '' }} {{$listarInformeCorto ?? ''}}">
+                    <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Informes</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li class="{{$listarInforme ?? ''}}"><a href="{{ route('informe.listar') }}"><i class="fa fa-list-alt"></i> Listar </a></li>
+                        <li class="{{$listarInforme ?? ''}}"><a href="{{ route('informe.listar') }}"><i class="fa fa-list-alt"></i> Informe Final </a></li>
+                    </ul>
+                    <ul class="nav nav-second-level">
+                        <li class="{{$listarInformeCorto ?? ''}}"><a href="{{ route('informe.corto') }}"><i class="fa fa-list-alt"></i> Informe Corto </a></li>
                     </ul>
                 </li>
 
                 <li class="header" style="text-align: center; padding : 10px; background: #1d3040; color: #ffffff"><span class="nav-label">SEGUIMIENTO Y RECOMENDACIONES</span></li>
 
                 <li class="{{$listarObservaciones ?? ''}}">
-                    <a href=""><i class="fa fa-history"></i> <span class="nav-label">Seguimiento</span> <span class="fa arrow"></span></a>
+                    <a href=""><i class="fa fa-eercast"></i> <span class="nav-label">Seguimiento</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                        <li class="{{$listarObservaciones ?? ''}}"><a href="{!! route('observacion.listar') !!}"> <i class="fa fa-list"></i> Lista</a></li>
                     </ul>

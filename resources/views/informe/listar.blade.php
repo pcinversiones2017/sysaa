@@ -6,7 +6,7 @@
     @include('partials.alert')
     <div class="panel panel-success">
         <div class="panel-heading">
-            LISTA DE INFORMES
+            LISTA DE INFORMES {{ $terceros ?? '' }}
         </div>
         <div class="panel-body">
 
@@ -33,11 +33,11 @@
                         <td>{!! $auditoria->informe->elaborado !!}</td>
                         @endif
                         @if(empty($auditoria->informe->informe))
-                        <td style="text-align: center">
+                        <td style="text-align: center" class="tooltip-demo">
                             <a href="{!! url('informe/crear/' . $auditoria->codPlanF) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Crear Informe"><i class="fa fa-pencil"></i>  </a>
                         </td>
                         @else
-                        <td style="text-align: center">
+                        <td style="text-align: center" class="tooltip-demo">
                             <a href="{!! url('informe/editar/' . $auditoria->codPlanF) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i>  </a>
                             <a href="{!! url('informe/archivo/crear/'. $auditoria->informe->codInf) !!}" class="btn btn-warning btn-outline" data-toggle="tooltip" data-placement="bottom" title="Adjuntar Documentos"><i class="fa fa-upload"></i>  </a>
                             <a href="{!! url('informe/archivo/listar/'. $auditoria->informe->codInf) !!}" class="btn btn-info btn-outline" data-toggle="tooltip" data-placement="bottom" title="Visualizar documentos adjuntados"><i class="fa fa-paperclip"></i>  </a>

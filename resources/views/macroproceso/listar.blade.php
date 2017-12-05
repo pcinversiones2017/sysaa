@@ -35,11 +35,11 @@
                                         <td align="middle">{{$n+1}}</td>
                                         <td>{{$macroproceso->nombre}}</td>
                                         <td>{{$macroproceso->fecha_creado}}</td>
-                                        <td width="15%" style="text-align: center">
-                                            <a href="{{URL::to('macroproceso/mostrar')}}/{{$macroproceso->codMacroP}}" class="btn btn-success btn-outline"><i class="fa fa-eye"></i>  </a>
-                                            <a href="{{URL::to('macroproceso/editar')}}/{{$macroproceso->codMacroP}}" class="btn btn-primary btn-outline">
+                                        <td width="15%" style="text-align: center" class="tooltip-demo">
+                                            <a href="{{URL::to('macroproceso/mostrar')}}/{{$macroproceso->codMacroP}}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Ver"><i class="fa fa-eye"></i>  </a>
+                                            <a href="{{URL::to('macroproceso/editar')}}/{{$macroproceso->codMacroP}}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar">
                                                 <i class="fa fa-edit"></i>  </a>
-                                            <a href="{{URL::to('macroproceso/eliminar')}}/{{$macroproceso->codMacroP}}" class="btn btn-danger btn-outline eliminar-macroproceso">
+                                            <a href="{{URL::to('macroproceso/eliminar')}}/{{$macroproceso->codMacroP}}" class="btn btn-danger btn-outline eliminar-macroproceso" data-toggle="tooltip" data-placement="bottom" title="Eliminar">
                                                 <i class="fa fa-trash"></i>  </a>
                                         </td>
                                     </tr>

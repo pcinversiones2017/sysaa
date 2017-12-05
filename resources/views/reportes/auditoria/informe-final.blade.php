@@ -84,13 +84,14 @@
     <p style="text-align: center">“{{$institucion->denominacion_anio}}”</p>
 </footer>
 
-<div style="text-align: center; margin-top: 200px">
+<div style="text-align: center; margin-top: 120px">
+    <p style="font-size: 45px">{{ strtoupper($auditoria->entidadAuditora) }}</p>
     <p style="font-size: 20px">{{ $auditoria->organoCI }}</p>
-    <p style="font-size: 25px">INFORME DE AUDITORIA</p><hr style="margin-top: -28px; width: 35%"><br><br>
+    <p style="font-size: 25px">INFORME DE AUDITORIA</p><hr style="margin-top: -45px; width: 35%"><br>
 
     <p style="font-size: 20px">AUDITORIA DE CUMPLIMIENTO</p>
-    <p style="font-size: 20px">{{$auditoria->entidadAuditada}}</p><br><br>
-    <p style="font-size: 20px">"{{$auditoria->nombrePlanF}}"</p><br><br>
+    <p style="font-size: 20px">{{$auditoria->entidadAuditada}}</p><br>
+    <p style="font-size: 20px">"{{$auditoria->nombrePlanF}}"</p><br>
     <p style="font-size: 18px">PERIODO: DEL {{strtoupper($periodo)}}</p>
 </div>
 <span></span>

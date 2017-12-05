@@ -42,7 +42,7 @@
                                 <td>{!! $row->elaborado !!}</td>
                                 <td>{!! $row->revisado !!}</td>
                                 <td>{!! $row->supervisado !!}</td>
-                                <td>
+                                <td class="tooltip-demo">
                                     <a href="{!! url('auditor/observacion/crear/'.$row->codDes) !!}" class="btn btn-success  btn-outline" data-toggle="tooltip" data-placement="bottom" title="Crear Observacion"><i class="fa fa-eye"></i>  </a>
                                     <a href="{!! url('auditor/desarrollo/editar/'.$row->codDes) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-pencil"></i>  </a>
                                     <a href="{!! url('auditor/desarrollo/eliminar/'.$row->codDes) !!}" class="btn btn-danger btn-outline" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i>  </a>

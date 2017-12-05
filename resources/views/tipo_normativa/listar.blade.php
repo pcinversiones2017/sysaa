@@ -30,7 +30,7 @@
                             <td align="middle">{{$n+1}}</td>
                             <td>{{$tipoNormativa->nombre}}</td>
                             <td>{{$tipoNormativa->fecha_creado}}</td>
-                            <td>
+                            <td class="tooltip-demo">
                                 <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> Ver </a>
                                 <a href="{{URL::to('tipo_normativa/editar')}}/{{$tipoNormativa->codTipNorm}}" class="btn btn-white btn-sm">
                                     <i class="fa fa-pencil"></i> Editar </a>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Normativa\ActualizarRequest;
 use App\Http\Requests\Normativa\RegistrarRequest;
 use App\Models\Macroproceso;
 use App\Models\Normativa;
@@ -70,7 +71,7 @@ class NormaAuditoriaController extends Controller
             ->with(['success' => 'Normativa eliminada', 'animate' => '#normativa']);
     }
 
-    public function actualizar(Request $request){
+    public function actualizar(ActualizarRequest $request){
 
         $normativa = Normativa::find($request->codNorm);
         $normativa->tipoNormativa = $request->tipoNormativa;

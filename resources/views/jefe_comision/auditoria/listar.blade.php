@@ -33,7 +33,7 @@
                                 <td>{{$i}}</td>
                                 <td>{!! $row->nombrePlanF !!}</td>
                                 <td>{!! $row->tipoServicioCP !!}</td>
-                                <td>
+                                <td class="tooltip-demo">
                                     <a href="{!! url('reporte/planificacion/'.$row->codPlanF) !!}" target="_lblank" class="btn btn-success btn-outline btn-sm"> <i class="fa fa-file-pdf-o"></i> VER AUDITORIA </a>
                                     <a href="{!! url('auditoria/aprobar/'.$row->codPlanF) !!}" class="btn btn-success btn-sm"> APROBAR </a>
                             </tr>
