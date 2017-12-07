@@ -45,5 +45,36 @@
     </div>
 </div>
 
+<script>
+        $(document).ready(function(){
+            $('.table-objetivo-especifico').DataTable({
+                "ordering": false,
+                language: {
+                    url : '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
+                },
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
 
+                    {extend: 'excel', title: 'Lista Auditorias'},
+                    {extend: 'pdf', title: 'Lista Auditorias'},
+
+                    {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
+
+    </script>
 
