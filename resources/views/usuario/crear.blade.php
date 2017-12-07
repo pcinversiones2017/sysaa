@@ -24,9 +24,9 @@
                         <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> REGISTRAR</button>
                         <a href="{!! route('usuario.listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     </div>
-
                 </div>
                 {!! Form::close() !!}
+
             </div>
         </div>
 
