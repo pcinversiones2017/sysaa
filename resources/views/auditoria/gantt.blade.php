@@ -54,7 +54,7 @@ $('#select-auditoria').on('change', function () {
                 months	: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"],
                 dow : ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
                 onItemClick: function(data) {
-                    alertify.alert('Detalle Procedimiento', data);
+                    alertify.alert('Detalle de Procedimiento', data);
                 },
                 onAddClick: function(dt, rowId) {
                     alert("Empty space clicked - add an item!");

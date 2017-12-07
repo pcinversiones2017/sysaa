@@ -127,8 +127,8 @@
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [
 
-                    {extend: 'excel', title: 'Lista de Procedimiento'},
-                    {extend: 'pdf', title: 'Lista de Procedimiento'},
+                    {extend: 'excel', title: 'Lista de procedimiento'},
+                    {extend: 'pdf', title: 'Lista de procedimiento'},
 
                     {extend: 'print',
                         customize: function (win){

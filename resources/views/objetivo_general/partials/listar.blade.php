@@ -70,8 +70,8 @@
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [
 
-                    {extend: 'excel', title: 'Lista Objetivos Especificos'},
-                    {extend: 'pdf', title: 'Lista Objetivos Especificos'},
+                    {extend: 'excel', title: 'Lista Objetivos General'},
+                    {extend: 'pdf', title: 'Lista Objetivos General'},
 
                     {extend: 'print',
                         customize: function (win){

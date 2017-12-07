@@ -96,8 +96,8 @@
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [
 
-                    {extend: 'excel', title: 'Lista Auditorias'},
-                    {extend: 'pdf', title: 'Lista Auditorias'},
+                    {extend: 'excel', title: 'Lista de Seguimiento'},
+                    {extend: 'pdf', title: 'Lista de Seguimiento'},
 
                     {extend: 'print',
                         customize: function (win){

@@ -95,7 +95,7 @@
 
                     {
                         extend: 'excel',
-                        title: 'Lista Auditorias',
+                        title: 'Lista de Auditorias',
                         exportOptions : {
                             columns: [0, 1, 2, 3, 4, 5, 6]
                         }
@@ -103,7 +103,7 @@
                     {
                         extend: 'pdf',
                         orientation: 'landscape',
-                        title: 'Lista Auditorias',
+                        title: 'Lista de Auditorias',
                         exportOptions : {
                             columns: [0, 1, 2, 3, 4, 5, 6]
                         }

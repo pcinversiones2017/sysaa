@@ -79,14 +79,14 @@
 
                     {
                         extend: 'excel',
-                        title: 'Lista de personas',
+                        title: 'Lista de informes',
                         exportOptions : {
                             columns: [0, 1, 2, 3, 4]
                         }
                     },
                     {
                         extend: 'pdf',
-                        title: 'Lista de personas',
+                        title: 'Lista de informes',
                         exportOptions : {
                             columns: [0, 1, 2, 3, 4]
                         },
@@ -101,7 +101,7 @@
                     },
 
                     {extend: 'print',
-                        title: 'Lista de Personas',
+                        title: 'Lista de Informes',
 
                         customize: function (win){
                             $(win.document.body).addClass('white-bg');
