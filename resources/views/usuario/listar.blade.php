@@ -10,7 +10,7 @@
             LISTA DE USUARIOS
         </div>
         <div class="panel-body">
-
+            <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
                 <tr>
@@ -32,7 +32,7 @@
                         <td>{!! $row->usuariorol->auditoria->nombrePlanF ?? '' !!}</td>
                         <td>{!! $row->usuariorol->rol->nombre !!}</td>
                         <td style="text-align: center" class="tooltip-demo">
-                            <a href="{!! url('usuario/usuario-editar/'.$row->codUsu) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i>  </a>
+                            <a href="{!! url('usuario/usuario-editar/'.$row->codUsu) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Cambiar Contraseña"><i class="fa fa-edit"></i>  </a>
                             <a href="{!! url('historial/historial/'.$row->codUsu) !!}" class="btn btn-success btn-outline"><i class="fa fa-history" data-toggle="tooltip" data-placement="bottom" title="Ver historial de navegacion"></i>  </a>
                         </td>
                     </tr>
@@ -40,6 +40,7 @@
                 @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 

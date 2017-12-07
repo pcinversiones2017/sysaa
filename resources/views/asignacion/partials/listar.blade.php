@@ -7,7 +7,7 @@
                         <a type="button" href="{!! route('asignarr.crear', $auditoria->codPlanF) !!}" class="btn btn-sm btn-success btn-outline"><i class="fa fa-pencil"></i> CREAR ASIGNACIÓN</a>
                     </div>
                 </div>
-
+                <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
                     <tr>
@@ -37,7 +37,7 @@
                     @endforeach
                     </tbody>
                 </table>
-
+                </div>
             </div>
         </div>
     </div>

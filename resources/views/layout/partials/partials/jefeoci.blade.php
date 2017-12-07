@@ -2,12 +2,12 @@
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="side-menu">
-                <li class="{{$usuario?? ''}} {{$activo?? ''}} {{$activoEditar?? ''}} {{$institucion?? ''}} {{$software_a?? ''}} {{$people ?? ''}}">
+                <li class="{{$usuario?? ''}} {{$activo?? ''}} {{$activoEditar?? ''}} {{$institucion?? ''}} {{$institucionn?? ''}} {{$software_a?? ''}} {{$people ?? ''}}">
                     <a href=""><i class="fa fa-cogs"></i> <span class="nav-label">Configuracion</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$people ?? ''}}"><a href="{!! route('persona.listar') !!}"><i class="fa fa-user-circle"></i> Datos Personales   </a></li>
                         <li class="{{$usuario ?? ''}} {{$activoEditar?? ''}}"><a href="{!! route('usuario.listar') !!}"><i class="fa fa-users"></i> Usuarios</a></li>
-                        <li class="{{$institucion ?? ''}}"><a href="{!! route('institucion.listar') !!}"> <i class="fa fa-institution"></i> Ver Institucion</a></li>
+                        <li class="{{$institucion ?? ''}} {{$institucionn?? ''}}"><a href="{!! route('institucion.listar') !!}"> <i class="fa fa-institution"></i> Ver Institucion</a></li>
                         <li class="{{$activo ?? ''}}"><a href="{!! route('usuario.recuperar') !!}"><i class="fa fa-key"></i> Cambiar Contraseña</a></li>
                         <li class="{{$software_a ?? ''}}"><a href="{!! route('institucion.listarSoftware') !!}"> <i class="fa fa-rebel"></i> Informacion del Software</a></li>
                         <li><a target="_blank" href="{!! url('manual-usuario.pdf') !!}"><i class="fa fa-file-pdf-o"></i>Manual de usuario</a></li>
@@ -15,7 +15,7 @@
                     </ul>
                 </li>
                 <li class="header" style="text-align: center; padding: 10px; background: #1d3040; color: #ffffff"><span class="nav-label">ETAPAS DE AUDITORIA</span></li>
-                <li class="{{$crearPlan?? ''}} {{$listarPlan?? ''}} {{$crearAuditoria?? ''}} {{$listarAuditoria??''}} {{$listarAuditoriaNoProgramadas ?? ''}} {{$gantt ?? ''}}">
+                <li class="{{$crearPlan?? ''}} {{$listarPlan?? ''}} {{$crearAuditoria?? ''}}">
                     <a href=""><i class="fa fa-tasks"></i> <span class="nav-label">Plan Anual</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearPlan?? ''}}"><a href="{{URL::to('plan/crear')}}"><i class="fa fa-pencil"></i> Crear </a></li>
@@ -25,7 +25,7 @@
 
                 <li class="header" style="text-align: center; padding : 10px; background: #1d3040; color: #ffffff"><span class="nav-label">PLANIFICACIÓN</span></li>
                 <li class="{{$crearAuditoria?? ''}} {{$listarAuditoria??''}} {{$listarAuditoriaNoProgramadas ?? ''}} {{$gantt ?? ''}}">
-                    <a href="#"><i class="fa fa-th-large"></i> Auditoria <span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-th-large"></i><span class="nav-label"> Auditoria </span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$listarAuditoria??''}}">
                             <a href="{{URL::to('auditoria/listar')}}"><i class="fa fa-list-alt"></i> Programadas </a>
@@ -66,13 +66,10 @@
                 <li class="header" style="text-align: center; padding : 10px; background: #1d3040; color: #ffffff"><span class="nav-label">ELABORACIÓN DE INFORME</span></li>
 
 
-
                 <li class="{{$listarInforme ?? '' }} {{$listarInformeCorto ?? ''}}">
-                    <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Informes</span><span class="fa arrow"></span></a>
+                    <a href=""><i class="fa fa-info"></i> <span class="nav-label">Informes</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$listarInforme ?? ''}}"><a href="{{ route('informe.listar') }}"><i class="fa fa-list-alt"></i> Informe Final </a></li>
-                    </ul>
-                    <ul class="nav nav-second-level">
                         <li class="{{$listarInformeCorto ?? ''}}"><a href="{{ route('informe.corto') }}"><i class="fa fa-list-alt"></i> Informe Corto </a></li>
                     </ul>
                 </li>

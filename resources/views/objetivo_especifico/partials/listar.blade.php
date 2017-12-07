@@ -8,7 +8,7 @@
                     </div>
                 </div>
                 <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
-
+                <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover table-objetivo-especifico" style="margin-top: 10px">
                     <thead>
                     <tr>
@@ -30,7 +30,7 @@
                             <td class="tooltip-demo" style="text-align: center"><a href="{{route('macroproceso.mostrar', $objetivoEsp->macroproceso->codMacroP)}}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Ver"><i class="fa fa-eye"></i></a></td>
                             <td>{{$objetivoEsp->materia}}</td>
                             <td class="tooltip-demo" style="text-align: center">
-                                <a href="{{url('objetivo-especifico/mostrar')}}/{{$auditoria->codPlanF}}/{{$objetivoEsp->codObjEsp}}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Ver"><i class="fa fa-eye"></i></a>
+                                <a href="{{url('objetivo-especifico/mostrar')}}/{{$auditoria->codPlanF}}/{{$objetivoEsp->codObjEsp}}" class="btn btn-success btn-outline" data-toggle="tooltip" data-placement="bottom" title="Agregar Procedimientos"><i class="fa fa-eye"></i></a>
                                 <a href="{{route('objetivo-especifico.editar', $objetivoEsp->codObjEsp) }}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
                                 <a href="{{route('objetivo-especifico.eliminar', $objetivoEsp->codObjEsp )}}" class="btn btn-danger btn-outline eliminar-objetivo-especifico" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></a>
                             </td>
@@ -39,7 +39,7 @@
                     @endforeach
                     </tbody>
                 </table>
-
+                </div>
             </div>
         </div>
     </div>

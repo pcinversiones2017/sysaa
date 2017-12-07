@@ -12,7 +12,7 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-12 col-sm-12 col-xs-10">
                         <select id="select-auditoria" class="form-control" name="codPlanF" style="height: 21px;">
                             <option value="">--- Seleccione Auditoria ---</option>
                             @foreach($auditorias as $auditoria)

@@ -325,6 +325,7 @@
                                     <a id="finalizar-planificacion" href="{!! route('auditoria.finalizar', $auditoria->codPlanF) !!}" class="btn btn-success">FINALIZAR PLANIFICACIÓN</a>
                                     <a target="_blank" href="{!! url('reporte/planificacion', $auditoria->codPlanF) !!}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i> PLANIFICACIÓN</a>
                                 @endif
+                                    <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                             </div>
 
                     </div>

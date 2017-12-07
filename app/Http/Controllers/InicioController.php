@@ -23,16 +23,15 @@ class InicioController extends Controller
         }
 
 
-
-//    	$procedimiento_general = Procedimiento::leftJoin('objetivo_especifico', 'objetivo_especifico.codObjEsp', '=', 'procedimiento.codObjEsp')
-//                            ->leftJoin('objetivo_general', 'objetivo_general.codObjGen', '=', 'procedimiento.codObjGen')
-//                            ->leftJoin('usuario_roles', 'usuario_roles.codUsuRol', '=', 'procedimiento.codUsuRol')
-//                            ->join('users', 'users.codUsu', '=', 'usuario_roles.codUsu')
-//                            ->join('auditoria', 'auditoria.codPlanF', '=', 'objetivo_general.codPlanF')
-//                            ->join('personas', 'personas.codPer', '=', 'users.codPer')
-//    						->get();
-
-
+        /*
+   	$procedimiento_general = Procedimiento::leftJoin('objetivo_especifico', 'objetivo_especifico.codObjEsp', '=', 'procedimiento.codObjEsp')
+                           ->leftJoin('objetivo_general', 'objetivo_general.codObjGen', '=', 'procedimiento.codObjGen')
+                            ->leftJoin('usuario_roles', 'usuario_roles.codUsuRol', '=', 'procedimiento.codUsuRol')
+                           ->join('users', 'users.codUsu', '=', 'usuario_roles.codUsu')
+                            ->join('auditoria', 'auditoria.codPlanF', '=', 'objetivo_general.codPlanF')
+                            ->join('personas', 'personas.codPer', '=', 'users.codPer')
+    						->get();
+                            */
         if($user->usuariorol->codUsuRol != Rol::JEFE_OCI){
             $comision = Usuariorol::where('codPlanF', $user->usuariorol->auditoria->codPlanF)->pluck('codUsuRol')->except($user->usuariorol->codUsuRol)->toArray();
 
@@ -41,6 +40,7 @@ class InicioController extends Controller
             $procedimiento_general = Procedimiento::all();
         }
 
+    
 
 
     	$asignado = Procedimiento::asignado()->where('codUsuRol',Auth::user()->usuariorol->codUsuRol)->with(['objetivoespecifico', 'desarrollo'])->get();

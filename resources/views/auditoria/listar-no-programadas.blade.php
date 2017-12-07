@@ -14,6 +14,7 @@
                             LISTADO DE AUDITORIAS NO PROGRAMADAS
                         </div>
                         <div class="panel-body">
+                            <div class="table-responsive">
                             <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                             <table class="table table-bordered table-auditoria">
                                 <thead>
@@ -49,6 +50,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            </div>
                         </div>
 
                     </div>

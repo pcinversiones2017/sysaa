@@ -21,10 +21,11 @@ class InstitucionController extends Controller
     public function editar(Request $request)
     {
 
+        $institucionn = 'active';
         $institucion = Institucion::find($request->codIns);
 
         RegistrarActividad(Institucion::TABLA,Historial::EDITAR,'vió el formulario de editar Institucion ' . $institucion->nombre);
-        return view('institucion.editar')->with(compact('institucion'));
+        return view('institucion.editar')->with(compact('institucion', 'institucionn'));
     }
     public function actualizar(Request $request)
     {

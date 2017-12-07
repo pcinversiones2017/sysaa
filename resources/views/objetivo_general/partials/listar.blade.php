@@ -8,7 +8,7 @@
                     </div>
                 </div>
                 <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
-
+                <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover table-objetivo-especifico" style="margin-top: 10px">
                     <thead>
                     <tr>
@@ -36,7 +36,7 @@
                     @endforeach
                     </tbody>
                 </table>
-
+            </div>
             </div>
         </div>
     </div>

@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="col-sm-3">
                             <a type="button" href="{!! url()->previous() !!}" class="btn btn-outline btn-danger"> ATRAS</a>
-                            <a type="button" href="{!! url('seguimiento/crear/'.$codObs) !!}" class="btn btn-outline btn-success"> REGISTRAR</a>
+                            <a type="button" href="{!! url('seguimiento/crear/'.$codObs) !!}" class="btn btn-outline btn-success"> CREAR SEGUIMIENTO</a>
                             <p>
                             
                         </div>
@@ -43,7 +43,7 @@
                                 <td>{!! $row->acciones !!}</td>
                                 <td>{!! $row->evaluacion !!}</td>
                                 <td>{!! $row->estado !!}</td>
-                                <td>
+                                <td class="tooltip-demo">
                                     <a href="{!! url('seguimiento/editar/'.$codObs.'/'.$row->codSeg) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i>  </a>
                                     <a href="{!! url('seguimiento/eliminar/'.$row->codSeg) !!}" class="btn btn-danger btn-outline" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i>  </a>
                                     <a href="{!! url('seguimiento/archivo/crear/'.$codObs.'/'.$row->codSeg) !!}" class="btn btn-warning btn-outline" data-toggle="tooltip" data-placement="bottom" title="Adjuntar Documentos"><i class="fa fa-upload"></i>  </a>

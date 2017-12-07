@@ -2,13 +2,12 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h5>Actualizar Procedimiento</h5>
-
-            </div>
-            <div class="ibox-content">
-                <div class="row">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        ACTUALIZAR PROCEDIMIENTO
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
                     {!! Form::open(['method' => 'POST', 'route' => 'procedimiento-general.actualizar']) !!}
                         {!! Form::hidden('codProc', $procedimiento->codProc) !!}
                         <div class="col-md-12 b-r">
@@ -40,7 +39,5 @@
                 </div>
             </div>
         </div>
-
-    </div>
 </div>
 @stop

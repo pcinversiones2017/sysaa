@@ -21,6 +21,7 @@
                  FINALIZADOS: <a class="btn btn-primary m-r-sm">{!! $finalizado->count() !!}</a>
             </h3>
             <hr>
+            <div class="table-responsive">
                     <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                     <table class="table table-bordered table-procedimientos">
                         <thead>
@@ -62,7 +63,7 @@
                         @endforeach
                         </tbody>
                     </table>
-
+                </div>
                 </div>
             </div>
         </div>

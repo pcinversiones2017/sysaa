@@ -20,6 +20,7 @@
                  RECHAZADOS: <a class="btn btn-danger m-r-sm">{!! $rechazado->count() !!}</a>
                  FINALIZADOS: <a class="btn btn-primary m-r-sm">{!! $finalizado->count() !!}</a>
             </h3><hr>
+            <div class="table-responsive">
             <table class="table table-bordered tabla-procedimientos">
                 <thead>
                     <tr>
@@ -79,6 +80,7 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
     @endif
@@ -96,6 +98,7 @@
              RECHAZADOS: <a class="btn btn-danger m-r-sm">{!! $rechazado_g->count() !!}</a>
              FINALIZADOS: <a class="btn btn-primary m-r-sm">{!! $finalizado_g->count() !!}</a>
             </h3><hr>
+            <div class="table-responsive">
             <table class="table table-bordered tabla-procedimientos">
                 <thead>
                     <tr>
@@ -158,6 +161,7 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 

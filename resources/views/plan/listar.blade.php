@@ -26,14 +26,14 @@
                                 @foreach($planes as $plan)
                                     <tr>
                                         <td>{{$i}}</td>
-                                        <td>
+                                        <td class="tooltip-demo">
                                             <h5>{{$plan->nombrePlan}}</h5>
                                             @if($plan->auditorias->isNotEmpty())
                                             <h5><strong>AUDITORIAS</strong></h5>
                                             <ul>
                                                 @foreach($plan->auditorias as $auditoria)
                                                     <li style="padding-bottom: 10px">{{$auditoria->nombrePlanF}}  <label class="label label-default">{{$auditoria->tipoActividad}}</label>
-                                                            <a class="pull-right" href="{{route('auditoria.editar', $auditoria->codPlanF)}}"><i class="fa fa-edit"></i></a>
+                                                            <a class="pull-right" href="{{route('auditoria.editar', $auditoria->codPlanF)}}" data-toggle="tooltip" data-placement="bottom" title="Editar Auditoria"><i class="fa fa-edit"></i></a>
                                                     </li>
                                                 @endforeach
                                             </ul>

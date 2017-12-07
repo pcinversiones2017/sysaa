@@ -20,7 +20,7 @@
 
             <div class="form-group">
                 <button type="submit" class="btn btn-outline btn-success"><i class="fa fa-save"></i> GUARDAR</button>
-                <a href="{!! route('plan.listar') !!}" class="btn btn-danger btn-outline">SALIR</a>
+                <a href="{!! route('plan.listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
             </div>
 
             {!! Form::close() !!}

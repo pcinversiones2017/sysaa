@@ -15,6 +15,6 @@ class EstadoAuditoriaTableSeed extends Seeder
         EstadoAuditoria::create(['nombre' => 'PENDIENTE', 'label' => 'warning']);
         EstadoAuditoria::create(['nombre' => 'PENDIENTE DE APROBACIÓN', 'label' => 'plain']);
         EstadoAuditoria::create(['nombre' => 'EN PROCESO', 'label' => 'information']);
-        EstadoAuditoria::create(['nombre' => ' FINALIZADO', 'label' => 'primary']);
+        EstadoAuditoria::create(['nombre' => 'FINALIZADO', 'label' => 'primary']);
     }
 }

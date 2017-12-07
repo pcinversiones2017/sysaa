@@ -16,7 +16,7 @@
                     <p>
                 </div>
             </div>
-
+            <div class="table-responsive">
             <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
             <table class="table table-bordered table-personas">
                 <thead>
@@ -47,6 +47,7 @@
                 @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 

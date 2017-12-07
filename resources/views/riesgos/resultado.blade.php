@@ -17,10 +17,10 @@
                         <div class="panel-body">
                             <div class="row">
                             	{!! Form::open(['method' => 'POST', 'route' => 'riesgos.buscar']) !!}
-                                <div class="col-sm-11">
+                                <div class="col-sm-11 col-xs-9">
                                     {!! Form::select('auditoria', $auditorias, null, ['class' => 'form-control', 'placeholder' => 'SELECCIONE AUDITORIA']) !!}
                                 </div>
-                                <div class="col-sm-1">
+                                <div class="col-sm-1 col-xs-3">
                                     {!! Form::submit('BUSCAR', ['class' => 'btn btn-success btn-outline']) !!}
                                 </div>
                                 {!! Form::close() !!}
