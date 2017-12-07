@@ -110,6 +110,7 @@ class AuditoriaController extends Controller
 
     public function mostrar(Request $request)
     {
+        $listarAuditoria= 'active';
         $auditoria = Auditoria::find($request->codPlanF);
         $macroprocesos = Macroproceso::all();
         $usuariorol = UsuarioRol::where('codPlanF', $request->codPlanF)->get();
@@ -120,7 +121,7 @@ class AuditoriaController extends Controller
         $normativas = Normativa::where('codTipNorm', TipoNormativa::REGULA)->get();
 
         return view('auditoria.mostrar')->with(compact('auditoria', 'macroprocesos', 'usuariorol',
-            'codPlanF', 'objetivoGeneral', 'normativas'));
+            'codPlanF', 'objetivoGeneral', 'normativas', 'listarAuditoria'));
     }
 
 
