@@ -39,7 +39,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-success btn-outline" value="REGISTRAR">
-                                            <a href="{{URL::to('macroproceso/listar')}}" class="btn btn-danger btn-outline">ATRAS</a>
+                                            <a href="{!! url()->previous() !!}" class="btn btn-danger btn-outline">ATRAS</a>
                                         </div>
                                     </div>
                                     {!! Form::close() !!}
