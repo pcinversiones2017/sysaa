@@ -11,7 +11,7 @@
 
                     <div class="panel panel-success">
                         <div class="panel-heading">
-                            GENERAR PROCEDIMIENTO
+                            CREAR PROCEDIMIENTO
                         </div>
                         <div class="panel-body">
                             <div class="col-lg-12">
@@ -61,7 +61,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="col-lg-12">
-                                <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
+                                <h4 align="right"><strong class="label label-success">CREAR REPORTES</strong></h4>
                                 <table class="table table-bordered table-procedimientos" style="margin-top: 10px">
                                     <thead>
                                     <tr>

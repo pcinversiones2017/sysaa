@@ -10,7 +10,7 @@
         <div class="col-lg-12">
                         <div class="panel panel-success">
                             <div class="panel-heading">
-                                GENERAR SUBPROCESO
+                                CREAR SUBPROCESO
                             </div>
                             <div class="panel-body">
                                 <div class="col-lg-12">
