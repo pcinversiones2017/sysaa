@@ -10,7 +10,7 @@
 
                     <div class="panel panel-success">
                         <div class="panel-heading">
-                            EDITAR CRONOGRAMA <small>CRONOGRAMA Y PLAZOS DE ENTREGA DE DOCUMENTOS (*)</small>
+                            EDITAR <small>CRONOGRAMA Y PLAZOS DE ENTREGA DE DOCUMENTOS (*)</small>
                         </div>
                         <div class="panel-body">
                             <div class="">
