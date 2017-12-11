@@ -66,6 +66,7 @@ Route::group(['middleware' => ['auth']], function(){
     	Route::get('editar/{codObs}/{codSeg}', 'SeguimientoController@editar')->name('seguimiento.editar');
     	Route::post('actualizar', 'SeguimientoController@actualizar')->name('seguimiento.actualizar');
     	Route::get('eliminar/{codSeg}', 'SeguimientoController@eliminar')->name('seguimiento.eliminar');
+    	Route::get('lista-general', 'SeguimientoController@general')->name('seguimiento.general');
     });
 
 	Route::group(['prefix' => 'seguimiento/archivo'], function(){

@@ -80,6 +80,7 @@
                     <a href=""><i class="fa fa-eercast"></i> <span class="nav-label">Seguimiento</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                        <li class="{{$listarObservaciones ?? ''}}"><a href="{!! route('observacion.listar') !!}"> <i class="fa fa-list"></i> Lista</a></li>
+                       <li class="{{$listarSeguimiento ?? ''}}"><a href="{!! route('seguimiento.general') !!}"> <i class="fa fa-list"></i> Lista General</a></li>
                     </ul>
                 </li>
 

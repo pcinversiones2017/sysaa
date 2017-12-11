@@ -9,29 +9,17 @@
 @section('content')
     
     @include('partials.alert')
-    <div class="well"> 
-    @foreach($seguimientos as $row)
-        <strong>TITULO DE OBSERVACIÓN:</strong> {!! $row->observacion->titulo !!}
-    @endforeach
-    </div>
     <div class="panel panel-success">
         <div class="panel-heading">
             LISTA DE SEGUIMIENTOS
         </div>
         <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <a type="button" href="{!! url()->previous() !!}" class="btn btn-outline btn-danger"> ATRAS</a>
-                            <a type="button" href="{!! url('seguimiento/crear/'.$codObs) !!}" class="btn btn-outline btn-success"> CREAR SEGUIMIENTO</a>
-                            <p>
-                            
-                        </div>
-                    </div>
                     <h4 align="right"><strong class="label label-success">GENERAR REPORTES</strong></h4>
                     <table class="table table-bordered table-responsive table-procedimientos">
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>TITULO DE AUDITORIA</th>
                             <th>ACCIONES REALIZADOS POR EL AUDITADO</th>
                             <th>EVALUACION DEL AUDITOR</th>
                             <th>ESTADO</th>                            
@@ -43,14 +31,15 @@
                         @foreach($seguimientos as $row)
                             <tr>
                                 <td>{{$i}}</td>
+                                <td>{!! $row->observacion->titulo !!}</td>
                                 <td>{!! $row->acciones !!}</td>
                                 <td>{!! $row->evaluacion !!}</td>
                                 <td>{!! $row->estado !!}</td>
                                 <td class="tooltip-demo">
-                                    <a href="{!! url('seguimiento/editar/'.$codObs.'/'.$row->codSeg) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i>  </a>
+                                    <a href="{!! url('seguimiento/editar/'.$row->observacion->codObs.'/'.$row->codSeg) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i>  </a>
                                     <a href="{!! url('seguimiento/eliminar/'.$row->codSeg) !!}" class="btn btn-danger btn-outline" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i>  </a>
-                                    <a href="{!! url('seguimiento/archivo/crear/'.$codObs.'/'.$row->codSeg) !!}" class="btn btn-warning btn-outline" data-toggle="tooltip" data-placement="bottom" title="Adjuntar Documentos"><i class="fa fa-upload"></i>  </a>
-                                    <a href="{!! url('seguimiento/archivo/listar/'.$codObs.'/'.$row->codSeg) !!}" class="btn btn-info btn-outline" data-toggle="tooltip" data-placement="bottom" title="Listar documentos adjuntados"><i class="fa fa-paperclip"></i>  </a>
+                                    <a href="{!! url('seguimiento/archivo/crear/'.$row->observacion->codObs.'/'.$row->codSeg) !!}" class="btn btn-warning btn-outline" data-toggle="tooltip" data-placement="bottom" title="Adjuntar Documentos"><i class="fa fa-upload"></i>  </a>
+                                    <a href="{!! url('seguimiento/archivo/listar/'.$row->observacion->codObs.'/'.$row->codSeg) !!}" class="btn btn-info btn-outline" data-toggle="tooltip" data-placement="bottom" title="Listar documentos adjuntados"><i class="fa fa-paperclip"></i>  </a>
                                 </td>
                             </tr>
                         <?php $i++ ?>

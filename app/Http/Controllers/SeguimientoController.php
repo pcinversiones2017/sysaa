@@ -72,5 +72,12 @@ class SeguimientoController extends Controller
         $seguimiento->delete();
     	return back()->with('danger','Seguimiento eliminado');
     }
+
+    public function general()
+    {
+        $seguimientos = Seguimiento::orderBy('fecha_creado', 'desc')->get();
+        $listarSeguimiento = 'active';
+        return view('seguimiento.general', compact(['seguimientos', 'listarSeguimiento']));
+    }
     
 }
