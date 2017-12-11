@@ -5,6 +5,9 @@
 @stop
 
 @section('content')
+    <div class="well">
+        <strong>TITULO DE OBSERVACIÓN: </strong> {!! $seguimiento->observacion->titulo !!}
+    </div>
 	<div class="panel panel-success">
         <div class="panel-heading">
             ACTUALIZAR SEGUIMIENTO
