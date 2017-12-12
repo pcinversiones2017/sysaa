@@ -28,7 +28,7 @@ class ProcedimientoController extends Controller
     					'detalle' 		=> $request->detalle, 
     					'fecha_fin' 	=> date('Y-m-d', strtotime($request->fechafin)),
     					'codUsuRol'		=> $request->codUsuRol,
-    					'codObjGen' 	=> $auditoria->objetivoGeneral->codObjGen,
+    					'codObjGen' 	=> $request->codPlanF,
                         'codEst'         => 1
     				]);
     	RegistrarActividad(Procedimiento::TABLA,Historial::REGISTRAR,'registró el Procedimiento '.$request->justificacion);

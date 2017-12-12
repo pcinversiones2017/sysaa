@@ -95,4 +95,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::group(['prefix' => 'observacion'], function(){
     	Route::get('listar', 'ObservacionController@listar')->name('observacion.listar');
     });
+
+    Route::get('listar-general', 'MacroprocesoController@general')->name('macroproceso.general');
 });

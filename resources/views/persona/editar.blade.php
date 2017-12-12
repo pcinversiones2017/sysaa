@@ -21,7 +21,7 @@
                     {!! Field::email('email', $persona->email) !!}
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> REGISTRAR</button>
+                        <button type="submit" class="btn btn-success btn-outline"><i class="fa fa-save"></i> ACTUALIZAR</button>
                         <a href="{!! route('persona.listar') !!}" class="btn btn-danger btn-outline">ATRAS</a>
                     </div>
 

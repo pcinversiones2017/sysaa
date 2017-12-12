@@ -39,11 +39,12 @@
                     </ul>
                 </li>
 
-                <li class="{{$crearMacroproceso?? ''}} {{$listarMacroprocesos?? ''}}">
+                <li class="{{$crearMacroproceso?? ''}} {{$listarMacroprocesos?? ''}} {{ $listarGeneral ?? ''}}">
                     <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">Macroproceso</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="{{$crearMacroproceso?? ''}}"><a href="{{URL::to('macroproceso/crear')}}"><i class="fa fa-pencil"></i> Crear </a></li>
                         <li class="{{$listarMacroprocesos?? ''}}"><a href="{{URL::to('macroproceso/listar')}}"><i class="fa fa-list-alt"></i> Listar </a></li>
+                        <li class="{{$listarGeneral?? ''}}"><a href="{!! route('macroproceso.general') !!}"><i class="fa fa-list-alt"></i> Listar General</a></li>
                     </ul>
                 </li>
                 <li class="{{$listarRiesgos?? ''}}">

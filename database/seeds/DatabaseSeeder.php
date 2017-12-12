@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             CargoFuncionalTableSeeder::class,
             AsignacionTableSeeder::class,
             tipoNormativaSeeder::class,
-           // NormativaSeeder::class,
+            NormativaSeeder::class,
             InstitucionTableSeeder::class,
             InfoSoftwareSeeder::class,
             EstadoTableSeeder::class,

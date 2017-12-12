@@ -46,7 +46,7 @@ class AuditoriaController extends Controller
         $codigoServicio = Auditoria::orderBy('codPlanF', 'des')->first();
         if(isset($codigoServicio)){
             $codigoServicio = str_pad($codigoServicio->codPlanF + 1, 3, '0', STR_PAD_LEFT) .
-            '-UNH-PA-' . date('dmY');
+            '-OCI-UNH-PA-' . date('dmY');
         }else{
             $codigoServicio = str_pad(1, 3, '0', STR_PAD_LEFT) . '-UNH-PA-' . date('dmY');
         }
@@ -84,9 +84,9 @@ class AuditoriaController extends Controller
         $codigoServicio = Auditoria::orderBy('codPlanF', 'des')->first();
         if(isset($codigoServicio)){
             $codigoServicio = str_pad($codigoServicio->codPlanF + 1, 3, '0', STR_PAD_LEFT) .
-                '-UNH-PA-' . date('dmY');
+                '-OCI-UNH-PA-' . date('dmY');
         }else{
-            $codigoServicio = str_pad(1, 3, '0', STR_PAD_LEFT) . '-UNH-PA-' . date('dmY');
+            $codigoServicio = str_pad(1, 3, '0', STR_PAD_LEFT) . '-OCI-UNH-PA-' . date('dmY');
         }
 
         $auditoria->codigoServicioCP = $codigoServicio;
@@ -135,18 +135,19 @@ class AuditoriaController extends Controller
 
     public function actualizar(ActualizarRequest $request)
     {
-
         $auditoria = Auditoria::find($request->codPlanF);
         $auditoria->nombrePlanF = $request->nombrePlanF;
 
         $auditoria->tipoServicioCP = $request->tipoServicioCP;
         $auditoria->organoCI = $request->organoCI;
         $auditoria->origen = $request->origen;
+        $auditoria->contraloria = $request->contraloria;
         $auditoria->entidadAuditada = $request->entidadAuditada;
         $auditoria->entidadAuditora = $request->entidadAuditora;
         $auditoria->tipoDemanda = $request->tipoDemanda;
         $auditoria->fechaIniPlanF = $request->fechaIniPlanF;
         $auditoria->fechaFinPlanF = $request->fechaFinPlanF;
+        $auditoria->tipoActividad = $request->tipoActividad;
 
         if(!empty($request->periodoIniPlanF)){
             $auditoria->periodoIniPlanF = date('Y-m-d', strtotime($request->periodoIniPlanF));

@@ -143,7 +143,7 @@
                                                 </div>
 
                                                 <div class="form-group"><label class="col-lg-6 control-label">Creado por:</label>
-                                                    <h5 class="text-left col-lg-6" style="padding-top: 5px"></h5>
+                                                    <h5 class="text-left col-lg-6" style="padding-top: 5px">{!! Auth::user()->datos !!}</h5>
                                                 </div>
                                                 <div class="form-group"><label class="col-lg-6 control-label">Código del servicio de control posterior:</label>
                                                     <h5 class="text-left col-lg-6" style="padding-top: 5px">{{$auditoria->codigoServicioCP}}</h5>

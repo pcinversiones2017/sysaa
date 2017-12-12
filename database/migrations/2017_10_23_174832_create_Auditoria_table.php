@@ -22,6 +22,7 @@ class CreateAuditoriaTable extends Migration
             $table->longText('origen')->nullable();
             $table->string('entidadAuditada')->nullable();
             $table->string('entidadAuditora')->nullable();
+            $table->string('contraloria')->nullable();
             $table->string('tipoDemanda')->nullable();
             $table->date('fechaIniPlanF')->nullable();
             $table->date('fechaFinPlanF')->nullable();

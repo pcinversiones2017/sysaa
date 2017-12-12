@@ -19,6 +19,9 @@
                 {!! Field::text('codigoServicioCP', $auditoria->codigoServicioCP, ['label' => 'CÓDIGO DEL SERVICIO DEL SERVICIO DE CONTROL POSTERIOR', 'disabled' => 'disabled']) !!}
                 <div class="hr-line-dashed"></div>
 
+                {!! Field::text('contraloria', null, ['label' => 'CÓDIGO POR CONTRALORIA']) !!}
+                <div class="hr-line-dashed"></div>
+
                 {!! Field::text('tipoServicioCP', $auditoria->tipoServicioCP, ['label' => 'TIPO DE SERVICIO DE CONTROL POSTERIOR']) !!}
                 <div class="hr-line-dashed"></div>
 
@@ -30,8 +33,15 @@
             <div class="col-md-6">
                 {!! Field::text('entidadAuditada', $auditoria->entidadAuditada, ['label' => 'ENTIDAD AUDITADA']) !!}
                 <div class="hr-line-dashed"></div>
-
-                {!! Field::text('entidadAuditora', $auditoria->entidadAuditora, ['label' => 'ENTIDAD AUDITORA']) !!}
+                <div class="form-group">
+                    <label style="color:red">ENTIDAD AUDITORA (Externo) </label>
+                {!! Form::text('entidadAuditora', $auditoria->entidadAuditora, ['class' => 'form-control']) !!}
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label>TIPO AUDITORIA </label>
+                {!! Form::select('tipoActividad', ['PROGRAMADA' => 'PROGRAMADA', 'NO PROGRAMADA' => 'NO PROGRAMADA'],$auditoria->tipoActividad,['class' => 'form-control']) !!}
+                </div>
                 <div class="hr-line-dashed"></div>
 
                 {!! Field::text('tipoDemanda', $auditoria->tipoDemanda, ['label' => 'TIPO DE DEMANDA DE CONTROL (demanda autogenerada / demanda imprevisible)']) !!}

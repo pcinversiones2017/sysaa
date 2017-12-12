@@ -63,4 +63,16 @@ class MacroprocesoController extends Controller
         RegistrarActividad(Macroproceso::TABLA,Historial::ELIMINAR,'eliminó el Macroproceso '.$macroproceso->nombre);
         return back()->with('danger', 'Macroproceso Eliminado');
     }
+
+    public function general()
+    {
+        $general = Macroproceso::join('proceso_ma', 'proceso_ma.codMacroP','=','macroproceso.codMacroP')
+                    ->join('subproceso', 'subproceso.codProMA', '=', 'proceso_ma.codProMA')
+                    ->join('procedimiento_sp', 'procedimiento_sp.codSubPro', '=', 'subproceso.codSubPro')
+                    ->join('actividad', 'actividad.codProSP', '=', 'procedimiento_sp.codProSP')
+                    ->select('macroproceso.nombre as macronom', 'proceso_ma.nombre as pronom', 'proceso_ma.riesgo as prories', 'proceso_ma.ponderacion as propon', 'subproceso.nombre as subnom', 'subproceso.riesgo as subries', 'subproceso.ponderacion as subpon', 'procedimiento_sp.nombre as procenom', 'procedimiento_sp.riesgo as proceries', 'procedimiento_sp.ponderacion as procepon', 'actividad.responsable as actres', 'actividad.nombre as actnom')
+                    ->get();
+        $listarGeneral = 'active';
+        return view('macroproceso.general', compact(['general', 'listarGeneral']));
+    }
 }
