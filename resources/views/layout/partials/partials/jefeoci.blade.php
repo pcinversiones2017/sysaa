@@ -10,8 +10,8 @@
                         <li class="{{$institucion ?? ''}} {{$institucionn?? ''}}"><a href="{!! route('institucion.listar') !!}"> <i class="fa fa-institution"></i> Ver Institucion</a></li>
                         <li class="{{$activo ?? ''}}"><a href="{!! route('usuario.recuperar') !!}"><i class="fa fa-key"></i> Cambiar Contraseña</a></li>
                         <li class="{{$software_a ?? ''}}"><a href="{!! route('institucion.listarSoftware') !!}"> <i class="fa fa-rebel"></i> Informacion del Software</a></li>
-                        <li><a target="_blank" href="{!! url('manual-usuario.pdf') !!}"><i class="fa fa-file-pdf-o"></i>Manual de usuario</a></li>
-                        <li><a target="_blank" href="{!! url('manual-sistema.pdf') !!}"><i class="fa fa-file-pdf-o"></i>Manual de sistema</a></li>
+                        <li><a target="_blank" href="{!! url('manuales_de_usuario_oci_comision_supervisor_integrante.zip') !!}"><i class="fa fa-file-pdf-o"></i>Manual de usuario</a></li>
+                        <li><a target="_blank" href="{!! url('manual_del_sistema.pdf') !!}"><i class="fa fa-file-pdf-o"></i>Manual de sistema</a></li>
                     </ul>
                 </li>
                 <li class="header" style="text-align: center; padding: 10px; background: #1d3040; color: #ffffff"><span class="nav-label">ETAPAS DE AUDITORIA</span></li>
