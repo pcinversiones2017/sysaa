@@ -7,6 +7,7 @@
         <th>NÚMERO</th>
         <th>NOMBRE DE NORMATIVA</th>
         <th>FECHA DE VIGENCIA</th>
+        <th>ACCIÓN</th>
     </tr>
     </thead>
     <tbody>
@@ -18,7 +19,9 @@
                 <td>{{$normativa->numero}}</td>
                 <td>{{$normativa->nombre}}</td>
                 <td>{{$normativa->fecha}}</td>
-
+                <td class="tooltip-demo">
+                    <a href="{!! url('normativa/editar/' . $normativa->codNorm) !!}" class="btn btn-primary btn-outline" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i>  </a>
+                </td>
             </tr>
             <?php $i++ ?>
         @endforeach

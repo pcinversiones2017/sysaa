@@ -97,4 +97,6 @@ Route::group(['middleware' => ['auth']], function(){
     });
 
     Route::get('listar-general', 'MacroprocesoController@general')->name('macroproceso.general');
+    Route::get('normativa/editar/{codNorm}', 'NormativaController@editar')->name('normativa.editar');
+    Route::post('normativa-actualizar', 'NormativaController@actualizar')->name('normativa.actualizar');
 });
